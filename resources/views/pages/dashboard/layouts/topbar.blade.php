@@ -248,7 +248,9 @@
                 </li>
                 <li class="h-px bg-black/5 block my-1"></li>
                 <li>
-                    <a href="javaScript:;" class="text-black dark:text-white flex items-center">
+                    <a  href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                                  document.getElementById('logout-form').submit();" class="text-black dark:text-white flex items-center">
                         <svg class="w-4 h-4 mr-2" width="32" height="32" viewbox="0 0 32 32"
                             fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -264,6 +266,9 @@
                         Sign Out
                     </a>
                 </li>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
             </ul>
         </div>
     </div>

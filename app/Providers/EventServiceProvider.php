@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Game;
 use App\Models\User;
+use App\Observers\GameObserver;
 use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -28,6 +30,7 @@ class EventServiceProvider extends ServiceProvider
     public function boot(): void
     {
         User::observe(UserObserver::class);
+        Game::observe(GameObserver::class);
     }
 
     /**

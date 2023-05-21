@@ -17,7 +17,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('name', 150);
             $table->text('logo');
-            $table->text('sluck');
+            $table->text('slug');
             $table->timestamps();
         });
     }

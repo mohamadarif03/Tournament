@@ -14,6 +14,8 @@
 
     <link rel="stylesheet" type="text/css" href="{{ asset('dashboard_assets/css/style.css') }}" />
 
+    @vite('resources/css/app.css')
+
     @yield('css')
 </head>
 

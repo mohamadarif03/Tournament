@@ -48,10 +48,10 @@
             <ul x-cloak x-show="activeMenu === 'dashboard'" x-collapse
                 class="sub-menu flex flex-col gap-1 text-black dark:text-white/80">
                 <li>
-                    <a href="index.html" class="active">Default</a>
+                    <a href="index.html"class="active">Default</a>
                 </li>
                 <li>
-                    <a href="projects.html">Projects</a>
+                    <a href="{{route('game.index')}}">Game</a>
                 </li>
                 <li>
                     <a href="ecommerce.html">eCommerce</a>
