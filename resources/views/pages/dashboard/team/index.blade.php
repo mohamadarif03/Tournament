@@ -54,7 +54,9 @@
                 columns: [
                     {
                         data: 'logo',
-                        name: 'logo'
+                        name: 'logo',
+                        searchable: false
+
                     },
                     {
                         data: 'name',
@@ -63,7 +65,6 @@
                     {
                         data: 'game.name',
                         name: 'game.name',
-                        searchable: false
                     },
                     {
                         data: 'user.name',
