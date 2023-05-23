@@ -42,7 +42,8 @@ class GameService implements ShouldHandleFileUpload, CustomUploadValidation
 
         return [
             'name' => $data['name'],
-            'logo' => $request->file('logo')->store(UploadDiskEnum::LOGO->value, 'public')
+            'logo' => $request->file('logo')->store(UploadDiskEnum::GAME->value, 'public')
+            // 'logo' => $this->upload(UploadDiskEnum::LOGO->value, $request->file('photo')),
         ];
     }
 
@@ -62,13 +63,13 @@ class GameService implements ShouldHandleFileUpload, CustomUploadValidation
 
         if ($request->hasFile('logo')) {
             $this->remove($old_logo);
-            $old_logo = $request->file('logo')->store(UploadDiskEnum::LOGO->value, 'public');
+            $old_logo = $request->file('logo')->store(UploadDiskEnum::GAME->value, 'public');
         }
 
         return [
             'name' => $data['name'],
             'logo' => $old_logo,
-            
+
         ];
     }
 }

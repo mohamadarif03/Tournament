@@ -3,7 +3,10 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Base\Interfaces\HasUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -11,6 +14,9 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    public $incrementing = false;
+    protected $keyType = 'char';
 
     /**
      * The attributes that are mass assignable.
@@ -22,8 +28,13 @@ class User extends Authenticatable
         'email',
         'password',
         'phone_number',
-        
+
     ];
+
+    public function team(): HasMany
+    {
+        return $this->hasMany(Team::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

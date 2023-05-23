@@ -2,8 +2,8 @@
 
     <div class="flex p-4">
         <a href="index.html" class="main-logo flex-1 w-full">
-            <img src="dashboard_assets/images/logo.svg" alt="logo" class="block dark:hidden" />
-            <img src="dashboard_assets/images/dark-logo.svg" alt="logo" class="hidden dark:block" />
+            {{-- <img src="dashboard_assets/images/logo.svg" alt="logo" class="block dark:hidden" />
+            <img src="dashboard_assets/images/dark-logo.svg" alt="logo" class="hidden dark:block" /> --}}
         </a>
     </div>
 
@@ -54,7 +54,7 @@
                     <a href="{{route('game.index')}}">Game</a>
                 </li>
                 <li>
-                    <a href="ecommerce.html">eCommerce</a>
+                    <a href="{{route('team.index')}}">Team</a>
                 </li>
             </ul>
         </li>

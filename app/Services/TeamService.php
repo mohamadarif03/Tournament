@@ -5,9 +5,9 @@ namespace App\Services;
 use App\Base\Interfaces\uploads\CustomUploadValidation;
 use App\Base\Interfaces\uploads\ShouldHandleFileUpload;
 use App\Enums\UploadDiskEnum;
-use App\Http\Requests\GameRequest;
 use App\Http\Requests\GameUpdateRequest;
-use App\Models\Game;
+use App\Http\Requests\TeamRequest;
+use App\Http\Requests\TeamUpdateRequest;
 use App\Models\Team;
 use App\Traits\UploadTrait;
 
@@ -33,29 +33,32 @@ class TeamService implements ShouldHandleFileUpload, CustomUploadValidation
     /**
      * Handle store data event to models.
      *
-     * @param GameRequest $request
+     * @param TeamRequest $request
      *
      * @return array|bool
      */
-    public function store(GameRequest $request): array|bool
+    public function store(TeamRequest $request): array|bool
     {
         $data = $request->validated();
 
         return [
             'name' => $data['name'],
-            'logo' => $request->file('logo')->store(UploadDiskEnum::LOGO->value, 'public')
+            'logo' => $request->file('logo')->store(UploadDiskEnum::TEAM->value, 'public'),
+            // 'logo' => $data['logo_team'],
+            'description' => $data['description'],
+            'game_id' => $data['game_id'],
         ];
     }
 
     /**
      * Handle update data event to models.
      *
-     * @param GameUpdateRequest $request
-     * @param Game $game
+     * @param TeamUpdateReqyyest $request
+     * @param Team $team
      * @return array|bool
      */
 
-    public function update(GameUpdateRequest $request, Team $team): array|bool
+    public function update(TeamRequest $request, Team $team): array|bool
     {
         $data = $request->validated();
 
@@ -63,13 +66,14 @@ class TeamService implements ShouldHandleFileUpload, CustomUploadValidation
 
         if ($request->hasFile('logo')) {
             $this->remove($old_logo);
-            $old_logo = $request->file('logo')->store(UploadDiskEnum::LOGO->value, 'public');
+            $old_logo = $request->file('logo')->store(UploadDiskEnum::TEAM->value, 'public');
         }
 
         return [
             'name' => $data['name'],
             'logo' => $old_logo,
-            
+            'description' => $data['description'],
+            'game_id' => $data['game_id'],
         ];
     }
 }

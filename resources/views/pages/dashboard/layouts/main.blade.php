@@ -13,6 +13,7 @@
     <link rel="shortcut icon" href="{{ asset('dashboard_assets/images/favicon.ico') }}" />
 
     <link rel="stylesheet" type="text/css" href="{{ asset('dashboard_assets/css/style.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('dashboard_assets/css/datatables.css') }}" />
 
     @vite('resources/css/app.css')
 

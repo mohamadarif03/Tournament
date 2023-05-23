@@ -37,7 +37,7 @@
                                             class="bg-yellow-400 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded mb-5 mr-6">
                                             <span>Edit</span>
                                         </a>
-                                        <form method="POST" action="{{ route('game.destroy', $game) }}">
+                                        <form onsubmit="return confirm('Yakin Ingin Menghapus Data Ini?')" method="POST" action="{{ route('game.destroy', $game) }}">
                                             @method('DELETE')
                                             @csrf
                                             <button type="submit" class="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded mb-5 cursor-pointer">

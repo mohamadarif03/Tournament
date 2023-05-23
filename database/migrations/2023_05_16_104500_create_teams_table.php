@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name', 150);
             $table->text('logo');
             $table->text('description');
+            $table->foreignUuid('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignUuid('game_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });

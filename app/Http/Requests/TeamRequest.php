@@ -11,7 +11,7 @@ class TeamRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class TeamRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required',
+            'logo' => 'nullable',
+            'description' => 'required',
+            'game_id' => 'required',
         ];
     }
 }

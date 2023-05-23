@@ -15,52 +15,71 @@
 
             </div>
             <div class>
-                <table id="myTable" class="whitespace-nowrap table-hover table-bordered">
+                <table id="Table_Team" class="whitespace-nowrap table-hover table-bordered">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Nama</th>
                             <th>Logo</th>
-                            <th>Description</th>
+                            <th>Nama</th>
                             <th>Game</th>
+                            <th>User</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($teams as $key => $team)
-                            <tr>
-                                <td>{{ $key + 1 }}</td>
-                                <td>{{ $team->name }}</td>
-                                <td>{{ $team->logo }}</td>
-                                <td>{{ $team->description }}</td>
-                                <td>{{ $team->game_id }}</td>
-                                <td>
-                                    {{-- <img src="{{ asset('storage/' . $game->logo) }}" alt="logo" srcset=""
-                                        width="200"> --}}
-                                </td>
-                                {{-- <td>
-                                    <div class="flex">
-                                        <a href="{{ route('game.edit', $game->id) }}" type="button"
-                                            class="bg-yellow-400 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded mb-5 mr-6">
-                                            <span>Edit</span>
-                                        </a>
-                                        <form method="POST" action="{{ route('game.destroy', $game) }}">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button type="submit" class="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded mb-5 cursor-pointer">
-                                                Hapus
-                                            </button>
-                                        </form>
-                                    </div>
-
-
-
-                                </td> --}}
-                            </tr>
-                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+
+<script src="{{ asset('assets/js/vendor/jquery.dataTables.js') }}"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Datatables Responsive
+            $("#Table_Team").DataTable({
+                scrollX: false,
+                scrollY: '500px',
+                paging: true,
+                ordering: true,
+                responsive: true,
+                pageLength: 50,
+                processing: true,
+                serverSide: true,
+                searching: true,
+                ajax: "{{ route('team.index') }}",
+                columns: [
+                    {
+                        data: 'logo',
+                        name: 'logo'
+                    },
+                    {
+                        data: 'name',
+                        name: 'name'
+                    },
+                    {
+                        data: 'game.name',
+                        name: 'game.name',
+                        searchable: false
+                    },
+                    {
+                        data: 'user.name',
+                        name: 'user.name'
+                    },
+                    {
+                        data: 'action',
+                        name: 'action',
+                        orderable: false,
+                        searchable: false
+                    }
+                ]
+            });
+
+           
+
+        });
+    </script>
 @endsection

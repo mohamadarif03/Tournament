@@ -8,6 +8,7 @@ use App\Http\Requests\GameRequest;
 use App\Http\Requests\GameUpdateRequest;
 use App\Models\Game;
 use App\Services\GameService;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -25,13 +26,13 @@ class GameController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return View
+     * @return View $request
+     * 
      */
-    public function index(): View
+    public function index()
     {
         $games = $this->game->get();
         return view('pages.dashboard.game.index', compact('games'));
-        
     }
     
     /**
@@ -53,7 +54,6 @@ class GameController extends Controller
     public function store(GameRequest $request): RedirectResponse
     {
         $store = $this->service->store($request);
-        // dd($store);
         $this->game->store($store);
         return to_route('game.index');
     }

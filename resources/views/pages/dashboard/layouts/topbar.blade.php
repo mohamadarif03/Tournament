@@ -151,9 +151,9 @@
         </button>
         <div class="profile" x-data="dropdown" @click.outside="open = false">
             <button type="button" class="flex items-center gap-1.5 xl:gap-0" @click="toggle()">
-                <img class="h-7 w-7 rounded-full xl:mr-2"
-                    src="dashboard_assets/images/byewind-avatar.png" alt="Header Avatar" />
-                <span class="fw-medium hidden xl:block">Stevens L.</span>
+                {{-- <img class="h-7 w-7 rounded-full xl:mr-2"
+                    src="dashboard_assets/images/byewind-avatar.png" alt="Header Avatar" /> --}}
+                <span class="fw-medium hidden xl:block">Stevens Lo.</span>
                 <svg class="w-4 h-4" width="32" height="32" viewbox="0 0 32 32"
                     fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -165,8 +165,8 @@
                 <li>
                     <div class="flex items-center !p-1">
                         <div class="flex-none">
-                            <img class="h-7 w-7 rounded-full object-cover"
-                                src="dashboard_assets/images/byewind-avatar.png" alt="image" />
+                            {{-- <img class="h-7 w-7 rounded-full object-cover"
+                                src="dashboard_assets/images/byewind-avatar.png" alt="image" /> --}}
                         </div>
                         <div class="pl-2">
                             <h4 class="text-sm text-black dark:text-white font-medium leading-none">

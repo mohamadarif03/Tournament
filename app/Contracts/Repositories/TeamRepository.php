@@ -4,10 +4,13 @@ namespace App\Contracts\Repositories;
 
 use App\Contracts\Interfaces\TeamInterface;
 use App\Models\Team;
+use App\Traits\Datatables\TeamDatatable;
 use Illuminate\Database\QueryException;
 
 class TeamRepository extends BaseRepository implements TeamInterface
 {
+    use TeamDatatable;
+
     public function __construct(Team $team)
     {
         $this->model = $team;
@@ -48,11 +51,12 @@ class TeamRepository extends BaseRepository implements TeamInterface
      * Handle the Get all data event from models.
      *
      * @return mixed
+     * @throws Exception
      */
     public function get(): mixed
     {
-        return $this->model->query()
-            ->get();
+        return $this->TeamMockup($this->model->query()
+            ->with(['game', 'user']));
     }
 
     /**
