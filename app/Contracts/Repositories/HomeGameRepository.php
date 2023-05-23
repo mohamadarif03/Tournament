@@ -20,7 +20,7 @@ class HomeGameRepository extends BaseRepository implements HomeGameInterface
     public function get(): mixed
     {
         return $this->model->query()
-            ->take(8)->get();
+            ->get();
     }
 
 }

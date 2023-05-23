@@ -178,63 +178,23 @@
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                                     @foreach ($games as $game)
                                         <li class="nav-item" role="presentation">
-                                            <button class="nav-link active" id="{{ $game->id }}-tab"
-                                                data-bs-toggle="tab" data-bs-target="#{{ $game->id }}"
-                                                type="button" role="tab" aria-controls="{{ $game->id }}"
-                                                aria-selected="true"><span class="img-shape"></span><img
-                                                    src="{{ asset('storage/' . $game->logo) }}" width="85"
-                                                    height="85" alt="img"></button>
+                                            <div class="text-center">
+                                                <button class="nav-link active" id="{{ $game->id }}-tab"
+                                                    data-bs-toggle="tab" data-bs-target="#{{ $game->id }}"
+                                                    type="button" role="tab" aria-controls="{{ $game->id }}"
+                                                    aria-selected="true">
+                                                    <img src="{{ asset('storage/' . $game->logo) }}" width="85"
+                                                        height="85" alt="img">
+                                                </button>
+                                                <h6 class="title" style="width: 85px; margin-top: 10px">
+                                                    {{ $game->name }}</h6>
+                                            </div>
                                         </li>
                                     @endforeach
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="tab-content" id="">
-                        @foreach ($games as $index => $game)
-                            <div class="tab-pane {{ $index === 0 ? 'show active' : '' }}" id="{{ $game->id }}" role="tabpanel"
-                                aria-labelledby="{{ $game->id }}-tab">
-                                <div class="row justify-content-center">
-                                    <div class="col-xl-5 col-lg-10">
-                                        <div class="about__img">
-                                            <img src="{{ asset('storage/' . $game->logo) }}" alt="img">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-7 col-lg-10">
-                                        <div class="about__flex-wrap">
-                                            <div class="about__content-wrap">
-                                                <div class="about__content">
-                                                    <h4 class="title">{{ $game->name }}</h4>
-                                                    <span class="rate">rate 50%</span>
-                                                    <p>Lorem ipsum dolor sit amet, consteur adipiscing Duis elementum
-                                                        sollicitudin is yaugue euismods Nulla ullamcorper. Morbi
-                                                        pharetra tellus miolslis, tincidunt massa venenatis.</p>
-                                                </div>
-                                                <div class="about__content-list">
-                                                    <ul class="list-wrap">
-                                                        <li><img src="assets/img/icons/features_icon01.png"
-                                                                alt="img"> Chichi Dragon Ball</li>
-                                                        <li><img src="assets/img/icons/features_icon02.png"
-                                                                alt="img"> Space Babe Night</li>
-                                                        <li><img src="assets/img/icons/features_icon03.png"
-                                                                alt="img"> Dragon Ball</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="about__btn-wrap">
-                                                <ul class="list-wrap">
-                                                    <li><a href="shop-details.html">Dragon Ball</a></li>
-                                                    <li><a href="shop.html">nft market</a></li>
-                                                    <li><a href="contact-2.html">support</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-
                 </div>
             </section>
             <!-- about-area-end -->
@@ -349,8 +309,8 @@
                     <div class="row justify-content-center">
                         <div class="col-xl-6 col-lg-7 col-md-10">
                             <div class="section__title text-center mb-60">
-                                <span class="sub-title tg__animate-text">8 tim teratas</span>
-                                <h3 class="title">tim teratas</h3>
+                                <span class="sub-title tg__animate-text">8 tim terpopuler</span>
+                                <h3 class="title">tim terpopuler</h3>
                             </div>
                         </div>
                     </div>

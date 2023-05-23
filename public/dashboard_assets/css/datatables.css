@@ -539,7 +539,7 @@ table.dataTable td {
     border-radius: 3px;
     padding: 5px;
     background-color: transparent;
-    padding: 4px
+    padding-right: 30px;
 }
 
 .dataTables_wrapper .dataTables_filter {

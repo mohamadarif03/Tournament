@@ -44,7 +44,6 @@ class TeamService implements ShouldHandleFileUpload, CustomUploadValidation
         return [
             'name' => $data['name'],
             'logo' => $request->file('logo')->store(UploadDiskEnum::TEAM->value, 'public'),
-            // 'logo' => $data['logo_team'],
             'description' => $data['description'],
             'game_id' => $data['game_id'],
         ];
