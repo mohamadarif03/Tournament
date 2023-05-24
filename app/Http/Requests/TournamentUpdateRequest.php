@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TournamentRequest extends FormRequest
+class TournamentUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class TournamentRequest extends FormRequest
         return [
             'name' => 'required',
             'description' => 'required',
-            'live_image_url' => 'required|mimes: jpg, jpeg, png',
+            'live_image_url' => 'nullable|mimes: jpg, jpeg, png',
             'completed_at' => 'required',
             'slot' => 'required',
             'price_pool' => 'required',
@@ -35,7 +35,6 @@ class TournamentRequest extends FormRequest
         return [
             'name.required' => 'Nama Wajib Diisi',
             'description.required' => 'Deskripsi Wajib Diisi',
-            'live_image_url.required' => 'Foto Wajib Diisi',
             'live_image_url.mimes' => 'Foto Hanya Diperbolehkan Berformat JPG, JPEG, PNG',
             'completed_at.required' => 'Tanggal Berakhir Turnamen Wajib Diisi',
             'slot.required' => 'Slot Wajib Diisi',

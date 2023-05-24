@@ -6,6 +6,7 @@ use App\Base\Interfaces\uploads\CustomUploadValidation;
 use App\Base\Interfaces\uploads\ShouldHandleFileUpload;
 use App\Enums\UploadDiskEnum;
 use App\Http\Requests\TeamRequest;
+use App\Http\Requests\TeamUpdateRequest;
 use App\Models\Team;
 use App\Traits\UploadTrait;
 
@@ -65,7 +66,7 @@ class TeamService implements ShouldHandleFileUpload, CustomUploadValidation
      * @return array|bool
      */
 
-    public function update(TeamRequest $request, Team $team): array|bool
+    public function update(TeamUpdateRequest $request, Team $team): array|bool
     {
         $data = $request->validated();
 

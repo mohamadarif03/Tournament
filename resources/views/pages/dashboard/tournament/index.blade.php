@@ -58,7 +58,8 @@
                     },
                     {
                         data: 'live_image_url',
-                        name: 'live_image_url'
+                        name: 'live_image_url',
+                        searchable: false
                     },
                     {
                         data: 'completed_at',

@@ -22,7 +22,19 @@ class TeamUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            
+            'name' => 'required',
+            'logo' => 'nullable|mimes: jpg, jpeg, png',
+            'description' => 'required',
+            'game_id' => 'required',
+        ];
+    }
+    public function messages(): array
+    {
+        return[
+            'name.required' => 'Nama Wajib Diisi',
+            'logo.mimes' => 'Logo Harus Berformat JPG, JPEG, ataupun PNG',
+            'description.required' => 'Deskripsi Wajib Diisi',
+            'game_id' => 'Game Wajib Diisi',
         ];
     }
 }

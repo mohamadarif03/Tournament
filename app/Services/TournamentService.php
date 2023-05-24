@@ -6,6 +6,7 @@ use App\Base\Interfaces\uploads\CustomUploadValidation;
 use App\Base\Interfaces\uploads\ShouldHandleFileUpload;
 use App\Enums\UploadDiskEnum;
 use App\Http\Requests\TournamentRequest;
+use App\Http\Requests\TournamentUpdateRequest;
 use App\Models\Team;
 use App\Models\Tournament;
 use App\Traits\UploadTrait;
@@ -58,7 +59,7 @@ class TournamentService implements ShouldHandleFileUpload, CustomUploadValidatio
      * @return array|bool
      */
 
-    public function update(TournamentRequest $request, Tournament $tournament): array|bool
+    public function update(TournamentUpdateRequest $request, Tournament $tournament): array|bool
     {
         $data = $request->validated();
 

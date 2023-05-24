@@ -4,16 +4,15 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Contracts\Interfaces\GameInterface;
 use App\Contracts\Interfaces\TeamInterface;
-use App\Contracts\Interfaces\UserInterface;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TeamRequest;
+use App\Http\Requests\TeamUpdateRequest;
 use App\Models\Team;
 use App\Services\TeamService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 
 class TeamController extends Controller
 {
@@ -88,7 +87,7 @@ class TeamController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(TeamRequest $request, Team $team)
+    public function update(TeamUpdateRequest $request, Team $team)
     {
         $store = $this->service->update($request, $team);
 

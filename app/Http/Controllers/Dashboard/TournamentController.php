@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Contracts\Interfaces\TournamentInterface;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TournamentRequest;
+use App\Http\Requests\TournamentUpdateRequest;
 use App\Models\Tournament;
 use App\Services\TournamentService;
 use Illuminate\Http\JsonResponse;
@@ -72,7 +73,7 @@ class TournamentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(TournamentRequest $request, Tournament $tournament)
+    public function update(TournamentUpdateRequest $request, Tournament $tournament)
     {
         $store = $this->service->update($request, $tournament);
 

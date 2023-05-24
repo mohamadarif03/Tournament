@@ -2,6 +2,15 @@
 
 @section('content')
     <div class="grid grid-cols-1 lg:grid-cols-1 gap-7">
+        @if ($errors->any())
+            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                <ul>
+                    @foreach ($errors->all() as $item)
+                        <li>{{ $item }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form enctype="multipart/form-data" action="{{ route('team.store') }}" class="theme-form theme-form-2 mega-form"
             method="POST">
             @csrf
@@ -33,7 +42,7 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                         <option selected>Pilih Game</option>
                         @foreach ($games as $game)
-                            <option value="{{$game->id}}">{{$game->name}}</option>
+                            <option value="{{ $game->id }}">{{ $game->name }}</option>
                         @endforeach
                     </select>
 
