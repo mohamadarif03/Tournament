@@ -195,6 +195,13 @@
                             </div>
                         </div>
                     </div>
+                    <div class="streamers__pagination">
+                        <div class="slider-button-prev streamers__pagination-arrow"><i class="fas fa-angle-left"></i>
+                        </div>
+                        <div class="swiper-pagination streamers__pagination-dots"></div>
+                        <div class="slider-button-next streamers__pagination-arrow"><i class="fas fa-angle-right"></i>
+                        </div>
+                    </div>
                 </div>
             </section>
             <!-- about-area-end -->

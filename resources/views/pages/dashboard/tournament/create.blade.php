@@ -43,7 +43,7 @@
                     <label class="mt-1.5 flex -space-x-px">
                         <input
                             class="form-input w-full rounded-lg border border-black/10 dark:border-white/10 bg-transparent px-3 py-2.5 placeholder:text-black/60 dark:placeholder:text-white/60 hover:z-10 hover:border-black dark:hover:border-white focus:z-10 focus:border-black dark:focus:border-white"
-                            placeholder="" type="date" id="completed_at" name="completed_at" />
+                            placeholder="" type="datetime" id="completed_at" name="completed_at" />
                     </label>
                 </div>
                 <div class="mb-4">

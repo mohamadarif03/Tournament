@@ -53,8 +53,8 @@ class GameController extends Controller
      */
     public function store(GameRequest $request): RedirectResponse
     {
-        $store = $this->service->store($request);
-        $this->game->store($store);
+        $this->game->store($this->service->store($request));
+        
         return to_route('game.index');
     }
 

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->boolean('is_open_signup')->default(1);
             $table->integer('slot')->default(8);
             $table->integer('price_pool')->nullable();
+            $table->foreignUuid('game_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

@@ -12,6 +12,7 @@ use App\Contracts\Repositories\HomeGameRepository;
 use App\Contracts\Repositories\HomeTeamRepository;
 use App\Contracts\Repositories\TeamRepository;
 use App\Contracts\Repositories\TournamentRepository;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider 
@@ -38,6 +39,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        
+        // Validator::extends('recaptcha', 'App\\Validator\\ReCaptcha@validate');
     }
 }

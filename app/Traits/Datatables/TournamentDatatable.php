@@ -30,9 +30,13 @@ trait TournamentDatatable
             ->editColumn('completed_at', function ($data) {
                 return Carbon::parse($data->completed_at)->isoFormat('DD MMMM YYYY');
             })
-            // // ->editColumn('status', function ($data) {
-            // //     return view('dashboard.pages.articles.datatables.status', compact('data'));
-            // // })
+            ->editColumn('price_pool', function ($data) {
+                $formattedPrice = number_format($data->price_pool, 0, ',', '.');
+                return 'Rp ' . $formattedPrice;
+            })            
+            ->editColumn('slot', function ($data) {
+                return $data->slot. ' Slot';
+            })            
             ->editColumn('action', function ($data) {
                 return view('pages.dashboard.tournament.datatables.action', compact('data'));
             })

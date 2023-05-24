@@ -9439,7 +9439,7 @@ blockquote p {
 .contact__form-wrap .input-grp::after {
     content: "";
     position: absolute;
-    background-color: #262f39;
+    background-color: #ccc;
     width: 60px;
     height: 1px;
     right: -21px;
