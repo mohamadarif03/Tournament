@@ -4,9 +4,11 @@ namespace App\Providers;
 
 use App\Models\Game;
 use App\Models\Team;
+use App\Models\Tournament;
 use App\Models\User;
 use App\Observers\GameObserver;
 use App\Observers\TeamObserver;
+use App\Observers\TournamentObserver;
 use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -34,6 +36,7 @@ class EventServiceProvider extends ServiceProvider
         User::observe(UserObserver::class);
         Team::observe(TeamObserver::class);
         Game::observe(GameObserver::class);
+        Tournament::observe(TournamentObserver::class);
     }
 
     /**

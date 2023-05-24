@@ -5,12 +5,9 @@ namespace App\Services;
 use App\Base\Interfaces\uploads\CustomUploadValidation;
 use App\Base\Interfaces\uploads\ShouldHandleFileUpload;
 use App\Enums\UploadDiskEnum;
-use App\Http\Requests\GameUpdateRequest;
 use App\Http\Requests\TeamRequest;
-use App\Http\Requests\TeamUpdateRequest;
 use App\Models\Team;
 use App\Traits\UploadTrait;
-use Illuminate\Support\Facades\Auth;
 
 class TeamService implements ShouldHandleFileUpload, CustomUploadValidation
 {

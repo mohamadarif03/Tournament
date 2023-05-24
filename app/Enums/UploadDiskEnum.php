@@ -6,4 +6,5 @@ enum UploadDiskEnum: string
 {
     case GAME = 'game';
     case TEAM = 'team';
+    case TOURNAMENT = 'tournament';
 }

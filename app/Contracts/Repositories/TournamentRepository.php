@@ -2,15 +2,18 @@
 
 namespace App\Contracts\Repositories;
 
-use App\Contracts\Interfaces\GameInterface;
-use App\Models\Game;
+use App\Contracts\Interfaces\TournamentInterface;
+use App\Models\Tournament;
+use App\Traits\Datatables\TournamentDatatable;
 use Illuminate\Database\QueryException;
 
-class GameRepository extends BaseRepository implements GameInterface
+class TournamentRepository extends BaseRepository implements TournamentInterface
 {
-    public function __construct(Game $game)
+    use TournamentDatatable;
+
+    public function __construct(Tournament $tournament)
     {
-        $this->model = $game;
+        $this->model = $tournament;
     }
 
     /**
@@ -48,12 +51,11 @@ class GameRepository extends BaseRepository implements GameInterface
      * Handle the Get all data event from models.
      *
      * @return mixed
+     * @throws Exception
      */
     public function get(): mixed
     {
-        return $this->model->query()
-            ->orderBy('created_at', 'desc')
-            ->get();
+        return $this->TournamentMockup($this->model->query());
     }
 
     /**

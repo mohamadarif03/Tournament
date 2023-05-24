@@ -632,15 +632,6 @@
     <script src="{{ asset('assets/js/plugins.js') }}"></script>
     <script src="{{ asset('assets/js/ajax-form.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-            $('button[data-bs-toggle="tab"]').on('click', function() {
-                var target = $(this).data('bs-target');
-                $('.tab-pane').removeClass('show active');
-                $(target).addClass('show active');
-            });
-        });
-    </script>
 </body>
 
 

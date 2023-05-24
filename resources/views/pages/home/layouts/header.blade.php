@@ -18,15 +18,6 @@
                                         <li><a href="tournament-details.html">TOURNAMENT Single</a></li>
                                     </ul>
                                 </li>
-                                <li class="menu-item-has-children"><a href="#">PAGES</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="shop.html">Gaming Shop</a></li>
-                                        <li><a href="shop-details.html">Shop Details</a></li>
-                                        <li><a href="services.html">Our Services</a></li>
-                                        <li><a href="services-details.html">Services Details</a></li>
-                                        <li><a href="team-details.html">Player Details</a></li>
-                                    </ul>
-                                </li>
                                 <li class="menu-item-has-children"><a href="#">News</a>
                                     <ul class="sub-menu">
                                         <li><a href="blog.html">Our Blog</a></li>
