@@ -20,7 +20,7 @@
     <script src="assets/js/tg-page-head.js"></script>
     <style>
         .contact-area {
-            height: 110vh;
+            /* height: 150vh; */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -48,8 +48,7 @@
         .contact__form-wrap form input[type="email"],
         .contact__form-wrap form input[type="password"],
         .contact__form-wrap form input[type="text"],
-        .contact__form-wrap form input[type="number"]
-         {
+        .contact__form-wrap form input[type="number"] {
             width: 100%;
             padding: 10px;
             border-radius: 5px;
@@ -63,6 +62,12 @@
             padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
+        }
+
+        @media (max-width: 991px) {
+            .col-lg-6 img {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -78,17 +83,27 @@
 
         <section class="contact-area">
             <div class="container">
+                @if ($errors->any())
+                    <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                        role="alert">
+                        <ul>
+                            @foreach ($errors->all() as $item)
+                                <li>{{ $item }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="row justify-content-center">
 
                     <div class="col-lg-6 col-md-10">
-                        <img src="assets/img/gallery/gallery05.jpg" style="height: 660px; border-radius:5px"
+                        <img src="assets/img/gallery/gallery05.jpg" style="height: 740px; border-radius:5px"
                             alt="">
                     </div>
                     <div class="col-lg-6 col-md-10">
                         <div class="contact__form-wrap">
                             <div class="center" style="margin-top: 70px">
                                 <h2 class="title" style="margin-bottom:30px; text-align:center">Daftar</h2>
-                                <form action="{{ route('register') }}" method="POST" style="height: 445px;">
+                                <form action="{{ route('register') }}" method="POST" style="height: 520px;">
                                     @csrf
                                     <div class="row">
                                         <div class="col-sm-12">
@@ -110,12 +125,19 @@
                                         </div>
                                         <div class="col-sm-12">
                                             <div class="input-grp">
-                                                <input name="password_confirmation" type="password" placeholder="Konfirmasi Password">
+                                                <input name="password_confirmation" type="password"
+                                                    placeholder="Konfirmasi Password">
                                             </div>
                                         </div>
                                         <div class="col-sm-12">
                                             <div class="input-grp">
-                                                <input name="phone_number" type="number" placeholder="Nomor HP">
+                                                <input name="phone_number" type="number" placeholder="Nomor HP"
+                                                    value="{{ old('phone_number') }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="">
+                                                {!! htmlFormSnippet() !!}
                                             </div>
                                         </div>
                                     </div>
@@ -148,6 +170,7 @@
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/ajax-form.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 
 

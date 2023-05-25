@@ -20,7 +20,8 @@
     <script src="assets/js/tg-page-head.js"></script>
     <style>
         .contact-area {
-            height: 100vh;
+            padding: 13px 0px;
+            margin-top: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -61,6 +62,12 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
+        @media (max-width: 991px) {
+            .col-lg-6 img {
+                display: none;
+            }
+        }
     </style>
 </head>
 
@@ -75,8 +82,17 @@
 
         <section class="contact-area">
             <div class="container">
+                @if ($errors->any())
+                    <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                        role="alert">
+                        <ul>
+                            @foreach ($errors->all() as $item)
+                                <li>{{ $item }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="row justify-content-center">
-
                     <div class="col-lg-6 col-md-10">
                         <img src="assets/img/gallery/gallery05.jpg" style="height: 560px; border-radius:5px"
                             alt="">
