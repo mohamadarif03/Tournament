@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Contracts\Interfaces\GameInterface;
 use App\Contracts\Interfaces\TournamentInterface;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TournamentRequest;
@@ -17,12 +18,14 @@ use Illuminate\View\View;
 class TournamentController extends Controller
 {
     private TournamentInterface $tournament;
+    private GameInterface $game;
     private TournamentService $service;
 
 
-    public function __construct(TournamentInterface $tournament, TournamentService $service)
+    public function __construct(TournamentInterface $tournament, TournamentService $service, GameInterface $game)
     {
-        $this->tournament = $tournament;    
+        $this->tournament = $tournament;  
+        $this->game = $game;
         $this->service = $service;    
     }
     /**
@@ -39,7 +42,8 @@ class TournamentController extends Controller
      */
     public function create()
     {
-        return view('pages.dashboard.tournament.create');
+        $games = $this->game->get();
+        return view('pages.dashboard.tournament.create', compact('games'));
     }
 
     /**
@@ -65,9 +69,9 @@ class TournamentController extends Controller
      */
     public function edit(Tournament $tournament)
     {
-        $datetime = $tournament->completed_at;
-        $date = substr($datetime, 0, 10);
-        return view('pages.dashboard.tournament.edit', compact('tournament', 'date'));
+       
+        $games = $this->game->get();
+        return view('pages.dashboard.tournament.edit', compact('games', 'tournament'));
     } 
 
     /**

@@ -23,6 +23,8 @@
                             <th>Tournament Selesai</th>
                             <th>Slot</th>
                             <th>Hadiah</th>
+                            <th>Game</th>
+                            <th>Tutup</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -37,6 +39,7 @@
 @section('js')
 
 <script src="{{ asset('assets/js/vendor/jquery.dataTables.js') }}"></script>
+
 
     <script>
         $(document).ready(function () {
@@ -72,6 +75,16 @@
                     {
                         data: 'price_pool',
                         name: 'price_pool'
+                    },
+                    {
+                        data: 'game.name',
+                        name: 'game.name'
+                    },
+                    {
+                        data: 'close',
+                        name: 'close',
+                        orderable: false,
+                        searchable: false
                     },
                     {
                         data: 'action',

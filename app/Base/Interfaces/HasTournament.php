@@ -4,14 +4,14 @@ namespace App\Base\Interfaces;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-interface HasTeams
+interface HasTournament
 {
 
     /**
      * One-to-Many relationship with Team Model
      *
-     * @return BelongsTo
+     * @return HasMany
      */
 
-    public function team(): HasMany;
+    public function tournament(): HasMany;
 }

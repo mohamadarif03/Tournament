@@ -37,10 +37,14 @@ trait TournamentDatatable
             ->editColumn('slot', function ($data) {
                 return $data->slot. ' Slot';
             })            
+            ->editColumn('close', function ($data) {
+                return view('pages.dashboard.tournament.datatables.close', compact('data'));
+            })
             ->editColumn('action', function ($data) {
                 return view('pages.dashboard.tournament.datatables.action', compact('data'));
             })
             ->rawColumns(['action'])
+            ->rawColumns(['close'])
             ->toJson();
     }
 }

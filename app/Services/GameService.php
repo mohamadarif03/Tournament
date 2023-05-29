@@ -69,7 +69,6 @@ class GameService implements ShouldHandleFileUpload, CustomUploadValidation
         return [
             'name' => $data['name'],
             'logo' => $old_logo,
-
         ];
     }
 }

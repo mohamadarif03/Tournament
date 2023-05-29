@@ -26,9 +26,6 @@ trait TeamDatatable
             ->editColumn('logo', function ($data) {
                 return view('pages.dashboard.team.datatables.logo', compact('data'));
             })
-            // ->editColumn('status', function ($data) {
-            //     return view('dashboard.pages.articles.datatables.status', compact('data'));
-            // })
             ->editColumn('action', function ($data) {
                 return view('pages.dashboard.team.datatables.action', compact('data'));
             })

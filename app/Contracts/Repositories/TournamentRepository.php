@@ -55,7 +55,8 @@ class TournamentRepository extends BaseRepository implements TournamentInterface
      */
     public function get(): mixed
     {
-        return $this->TournamentMockup($this->model->query());
+        return $this->TournamentMockup($this->model->query()
+            ->with('game'));
     }
 
     /**

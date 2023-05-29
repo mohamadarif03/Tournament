@@ -28,6 +28,7 @@ class TournamentRequest extends FormRequest
             'completed_at' => 'required',
             'slot' => 'required',
             'price_pool' => 'required',
+            'game_id' => 'required',
         ];
     }
     public function messages(): array
@@ -40,6 +41,7 @@ class TournamentRequest extends FormRequest
             'completed_at.required' => 'Tanggal Berakhir Turnamen Wajib Diisi',
             'slot.required' => 'Slot Wajib Diisi',
             'price_pool.required' => 'Hadiah Turnamen Wajib Diisi',
+            'game_id.required' => 'Game\ Wajib Diisi',
         ];
     }
 }

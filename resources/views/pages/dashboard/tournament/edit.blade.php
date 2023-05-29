@@ -53,10 +53,10 @@
                 </div>
                 <div class="mb-4">
                     <label class="mt-1.5 flex -space-x-px">
-                        <input
-                            class="form-input w-full rounded-lg border border-black/10 dark:border-white/10 bg-transparent px-3 py-2.5 placeholder:text-black/60 dark:placeholder:text-white/60 hover:z-10 hover:border-black dark:hover:border-white focus:z-10 focus:border-black dark:focus:border-white"
-                            placeholder="" type="date" id="" name="completed_at" value="{{ $date }}" />
                     </label>
+                    <input
+                        class="form-input w-full rounded-lg border border-black/10 dark:border-white/10 bg-transparent px-3 py-2.5 placeholder:text-black/60 dark:placeholder:text-white/60 hover:z-10 hover:border-black dark:hover:border-white focus:z-10 focus:border-black dark:focus:border-white"
+                        placeholder="" type="datetime-local" id="" name="completed_at" value="{{$tournament->completed_at}}" />
                 </div>
                 <div class="mb-4">
                     <label class="mt-1.5 flex -space-x-px">
@@ -89,6 +89,19 @@
                             placeholder="Hadiah" type="number" id="price_pool" name="price_pool"
                             value="{{ $tournament->price_pool }}" />
                     </label>
+                </div>
+                <div class="mb-4">
+                    <label class="mt-1.5 font-bold">Game</label>
+                    <select id="countries" name="game_id"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        <option selected>Pilih Game</option>
+                        @foreach ($games as $game)
+                            <option value="{{ $game->id }}" <?php if ($tournament->game_id == $game->id) {
+                                echo 'selected';
+                            } ?>>{{ $game->name }}</option>
+                        @endforeach
+                    </select>
+
                 </div>
 
                 <a href="{{ route('tournament.index') }}" type="button"
