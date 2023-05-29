@@ -6,11 +6,14 @@
                 <div class="tgmenu__wrap">
                     <nav class="tgmenu__nav">
                         <div class="logo">
-                            <a href="index.html"><img src="assets/img/logo/logo.png" alt="Logo"></a>
+                            <a href="index.html"><img src="{{asset('assets/img/logo/logo.png')}}" alt="Logo"></a>
                         </div>
                         <div class="tgmenu__navbar-wrap tgmenu__main-menu d-none d-xl-flex">
                             <ul class="navigation">
-                                <li class="active menu-item-has-children"><a href="/">Home</a></li>
+                                <li
+                                    class="{{ request()->url('/') ? 'active' : '' }} menu-item-has-children">
+                                    <a href="/">Home</a>
+                                </li>
                                 <li><a href="about-us.html">ABOUT US</a></li>
                                 <li class="menu-item-has-children"><a href="#">TOURNAMENT</a>
                                     <ul class="sub-menu">

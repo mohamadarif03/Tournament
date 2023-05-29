@@ -20,7 +20,7 @@
     <script src="assets/js/tg-page-head.js"></script>
     <style>
         .contact-area {
-            padding: 13px 0px;
+            /* padding: 13px 0px; */
             margin-top: 20px;
             display: flex;
             align-items: center;
@@ -73,7 +73,11 @@
 
 <body>
 
-
+    <!-- header-area -->
+    <header>
+        @include('pages.home.layouts.header')
+    </header>
+    <!-- header-area-end -->
 
     <!-- main-area -->
     <main class="main--area">
@@ -125,8 +129,11 @@
                                         <div class="col-sm-6">
                                             <p style="font-size: 15px; margin:0;">Belum Punya Akun? <a
                                                     href="{{ Route('register') }}">Daftar</a></p>
-                                            <p style="font-size: 15px; margin:0;">Lupa Kata Sandi? <a
-                                                    href="">Reset Kata Sandi</a></p>
+                                            @if (Route::has('password.request'))
+                                                <p style="font-size: 15px; margin:0;">Lupa Kata Sandi? <a
+                                                        href="{{ route('password.request') }}">Reset Kata Sandi</a></p>
+                                                </a>
+                                            @endif
                                         </div>
                                         <div class="col-sm-6" style="display:flex; justify-content: end">
                                             <button type="submit" class="submit-btn">Masuk</button>

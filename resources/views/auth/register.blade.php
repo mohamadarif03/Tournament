@@ -75,6 +75,11 @@
 <body>
 
 
+    <!-- header-area -->
+    <header>
+        @include('pages.home.layouts.header')
+    </header>
+    <!-- header-area-end -->
 
     <!-- main-area -->
     <main class="main--area">

@@ -28,7 +28,7 @@ Auth::routes([
     'verify' => true
 ]);
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'dashboard'], function () {
     Route::get('/', function () {
@@ -41,7 +41,7 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'dashboard'], fu
     );
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [\HomeController::class, 'index'])->name('home');
 Route::get('/email/verify', function () {
     return view('auth.verify');
 })->middleware('auth')->name('verification.notice');
