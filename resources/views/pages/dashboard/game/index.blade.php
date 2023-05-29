@@ -3,16 +3,20 @@
 @section('content')
     <div class="container">
 
+        @if (session('success'))
+            <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
+                role="alert">
+                {{ session('success') }}
+            </div>
+        @endif
         <a href="{{ route('game.create') }}" type="button"
             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-5">
             +Tambah Data
         </a>
         <div x-data="basic"
             class="border bg-lightwhite dark:bg-white/5 dark:border-white/10 border-black/10 p-5 rounded-md">
-
             <div class="mb-5">
                 <p class="text-sm font-semibold">Games</p>
-
             </div>
             <div class>
                 <table id="myTable" class="whitespace-nowrap table-hover table-bordered">

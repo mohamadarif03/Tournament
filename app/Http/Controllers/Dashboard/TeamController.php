@@ -104,6 +104,6 @@ class TeamController extends Controller
             return back();
         }
         $this->service->remove($team->logo);
-        return back(); 
+        return back()->with('success', trans('alert.delete_success'));
     }
 }

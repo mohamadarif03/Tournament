@@ -23,7 +23,7 @@ class TeamRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'logo' => 'required|mimes: jpg, jpeg, png',
+            'logo' => 'required|mimes: jpg,jpeg,png',
             'description' => 'required',
             'game_id' => 'required',
         ];

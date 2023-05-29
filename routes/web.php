@@ -34,9 +34,11 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'dashboard'], fu
     Route::get('/', function () {
         return view('pages.dashboard.index');
     });
-    Route::resources(['game' => GameController::class,]);
-    Route::resources(['team' => TeamController::class,]);
-    Route::resources(['tournament' => TournamentController::class,]);
+    Route::resources(
+        ['game' => GameController::class],
+        ['team' => TeamController::class],
+        ['tournament' => TournamentController::class]
+    );
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
