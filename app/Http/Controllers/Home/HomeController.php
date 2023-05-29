@@ -24,4 +24,5 @@ class HomeController extends Controller
         $games = $this->game->get();
         return view('pages.home.index', compact(['teams', 'games']));
     }
+    
 }

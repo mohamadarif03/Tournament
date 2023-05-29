@@ -29,7 +29,7 @@ class RegisterService
             'phone_number' => $data['phone_number'],
         ]);
 
-        // $user->assignRole($data['role']);
+        $user->assignRole($data['role']);
 
         event(new Registered($user));
 

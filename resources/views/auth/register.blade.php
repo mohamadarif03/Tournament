@@ -109,14 +109,14 @@
                 <div class="row justify-content-center">
 
                     <div class="col-lg-6 col-md-10">
-                        <img src="assets/img/gallery/gallery05.jpg" style="height: 740px; border-radius:5px"
+                        <img src="assets/img/gallery/gallery05.jpg" style="height: 790px; border-radius:5px"
                             alt="">
                     </div>
                     <div class="col-lg-6 col-md-10">
                         <div class="contact__form-wrap">
                             <div class="center" style="margin-top: 70px">
-                                <h2 class="title" style="margin-bottom:30px; text-align:center">Daftar</h2>
-                                <form action="{{ route('register') }}" method="POST" style="height: 520px;">
+                                <h2 class="font-bold text-xl text-white" style="margin-bottom:30px; text-align:center">Daftar</h2>
+                                <form action="{{ route('register') }}" method="POST" style="height: 590px;">
                                     @csrf
                                     <div class="row">
                                         <div class="col-sm-12">
@@ -146,6 +146,23 @@
                                             <div class="input-grp">
                                                 <input name="phone_number" type="number" placeholder="Nomor HP"
                                                     value="{{ old('phone_number') }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <p class="font-bold text-xl text-white">Daftar Sebagai</p>
+                                            <div class="col-md-4 mb-3">
+                                                <input name="role" value="organizer"
+                                                    class="checkbox_animated check-box @error('role') is-invalid @enderror"
+                                                    type="radio" id="flexCheckDefault"
+                                                    {{ old('role') == 'organizer' ? 'checked' : '' }}>
+                                                <label for="role">Organizer</label>
+                                            </div>
+                                            <div class="col-md-4 mt-3">
+                                                <input name="role" value="member"
+                                                    class="checkbox_animated check-box @error('role') is-invalid @enderror"
+                                                    type="radio" id="flexCheckDefault"
+                                                    {{ old('role') == 'member' ? 'checked' : '' }}>
+                                                <label for="role">Member</label>
                                             </div>
                                         </div>
                                         <div class="col-sm-12">

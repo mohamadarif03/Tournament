@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Rules\UserRoleRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -19,6 +20,7 @@ class RegisterRequest extends FormRequest
             'email' => ['required', 'max:255', Rule::unique('users', 'email')],
             'password' => 'required|min:6|confirmed',
             'phone_number' => 'required',
+            'role' => ['required', new UserRoleRule],
             'g-recaptcha-response' => 'required',
         ];
     }
@@ -41,6 +43,7 @@ class RegisterRequest extends FormRequest
             'password.min' => 'Password minimal 6 karakter',
             'password.confirmed' => 'Password tidak cocok',
             'phone_number.required' => 'Nomor HP Tidak Boleh Kosong',
+            'role.required' => 'Role Tidak Boleh Kosong',
             'g-recaptcha-response.required' => 'Captcha harus diisi',
         ];
     }

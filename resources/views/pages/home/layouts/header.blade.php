@@ -18,7 +18,7 @@
                                 <li class="menu-item-has-children"><a href="#">TOURNAMENT</a>
                                     <ul class="sub-menu">
                                         <li><a href="tournament.html">TOURNAMENT</a></li>
-                                        <li><a href="tournament-details.html">TOURNAMENT Single</a></li>
+                                        <li><a href="/tournament-detail">TOURNAMENT Single</a></li>
                                     </ul>
                                 </li>
                                 <li class="menu-item-has-children"><a href="#">News</a>
