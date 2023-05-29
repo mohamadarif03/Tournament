@@ -20,7 +20,7 @@
     <script src="assets/js/tg-page-head.js"></script>
     <style>
         .contact-area {
-            padding: 13px 0px;
+            /* padding: 13px 0px; */
             margin-top: 20px;
             display: flex;
             align-items: center;
@@ -73,7 +73,11 @@
 
 <body>
 
-
+    <!-- header-area -->
+    <header>
+        @include('pages.home.layouts.header')
+    </header>
+    <!-- header-area-end -->
 
     <!-- main-area -->
     <main class="main--area">

@@ -10,7 +10,10 @@
                         </div>
                         <div class="tgmenu__navbar-wrap tgmenu__main-menu d-none d-xl-flex">
                             <ul class="navigation">
-                                <li class="active menu-item-has-children"><a href="/">Home</a></li>
+                                <li
+                                    class="{{ request()->url('/') ? 'active' : '' }} menu-item-has-children">
+                                    <a href="/">Home</a>
+                                </li>
                                 <li><a href="about-us.html">ABOUT US</a></li>
                                 <li class="menu-item-has-children"><a href="#">TOURNAMENT</a>
                                     <ul class="sub-menu">
