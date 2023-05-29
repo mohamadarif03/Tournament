@@ -5,15 +5,20 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Base\Interfaces\HasUser;
+use App\Notifications\RegistrationNotification;
+use Illuminate\Contracts\Auth\CanResetPassword;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
 {
     use HasApiTokens, HasFactory, Notifiable;
+    use HasRoles;
 
     public $incrementing = false;
     protected $keyType = 'char';
@@ -55,4 +60,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public function sendEmailVerificationNotification(): void
+    {
+        $this->notify(new RegistrationNotification);
+    }
 }

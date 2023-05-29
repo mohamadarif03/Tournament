@@ -52,6 +52,7 @@ class GameRepository extends BaseRepository implements GameInterface
     public function get(): mixed
     {
         return $this->model->query()
+            ->orderBy('created_at', 'desc')
             ->get();
     }
 

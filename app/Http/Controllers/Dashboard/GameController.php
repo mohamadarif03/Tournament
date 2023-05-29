@@ -53,9 +53,9 @@ class GameController extends Controller
      */
     public function store(GameRequest $request): RedirectResponse
     {
-        $store = $this->service->store($request);
-        $this->game->store($store);
-        return to_route('game.index');
+        $this->game->store($this->service->store($request));
+        
+        return to_route('game.index')->with('success', trans('alert.add_success'));
     }
 
     /**
@@ -86,7 +86,7 @@ class GameController extends Controller
         $store = $this->service->update($request, $game);
 
         $this->game->update($game->id, $store);
-        return to_route('game.index');
+        return to_route('game.index')->with('success', trans('alert.update_success'));
     }
 
      /**

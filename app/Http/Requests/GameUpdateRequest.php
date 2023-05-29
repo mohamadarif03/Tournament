@@ -15,8 +15,15 @@ class GameUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'nullable',
-            'logo' => 'nullable',
+            'name' => 'required',
+            'logo' => 'nullable|mimes: jpg, jpeg, png',
+        ];
+    }
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'Nama tidak boleh kosong',
+            'logo.mimes' => 'Logo harus berformat JPG, JPEG, Ataupun PNG'
         ];
     }
 }

@@ -5,7 +5,6 @@ namespace App\Services;
 use App\Base\Interfaces\uploads\CustomUploadValidation;
 use App\Base\Interfaces\uploads\ShouldHandleFileUpload;
 use App\Enums\UploadDiskEnum;
-use App\Http\Requests\GameUpdateRequest;
 use App\Http\Requests\TeamRequest;
 use App\Http\Requests\TeamUpdateRequest;
 use App\Models\Team;
@@ -41,9 +40,19 @@ class TeamService implements ShouldHandleFileUpload, CustomUploadValidation
     {
         $data = $request->validated();
 
+        $folderName = Auth()->id();
+        $folderPath = public_path('storage/' . UploadDiskEnum::TEAM->value . '/' . $folderName);
+        if (!file_exists($folderPath)) {
+            mkdir($folderPath, 0777, true);
+        }
+
         return [
             'name' => $data['name'],
-            'logo' => $request->file('logo')->store(UploadDiskEnum::TEAM->value, 'public'),
+            'logo' => $request->file('logo')->storeAs(
+                UploadDiskEnum::TEAM->value . '/' . $folderName,
+                $request->file('logo')->getClientOriginalName(),
+                'public'
+            ),
             'description' => $data['description'],
             'game_id' => $data['game_id'],
         ];
@@ -57,15 +66,25 @@ class TeamService implements ShouldHandleFileUpload, CustomUploadValidation
      * @return array|bool
      */
 
-    public function update(TeamRequest $request, Team $team): array|bool
+    public function update(TeamUpdateRequest $request, Team $team): array|bool
     {
         $data = $request->validated();
 
         $old_logo = $team->logo;
 
+        $folderName = Auth()->id();
+        $folderPath = public_path('storage/' . UploadDiskEnum::TEAM->value . '/' . $folderName);
+        if (!file_exists($folderPath)) {
+            mkdir($folderPath, 0777, true);
+        }
+
         if ($request->hasFile('logo')) {
             $this->remove($old_logo);
-            $old_logo = $request->file('logo')->store(UploadDiskEnum::TEAM->value, 'public');
+            $old_logo = $request->file('logo')->storeAs(
+                UploadDiskEnum::TEAM->value . '/' . $folderName,
+                $request->file('logo')->getClientOriginalName(),
+                'public'
+            );
         }
 
         return [

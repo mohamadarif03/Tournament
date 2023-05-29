@@ -23,9 +23,19 @@ class TeamRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'logo' => 'nullable',
+            'logo' => 'required|mimes: jpg, jpeg, png',
             'description' => 'required',
             'game_id' => 'required',
+        ];
+    }
+    public function messages(): array
+    {
+        return[
+            'name.required' => 'Nama Wajib Diisi',
+            'logo.required' => 'Logo Wajib Diisi',
+            'logo.mimes' => 'Logo Harus Berformat JPG, JPEG, ataupun PNG',
+            'description.required' => 'Deskripsi Wajib Diisi',
+            'game_id' => 'Game Wajib Diisi',
         ];
     }
 }
