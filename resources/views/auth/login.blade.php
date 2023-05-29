@@ -129,8 +129,11 @@
                                         <div class="col-sm-6">
                                             <p style="font-size: 15px; margin:0;">Belum Punya Akun? <a
                                                     href="{{ Route('register') }}">Daftar</a></p>
-                                            <p style="font-size: 15px; margin:0;">Lupa Kata Sandi? <a
-                                                    href="">Reset Kata Sandi</a></p>
+                                            @if (Route::has('password.request'))
+                                                <p style="font-size: 15px; margin:0;">Lupa Kata Sandi? <a
+                                                        href="{{ route('password.request') }}">Reset Kata Sandi</a></p>
+                                                </a>
+                                            @endif
                                         </div>
                                         <div class="col-sm-6" style="display:flex; justify-content: end">
                                             <button type="submit" class="submit-btn">Masuk</button>
