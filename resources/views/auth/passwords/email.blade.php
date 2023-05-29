@@ -10,14 +10,14 @@
     <meta name="description" content="eSports and Gaming NFT Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/favicon.png')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.png') }}">
 
     <!-- CSS here -->
-    <link rel="stylesheet" href="{{asset('assets/css/plugins.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/main.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
 
     <!-- Page-Revealer -->
-    <script src="{{asset('assets/js/tg-page-head.js')}}"></script>
+    <script src="{{ asset('assets/js/tg-page-head.js') }}"></script>
     <style>
         .contact-area {
             /* padding: 13px 0px; */
@@ -97,46 +97,34 @@
                     </div>
                 @endif
                 <div class="row justify-content-center">
-                    <div class="col-lg-6 col-md-10">
-                        <img src="assets/img/gallery/gallery05.jpg" style="height: 560px; border-radius:5px"
-                            alt="">
-                    </div>
-                    <div class="col-lg-6 col-md-10">
+                    <div class="col-lg-12 col-md-10">
                         <div class="contact__form-wrap">
-                            <div class="center" style="margin-top: 70px">
-                                <h2 class="title" style="margin-bottom:30px; text-align:center">Masuk</h2>
-                                <form action="{{ route('login') }}" method="POST" style="height: 345px;">
+                            <div class="center" style="">
+                                <h2 class="title" style="margin-bottom:30px; text-align:center">Reset Password</h2>
+                                <form method="POST" action="{{ route('password.email') }}">
                                     @csrf
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="input-grp">
-                                                <input name="email" type="email" value="{{ old('email') }}"
-                                                    placeholder="Masukkan Email Anda">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <div class="input-grp">
-                                                <input name="password" type="password" placeholder="Password">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <div class="">
-                                                {!! htmlFormSnippet() !!}
-                                            </div>
+                                    <div class="row mb-3">
+                                        <label for="email"
+                                            class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+
+                                        <div class="col-md-6">
+                                            <input id="email" type="email"
+                                                class="form-control @error('email') is-invalid @enderror" name="email"
+                                                value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                            @error('email')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
-                                    <div class="" style="display: flex">
-                                        <div class="col-sm-6">
-                                            <p style="font-size: 15px; margin:0;">Belum Punya Akun? <a
-                                                    href="{{ Route('register') }}">Daftar</a></p>
-                                            @if (Route::has('password.request'))
-                                                <p style="font-size: 15px; margin:0;">Lupa Kata Sandi? <a
-                                                        href="{{ route('password.request') }}">Reset Kata Sandi</a></p>
-                                                </a>
-                                            @endif
-                                        </div>
-                                        <div class="col-sm-6" style="display:flex; justify-content: end">
-                                            <button type="submit" class="submit-btn">Masuk</button>
+
+                                    <div class="row mb-0">
+                                        <div class="col-md-6 offset-md-4">
+                                            <button type="submit" class="btn btn-primary">
+                                                {{ __('Send Password Reset Link') }}
+                                            </button>
                                         </div>
                                     </div>
                                 </form>
@@ -155,10 +143,10 @@
 
 
     <!-- JS here -->
-    <script src="{{asset('assets/js/vendor/jquery-3.6.0.min.js')}}"></script>
-    <script src="{{asset('assets/js/plugins.js')}}"></script>
-    <script src="{{asset('assets/js/ajax-form.js')}}"></script>
-    <script src="{{asset('assets/js/main.js')}}"></script>
+    <script src="{{ asset('assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins.js') }}"></script>
+    <script src="{{ asset('assets/js/ajax-form.js') }}"></script>
+    <script src="{{ asset('assets/js/main.js') }}"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 
