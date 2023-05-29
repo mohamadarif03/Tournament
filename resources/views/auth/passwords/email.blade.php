@@ -69,6 +69,7 @@
             }
         }
     </style>
+    @vite('resources/css/app.css')
 </head>
 
 <body>
@@ -86,14 +87,10 @@
 
         <section class="contact-area">
             <div class="container">
-                @if ($errors->any())
-                    <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                @if (session('status'))
+                    <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
                         role="alert">
-                        <ul>
-                            @foreach ($errors->all() as $item)
-                                <li>{{ $item }}</li>
-                            @endforeach
-                        </ul>
+                        {{ session('success') }}
                     </div>
                 @endif
                 <div class="row justify-content-center">
