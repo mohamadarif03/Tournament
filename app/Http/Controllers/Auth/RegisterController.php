@@ -72,6 +72,7 @@ class RegisterController extends Controller
     {
         $this->registerService->handleRegistration($request, $this->register);
 
-        return back()->with('success');
+        return back()->with('success', trans('auth.register_success'));
+
     }
 }

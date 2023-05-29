@@ -55,7 +55,7 @@ class GameController extends Controller
     {
         $this->game->store($this->service->store($request));
         
-        return to_route('game.index');
+        return to_route('game.index')->with('success', trans('alert.add_success'));
     }
 
     /**
@@ -86,7 +86,7 @@ class GameController extends Controller
         $store = $this->service->update($request, $game);
 
         $this->game->update($game->id, $store);
-        return to_route('game.index');
+        return to_route('game.index')->with('success', trans('alert.update_success'));
     }
 
      /**

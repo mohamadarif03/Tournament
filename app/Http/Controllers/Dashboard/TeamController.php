@@ -60,7 +60,7 @@ class TeamController extends Controller
     {
         $store = $this->service->store($request);
         $this->team->store($store);
-        return to_route('team.index');
+        return to_route('team.index')->with('success', trans('alert.add_success'));
     }
 
     /**
@@ -92,7 +92,7 @@ class TeamController extends Controller
         $store = $this->service->update($request, $team);
 
         $this->team->update($team->id, $store);
-        return to_route('team.index');
+        return to_route('team.index')->with('success', trans('alert.update_success'));
     }
 
     /**

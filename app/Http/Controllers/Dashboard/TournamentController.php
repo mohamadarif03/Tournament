@@ -49,7 +49,7 @@ class TournamentController extends Controller
     {
         $store = $this->service->store($request);
         $this->tournament->store($store);
-        return to_route('tournament.index');
+        return to_route('tournament.index')->with('success', trans('alert.add_success'));
     }
 
     /**
@@ -78,7 +78,7 @@ class TournamentController extends Controller
         $store = $this->service->update($request, $tournament);
 
         $this->tournament->update($tournament->id, $store);
-        return to_route('tournament.index');
+        return to_route('tournament.index')->with('success', trans('alert.update_success'));
     }
 
     /**
