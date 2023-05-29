@@ -101,6 +101,6 @@ class GameController extends Controller
             return back();
         }
         $this->service->remove($game->logo);
-        return back(); 
+        return back()->with('success', trans('alert.delete_success'));
     }
 }

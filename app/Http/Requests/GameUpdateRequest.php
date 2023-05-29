@@ -16,7 +16,7 @@ class GameUpdateRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'logo' => 'nullable|mimes: jpg, jpeg, png',
+            'logo' => 'nullable|mimes:jpg,jpeg,png',
         ];
     }
     public function messages(): array

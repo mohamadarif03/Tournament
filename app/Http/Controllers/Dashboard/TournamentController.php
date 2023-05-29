@@ -90,6 +90,6 @@ class TournamentController extends Controller
             return back();
         }
         $this->service->remove($tournament->live_image_url);
-        return back(); 
+        return back()->with('success', trans('alert.delete_success'));
     }
 }

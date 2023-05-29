@@ -24,7 +24,7 @@ class TournamentUpdateRequest extends FormRequest
         return [
             'name' => 'required',
             'description' => 'required',
-            'live_image_url' => 'nullable|mimes: jpg, jpeg, png',
+            'live_image_url' => 'nullable|mimes:jpg,jpeg,png',
             'completed_at' => 'required',
             'slot' => 'required',
             'price_pool' => 'required',
