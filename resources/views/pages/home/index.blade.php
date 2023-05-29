@@ -661,7 +661,7 @@
                   el: '.streamers__pagination-dots',
                   clickable: true,
               },
-          });
+          });   
       </script>
     <script>
         $(document).ready(function() {
