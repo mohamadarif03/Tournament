@@ -164,7 +164,7 @@
                         <div class="col-xl-6 col-lg-7 col-md-10">
                             <div class="section__title text-center mb-60">
                                 <span class="sub-title tg__animate-text">know about us</span>
-                                <h3 class="title">top rated steamers</h3>
+                                <h3 class="title">top rated streamers</h3>
                             </div>
                         </div>
                     </div>
@@ -172,24 +172,29 @@
                         <div class="col-xl-10">
                             <div class="about__tab-wrap">
                                 <div class="about__buttons">
-                                    <a href="shop.html" class="tg-btn-2">buy Hero</a>
-                                    <a href="shop.html" class="tg-btn-2 -secondary">buy nfts</a>
+                                    <a href="shop.html" class="tg-btn-2">Buy Hero</a>
+                                    <a href="shop.html" class="tg-btn-2 -secondary">Buy NFTs</a>
                                 </div>
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    @php
+                                    $counter = 0;
+                                    @endphp
                                     @foreach ($games as $game)
-                                        <li class="nav-item" role="presentation">
-                                            <div class="text-center">
-                                                <button class="nav-link active" id="{{ $game->id }}-tab"
-                                                    data-bs-toggle="tab" data-bs-target="#{{ $game->id }}"
-                                                    type="button" role="tab" aria-controls="{{ $game->id }}"
-                                                    aria-selected="true">
-                                                    <img src="{{ asset('storage/' . $game->logo) }}" width="85"
-                                                        height="85" alt="img">
-                                                </button>
-                                                <h6 class="title" style="width: 85px; margin-top: 10px">
-                                                    {{ $game->name }}</h6>
-                                            </div>
-                                        </li>
+                                        @if ($counter < 8)
+                                            <li class="nav-item" role="presentation">
+                                                <div class="text-center">
+                                                    <button class="nav-link{{ $counter === 0 ? ' active' : '' }}" id="{{ $game->id }}-tab"
+                                                        data-bs-toggle="tab" data-bs-target="#{{ $game->id }}" type="button" role="tab"
+                                                        aria-controls="{{ $game->id }}" aria-selected="{{ $counter === 0 ? 'true' : 'false' }}">
+                                                        <img src="{{ asset('storage/' . $game->logo) }}" width="85" height="85" alt="img">
+                                                    </button>
+                                                    <h6 class="title" style="width: 85px; margin-top: 10px">{{ $game->name }}</h6>
+                                                </div>
+                                            </li>
+                                            @php
+                                            $counter++;
+                                            @endphp
+                                        @endif
                                     @endforeach
                                 </ul>
                             </div>
@@ -197,6 +202,11 @@
                     </div>
                 </div>
             </section>
+            
+          
+            
+            
+
             <!-- about-area-end -->
 
             <!-- streamers-area -->
@@ -632,6 +642,20 @@
     <script src="{{ asset('assets/js/plugins.js') }}"></script>
     <script src="{{ asset('assets/js/ajax-form.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
+      <!-- Add the following JavaScript code -->
+      <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+      <script>
+          var swiper = new Swiper('.streamers__pagination', {
+              navigation: {
+                  nextEl: '.slider-button-next',
+                  prevEl: '.slider-button-prev',
+              },
+              pagination: {
+                  el: '.streamers__pagination-dots',
+                  clickable: true,
+              },
+          });
+      </script>
     <script>
         $(document).ready(function() {
             $('button[data-bs-toggle="tab"]').on('click', function() {
