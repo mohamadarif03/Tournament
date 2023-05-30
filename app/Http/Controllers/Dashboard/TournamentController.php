@@ -28,8 +28,11 @@ class TournamentController extends Controller
         $this->game = $game;
         $this->service = $service;    
     }
-    /**
+     /**
      * Display a listing of the resource.
+     *
+     * @param Request $request
+     * @return View|JsonResponse
      */
     public function index(Request $request): View|JsonResponse
     {

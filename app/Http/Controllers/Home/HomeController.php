@@ -18,6 +18,11 @@ class HomeController extends Controller
         $this->team = $team;
         $this->game = $game;
     }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return View
+     */
     public function index():View
     {
         $teams = $this->team->get();

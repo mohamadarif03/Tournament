@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Base\Interfaces\uploads\CustomUploadValidation;
 use App\Base\Interfaces\uploads\ShouldHandleFileUpload;
+use App\Contracts\Interfaces\HomeTournamentListInterface;
 use App\Enums\UploadDiskEnum;
 use App\Http\Requests\TournamentRequest;
 use App\Http\Requests\TournamentUpdateRequest;
@@ -15,6 +16,13 @@ class TournamentService implements ShouldHandleFileUpload, CustomUploadValidatio
 {
     use UploadTrait;
 
+    private HomeTournamentListInterface $tournamentlist;
+
+
+    public function __construct(HomeTournamentListInterface $tournamentlist)
+    {
+        $this->tournamentlist = $tournamentlist;
+    }
     /**
      * Handle custom upload validation.
      *
@@ -30,6 +38,7 @@ class TournamentService implements ShouldHandleFileUpload, CustomUploadValidatio
         return $this->upload($disk, $file);
     }
 
+    
     /**
      * Handle store data event to models.
      *
@@ -83,4 +92,10 @@ class TournamentService implements ShouldHandleFileUpload, CustomUploadValidatio
             'live_image_url' => $old_image,
         ];
     }
+
+    public function get()
+    {
+        return $this->tournamentlist->get();
+    }
+
 }

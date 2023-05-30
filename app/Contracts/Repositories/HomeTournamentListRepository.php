@@ -17,7 +17,7 @@ class HomeTournamentListRepository extends BaseRepository implements HomeTournam
      *
      * @return mixed
      */
-    public function get(): mixed
+    public function get(string|null $search, int $limit): mixed
     {
         return $this->model->query()
             ->orderBy('created_at','desc')

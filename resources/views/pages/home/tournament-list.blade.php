@@ -63,9 +63,7 @@
                                             Hapus Filter</p>
                                     </div>
                                     <div class="">
-                                        <button type="submit"
-                                            class="font-bold text-white bg-[#45f882] hover:bg-[#ffbe18] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-4 py-2.5 text-center">Update
-                                            Filter</button>
+                                        <button type="submit" class="font-bold text-white bg-[#45f882] hover:bg-[#ffbe18] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-4 py-2.5 text-center">Update Filter</button>
                                     </div>
                                 </div>
                                 <div class="">

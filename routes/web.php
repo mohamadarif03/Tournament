@@ -5,7 +5,7 @@ use App\Http\Controllers\Dashboard\GameController;
 use App\Http\Controllers\Dashboard\TeamController;
 use App\Http\Controllers\Dashboard\TournamentController;
 use App\Http\Controllers\Home\HomeController;
-use App\Http\Controllers\Home\TornamenthomeController;
+use App\Http\Controllers\Home\TournamenthomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -29,8 +29,8 @@ Auth::routes([
 ]);
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/tournament-detail', [TornamenthomeController::class, 'detail']);
-Route::get('/tournaments', [TornamenthomeController::class, 'list']);
+Route::get('/tournament-detail', [TournamenthomeController::class, 'detail']);
+Route::get('/tournaments', [TournamenthomeController::class, 'list']);
 
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'dashboard'], function () {
     Route::get('/', function () {
