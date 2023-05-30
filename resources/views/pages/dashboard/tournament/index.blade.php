@@ -25,7 +25,6 @@
                             <th>Slot</th>
                             <th>Hadiah</th>
                             <th>Game</th>
-                            <th>Tutup</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -84,12 +83,6 @@
                     {
                         data: 'game.name',
                         name: 'game.name'
-                    },
-                    {
-                        data: 'close',
-                        name: 'close',
-                        orderable: false,
-                        searchable: false
                     },
                     {
                         data: 'action',

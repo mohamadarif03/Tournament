@@ -66,7 +66,7 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="blog-post-wrapper">
-                        @foreach ($tournaments as $tournament)
+                        @foreach ($tournamentdetail as $tournament)
                             <div class="tournament__details-content">
                                 <h2 class="title">{{ $tournament->name }}</h2>
                                 <div class="blog-post-meta">
@@ -76,51 +76,28 @@
                                             <i class="far fa-calendar-alt"></i>
                                             {{ \Carbon\Carbon::parse($tournament->completed_at)->format('d F Y H:i') }}
                                         </li>
-                                        <li><i class="far fa-comments"></i><a href="#">No comments</a></li>
+                                        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" style="color: #45f882" class="bi bi-gift" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 14.5V7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A2.968 2.968 0 0 1 3 2.506V2.5zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43a.522.522 0 0 0 .023.07zM9 3h2.932a.56.56 0 0 0 .023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0V3zM1 4v2h6V4H1zm8 0v2h6V4H9zm5 3H9v8h4.5a.5.5 0 0 0 .5-.5V7zm-7 8V7H2v7.5a.5.5 0 0 0 .5.5H7z" />
+                                            </svg><a href="#">{{number_format($tournament->price_pool, 0, ',', '.');}}</a></li>
                                     </ul>
                                 </div>
-                                <p>Excepteur sint occaecat atat non proident, sunt in culpa qui officia deserunt mollit
-                                    anim
-                                    id est labor umLor em ipsum dolor amet consteur adiscing Duis elentum solliciin is
-                                    yaugue euismods Nulla ullaorper. Ipsum is simply dummy text of printing and
-                                    typeetting
-                                    industry. Lorem Ipsum has been the industry's standsaard sipiscing Duis elementum
-                                    solliciin. Duis aute irure dolor in repderit in voluptate velit esse cillum dolorliq
-                                    commodo consequat.</p>
-                                <blockquote>
-                                    <p>Duis elentum solliciin is yaugue euismods Nulla ullaorper. Ipsum is simply dummy
-                                        text
-                                        of printing and typeetting industry.</p>
-                                </blockquote>
-                                <p>Axcepteur sint occaecat atat non proident, sunt in culpa qui officia deserunt mollit
-                                    anim
-                                    id est labor umLor em ipsum dolor amet, consteur adiscing Duis elentum solliciin is
-                                    yaugue euismods Nulla ullaorper. Ipsum is simply dummy text of printing and
-                                    typeetting
-                                    industry. Lorem Ipsum has been the industry's standsaard sipiscing Duis elementum.
-                                </p>
                                 <div class="tournament__details-video position-relative">
                                     <img src="{{ asset('storage/' . $tournament->live_image_url) }}"
-                                        alt="live_image_url" srcset="" width="400">
+                                        alt="live_image_url" srcset="" width="750">
                                 </div>
-                                <p>Axcepteur sint occaecat atat non proident, sunt in culpa qui officia deserunt mollit
-                                    anim
-                                    id est labor umLor em ipsum dolor amet, consteur adiscing Duis elentum solliciin is
-                                    yaugue euismods Nulla ullaorper. Ipsum is simply dummy text of printing.</p>
                                 <div class="tournament__details-form">
-                                    <h4 class="tournament__details-form-title">join nft games android</h4>
-                                    <p>Simply dummy text of printing and typeetting industry been the industry's</p>
+                                    <p>{{ $tournament->description }}</p>
 
                                 </div>
                                 <div class="blog-details-bottom">
                                     <div class="row">
                                         <div class="col-xl-6 col-md-7">
                                             <div class="tg-post-tags">
-                                                <h5 class="tags-title">tags :</h5>
+                                                <h5 class="tags-title">kategori :</h5>
                                                 <ul class="list-wrap d-flex flex-wrap align-items-center m-0">
-                                                    <li><a href="#">Esports</a>,</li>
-                                                    <li><a href="#">Fantasy</a>,</li>
-                                                    <li><a href="#">game</a></li>
+                                                    <li><a href="#">{{$tournament->game->name}}</a></li>
                                                 </ul>
                                             </div>
                                         </div>

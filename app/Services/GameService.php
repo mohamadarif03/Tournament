@@ -43,7 +43,6 @@ class GameService implements ShouldHandleFileUpload, CustomUploadValidation
         return [
             'name' => $data['name'],
             'logo' => $request->file('logo')->store(UploadDiskEnum::GAME->value, 'public')
-            // 'logo' => $this->upload(UploadDiskEnum::LOGO->value, $request->file('photo')),
         ];
     }
 

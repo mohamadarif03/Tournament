@@ -105,7 +105,7 @@
                     <div class="col-lg-6 col-md-10">
                         <div class="contact__form-wrap">
                             <div class="center" style="margin-top: 70px">
-                                <h2 class="title" style="margin-bottom:30px; text-align:center">Masuk</h2>
+                                <h2 class="font-bold text-2xl" style="margin-bottom:30px; text-align:center">Masuk</h2>
                                 <form action="{{ route('login') }}" method="POST" style="height: 345px;">
                                     @csrf
                                     <div class="row">

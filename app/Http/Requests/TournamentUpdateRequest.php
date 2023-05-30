@@ -26,6 +26,7 @@ class TournamentUpdateRequest extends FormRequest
             'description' => 'required',
             'live_image_url' => 'nullable|mimes:jpg,jpeg,png',
             'completed_at' => 'required',
+            'starter_at' => 'required',
             'slot' => 'required',
             'price_pool' => 'required',
             'game_id' => 'required',
@@ -39,6 +40,7 @@ class TournamentUpdateRequest extends FormRequest
             'live_image_url.mimes' => 'Foto Hanya Diperbolehkan Berformat JPG, JPEG, PNG',
             'completed_at.required' => 'Tanggal Berakhir Turnamen Wajib Diisi',
             'slot.required' => 'Slot Wajib Diisi',
+            'starter_at.required' => 'Tournament Dimulai Wajib Diisi',
             'price_pool.required' => 'Hadiah Turnamen Wajib Diisi',
             'game_id.required' => 'Game Wajib Diisi',
         ];

@@ -10,5 +10,4 @@
 <script src="{{ asset('dashboard_assets/js/custom.js') }}"></script>
 
 
-
 @yield('js')

@@ -17,7 +17,7 @@
                                 <li><a href="about-us.html">ABOUT US</a></li>
                                 <li class="menu-item-has-children"><a href="#">TOURNAMENT</a>
                                     <ul class="sub-menu">
-                                        <li><a href="tournament.html">TOURNAMENT</a></li>
+                                        <li><a href="/tournaments">TOURNAMENT</a></li>
                                         <li><a href="/tournament-detail">TOURNAMENT Single</a></li>
                                     </ul>
                                 </li>

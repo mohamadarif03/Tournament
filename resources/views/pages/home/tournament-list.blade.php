@@ -1,0 +1,194 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<!-- Mirrored from themedox.com/demo/mykd/index-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 17 May 2023 04:18:12 GMT -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>MYKD - eSports and Gaming NFT Template</title>
+    <meta name="description" content="eSports and Gaming NFT Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.png') }}">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+
+    <!-- Page-Revealer -->
+    <script src="{{ asset('assets/js/tg-page-head.js') }}"></script>
+
+    @vite('resources/css/app.css')
+
+</head>
+
+<body>
+
+
+    <!-- scroll-top -->
+    <button class="scroll__top scroll-to-target" data-target="html">
+        <i class="flaticon-right-arrow"></i>
+    </button>
+    <!-- scroll-top-end-->
+
+    <!-- header-area -->
+    <header>
+        @include('pages.home.layouts.header')
+    </header>
+    <!-- header-area-end -->
+
+
+
+    <!-- main-area -->
+    <main class="main--area">
+        <!-- tournament-area -->
+        <section class="tournament-area section-pt-120 section-pb-90">
+            <div class="container">
+                <div class="tournament__wrapper">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-6 col-lg-7 col-md-10">
+                            <div class="section__title text-center mb-60">
+                                <span class="sub-title tg__animate-text">our tournament</span>
+                                <h3 class="title">play to earn games</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-5 gap-3">
+                        <div class="border-r-2 border-slate-200 px-4">
+                            <form action="">
+                                <div class="py-3">
+                                    <div class="flex justify-between">
+                                        <p class="font-bold text-sm mb-4 text-white">Pengaturan</p>
+                                        <p class="mb-4 text-sm cursor-pointer text-[#45f882] hover:text-[#ffbe18]" id="delete-filter">
+                                            Hapus Filter</p>
+                                    </div>
+                                    <div class="">
+                                        <button type="submit"
+                                            class="font-bold text-white bg-[#45f882] hover:bg-[#ffbe18] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-4 py-2.5 text-center">Update
+                                            Filter</button>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <p class="font-bold text-md my-2 text-white">Urutkan Berdasarkan</p>
+                                    <div class="flex my-2">
+                                        <input id="default-checkbox" type="checkbox" value=""
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="default-checkbox"
+                                            class="font-bold ml-2 text-sm font-medium text-white">Tanggal
+                                            Terbaru</label>
+                                    </div>
+                                    <div class="flex my-2">
+                                        <input id="default-checkbox" type="checkbox" value=""
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="default-checkbox"
+                                            class="font-bold ml-2 text-sm font-medium text-white">Hadiah
+                                            Tertinggi</label>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <p class="font-bold text-md my-2 text-white">Game</p>
+                                    <div class="">
+                                        <select id="countries"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                            <option selected>Pilih Game</option>
+                                            @foreach ($games as $game)
+                                                <option value="{{ $game->id }}">{{ $game->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                        <div class="col-span-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 ml-3">
+                            @foreach ($tournamentlist as $tournament)
+                                <div class="row justify-content-center">
+                                    <div class="tournament__box-wrap" style="padding-bottom: 30px">
+                                        <svg class="main-bg" x="0px" y="0px" viewBox="0 0 357 533"
+                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M2.00021 63H103C103 63 114.994 62.778 128 50C141.006 37.222 168.042 13.916 176 10C183.958 6.084 193 1.9 213 2C233 2.1 345 1 345 1C347.917 1.66957 350.51 3.33285 352.334 5.70471C354.159 8.07658 355.101 11.0093 355 14C355.093 25.1 356 515 356 515C356 515 357.368 529.61 343 530C328.632 530.39 15.0002 532 15.0002 532C15.0002 532 0.937211 535.85 1.00021 522C1.06321 508.15 2.00021 63 2.00021 63Z"
+                                                fill="#19222B" stroke="#4C4C4C" stroke-width="0.25" />
+                                        </svg>
+                                        <svg class="price-bg" viewBox="0 0 166 56" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M0.00792892 55V11C0.00792892 11 -0.729072 0.988 12.0079 1C24.7449 1.012 160.008 0 160.008 0C160.008 0 172.491 1.863 161.008 10C148.995 18.512 115.008 48 115.008 48C115.008 48 110.021 55.238 90.0079 55C69.9949 54.762 0.00792892 55 0.00792892 55Z"
+                                                fill="currentcolor" />
+                                        </svg>
+                                        <div class="tournament__box-price">
+                                            <span class="sub">Slot</span>
+                                            <span>{{ $tournament->slot }}</span>
+                                        </div>
+                                        <div class="tournament__box-countdown">
+                                            <div class="coming-time font-bold text-xs">{{ $time }}</div>
+                                        </div>
+                                        <div class="tournament__box-caption">
+                                            <h4 class="title">{{ $tournament->name }}</h4>
+                                        </div>
+                                        <ul class="tournament__box-list list-wrap mb-3">
+                                            <li class="flex justify-center">
+                                                <img src="{{ asset('storage/' . $tournament->live_image_url) }}"
+                                                    width="300" alt="img">
+                                            </li>
+                                        </ul>
+                                        <div class="tournament__box-prize" style="height: 20px">
+                                            <i class="fas fa-trophy"></i>
+                                            <span class="text-sm">Rp.
+                                                {{ number_format($tournament->price_pool, 0, ',', '.') }}</span>
+                                        </div>
+                                        <div class="font-bold text-md flex justify-center mb-5">
+                                            <span>Lihat Detail</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- tournament-area-end -->
+    </main>
+    <!-- main-area-end -->
+
+
+    <!-- footer-area-start -->
+    <footer class="footer-style-two has-footer-animation">
+        @include('pages.home.layouts.footer')
+    </footer>
+    <!-- footer-start-end -->
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- JS here -->
+    <script src="{{ asset('assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins.js') }}"></script>
+    <script src="{{ asset('assets/js/ajax-form.js') }}"></script>
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('button[data-bs-toggle="tab"]').on('click', function() {
+                var target = $(this).data('bs-target');
+                $('.tab-pane').removeClass('show active');
+                $(target).addClass('show active');
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#delete-filter').on('click', function() {
+                location.reload();
+            });
+        });
+    </script>
+</body>
+
+
+<!-- Mirrored from themedox.com/demo/mykd/index-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 17 May 2023 04:18:20 GMT -->
+
+</html>
