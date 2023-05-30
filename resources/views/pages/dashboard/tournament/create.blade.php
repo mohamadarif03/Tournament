@@ -47,6 +47,13 @@
                         placeholder="" type="file" id="live_image_url" name="live_image_url" />
                 </div>
                 <div class="mb-4">
+                    <label class="mt-1.5 flex -space-x-px font-semibold">Tournament Dimulai
+                    </label>
+                    <input
+                        class="form-input w-full rounded-lg border border-black/10 dark:border-white/10 bg-transparent px-3 py-2.5 placeholder:text-black/60 dark:placeholder:text-white/60 hover:z-10 hover:border-black dark:hover:border-white focus:z-10 focus:border-black dark:focus:border-white"
+                        type="datetime-local" name="starter_at" id="">
+                </div>
+                <div class="mb-4">
                     <label class="mt-1.5 flex -space-x-px font-semibold">Tournament Berakhir
                     </label>
                     <input

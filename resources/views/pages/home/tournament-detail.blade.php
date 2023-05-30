@@ -68,11 +68,14 @@
                     <div class="blog-post-wrapper">
                         @foreach ($tournaments as $tournament)
                             <div class="tournament__details-content">
-                                <h2 class="title">{{$tournament->name}}</h2>
+                                <h2 class="title">{{ $tournament->name }}</h2>
                                 <div class="blog-post-meta">
                                     <ul class="list-wrap">
-                                        <li>By<a href="#">Admin</a></li>
-                                        <li><i class="far fa-calendar-alt"></i> Aug 16, 2023</li>
+                                        <li>By<a href="#">{{ $tournament->user->name }}</a></li>
+                                        <li>
+                                            <i class="far fa-calendar-alt"></i>
+                                            {{ \Carbon\Carbon::parse($tournament->completed_at)->format('d F Y H:i') }}
+                                        </li>
                                         <li><i class="far fa-comments"></i><a href="#">No comments</a></li>
                                     </ul>
                                 </div>
@@ -97,9 +100,8 @@
                                     industry. Lorem Ipsum has been the industry's standsaard sipiscing Duis elementum.
                                 </p>
                                 <div class="tournament__details-video position-relative">
-                                    <img src="assets/img/blog/blog_post03.jpg" alt="img">
-                                    <a href="https://www.youtube.com/watch?v=_SAlU-hu8M0" class="popup-video"><i
-                                            class="flaticon-play"></i></a>
+                                    <img src="{{ asset('storage/' . $tournament->live_image_url) }}"
+                                        alt="live_image_url" srcset="" width="400">
                                 </div>
                                 <p>Axcepteur sint occaecat atat non proident, sunt in culpa qui officia deserunt mollit
                                     anim

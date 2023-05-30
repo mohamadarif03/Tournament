@@ -56,6 +56,13 @@
                     </label>
                     <input
                         class="form-input w-full rounded-lg border border-black/10 dark:border-white/10 bg-transparent px-3 py-2.5 placeholder:text-black/60 dark:placeholder:text-white/60 hover:z-10 hover:border-black dark:hover:border-white focus:z-10 focus:border-black dark:focus:border-white"
+                        placeholder="" type="datetime-local" id="" name="starter_at" value="{{$tournament->starter_at}}" />
+                </div>
+                <div class="mb-4">
+                    <label class="mt-1.5 flex -space-x-px">
+                    </label>
+                    <input
+                        class="form-input w-full rounded-lg border border-black/10 dark:border-white/10 bg-transparent px-3 py-2.5 placeholder:text-black/60 dark:placeholder:text-white/60 hover:z-10 hover:border-black dark:hover:border-white focus:z-10 focus:border-black dark:focus:border-white"
                         placeholder="" type="datetime-local" id="" name="completed_at" value="{{$tournament->completed_at}}" />
                 </div>
                 <div class="mb-4">

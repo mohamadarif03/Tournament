@@ -20,6 +20,7 @@
                         <tr>
                             <th>Nama</th>
                             <th>Foto</th>
+                            <th>Tournament Dimulai</th>
                             <th>Tournament Selesai</th>
                             <th>Slot</th>
                             <th>Hadiah</th>
@@ -63,6 +64,10 @@
                         data: 'live_image_url',
                         name: 'live_image_url',
                         searchable: false
+                    },
+                    {
+                        data: 'starter_at',
+                        name: 'starter_at'
                     },
                     {
                         data: 'completed_at',

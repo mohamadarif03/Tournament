@@ -2,10 +2,10 @@
 
 namespace App\Contracts\Repositories;
 
-use App\Contracts\Interfaces\HomeGameInterface;
+use App\Contracts\Interfaces\HomeTournamentDetailInterface;
 use App\Models\Tournament;
 
-class HomeTournamentDetailRepository extends BaseRepository implements HomeGameInterface
+class HomeTournamentDetailRepository extends BaseRepository implements HomeTournamentDetailInterface
 {
     public function __construct(Tournament $tournament)
     {
@@ -21,6 +21,8 @@ class HomeTournamentDetailRepository extends BaseRepository implements HomeGameI
     {
         return $this->model->query()
             ->orderBy('created_at', 'desc')
+            ->take(1)
+            ->with('user')
             ->get();
     }
 }

@@ -48,6 +48,7 @@ class TournamentService implements ShouldHandleFileUpload, CustomUploadValidatio
             'slot' => $data['slot'],
             'price_pool' => $data['price_pool'],
             'game_id' => $data['game_id'],
+            'starter_at' => $data['starter_at'],
             'live_image_url' => $request->file('live_image_url')->store(UploadDiskEnum::TOURNAMENT->value, 'public'),
         ];
     }
@@ -78,6 +79,7 @@ class TournamentService implements ShouldHandleFileUpload, CustomUploadValidatio
             'slot' => $data['slot'],
             'price_pool' => $data['price_pool'],
             'game_id' => $data['game_id'],
+            'starter_at' => $data['starter_at'],
             'live_image_url' => $old_image,
         ];
     }

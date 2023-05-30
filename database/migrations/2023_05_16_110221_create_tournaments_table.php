@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignUuid('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->text('live_image_url');
             $table->timestamp('completed_at');
+            $table->timestamp('starter_at');
             $table->boolean('is_open_signup')->default(1);
             $table->integer('slot')->default(8);
             $table->integer('price_pool')->nullable();

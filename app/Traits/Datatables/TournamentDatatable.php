@@ -30,6 +30,9 @@ trait TournamentDatatable
             ->editColumn('completed_at', function ($data) {
                 return Carbon::parse($data->completed_at)->isoFormat('DD MMMM YYYY');
             })
+            ->editColumn('starter_at', function ($data) {
+                return Carbon::parse($data->starter_at)->isoFormat('DD MMMM YYYY');
+            })
             ->editColumn('price_pool', function ($data) {
                 $formattedPrice = number_format($data->price_pool, 0, ',', '.');
                 return 'Rp ' . $formattedPrice;
