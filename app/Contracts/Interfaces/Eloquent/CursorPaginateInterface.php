@@ -18,5 +18,5 @@ interface CursorPaginateInterface
      * @return CursorPaginator
      */
 
-    public function cursorPaginate(int $perPage = 10, array $columns = ['*'], string $cursorName = 'cursor', $cursor = null, Request $request): CursorPaginator;
+    public function cursorPaginate(int $perPage = 3, array $columns = ['*'], string $cursorName = 'cursor', $cursor = null, Request $request): CursorPaginator;
 }

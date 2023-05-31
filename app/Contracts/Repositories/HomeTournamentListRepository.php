@@ -15,7 +15,7 @@ class HomeTournamentListRepository extends BaseRepository implements HomeTournam
         $this->model = $tournament;
     }
 
-    public function cursorPaginate(int $perPage = 10, array $columns = ['*'], string $cursorName = 'cursor', $cursor = null, Request $request): CursorPaginator
+    public function cursorPaginate(int $perPage = 3, array $columns = ['*'], string $cursorName = 'cursor', $cursor = null, Request $request): CursorPaginator
     {
         return $this->model->query()
             ->when($request->search, function ($query) use ($request) {

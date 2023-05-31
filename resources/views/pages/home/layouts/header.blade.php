@@ -11,12 +11,12 @@
                         <div class="tgmenu__navbar-wrap tgmenu__main-menu d-none d-xl-flex">
                             <ul class="navigation">
                                 <li
-                                    class="{{ request()->route('home') ? 'active' : '' }} menu-item-has-children">
+                                    class="{{ request()->routeIs('home') ? 'active' : '' }} menu-item-has-children">
                                     <a href="/">Home</a>
                                 </li>
                                 <li><a href="about-us.html">ABOUT US</a></li>
                                 <li><a href="about-us.html">Team</a></li>
-                                <li><a href="/tournaments">TOURNAMENT</a>
+                                <li class="{{ request()->routeIs('tournaments') ? 'active' : '' }}"><a href="/tournaments">TOURNAMENT</a>
                                 </li>
                                 <li class="menu-item-has-children"><a href="#">News</a>
                                     <ul class="sub-menu">
@@ -66,7 +66,8 @@
                         </div>
                         <div class="tgmobile__search">
                             <form method="GET" action="{{ route('tournaments') }}">
-                                <input type="search" value="{{ request()->input('search') ?? old('search') }}" id="inputSearch" placeholder="Cari Disini...">
+                                <input type="search" value="{{ request()->input('search') ?? old('search') }}"
+                                    id="inputSearch" placeholder="Cari Disini...">
                                 <button type="submit"><i class="flaticon-loupe"></i></button>
                             </form>
                         </div>
@@ -104,7 +105,9 @@
                     <h2 class="title">... <span>Search Here</span> ...</h2>
                     <div class="search__form">
                         <form method="GET" action="{{ route('tournaments') }}">
-                            <input type="search" name="search" value="{{ request()->input('search') ?? old('search') }}" id="inputSearch" placeholder="Cari Disini...">
+                            <input type="search" name="search"
+                                value="{{ request()->input('search') ?? old('search') }}" id="inputSearch"
+                                placeholder="Cari Disini...">
                             <button class="search-btn"><i class="flaticon-loupe"></i></button>
                         </form>
                     </div>
