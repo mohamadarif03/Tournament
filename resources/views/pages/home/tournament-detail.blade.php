@@ -17,6 +17,8 @@
 
     <!-- Page-Revealer -->
     <script src="{{ asset('assets/js/tg-page-head.js') }}"></script>
+    @vite('resources/css/app.css')
+
 </head>
 
 <body>
@@ -66,135 +68,107 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="blog-post-wrapper">
-                        @foreach ($tournamentdetail as $tournament)
-                            <div class="tournament__details-content">
-                                <h2 class="title">{{ $tournament->name }}</h2>
-                                <div class="blog-post-meta">
-                                    <ul class="list-wrap">
-                                        <li>By<a href="#">{{ $tournament->user->name }}</a></li>
-                                        <li>
-                                            <i class="far fa-calendar-alt"></i>
-                                            {{ \Carbon\Carbon::parse($tournament->completed_at)->format('d F Y H:i') }}
-                                        </li>
-                                        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                fill="currentColor" style="color: #45f882" class="bi bi-gift" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 14.5V7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A2.968 2.968 0 0 1 3 2.506V2.5zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43a.522.522 0 0 0 .023.07zM9 3h2.932a.56.56 0 0 0 .023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0V3zM1 4v2h6V4H1zm8 0v2h6V4H9zm5 3H9v8h4.5a.5.5 0 0 0 .5-.5V7zm-7 8V7H2v7.5a.5.5 0 0 0 .5.5H7z" />
-                                            </svg><a href="#">{{number_format($tournament->price_pool, 0, ',', '.');}}</a></li>
-                                    </ul>
-                                </div>
-                                <div class="tournament__details-video position-relative">
-                                    <img src="{{ asset('storage/' . $tournament->live_image_url) }}"
-                                        alt="live_image_url" srcset="" width="750">
-                                </div>
-                                <div class="tournament__details-form">
-                                    <p>{{ $tournament->description }}</p>
 
-                                </div>
-                                <div class="blog-details-bottom">
-                                    <div class="row">
-                                        <div class="col-xl-6 col-md-7">
-                                            <div class="tg-post-tags">
-                                                <h5 class="tags-title">kategori :</h5>
-                                                <ul class="list-wrap d-flex flex-wrap align-items-center m-0">
-                                                    <li><a href="#">{{$tournament->game->name}}</a></li>
-                                                </ul>
-                                            </div>
+                        <div class="tournament__details-content">
+                            <h2 class="title font-bold">{{ $tournament->name }}</h2>
+                            <div class="blog-post-meta">
+                                <ul class="list-wrap">
+                                    <li>By<a href="#">{{ $tournament->user->name }}</a></li>
+                                    <li>
+                                        <i class="far fa-calendar-alt"></i>
+                                        {{ \Carbon\Carbon::parse($tournament->completed_at)->format('d F Y H:i') }}
+                                    </li>
+                                    <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" style="color: #45f882" class="bi bi-gift"
+                                            viewBox="0 0 16 16">
+                                            <path
+                                                d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 14.5V7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A2.968 2.968 0 0 1 3 2.506V2.5zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43a.522.522 0 0 0 .023.07zM9 3h2.932a.56.56 0 0 0 .023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0V3zM1 4v2h6V4H1zm8 0v2h6V4H9zm5 3H9v8h4.5a.5.5 0 0 0 .5-.5V7zm-7 8V7H2v7.5a.5.5 0 0 0 .5.5H7z" />
+                                        </svg><a
+                                            href="#">{{ number_format($tournament->price_pool, 0, ',', '.') }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tournament__details-video position-relative">
+                                <img src="{{ asset('storage/' . $tournament->live_image_url) }}" alt="live_image_url"
+                                    srcset="" width="750">
+                            </div>
+                            <div class="tournament__details-form">
+                                <p>{{ $tournament->description }}</p>
+
+                            </div>
+                            <div class="tournament__details-form">
+                                <h4 class="tournament__details-form-title font-bold">Gabung</h4>
+                                <form action="#">
+                                    <select id="countries"
+                                        class="bg-[#0f161b] text-white text-sm rounded-lg block w-full p-2.5"
+                                        style="border: 1px solid #23292f; padding: 15px 30px;">
+                                        <option selected>Pilih Team</option>
+                                        @foreach ($teams as $team)
+                                            <option value="{{$team->id}}">{{$team->name}}</option>
+                                        @endforeach
+                                    </select>
+
+                                    <button class="tournament__details-form-btn">Gabung Sekarang</button>
+                                </form>
+                            </div>
+                            <div class="blog-details-bottom">
+                                <div class="row">
+                                    <div class="col-xl-6 col-md-7">
+                                        <div class="tg-post-tags">
+                                            <h5 class="tags-title">kategori :</h5>
+                                            <ul class="list-wrap d-flex flex-wrap align-items-center m-0">
+                                                <li><a href="#">{{ $tournament->game->name }}</a></li>
+                                            </ul>
                                         </div>
-                                        <div class="col-xl-6 col-md-5">
-                                            <div class="blog-post-share justify-content-start justify-content-md-end">
-                                                <h5 class="share">share :</h5>
-                                                <ul class="list-wrap">
-                                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                                </ul>
-                                            </div>
+                                    </div>
+                                    <div class="col-xl-6 col-md-5">
+                                        <div class="blog-post-share justify-content-start justify-content-md-end">
+                                            <h5 class="share">share :</h5>
+                                            <ul class="list-wrap">
+                                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
-
+                        </div>
                     </div>
                     <div class="blog-post-sidebar">
                         <aside class="blog-sidebar tournament__sidebar">
                             <div class="shop__widget">
-                                <h4 class="shop__widget-title">search</h4>
+                                <h4 class="shop__widget-title font-bold">Tournament Lainnya</h4>
                                 <div class="shop__widget-inner">
-                                    <div class="shop__search">
-                                        <input type="text" placeholder="Search here">
-                                        <button class="p-0 border-0"><i class="flaticon-search"></i></button>
-                                    </div>
+                                    @foreach ($tournamentmore as $tournament)
+                                        <div class="trending__matches-list">
+                                            <div class="trending__matches-item">
+                                                <div class="trending__matches-thumb">
+                                                    <a href="#"><img
+                                                            src="{{ asset('storage/' . $tournament->live_image_url) }}"
+                                                            style="min-width: 30px min-height:20px; max-width:60px; max-height:70"
+                                                            alt="img"></a>
+                                                </div>
+                                                <div class="trending__matches-content">
+                                                    <div class="info">
+                                                        <h5 class="title font-bold"><a
+                                                                href="#">{{ $tournament->name }}</a></h5>
+                                                        <span
+                                                            class="price">Rp. {{ number_format($tournament->price_pool, 0, ',', '.') }}</span>
+                                                    </div>
+                                                    <div class="play">
+                                                        <a href="https://www.youtube.com/watch?v=a3_o4SpV1vI"
+                                                            class="popup-video"><i class="far fa-play-circle"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    @endforeach
                                 </div>
                             </div>
-                            <div class="shop__widget">
-                                <h4 class="shop__widget-title">TRENDING MATCHES</h4>
-                                <div class="shop__widget-inner">
-                                    <div class="trending__matches-list">
-                                        <div class="trending__matches-item">
-                                            <div class="trending__matches-thumb">
-                                                <a href="#"><img src="assets/img/others/trend_match01.png"
-                                                        alt="img"></a>
-                                            </div>
-                                            <div class="trending__matches-content">
-                                                <div class="info">
-                                                    <h5 class="title"><a href="#">FoxTie Max</a></h5>
-                                                    <span class="price">$ 7500</span>
-                                                </div>
-                                                <div class="play">
-                                                    <a href="https://www.youtube.com/watch?v=a3_o4SpV1vI"
-                                                        class="popup-video"><i class="far fa-play-circle"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="trending__matches-item">
-                                            <div class="trending__matches-thumb">
-                                                <a href="#"><img src="assets/img/others/trend_match02.png"
-                                                        alt="img"></a>
-                                            </div>
-                                            <div class="trending__matches-content">
-                                                <div class="info">
-                                                    <h5 class="title"><a href="#">hatax ninja</a></h5>
-                                                    <span class="price">$ 5500</span>
-                                                </div>
-                                                <div class="play">
-                                                    <a href="https://www.youtube.com/watch?v=a3_o4SpV1vI"
-                                                        class="popup-video"><i class="far fa-play-circle"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="trending__matches-item">
-                                            <div class="trending__matches-thumb">
-                                                <a href="#"><img src="assets/img/others/trend_match03.png"
-                                                        alt="img"></a>
-                                            </div>
-                                            <div class="trending__matches-content">
-                                                <div class="info">
-                                                    <h5 class="title"><a href="#">spartan ii</a></h5>
-                                                    <span class="price">$ 3500</span>
-                                                </div>
-                                                <div class="play">
-                                                    <a href="https://www.youtube.com/watch?v=a3_o4SpV1vI"
-                                                        class="popup-video"><i class="far fa-play-circle"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="shop__widget">
-                                <h4 class="shop__widget-title">ADVERTISEMENT</h4>
-                                <div class="shop__widget-inner">
-                                    <div class="tournament__advertisement">
-                                        <a href="#"><img src="assets/img/others/tournament_ad.jpg"
-                                                alt="img"></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </aside>
                     </div>
+                    </aside>
                 </div>
+            </div>
             </div>
         </section>
         <!-- tournament-details-area-end -->

@@ -13,16 +13,20 @@ class HomeTournamentDetailRepository extends BaseRepository implements HomeTourn
     }
 
     /**
-     * Handle the Get all data event from models.
+     * Handle get the specified data by id from models.
+     *
+     * @param mixed $id
      *
      * @return mixed
      */
-    public function get(): mixed
+    public function show(mixed $id): mixed
     {
         return $this->model->query()
-            ->orderBy('created_at', 'desc')
-            ->take(1)
-            ->with('user')
-            ->get();
+            ->findOrFail($id);
+    }
+    public function showmore(): mixed
+    {
+        return $this->model->query()
+        ->get();
     }
 }

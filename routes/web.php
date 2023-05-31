@@ -29,7 +29,7 @@ Auth::routes([
 ]);
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/tournament-detail/{id}', [TournamenthomeController::class, 'detail'])->name('tournament-detail');
+Route::get('/tournament-detail/{tournament}', [TournamenthomeController::class, 'detail'])->name('tournament-detail');
 Route::get('/tournaments', [TournamenthomeController::class, 'list'])->name('tournaments');
 
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'dashboard'], function () {
@@ -42,12 +42,3 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'dashboard'], fu
         'tournament' => TournamentController::class
     ]);
 });
-
-// Route::get('/home', [\HomeController::class, 'index'])->name('home');
-// Route::get('/email/verify', function () {
-//     return view('auth.verify');
-// })->middleware('auth')->name('verification.notice');
-// Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-//     $request->fulfill();
-//     return redirect('/dashboard');
-// })->middleware(['auth', 'signed'])->name('verification.verify');

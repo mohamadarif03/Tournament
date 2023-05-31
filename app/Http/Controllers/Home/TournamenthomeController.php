@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use App\Contracts\Interfaces\GameInterface;
 use App\Contracts\Interfaces\HomeTournamentDetailInterface;
+use App\Contracts\Interfaces\TeamInterface;
 use App\Helpers\ResponseHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Tournament;
@@ -17,11 +18,13 @@ class TournamenthomeController extends Controller
     private HomeTournamentDetailInterface $tournamentdetail;
     private GameInterface $game;
     private TournamentService $service;
+    private TeamInterface $team;
 
-    public function __construct(HomeTournamentDetailInterface $tournamentdetail, GameInterface $game, TournamentService $service)
+    public function __construct(HomeTournamentDetailInterface $tournamentdetail, GameInterface $game, TournamentService $service, TeamInterface $team)
     {
         $this->tournamentdetail = $tournamentdetail;
         $this->game = $game;
+        $this->team = $team;
         $this->service = $service;
     }
     /**
@@ -31,8 +34,9 @@ class TournamenthomeController extends Controller
      */
     public function detail(Tournament $tournament): View
     {
-        $tournamentdetail = $this->tournamentdetail->get();
-        return view('pages.home.tournament-detail', compact('tournamentdetail', 'tournament'));
+        $tournamentmore = $this->tournamentdetail->showmore();
+        $teams = $this->team->showmore();
+        return view('pages.home.tournament-detail', compact('tournament', 'tournamentmore', 'teams'));
     }
     /**
      * Display a listing of the resource.

@@ -6,6 +6,7 @@ use App\Contracts\Interfaces\TeamInterface;
 use App\Models\Team;
 use App\Traits\Datatables\TeamDatatable;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Auth;
 
 class TeamRepository extends BaseRepository implements TeamInterface
 {
@@ -83,5 +84,11 @@ class TeamRepository extends BaseRepository implements TeamInterface
     public function update(mixed $id, array $data): mixed
     {
         return $this->show($id)->update($data);
+    }
+    public function showmore(): mixed
+    {
+        return $this->model->query()
+        ->where('user_id', Auth()->id())
+        ->get();
     }
 }

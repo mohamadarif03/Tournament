@@ -40,7 +40,7 @@ class GameRepository extends BaseRepository implements GameInterface
      */
     public function show(mixed $id): mixed
     {
-        return $this->model->query()
+         return $this->model->query()
             ->findOrFail($id);
     }
 
@@ -81,4 +81,4 @@ class GameRepository extends BaseRepository implements GameInterface
     {
         return $this->show($id)->update($data);
     }
-}
+} 
