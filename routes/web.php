@@ -29,8 +29,8 @@ Auth::routes([
 ]);
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/tournament-detail', [TournamenthomeController::class, 'detail']);
-Route::get('/tournaments', [TournamenthomeController::class, 'list']);
+Route::get('/tournament-detail/{id}', [TournamenthomeController::class, 'detail'])->name('tournament-detail');
+Route::get('/tournaments', [TournamenthomeController::class, 'list'])->name('tournaments');
 
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'dashboard'], function () {
     Route::get('/', function () {

@@ -47,58 +47,60 @@
                 <div class="tournament__wrapper">
                     <div class="row justify-content-center">
                         <div class="col-xl-6 col-lg-7 col-md-10">
-                            <div class="section__title text-center mb-60">
+                            <div class="section__title text-center mb-6">
                                 <span class="sub-title tg__animate-text">our tournament</span>
                                 <h3 class="title">play to earn games</h3>
                             </div>
                         </div>
                     </div>
-                    <div class="grid grid-cols-5 gap-3">
-                        <div class="border-r-2 border-slate-200 px-4">
-                            <form action="">
-                                <div class="py-3">
-                                    <div class="flex justify-between">
-                                        <p class="font-bold text-sm mb-4 text-white">Pengaturan</p>
-                                        <p class="mb-4 text-sm cursor-pointer text-[#45f882] hover:text-[#ffbe18]" id="delete-filter">
-                                            Hapus Filter</p>
-                                    </div>
-                                    <div class="">
-                                        <button type="submit" class="font-bold text-white bg-[#45f882] hover:bg-[#ffbe18] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-4 py-2.5 text-center">Update Filter</button>
-                                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-5 gap-3">
+                        <div class="border-r-0 md:border-r-0 lg:border-r-2 border-slate-200 px-4">
+                            <div class="py-3">
+                                <div class="flex justify-between">
+                                    <p class="font-bold text-xs mb-4 text-white">Pengaturan</p>
+                                    <p class="mb-4 text-xs cursor-pointer text-[#45f882] hover:text-[#ffbe18]"
+                                        id="delete-filter">
+                                        Hapus Filter</p>
                                 </div>
                                 <div class="">
-                                    <p class="font-bold text-md my-2 text-white">Urutkan Berdasarkan</p>
+                                    <button type="button" id="setFilter"
+                                        class="font-bold text-white bg-[#45f882] hover:bg-[#ffbe18] font-medium rounded-lg text-sm w-full px-4 py-2.5 text-center">Update
+                                        Filter</button>
+                                </div>
+                            </div>
+                            <div class="">
+                                <p class="font-bold text-md my-2 text-white">Urutkan Berdasarkan</p>
+                                <div class="flex my-2">
+                                    <input id="default-checkbox" type="checkbox" name="date" value=""
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <label for="default-checkbox"
+                                        class="font-bold ml-2 text-sm font-medium text-white">Tanggal
+                                        Terbaru</label>
+                                </div>
+                                <div class="flex my-2">
+                                    <input id="default-checkbox" type="checkbox" name="price" value=""
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <label for="default-checkbox"
+                                        class="font-bold ml-2 text-sm font-medium text-white">Hadiah
+                                        Tertinggi</label>
+                                </div>
+                            </div>
+                            <div class="">
+                                <p class="font-bold text-md my-2 text-white">Game</p>
+                                @foreach ($games as $game)
                                     <div class="flex my-2">
-                                        <input id="default-checkbox" type="checkbox" value=""
+                                        <input id="default-checkbox" type="checkbox" value="{{ $game->id }}"
+                                            name="gameFilter"
                                             class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                         <label for="default-checkbox"
-                                            class="font-bold ml-2 text-sm font-medium text-white">Tanggal
-                                            Terbaru</label>
+                                            class="font-bold ml-2 text-sm font-medium text-white">{{ $game->name }}</label>
                                     </div>
-                                    <div class="flex my-2">
-                                        <input id="default-checkbox" type="checkbox" value=""
-                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                        <label for="default-checkbox"
-                                            class="font-bold ml-2 text-sm font-medium text-white">Hadiah
-                                            Tertinggi</label>
-                                    </div>
-                                </div>
-                                <div class="">
-                                    <p class="font-bold text-md my-2 text-white">Game</p>
-                                    <div class="">
-                                        <select id="countries"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                            <option selected>Pilih Game</option>
-                                            @foreach ($games as $game)
-                                                <option value="{{ $game->id }}">{{ $game->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                            </form>
+                                @endforeach
+
+                            </div>
 
                         </div>
-                        <div class="col-span-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 ml-3">
+                        <div class="col-span-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 m-2 gap-12 md:ml-2 lg:ml-2">
                             @foreach ($tournamentlist as $tournament)
                                 <div class="row justify-content-center">
                                     <div class="tournament__box-wrap" style="padding-bottom: 30px">
@@ -119,10 +121,11 @@
                                             <span>{{ $tournament->slot }}</span>
                                         </div>
                                         <div class="tournament__box-countdown">
-                                            <div class="coming-time font-bold text-xs">{{ $time }}</div>
+                                            <div class="coming-time font-bold text-xs">{{ $tournament->starter_at }}
+                                            </div>
                                         </div>
                                         <div class="tournament__box-caption">
-                                            <h4 class="title">{{ $tournament->name }}</h4>
+                                            <h4 class="title" style="font-size: 20px">{{ $tournament->name }}</h4>
                                         </div>
                                         <ul class="tournament__box-list list-wrap mb-3">
                                             <li class="flex justify-center">
@@ -136,11 +139,21 @@
                                                 {{ number_format($tournament->price_pool, 0, ',', '.') }}</span>
                                         </div>
                                         <div class="font-bold text-md flex justify-center mb-5">
-                                            <span>Lihat Detail</span>
+                                            <a href="{{ route('tournament-detail', $tournament->id) }}" class="cursor-pointer">Lihat Detail</a>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
+                            <div id="next-products"></div>
+                            <div id="next-cursor" style="display: none">{{ $nextCursor }}</div>
+                            @if ($nextCursor)
+                                <div class="row" id="loadMoreContainer">
+                                    <button id="btnLoadMore"
+                                        class="text-center rounded-pill mt-3 btn theme-bg-color btn-sm text-white fw-bold mt-md-4 mt-2 mend-auto">
+                                        Tampilkan Lebih Banyak..
+                                    </button>
+                                </div>
+                            @endif
                         </div>
 
 
@@ -183,6 +196,116 @@
                 location.reload();
             });
         });
+    </script>
+    <script>
+        $(document).ready(() => {
+
+            let url = window.location.href
+            let games = []
+            let search = $('#inputSearch').val() || null
+
+            const displaySearchLabel = (search) => {
+                $('#searchLabelContainer').css('display', 'block')
+                $('#searchLabel').text('Kata Kunci Pencarian: ' + search)
+            }
+
+            if (search) {
+                displaySearchLabel(search)
+            }
+
+            const infiniteLoadMore = (nextCursor) => {
+                search = $('#inputSearch').val() || null
+
+                if (search) {
+                    displaySearchLabel(search)
+                } else {
+                    $('#searchLabelContainer').css('display', 'none')
+                }
+
+                $.ajax({
+                    url: url + "?cursor=" + nextCursor,
+                    responseType: "json",
+                    method: 'get',
+                    data: {
+                        nextCursor: nextCursor,
+                        games: games,
+                        search: search
+                    },
+                    success: (response) => {
+                        document.getElementById('next-products').insertAdjacentHTML('beforebegin',
+                            response.data.html)
+                        document.getElementById('next-cursor').innerHTML = response.data.nextCursor
+
+                        if (response.data.nextCursor == null || Object.keys(response.data
+                                .nextCursor).length === 0) {
+                            $('#loadMoreContainer').css('display', 'none')
+                        } else {
+                            $('#loadMoreContainer').css('display', 'block')
+                        }
+                    },
+                    error: (err) => {
+                        console.log(err)
+                    }
+                })
+            }
+
+            $('#btnLoadMore').on('click', function(e) {
+                e.preventDefault()
+                let nextCursor = document.getElementById('next-cursor').innerHTML || null
+                if (nextCursor) infiniteLoadMore(nextCursor);
+
+            })
+
+            $('#setFilter').on('click', function(e) {
+                e.preventDefault()
+
+                filter = []
+                games = []
+                search = $('#inputSearch').val() || null
+
+                if (search) {
+                    displaySearchLabel(search)
+                } else {
+                    $('#searchLabelContainer').css('display', 'none')
+                }
+
+                let gameCheck = document.querySelectorAll('input[name=gameFilter]:checked')
+
+                for (let i = 0; i < gameCheck.length; i++) {
+                    if (gameCheck[i].value !== "on") {
+                        games.push(gameCheck[i].value)
+                        console.log(gameCheck);
+                    }
+                }
+
+                $.ajax({
+                    url: url,
+                    responseType: "json",
+                    method: 'get',
+                    data: {
+                        games: games,
+                        search: search
+                    },
+                    success: (response) => {
+                        $('.loopProducts').remove()
+                        document.getElementById('next-products').insertAdjacentHTML(
+                            'beforebegin', response.data.html)
+                        document.getElementById('next-cursor').innerHTML = response.data
+                            .nextCursor
+
+                        if (response.data.nextCursor == null || Object.keys(response.data
+                                .nextCursor).length === 0) {
+                            $('#loadMoreContainer').css('display', 'none')
+                        } else {
+                            $('#loadMoreContainer').css('display', 'block')
+                        }
+                    },
+                    error: (err) => {
+                        console.log(err.responseText)
+                    }
+                })
+            })
+        })
     </script>
 </body>
 

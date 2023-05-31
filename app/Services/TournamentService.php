@@ -11,6 +11,8 @@ use App\Http\Requests\TournamentUpdateRequest;
 use App\Models\Team;
 use App\Models\Tournament;
 use App\Traits\UploadTrait;
+use Illuminate\Http\Request;
+use Illuminate\Pagination\Cursor;
 
 class TournamentService implements ShouldHandleFileUpload, CustomUploadValidation
 {
@@ -93,9 +95,18 @@ class TournamentService implements ShouldHandleFileUpload, CustomUploadValidatio
         ];
     }
 
-    public function get()
+    public function HandleTournamentFilter(Request $request): array
     {
-        return $this->tournamentlist->get();
+        $nextCursor = $request->query('nextCursor') ? Cursor::fromEncoded($request->query('nextCursor')) : null;
+
+        $tournamentlist = $this->tournamentlist->cursorPaginate(15, ['*'], 'cursor', $nextCursor, $request);
+
+        if ($tournamentlist->hasMorePages()) $nextCursor = $tournamentlist->nextCursor()->encode();
+
+        return [
+            'tournamentlist' => $tournamentlist,
+            'nextCursor' => $nextCursor
+        ];
     }
 
 }

@@ -80,7 +80,11 @@ class GameController extends Controller
 
     /**
      * Update the specified resource in storage.
+     * 
+     * @param Game $game
+     * @return RedirectResponse
      */
+    
     public function update(GameUpdateRequest $request, Game $game): RedirectResponse
     {
         $store = $this->service->update($request, $game);
