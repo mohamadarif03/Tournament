@@ -45,7 +45,7 @@ class TournamenthomeController extends Controller
         $service = $this->service->HandleTournamentFilter($request);
 
         if ($request->ajax()) {
-            $view = view('pages.cursor.infinite-products')->with('tournamentlist', $service['tournamentlist'])->render();
+            $view = view('pages.cursor.infinite-tournament')->with('tournamentlist', $service['tournamentlist'])->render();
 
             return ResponseHelper::success([
                 'html' => $view,

@@ -1,6 +1,12 @@
-@php use App\Enums\ProductStatusEnum;use App\Enums\UserRoleEnum;use App\Helpers\CurrencyHelper;use App\Helpers\RatingHelper;use App\Helpers\UserHelper; @endphp
+@php
+    use App\Enums\ProductStatusEnum;
+    use App\Enums\UserRoleEnum;
+    use App\Helpers\CurrencyHelper;
+    use App\Helpers\RatingHelper;
+    use App\Helpers\UserHelper;
+@endphp
 @foreach ($tournamentlist as $tournament)
-<div class="row justify-content-center">
+<div class="loopTournament row justify-content-center">
     <div class="tournament__box-wrap" style="padding-bottom: 30px">
         <svg class="main-bg" x="0px" y="0px" viewBox="0 0 357 533"
             fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -19,11 +25,14 @@
             <span>{{ $tournament->slot }}</span>
         </div>
         <div class="tournament__box-countdown">
-            <div class="coming-time font-bold text-xs">{{ $tournament->starter_at }}
+            <div class="coming-time font-bold text-xs">
+                {{ \Carbon\Carbon::parse($tournament->starter_at)->format('d F Y H:i') }}
             </div>
+
+
         </div>
         <div class="tournament__box-caption">
-            <h4 class="title">{{ $tournament->name }}</h4>
+            <h4 class="title" style="font-size: 20px">{{ $tournament->name }}</h4>
         </div>
         <ul class="tournament__box-list list-wrap mb-3">
             <li class="flex justify-center">
@@ -37,7 +46,8 @@
                 {{ number_format($tournament->price_pool, 0, ',', '.') }}</span>
         </div>
         <div class="font-bold text-md flex justify-center mb-5">
-            <span>Lihat Detail</span>
+            <a href="{{ route('tournament-detail', $tournament->id) }}"
+                class="cursor-pointer">Lihat Detail</a>
         </div>
     </div>
 </div>

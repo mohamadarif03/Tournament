@@ -24,14 +24,13 @@ class HomeTournamentListRepository extends BaseRepository implements HomeTournam
             ->when($request->games, function ($query) use ($request) {
                 return $query->whereIn('game_id', $request->games);
             })
-            ->when($request->date, function ($query) use ($request) {
-                return $query->orderBy('starter_at', 'desc');
+            ->when($request->orderBy == 'price', function ($query) {
+                return $query->latest('price_pool');
             })
-            ->when($request->price, function ($query) use ($request) {
-                return $query->orderBy('starter_at', 'desc');
-            })
+            ->when($request->orderBy == 'date', function ($query) {
+                return $query->latest('starter_at');
+            })         
             ->with(['user', 'game'])
-            ->latest()
             ->cursorPaginate($perPage, $columns, $cursorName, $cursor);
     }
 }

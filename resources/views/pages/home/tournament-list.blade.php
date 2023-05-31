@@ -1,3 +1,6 @@
+@php
+    use Carbon\Carbon;
+@endphp
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -58,9 +61,9 @@
                             <div class="py-3">
                                 <div class="flex justify-between">
                                     <p class="font-bold text-xs mb-4 text-white">Pengaturan</p>
-                                    <p class="mb-4 text-xs cursor-pointer text-[#45f882] hover:text-[#ffbe18]"
-                                        id="delete-filter">
-                                        Hapus Filter</p>
+                                    <a href="{{route('tournaments')}}" class="mb-4 text-xs cursor-pointer text-[#45f882] hover:text-[#ffbe18]"
+                                        id="">
+                                        Hapus Filter</a>
                                 </div>
                                 <div class="">
                                     <button type="button" id="setFilter"
@@ -71,19 +74,18 @@
                             <div class="">
                                 <p class="font-bold text-md my-2 text-white">Urutkan Berdasarkan</p>
                                 <div class="flex my-2">
-                                    <input id="default-checkbox" type="checkbox" name="date" value=""
-                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                    <label for="default-checkbox"
-                                        class="font-bold ml-2 text-sm font-medium text-white">Tanggal
-                                        Terbaru</label>
+                                    <input id="orderByDate" type="radio" value="date" name="orderBy"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                                    <label for="orderByDate"
+                                        class="font-bold ml-2 text-sm font-medium text-white">Tanggal Terbaru</label>
                                 </div>
                                 <div class="flex my-2">
-                                    <input id="default-checkbox" type="checkbox" name="price" value=""
-                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                    <label for="default-checkbox"
-                                        class="font-bold ml-2 text-sm font-medium text-white">Hadiah
-                                        Tertinggi</label>
+                                    <input id="orderByPrice" type="radio" value="price" name="orderBy"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                                    <label for="orderByPrice"
+                                        class="font-bold ml-2 text-sm font-medium text-white">Hadiah Tertinggi</label>
                                 </div>
+
                             </div>
                             <div class="">
                                 <p class="font-bold text-md my-2 text-white">Game</p>
@@ -91,7 +93,7 @@
                                     <div class="flex my-2">
                                         <input id="default-checkbox" type="checkbox" value="{{ $game->id }}"
                                             name="gameFilter"
-                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600">
                                         <label for="default-checkbox"
                                             class="font-bold ml-2 text-sm font-medium text-white">{{ $game->name }}</label>
                                     </div>
@@ -100,9 +102,10 @@
                             </div>
 
                         </div>
-                        <div class="col-span-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 m-2 gap-12 md:ml-2 lg:ml-2">
+                        <div
+                            class="col-span-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 m-2 gap-12 md:ml-2 lg:ml-2">
                             @foreach ($tournamentlist as $tournament)
-                                <div class="row justify-content-center">
+                                <div class="loopTournament row justify-content-center">
                                     <div class="tournament__box-wrap" style="padding-bottom: 30px">
                                         <svg class="main-bg" x="0px" y="0px" viewBox="0 0 357 533"
                                             fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -121,8 +124,11 @@
                                             <span>{{ $tournament->slot }}</span>
                                         </div>
                                         <div class="tournament__box-countdown">
-                                            <div class="coming-time font-bold text-xs">{{ $tournament->starter_at }}
+                                            <div class="coming-time font-bold text-xs">
+                                                {{ \Carbon\Carbon::parse($tournament->starter_at)->format('d F Y H:i') }}
                                             </div>
+
+
                                         </div>
                                         <div class="tournament__box-caption">
                                             <h4 class="title" style="font-size: 20px">{{ $tournament->name }}</h4>
@@ -139,7 +145,8 @@
                                                 {{ number_format($tournament->price_pool, 0, ',', '.') }}</span>
                                         </div>
                                         <div class="font-bold text-md flex justify-center mb-5">
-                                            <a href="{{ route('tournament-detail', $tournament->id) }}" class="cursor-pointer">Lihat Detail</a>
+                                            <a href="{{ route('tournament-detail', $tournament->id) }}"
+                                                class="cursor-pointer">Lihat Detail</a>
                                         </div>
                                     </div>
                                 </div>
@@ -190,18 +197,19 @@
             });
         });
     </script>
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             $('#delete-filter').on('click', function() {
                 location.reload();
             });
         });
-    </script>
+    </script> --}}
     <script>
         $(document).ready(() => {
 
             let url = window.location.href
             let games = []
+            let orderBy = []
             let search = $('#inputSearch').val() || null
 
             const displaySearchLabel = (search) => {
@@ -229,6 +237,7 @@
                     data: {
                         nextCursor: nextCursor,
                         games: games,
+                        orderBy: orderBy,
                         search: search
                     },
                     success: (response) => {
@@ -259,8 +268,8 @@
             $('#setFilter').on('click', function(e) {
                 e.preventDefault()
 
-                filter = []
                 games = []
+                orderBy = []
                 search = $('#inputSearch').val() || null
 
                 if (search) {
@@ -278,16 +287,29 @@
                     }
                 }
 
+                let orderCheck = document.querySelectorAll('input[name=orderBy]:checked')
+
+                for (let i = 0; i < orderCheck.length; i++) {
+                    if (orderCheck[i].value == "date") {
+                        orderBy.push(orderCheck[i].value)
+                    } else if (orderCheck[i].value == "price") {
+                        orderBy.push(orderCheck[i].value)
+                    }
+                }
+
+
+
                 $.ajax({
                     url: url,
                     responseType: "json",
                     method: 'get',
                     data: {
                         games: games,
-                        search: search
+                        orderBy: orderBy,
+                        search: search,
                     },
                     success: (response) => {
-                        $('.loopProducts').remove()
+                        $('.loopTournament').remove()
                         document.getElementById('next-products').insertAdjacentHTML(
                             'beforebegin', response.data.html)
                         document.getElementById('next-cursor').innerHTML = response.data
