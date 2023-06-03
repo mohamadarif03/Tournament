@@ -97,19 +97,7 @@
 
                             </div>
                             <div class="tournament__details-form">
-                                <h4 class="tournament__details-form-title font-bold">Gabung</h4>
-                                <form action="#">
-                                    <select id="countries"
-                                        class="bg-[#0f161b] text-white text-sm rounded-lg block w-full p-2.5"
-                                        style="border: 1px solid #23292f; padding: 15px 30px;">
-                                        <option selected>Pilih Team</option>
-                                        @foreach ($teams as $team)
-                                            <option value="{{$team->id}}">{{$team->name}}</option>
-                                        @endforeach
-                                    </select>
-
-                                    <button class="tournament__details-form-btn">Gabung Sekarang</button>
-                                </form>
+                                <a href="{{ route('join-tournament', $tournament->id) }}" class="tournament__details-form-btn">Gabung Tournament</a>
                             </div>
                             <div class="blog-details-bottom">
                                 <div class="row">
@@ -117,7 +105,7 @@
                                         <div class="tg-post-tags">
                                             <h5 class="tags-title">kategori :</h5>
                                             <ul class="list-wrap d-flex flex-wrap align-items-center m-0">
-                                                <li><a href="#">{{ $tournament->game->name }}</a></li>
+                                                <li><a href="">{{ $tournament->game->name }}</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -153,8 +141,8 @@
                                                     <div class="info">
                                                         <h5 class="title font-bold"><a
                                                                 href="#">{{ $tournament->name }}</a></h5>
-                                                        <span
-                                                            class="price">Rp. {{ number_format($tournament->price_pool, 0, ',', '.') }}</span>
+                                                        <span class="price">Rp.
+                                                            {{ number_format($tournament->price_pool, 0, ',', '.') }}</span>
                                                     </div>
                                                     <div class="play">
                                                         <a href="https://www.youtube.com/watch?v=a3_o4SpV1vI"

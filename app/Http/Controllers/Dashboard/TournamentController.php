@@ -49,8 +49,11 @@ class TournamentController extends Controller
         return view('pages.dashboard.tournament.create', compact('games'));
     }
 
-    /**
+   /**
      * Store a newly created resource in storage.
+     *
+     * @param TournamentRequest $request
+     * @return RedirectResponse
      */
     public function store(TournamentRequest $request): RedirectResponse
     {

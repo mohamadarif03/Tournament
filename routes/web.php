@@ -5,6 +5,7 @@ use App\Http\Controllers\Dashboard\GameController;
 use App\Http\Controllers\Dashboard\TeamController;
 use App\Http\Controllers\Dashboard\TournamentController;
 use App\Http\Controllers\Home\HomeController;
+use App\Http\Controllers\Home\JointournamentController;
 use App\Http\Controllers\Home\TournamenthomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,9 @@ Auth::routes([
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/tournament-detail/{tournament}', [TournamenthomeController::class, 'detail'])->name('tournament-detail');
 Route::get('/tournaments', [TournamenthomeController::class, 'list'])->name('tournaments');
+
+Route::get('/join-tournament/{tournament}', [JointournamentController::class, 'index'])->name('join-tournament');
+Route::post('/register-tournament', [JointournamentController::class, 'join'])->name('register-tournament');
 
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'dashboard'], function () {
     Route::get('/', function () {

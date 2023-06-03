@@ -2,10 +2,14 @@
 
 namespace App\Providers;
 
+use App\Models\Competitor;
+use App\Models\CompetitorRegistrant;
 use App\Models\Game;
 use App\Models\Team;
 use App\Models\Tournament;
 use App\Models\User;
+use App\Observers\CompetitorObserver;
+use App\Observers\CompetitorRegistrantObserver;
 use App\Observers\GameObserver;
 use App\Observers\TeamObserver;
 use App\Observers\TournamentObserver;
@@ -36,6 +40,8 @@ class EventServiceProvider extends ServiceProvider
         User::observe(UserObserver::class);
         Team::observe(TeamObserver::class);
         Game::observe(GameObserver::class);
+        Competitor::observe(CompetitorObserver::class);
+        CompetitorRegistrant::observe(CompetitorRegistrantObserver::class);
         Tournament::observe(TournamentObserver::class);
     }
 

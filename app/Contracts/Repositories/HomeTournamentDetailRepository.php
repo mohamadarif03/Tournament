@@ -27,6 +27,7 @@ class HomeTournamentDetailRepository extends BaseRepository implements HomeTourn
     public function showmore(): mixed
     {
         return $this->model->query()
+        ->where('game_id', )
         ->get();
     }
 }

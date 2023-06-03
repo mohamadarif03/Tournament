@@ -97,7 +97,7 @@
                     <div class="col-lg-12 col-md-10">
                         <div class="contact__form-wrap">
                             <div class="center" style="">
-                                <h2 class="title" style="margin-bottom:30px; text-align:center">Reset Password</h2>
+                                <h2 class="title font-bold" style="margin-bottom:30px; text-align:center">Reset Password</h2>
                                 <form method="POST" action="{{ route('password.email') }}">
                                     @csrf
                                     <div class="row mb-3">
@@ -119,9 +119,9 @@
 
                                     <div class="row mb-0">
                                         <div class="col-md-6 offset-md-4">
-                                            <button type="submit" class="btn btn-primary">
-                                                {{ __('Send Password Reset Link') }}
-                                            </button>
+                                            <div class="col-sm-6">
+                                                <button type="submit" class="submit-btn">Kirim Link Reset Password</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </form>
