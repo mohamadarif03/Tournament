@@ -9,7 +9,7 @@ class CompetitorRegistrant extends Model
 {
     use HasFactory;
     public $incrementing = false;
-    protected $fillable = ['tournament_id', 'competitor_id', 'user_id'];
+    protected $fillable = ['tournament_id', 'competitor_id', 'user_id', 'position'];
     protected $primaryKey = 'id';
     public $keyType = 'char';
 }

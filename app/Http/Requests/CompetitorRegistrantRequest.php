@@ -17,6 +17,7 @@ class CompetitorRegistrantRequest extends FormRequest
             'tournament_id' => 'required',
             'competitor_id' => 'nullable',
             'user_id' => 'required',
+            'position' => 'nullable',
         ];
     }
 }

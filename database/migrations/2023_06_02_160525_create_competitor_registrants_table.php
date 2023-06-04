@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignUuid('tournament_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignUuid('competitor_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignUuid('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('position')->nullable();
             $table->timestamps();
         });
     }
