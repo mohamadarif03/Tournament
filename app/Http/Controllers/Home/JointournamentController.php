@@ -46,8 +46,10 @@ class JointournamentController extends Controller
      */
     public function join(CompetitorRequest $competitorRequest, CompetitorRegistrantRequest $registrantRequest): RedirectResponse
     {
-        $this->competitor->store($competitorRequest->validated());
-        $this->competitorregistrant->store($registrantRequest->validated());
+        $competitor = $this->competitor->store($competitorRequest->validated());
+        $registrantData = $registrantRequest->validated();
+        $registrantData['competitor_id'] = $competitor->id;
+        $this->competitorregistrant->store($registrantData);
         return redirect()->route('tournaments')->with('success', trans('alert.add_success'));
     }
 }
