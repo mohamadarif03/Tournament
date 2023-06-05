@@ -10,5 +10,5 @@ interface ShowMoreInterface
      * @return mixed
      */
 
-    public function showmore(): mixed;
+    public function showMore(): mixed;
 }

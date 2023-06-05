@@ -9,7 +9,6 @@ use App\Contracts\Interfaces\HomeGameInterface;
 use App\Contracts\Interfaces\HomeTeamInterface;
 use App\Contracts\Interfaces\HomeTournamentDetailInterface;
 use App\Contracts\Interfaces\HomeTournamentListInterface;
-use App\Contracts\Interfaces\JoinTournamentInterface;
 use App\Contracts\Interfaces\RegisterInterface;
 use App\Contracts\Interfaces\TeamInterface;
 use App\Contracts\Interfaces\TournamentInterface;

@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
                     'id' => Uuid::uuid(),
                     'name' => $user,
                     'email' => $user . "@gmail.com",
-                    'password' => bcrypt('123456788'),
+                    'password' => bcrypt('12345678'),
                     'phone_number' => '09876543678',
                     'email_verified_at' => now()
                 ]);

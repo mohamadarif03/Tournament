@@ -35,7 +35,7 @@ class TournamenthomeController extends Controller
     public function detail(Tournament $tournament): View
     {
         $tournamentmore = $this->tournamentdetail->showmore();
-        return view('pages.home.tournament-detail', compact('tournament', 'tournamentmore'));
+        return view('pages.home.tournament.tournament-detail', compact('tournament', 'tournamentmore'));
     }
     /**
      * Display a listing of the resource.
@@ -58,7 +58,7 @@ class TournamenthomeController extends Controller
         $games = $this->game->get();
         
        
-        return view('pages.home.tournament-list', [
+        return view('pages.home.tournament.tournament-list', [
             'tournamentlist' => $service['tournamentlist'],
             'nextCursor' => $service['nextCursor'],
             'games' => $games

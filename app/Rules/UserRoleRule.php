@@ -17,7 +17,7 @@ class UserRoleRule implements Rule
      */
     public function passes($attribute, $value): bool
     {
-        return in_array($value, [UserRoleEnum::ORGANIZER->value, UserRoleEnum::Player->value, UserRoleEnum::ADMIN->value]);
+        return in_array($value, [UserRoleEnum::ORGANIZER->value, UserRoleEnum::PLAYER->value, UserRoleEnum::ADMIN->value]);
     }
 
     /**

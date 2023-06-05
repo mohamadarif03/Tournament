@@ -343,7 +343,143 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit">Kirim</button>
+                                    <div class="card p-6 my-[50px]" style="background-color: #1b1e21; ">
+                                        <h2 class="title font-bold text-2xl"
+                                            style="margin-bottom:30px; text-align:center">
+                                            Pemain 7 [Cadangan]</h2>
+                                        <div class="">
+                                            <div class="mb-6">
+                                                <h1 for="title" style="font-weight: bold; margin-bottom: 5px">Nama
+                                                    Pemain
+                                                </h1>
+                                                <select id="user_id" name="user_id[]"
+                                                    class="bg-[#0f161b] text-white text-sm rounded-lg block w-full p-2.5"
+                                                    style="border: 1px solid #23292f; padding: 15px 30px;">
+                                                    <option selected>Pilih Pemain</option>
+                                                    @foreach ($users as $user)
+                                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="grid grid-cols-2 gap-4">
+                                                <div class="input-grp">
+                                                    <h1 for="title" style="font-weight: bold; margin-bottom: 5px">
+                                                        Nick Name
+                                                    </h1>
+                                                    <input name="nickname" type="text" placeholder="Nick Name">
+                                                </div>
+                                                <div class="input-grp">
+                                                    <h1 for="title" style="font-weight: bold; margin-bottom: 5px">
+                                                        Game Id
+                                                    </h1>
+                                                    <input name="id_game" type="text" placeholder="Game Id">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card p-6 my-[50px]" style="background-color: #1b1e21; ">
+                                        <h2 class="title font-bold text-2xl"
+                                            style="margin-bottom:30px; text-align:center">
+                                            Pemain 8 [Cadangan]</h2>
+                                        <div class="">
+                                            <div class="mb-6">
+                                                <h1 for="title" style="font-weight: bold; margin-bottom: 5px">Nama
+                                                    Pemain
+                                                </h1>
+                                                <select id="user_id" name="user_id[]"
+                                                    class="bg-[#0f161b] text-white text-sm rounded-lg block w-full p-2.5"
+                                                    style="border: 1px solid #23292f; padding: 15px 30px;">
+                                                    <option selected>Pilih Pemain</option>
+                                                    @foreach ($users as $user)
+                                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="grid grid-cols-2 gap-4">
+                                                <div class="input-grp">
+                                                    <h1 for="title" style="font-weight: bold; margin-bottom: 5px">
+                                                        Nick Name
+                                                    </h1>
+                                                    <input name="nickname" type="text" placeholder="Nick Name">
+                                                </div>
+                                                <div class="input-grp">
+                                                    <h1 for="title" style="font-weight: bold; margin-bottom: 5px">
+                                                        Game Id
+                                                    </h1>
+                                                    <input name="id_game" type="text" placeholder="Game Id">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card p-6 my-[50px]" style="background-color: #1b1e21; ">
+                                        <h2 class="title font-bold text-2xl"
+                                            style="margin-bottom:30px; text-align:center">
+                                            Pemain 9 [Cadangan]</h2>
+                                        <div class="">
+                                            <div class="mb-6">
+                                                <h1 for="title" style="font-weight: bold; margin-bottom: 5px">Nama
+                                                    Pemain
+                                                </h1>
+                                                <select id="user_id" name="user_id[]"
+                                                    class="bg-[#0f161b] text-white text-sm rounded-lg block w-full p-2.5"
+                                                    style="border: 1px solid #23292f; padding: 15px 30px;">
+                                                    <option selected>Pilih Pemain</option>
+                                                    @foreach ($users as $user)
+                                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="grid grid-cols-2 gap-4">
+                                                <div class="input-grp">
+                                                    <h1 for="title" style="font-weight: bold; margin-bottom: 5px">
+                                                        Nick Name
+                                                    </h1>
+                                                    <input name="nickname" type="text" placeholder="Nick Name">
+                                                </div>
+                                                <div class="input-grp">
+                                                    <h1 for="title" style="font-weight: bold; margin-bottom: 5px">
+                                                        Game Id
+                                                    </h1>
+                                                    <input name="id_game" type="text" placeholder="Game Id">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card p-6 my-[50px]" style="background-color: #1b1e21; ">
+                                        <h2 class="title font-bold text-2xl"
+                                            style="margin-bottom:30px; text-align:center">
+                                            Pemain 10 [Cadangan]</h2>
+                                        <div class="">
+                                            <div class="mb-6">
+                                                <h1 for="title" style="font-weight: bold; margin-bottom: 5px">Nama
+                                                    Pemain
+                                                </h1>
+                                                <select id="user_id" name="user_id[]"
+                                                    class="bg-[#0f161b] text-white text-sm rounded-lg block w-full p-2.5"
+                                                    style="border: 1px solid #23292f; padding: 15px 30px;">
+                                                    <option selected>Pilih Pemain</option>
+                                                    @foreach ($users as $user)
+                                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="grid grid-cols-2 gap-4">
+                                                <div class="input-grp">
+                                                    <h1 for="title" style="font-weight: bold; margin-bottom: 5px">
+                                                        Nick Name
+                                                    </h1>
+                                                    <input name="nickname" type="text" placeholder="Nick Name">
+                                                </div>
+                                                <div class="input-grp">
+                                                    <h1 for="title" style="font-weight: bold; margin-bottom: 5px">
+                                                        Game Id
+                                                    </h1>
+                                                    <input name="id_game" type="text" placeholder="Game Id">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit"class="tournament__details-form-btn bg-[#45f882]">Kirim</button>
                                 </div>
                             </form>
 

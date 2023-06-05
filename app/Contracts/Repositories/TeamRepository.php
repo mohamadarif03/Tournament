@@ -85,7 +85,7 @@ class TeamRepository extends BaseRepository implements TeamInterface
     {
         return $this->show($id)->update($data);
     }
-    public function showmore(): mixed
+    public function showMore(): mixed
     {
         return $this->model->query()
         ->where('user_id', Auth()->id())

@@ -51,8 +51,8 @@
                     <div class="row justify-content-center">
                         <div class="col-xl-6 col-lg-7 col-md-10">
                             <div class="section__title text-center mb-6">
-                                <span class="sub-title tg__animate-text">our tournament</span>
-                                <h3 class="title">play to earn games</h3>
+                                <span class="sub-title tg__animate-text">Daftar Tim</span>
+                                <h3 class="title">Daftar Tim</h3>
                             </div>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                             <div class="py-3">
                                 <div class="flex justify-between">
                                     <p class="font-bold text-xs mb-4 text-white">Pengaturan</p>
-                                    <a href="{{ route('tournaments') }}"
+                                    <a href="{{ route('teams') }}"
                                         class="mb-4 text-xs cursor-pointer text-[#45f882] hover:text-[#ffbe18]"
                                         id="">
                                         Hapus Filter</a>
@@ -73,20 +73,14 @@
                                 </div>
                             </div>
                             <div class="">
-                                <p class="font-bold text-md my-2 text-white">Urutkan Berdasarkan</p>
+                                <p class="font-bold text-md my-2 text-white">Buka Pendaftaran</p>
                                 <div class="flex my-2">
-                                    <input id="orderByDate" type="radio" value="date" name="orderBy"
-                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
-                                    <label for="orderByDate"
-                                        class="font-bold ml-2 text-sm font-medium text-white">Tanggal Terbaru</label>
+                                    <input id="default-checkbox" type="checkbox" value="1"
+                                        name="gameFilter"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600">
+                                    <label for="default-checkbox"
+                                        class="font-bold ml-2 text-sm font-medium text-white">Buka Pendaftaran</label>
                                 </div>
-                                <div class="flex my-2">
-                                    <input id="orderByPrice" type="radio" value="price" name="orderBy"
-                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
-                                    <label for="orderByPrice"
-                                        class="font-bold ml-2 text-sm font-medium text-white">Hadiah Tertinggi</label>
-                                </div>
-
                             </div>
                             <div class="">
                                 <p class="font-bold text-md my-2 text-white">Game</p>
@@ -99,64 +93,29 @@
                                             class="font-bold ml-2 text-sm font-medium text-white">{{ $game->name }}</label>
                                     </div>
                                 @endforeach
-
                             </div>
-
                         </div>
                         <div
                             class="col-span-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 m-2 gap-12 md:ml-2 lg:ml-2">
-                            @foreach ($tournamentlist as $tournament)
-                                <a href="{{ route('tournament-detail', $tournament->id) }}"
-                                    class="loopTournament row justify-content-center">
-                                    <div class="tournament__box-wrap" style="padding-bottom: 30px">
-                                        <svg class="main-bg" x="0px" y="0px" viewBox="0 0 357 533"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M2.00021 63H103C103 63 114.994 62.778 128 50C141.006 37.222 168.042 13.916 176 10C183.958 6.084 193 1.9 213 2C233 2.1 345 1 345 1C347.917 1.66957 350.51 3.33285 352.334 5.70471C354.159 8.07658 355.101 11.0093 355 14C355.093 25.1 356 515 356 515C356 515 357.368 529.61 343 530C328.632 530.39 15.0002 532 15.0002 532C15.0002 532 0.937211 535.85 1.00021 522C1.06321 508.15 2.00021 63 2.00021 63Z"
-                                                fill="#19222B" stroke="#4C4C4C" stroke-width="0.25" />
-                                        </svg>
-                                        <svg class="price-bg" viewBox="0 0 166 56" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M0.00792892 55V11C0.00792892 11 -0.729072 0.988 12.0079 1C24.7449 1.012 160.008 0 160.008 0C160.008 0 172.491 1.863 161.008 10C148.995 18.512 115.008 48 115.008 48C115.008 48 110.021 55.238 90.0079 55C69.9949 54.762 0.00792892 55 0.00792892 55Z"
-                                                fill="currentcolor" />
-                                        </svg>
-                                        <div class="tournament__box-price">
-                                            <span class="sub">Slot</span>
-                                            <span>{{ $tournament->slot }}</span>
+                            @forelse ($teams as $team)
+                                <a href="{{ route('team-detail', $team->id) }}" class="loopTeam">
+                                    <div class="team__item">
+                                        <div class="team__thumb">
+                                            <div class="flex justify-center"><img
+                                                    src="{{ asset('storage/' . $team->logo) }}" height="210"
+                                                    alt="img"></div>
                                         </div>
-                                        <div class="tournament__box-countdown">
-                                            <div class="coming-time font-bold text-xs">
-                                                {{ \Carbon\Carbon::parse($tournament->starter_at)->format('d F Y H:i') }}
-                                            </div>
-
-
-                                        </div>
-                                        <div class="tournament__box-caption">
-                                            <h4 class="title" style="font-size: 20px">{{ $tournament->name }}
+                                        <div class="team__content">
+                                            <h4 class="name">
+                                                <div>{{ $team->name }}</div>
                                             </h4>
-                                        </div>
-                                        <ul class="tournament__box-list list-wrap mb-3">
-                                            <li class="flex justify-center">
-                                                <img src="{{ asset('storage/' . $tournament->live_image_url) }}"
-                                                    style="min-height: 50px; min-width:100px; max-height:100px; max-width: 200px"
-                                                    alt="img">
-                                            </li>
-                                        </ul>
-                                        <div class="tournament__box-prize" style="height: 20px">
-                                            <i class="fas fa-trophy"></i>
-                                            <span class="text-sm">Rp.
-                                                {{ number_format($tournament->price_pool, 0, ',', '.') }}</span>
-                                        </div>
-                                        <div class="font-bold text-sm flex justify-center mb-2">
-                                            <span
-                                                class="cursor-pointer bg-[#ffbe18] text-sm font-medium px-2.5 py-0.5 rounded"
-                                                style="color: white">By: {{ $tournament->user->name }}</span>
+                                            <span class="designation">{{ $team->game->name }}</span>
                                         </div>
                                     </div>
                                 </a>
-                            @endforeach
-
+                            @empty
+                                <p class="loopTeam">Tidak Ada Tim Data</p>
+                            @endforelse
                             <div id="next-products"></div>
                             <div id="next-cursor" style="display: none">{{ $nextCursor }}</div>
                             @if ($nextCursor)
@@ -168,6 +127,7 @@
                                 </div>
                             @endif
                         </div>
+
 
 
 
@@ -313,7 +273,7 @@
                         search: search,
                     },
                     success: (response) => {
-                        $('.loopTournament').remove()
+                        $('.loopTeam').remove()
                         document.getElementById('next-products').insertAdjacentHTML(
                             'beforebegin', response.data.html)
                         document.getElementById('next-cursor').innerHTML = response.data

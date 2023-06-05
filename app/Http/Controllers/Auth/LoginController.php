@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-
+use App\Enums\UserRoleEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
+use App\Helpers\UserHelper;
 use App\Services\Auth\LoginService;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\RedirectResponse;
@@ -71,7 +72,10 @@ class LoginController extends Controller
     {
         $this->loginService->handleLoginUser($request);
 
+        if (UserHelper::getUserRole() === UserRoleEnum::PLAYER->value) {
+            return to_route('home');
+        }
 
-        return redirect('/dashboard');
+        return to_route('dashboard');
     }
 }

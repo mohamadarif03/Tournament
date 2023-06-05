@@ -1,3 +1,8 @@
+@php
+    use App\Helpers\UserHelper;
+    use App\Enums\UserRoleEnum;
+    
+@endphp
 <div id="sticky-header" class="tg-header__area transparent-header">
     <div class="container custom-container">
         <div class="row">
@@ -10,13 +15,18 @@
                         </div>
                         <div class="tgmenu__navbar-wrap tgmenu__main-menu d-none d-xl-flex">
                             <ul class="navigation">
-                                <li
-                                    class="{{ request()->routeIs('home') ? 'active' : '' }} menu-item-has-children">
+                                <li class="{{ request()->routeIs('home') ? 'active' : '' }} menu-item-has-children">
                                     <a href="/">Home</a>
                                 </li>
                                 <li><a href="about-us.html">ABOUT US</a></li>
-                                <li><a href="about-us.html">Team</a></li>
-                                <li class="{{ request()->routeIs('tournaments') ? 'active' : '' }}"><a href="/tournaments">TOURNAMENT</a>
+                                <li><a href="">Team</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="/teams">List Team</a></li>
+                                        <li><a href="blog-details.html">Open Trials</a></li>
+                                    </ul>
+                                </li>
+                                <li class="{{ request()->routeIs('tournaments') ? 'active' : '' }}"><a
+                                        href="/tournaments">TOURNAMENT</a>
                                 </li>
                                 <li class="menu-item-has-children"><a href="#">News</a>
                                     <ul class="sub-menu">
@@ -33,11 +43,26 @@
                                 <li class="header-btn">
                                     @if (Route::has('login'))
                                         @auth
-                                            <a href="/dashboard" class="tg-btn-3 tg-svg">
-                                                <div class="svg-icon" id="svg-2"
-                                                    data-svg-icon="assets/img/icons/shape02.svg"></div>
-                                                <span>Dashboard</span>
-                                            </a>
+                                            @if (UserHelper::getUserRole() === UserRoleEnum::PLAYER->value)
+                                                <a href="{{ route('logout') }}"
+                                                    onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();"
+                                                    class="tg-btn-3 tg-svg">
+                                                    <div class="svg-icon" id="svg-2"
+                                                        data-svg-icon="assets/img/icons/shape02.svg"></div>
+                                                    <span>Logout</span>
+                                                </a>
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                    class="d-none">
+                                                    @csrf
+                                                </form>
+                                            @else
+                                                <a href="/dashboard" class="tg-btn-3 tg-svg">
+                                                    <div class="svg-icon" id="svg-2"
+                                                        data-svg-icon="assets/img/icons/shape02.svg"></div>
+                                                    <span>Dashboard</span>
+                                                </a>
+                                            @endif
                                         @else
                                             <a href="{{ route('login') }}" class="tg-btn-3 tg-svg">
                                                 <div class="svg-icon" id="svg-2"
@@ -104,7 +129,7 @@
                 <div class="col-12">
                     <h2 class="title">... <span>Search Here</span> ...</h2>
                     <div class="search__form">
-                        <form method="GET" action="{{ route('tournaments') }}">
+                        <form>
                             <input type="search" name="search"
                                 value="{{ request()->input('search') ?? old('search') }}" id="inputSearch"
                                 placeholder="Cari Disini...">

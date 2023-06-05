@@ -4,15 +4,25 @@ namespace App\Services;
 
 use App\Base\Interfaces\uploads\CustomUploadValidation;
 use App\Base\Interfaces\uploads\ShouldHandleFileUpload;
+use App\Contracts\Interfaces\HomeTeamInterface;
 use App\Enums\UploadDiskEnum;
 use App\Http\Requests\TeamRequest;
 use App\Http\Requests\TeamUpdateRequest;
 use App\Models\Team;
 use App\Traits\UploadTrait;
+use Illuminate\Http\Request;
+use Illuminate\Pagination\Cursor;
 
 class TeamService implements ShouldHandleFileUpload, CustomUploadValidation
 {
     use UploadTrait;
+    private HomeTeamInterface $team;
+
+
+    public function __construct(HomeTeamInterface $team)
+    {
+        $this->team = $team;
+    }
 
     /**
      * Handle custom upload validation.
@@ -92,6 +102,20 @@ class TeamService implements ShouldHandleFileUpload, CustomUploadValidation
             'logo' => $old_logo,
             'description' => $data['description'],
             'game_id' => $data['game_id'],
+        ];
+    }
+
+    public function HandleTeamFilter(Request $request): array
+    {
+        $nextCursor = $request->query('nextCursor') ? Cursor::fromEncoded($request->query('nextCursor')) : null;
+
+        $teams = $this->team->cursorPaginate(15, ['*'], 'cursor', $nextCursor, $request);
+
+        if ($teams->hasMorePages()) $nextCursor = $teams->nextCursor()->encode();
+
+        return [
+            'teams' => $teams,
+            'nextCursor' => $nextCursor
         ];
     }
 }
