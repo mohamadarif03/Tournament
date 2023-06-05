@@ -307,7 +307,7 @@
                                                     <input name="id_game" type="text" placeholder="Game Id">
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> 
                                     </div>
                                     <div class="card p-6 my-[50px]" style="background-color: #1b1e21; ">
                                         <h2 class="title font-bold text-2xl"
