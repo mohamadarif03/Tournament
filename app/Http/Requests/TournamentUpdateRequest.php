@@ -30,6 +30,7 @@ class TournamentUpdateRequest extends FormRequest
             'slot' => 'required',
             'price_pool' => 'required',
             'game_id' => 'required',
+            'is_open_signup' => 'nullable',
         ];
     }
     public function messages(): array

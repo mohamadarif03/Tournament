@@ -26,7 +26,7 @@
                             <th>Logo</th>
                             <th>Nama</th>
                             <th>Game</th>
-                            <th>User</th>
+                            <th>Pembuat</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>

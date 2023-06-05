@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class CompetitorRegistrant extends Model implements HasUser
+class TeamPlayer extends Model implements HasUser
 {
     use HasFactory;
     public $incrementing = false;
-    protected $fillable = ['tournament_id', 'competitor_id', 'user_id', 'position'];
+    protected $fillable = ['team_id', 'user_id'];
     protected $primaryKey = 'id';
-    public $keyType = 'char';
+    protected $table = 'team_players';
 
     public function user(): BelongsTo
     {

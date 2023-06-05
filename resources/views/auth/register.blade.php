@@ -157,12 +157,12 @@
                                                     {{ old('role') == 'organizer' ? 'checked' : '' }}>
                                                 <label for="role">Organizer</label>
                                             </div>
-                                            <div class="col-md-4 mt-3">
-                                                <input name="role" value="member"
+                                            <div class="col-md-4 mt-3 mb-3">
+                                                <input name="role" value="player"
                                                     class="checkbox_animated check-box @error('role') is-invalid @enderror"
                                                     type="radio" id="flexCheckDefault"
-                                                    {{ old('role') == 'member' ? 'checked' : '' }}>
-                                                <label for="role">Member</label>
+                                                    {{ old('role') == 'player' ? 'checked' : '' }}>
+                                                <label for="role">Player</label>
                                             </div>
                                         </div>
                                         <div class="col-sm-12">

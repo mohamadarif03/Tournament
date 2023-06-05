@@ -91,6 +91,7 @@ class TournamentService implements ShouldHandleFileUpload, CustomUploadValidatio
             'price_pool' => $data['price_pool'],
             'game_id' => $data['game_id'],
             'starter_at' => $data['starter_at'],
+            'is_open_signup' => $data['is_open_signup'],
             'live_image_url' => $old_image,
         ];
     }

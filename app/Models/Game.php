@@ -3,12 +3,12 @@
 namespace App\Models;
 
 use App\Base\Interfaces\HasTeams;
-use App\Base\Interfaces\HasTournament;
+use App\Base\Interfaces\HasTournaments;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Game extends Model implements HasTeams, HasTournament
+class Game extends Model implements HasTeams, HasTournaments
 {
     use HasFactory;
     public $incrementing = false;

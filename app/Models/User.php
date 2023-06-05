@@ -4,8 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use App\Base\Interfaces\HasTournament;
-use App\Base\Interfaces\HasUser;
+use App\Base\Interfaces\HasTournaments;
 use App\Notifications\RegistrationNotification;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -16,7 +15,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable implements MustVerifyEmail, CanResetPassword, HasTournament
+class User extends Authenticatable implements MustVerifyEmail, CanResetPassword, HasTournaments
 {
     use HasApiTokens, HasFactory, Notifiable;
     use HasRoles;
