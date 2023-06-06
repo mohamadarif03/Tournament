@@ -24,6 +24,7 @@ class HomeTournamentDetailRepository extends BaseRepository implements HomeTourn
         return $this->model->query()
             ->findOrFail($id);
     }
+    
     public function showMore(): mixed
     {
         return $this->model->query()
