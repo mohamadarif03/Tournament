@@ -128,8 +128,8 @@
                             <div class="shop__widget">
                                 <h4 class="shop__widget-title font-bold">Tournament Lainnya</h4>
                                 <div class="shop__widget-inner">
-                                    @foreach ($tournamentmore as $tournament)
-                                        <div class="trending__matches-list">
+                                    <div class="trending__matches-list">
+                                        @foreach ($tournamentmore as $tournament)
                                             <div class="trending__matches-item">
                                                 <div class="trending__matches-thumb">
                                                     <a href="#"><img
@@ -150,13 +150,13 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                    @endforeach
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
+                        </aside>
                     </div>
-                    </aside>
                 </div>
-            </div>
             </div>
         </section>
         <!-- tournament-details-area-end -->
