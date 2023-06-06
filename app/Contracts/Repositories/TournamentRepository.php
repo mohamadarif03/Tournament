@@ -28,10 +28,25 @@ class TournamentRepository extends BaseRepository implements TournamentInterface
      */
     public function delete(mixed $id): mixed
     {
-        try {
-            $this->show($id)->delete($id);
-        } catch (QueryException $e) {
-            if ($e->errorInfo[1] == 1451) return false;
+
+        $user = $this->show($id);
+
+        if (UserHelper::getUserRole() === UserRoleEnum::ADMIN->value) {
+            try {
+                $user->delete($id);
+            } catch (QueryException $e) {
+                if ($e->errorInfo[1] == 1451) return false;
+            }
+        }else {
+            if ($user->user_id === Auth::user()->id) {
+                try {
+                    $user->delete($id);
+                } catch (QueryException $e) {
+                    if ($e->errorInfo[1] == 1451) return false;
+                }
+            } else {
+                throw new \Exception('Anda tidak memiliki izin untuk menghapus data ini.');
+            }
         }
 
         return true;
@@ -59,7 +74,7 @@ class TournamentRepository extends BaseRepository implements TournamentInterface
     public function get(): mixed
     {
         return $this->TournamentMockup($this->model->query()
-            ->with('game'));
+            ->with(['game', 'user']));
     }
     /**
      * Handle the Get all data event from models.
@@ -98,6 +113,15 @@ class TournamentRepository extends BaseRepository implements TournamentInterface
      */
     public function update(mixed $id, array $data): mixed
     {
-        return $this->show($id)->update($data);
+        $user = $this->show($id);
+        if (UserHelper::getUserRole() === UserRoleEnum::ADMIN->value) {
+            return $user->update($data);
+        } else {
+            if ($user->user_id === Auth::user()->id) {
+                return $user->update($data);
+            } else {
+                throw new \Exception('Anda tidak memiliki izin untuk memperbarui data ini.');
+            }
+        }
     }
 }

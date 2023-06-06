@@ -153,7 +153,7 @@
             <button type="button" class="flex items-center gap-1.5 xl:gap-0" @click="toggle()">
                 {{-- <img class="h-7 w-7 rounded-full xl:mr-2"
                     src="dashboard_assets/images/byewind-avatar.png" alt="Header Avatar" /> --}}
-                <span class="fw-medium hidden xl:block">Stevens Lo.</span>
+                <span class="fw-medium hidden xl:block">{{ Auth::user()->name }}</span>
                 <svg class="w-4 h-4" width="32" height="32" viewbox="0 0 32 32"
                     fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -170,10 +170,10 @@
                         </div>
                         <div class="pl-2">
                             <h4 class="text-sm text-black dark:text-white font-medium leading-none">
-                                Stevens</h4>
+                                {{ Auth::user()->name }}</h4>
                             <a class="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white text-xs"
                                 href="javaScript:;"><span class="__cf_email__"
-                                    data-cfemail="ca8fa7aba3a68aada7aba3a6e4a9a5a7">[email&#160;protected]</span></a>
+                                    data-cfemail="ca8fa7aba3a68aada7aba3a6e4a9a5a7">[{{ Auth::user()->email }}]</span></a>
                         </div>
                     </div>
                 </li>

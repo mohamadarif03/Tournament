@@ -3,6 +3,8 @@
 namespace App\Contracts\Repositories;
 
 use App\Contracts\Interfaces\TeamInterface;
+use App\Enums\UserRoleEnum;
+use App\Helpers\UserHelper;
 use App\Models\Team;
 use App\Traits\Datatables\TeamDatatable;
 use Illuminate\Database\QueryException;
@@ -26,10 +28,25 @@ class TeamRepository extends BaseRepository implements TeamInterface
      */
     public function delete(mixed $id): mixed
     {
-        try {
-            $this->show($id)->delete($id);
-        } catch (QueryException $e) {
-            if ($e->errorInfo[1] == 1451) return false;
+
+        $user = $this->show($id);
+
+        if (UserHelper::getUserRole() === UserRoleEnum::ADMIN->value) {
+            try {
+                $user->delete($id);
+            } catch (QueryException $e) {
+                if ($e->errorInfo[1] == 1451) return false;
+            }
+        } else {
+            if ($user->user_id === Auth::user()->id) {
+                try {
+                    $user->delete($id);
+                } catch (QueryException $e) {
+                    if ($e->errorInfo[1] == 1451) return false;
+                }
+            } else {
+                throw new \Exception('Anda tidak memiliki izin untuk menghapus data ini.');
+            }
         }
 
         return true;
@@ -83,12 +100,22 @@ class TeamRepository extends BaseRepository implements TeamInterface
      */
     public function update(mixed $id, array $data): mixed
     {
-        return $this->show($id)->update($data);
+        $user = $this->show($id);
+        if (UserHelper::getUserRole() === UserRoleEnum::ADMIN->value) {
+            return $user->update($data);
+        } else {
+            if ($user->user_id === Auth::user()->id) {
+                return $user->update($data);
+            } else {
+                throw new \Exception('Anda tidak memiliki izin untuk memperbarui data ini.');
+            }
+        }
     }
+
     public function showMore(): mixed
     {
         return $this->model->query()
-        ->where('user_id', Auth()->id())
-        ->get();
+            ->where('user_id', Auth()->id())
+            ->get();
     }
 }

@@ -25,11 +25,11 @@ class TournamentController extends Controller
 
     public function __construct(TournamentInterface $tournament, TournamentService $service, GameInterface $game)
     {
-        $this->tournament = $tournament;  
+        $this->tournament = $tournament;
         $this->game = $game;
-        $this->service = $service;    
+        $this->service = $service;
     }
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @param Request $request
@@ -37,8 +37,13 @@ class TournamentController extends Controller
      */
     public function index(Request $request): View|JsonResponse
     {
-        if ($request->ajax()) return $this->tournament->get();
-        return view('pages.dashboard.tournament.index');
+        if (UserHelper::getUserRole() === UserRoleEnum::ADMIN->value) {
+            if ($request->ajax()) return $this->tournament->get();
+            return view('pages.dashboard.tournament.index');
+        } else {
+            $tournaments = $this->tournament->showMore();
+            return view('pages.user.tournament.index', compact('tournaments'));
+        }
     }
 
     /**
@@ -50,7 +55,7 @@ class TournamentController extends Controller
         return view('pages.dashboard.tournament.create', compact('games'));
     }
 
-   /**
+    /**
      * Store a newly created resource in storage.
      *
      * @param TournamentRequest $request
@@ -60,11 +65,7 @@ class TournamentController extends Controller
     {
         $store = $this->service->store($request);
         $this->tournament->store($store);
-        if (UserHelper::getUserRole() === UserRoleEnum::ADMIN->value) {
-            return to_route('tournament.index')->with('success', trans('alert.add_success'));
-        }else{
-            return to_route('tournament-organizer.index')->with('success', trans('alert.add_success'));
-        }
+        return to_route('tournament.index')->with('success', trans('alert.add_success'));
     }
 
     /**
@@ -80,10 +81,10 @@ class TournamentController extends Controller
      */
     public function edit(Tournament $tournament)
     {
-       
+
         $games = $this->game->get();
         return view('pages.dashboard.tournament.edit', compact('games', 'tournament'));
-    } 
+    }
 
     /**
      * Update the specified resource in storage.
@@ -93,11 +94,7 @@ class TournamentController extends Controller
         $store = $this->service->update($request, $tournament);
 
         $this->tournament->update($tournament->id, $store);
-        if (UserHelper::getUserRole() === UserRoleEnum::ADMIN->value) {
-            return to_route('tournament.index')->with('success', trans('alert.update_success'));
-        }else{
-            return to_route('tournament-organizer.index')->with('success', trans('alert.add_success'));
-        }
+        return to_route('tournament.index')->with('success', trans('alert.update_success'));
     }
 
     /**

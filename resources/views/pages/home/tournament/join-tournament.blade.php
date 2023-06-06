@@ -105,8 +105,26 @@
                     </div>
                 @endif
                 <div class="row justify-content-center">
-                    <div class="col-lg-12 col-md-10">
-                        <div class="contact__form-wrap">
+                    <div class="grid grid-cols-12 gap-3">
+                        <div class="blog-post-wrapper col-span-4 w-full">
+                            <div class="tournament__details-content" style="background-color: #2c3137">
+                                <h2 class="title font-bold">{{ $tournament->name }}</h2>
+                                <div class="blog-post-meta">
+                                    <ul class="list-wrap">
+                                        <li>By<a href="#">{{ $tournament->user->name }}</a></li>
+                                    </ul>
+                                </div>
+                                <div class="tournament__details-video position-relative">
+                                    <img src="{{ asset('storage/' . $tournament->live_image_url) }}" alt="live_image_url"
+                                        srcset="" width="750">
+                                </div>
+                                <div class="tournament__details-form">
+                                    <p>{{ $tournament->description }}</p>
+    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact__form-wrap col-span-8">
                             <form action="{{ route('register-tournament') }}" method="POST">
                                 <div class="center" style="">
                                     <h2 class="title font-bold text-2xl" style="margin-bottom:30px; text-align:center">
@@ -482,7 +500,6 @@
                                     <button type="submit"class="tournament__details-form-btn bg-[#45f882]">Kirim</button>
                                 </div>
                             </form>
-
                         </div>
                     </div>
                 </div>

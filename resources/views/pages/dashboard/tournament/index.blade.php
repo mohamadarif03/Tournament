@@ -19,12 +19,10 @@
                     <thead>
                         <tr>
                             <th>Nama</th>
-                            <th>Foto</th>
+                            <th>Pembuat</th>
                             <th>Tournament Dimulai</th>
-                            <th>Tournament Selesai</th>
-                            <th>Slot</th>
+                            <th>Lokasi</th>
                             <th>Hadiah</th>
-                            <th>Game</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -60,8 +58,8 @@
                         name: 'name'
                     },
                     {
-                        data: 'live_image_url',
-                        name: 'live_image_url',
+                        data: 'user.name',
+                        name: 'user.name',
                         searchable: false
                     },
                     {
@@ -69,20 +67,12 @@
                         name: 'starter_at'
                     },
                     {
-                        data: 'completed_at',
-                        name: 'completed_at'
-                    },
-                    {
-                        data: 'slot',
-                        name: 'slot'
+                        data: 'location',
+                        name: 'location'
                     },
                     {
                         data: 'price_pool',
                         name: 'price_pool'
-                    },
-                    {
-                        data: 'game.name',
-                        name: 'game.name'
                     },
                     {
                         data: 'action',

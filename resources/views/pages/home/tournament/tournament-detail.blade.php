@@ -68,7 +68,6 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="blog-post-wrapper">
-
                         <div class="tournament__details-content">
                             <h2 class="title font-bold">{{ $tournament->name }}</h2>
                             <div class="blog-post-meta">
@@ -97,7 +96,8 @@
 
                             </div>
                             <div class="tournament__details-form">
-                                <a href="{{ route('join-tournament', $tournament->id) }}" class="tournament__details-form-btn">Gabung Tournament</a>
+                                <a href="{{ route('join-tournament', $tournament->id) }}"
+                                    class="tournament__details-form-btn">Gabung Tournament</a>
                             </div>
                             <div class="blog-details-bottom">
                                 <div class="row">

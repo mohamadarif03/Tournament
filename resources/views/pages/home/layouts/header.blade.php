@@ -43,26 +43,11 @@
                                 <li class="header-btn">
                                     @if (Route::has('login'))
                                         @auth
-                                            @if (UserHelper::getUserRole() === UserRoleEnum::PLAYER->value)
-                                                <a href="{{ route('logout') }}"
-                                                    onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();"
-                                                    class="tg-btn-3 tg-svg">
-                                                    <div class="svg-icon" id="svg-2"
-                                                        data-svg-icon="assets/img/icons/shape02.svg"></div>
-                                                    <span>Logout</span>
-                                                </a>
-                                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                                    class="d-none">
-                                                    @csrf
-                                                </form>
-                                            @else
-                                                <a href="/dashboard" class="tg-btn-3 tg-svg">
-                                                    <div class="svg-icon" id="svg-2"
-                                                        data-svg-icon="assets/img/icons/shape02.svg"></div>
-                                                    <span>Dashboard</span>
-                                                </a>
-                                            @endif
+                                            <a href="/dashboard" class="tg-btn-3 tg-svg">
+                                                <div class="svg-icon" id="svg-2"
+                                                    data-svg-icon="assets/img/icons/shape02.svg"></div>
+                                                <span>Dashboard</span>
+                                            </a>
                                         @else
                                             <a href="{{ route('login') }}" class="tg-btn-3 tg-svg">
                                                 <div class="svg-icon" id="svg-2"

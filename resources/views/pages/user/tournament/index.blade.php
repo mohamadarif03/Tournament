@@ -7,11 +7,11 @@
             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-5">
             +Tambah Data
         </a>
-        <div class="grid grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             @forelse ($tournaments as $tournament)
                 <div x-data="basic" class="border bg-white border-none drop-shadow-lg rounded-md">
                     <div class="flex justify-center">
-                        <img src="{{ asset('storage/' . $tournament->live_image_url) }}" class="rounded-t-md" width="450" alt="">
+                        <img src="{{ asset('storage/' . $tournament->live_image_url) }}" class="rounded-t-md" width="450" style="min-height: 150px; max-height:170px" alt="">
                     </div>
                     <div class="flex mx-4 mt-5">
                         <p class="font-bold text-md flex mr-2 text-slate-500">

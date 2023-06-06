@@ -43,19 +43,19 @@ Route::get('/teams', [TeamhomeController::class, 'index'])->name('teams');
 Route::get('/teams-detail/{team}', [TeamhomeController::class, 'detail'])->name('team-detail');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::middleware('role:organizer|admin')->group(function () {
-        Route::prefix('dashboard')->group(function () {
-            Route::get('/', function () {
-                return view('pages.dashboard.index');
-            })->name('dashboard');
-            Route::resources([
-                'game' => GameController::class,
-                'team' => TeamController::class,
-                'tournament' => TournamentController::class
-            ]);
+    Route::prefix('dashboard')->group(function () {
+        Route::get('/', function () {
+            return view('pages.dashboard.index');
+        })->name('dashboard');
+
+        Route::middleware('role:organizer|admin')->group(function () {
+            Route::resources(['tournament' => TournamentController::class]);
         });
+        
+        Route::middleware('role:player|admin')->group(function () {
+            Route::resources(['team' => TeamController::class]);
+        });
+        
+        Route::resources(['game' => GameController::class]);
     });
 });
-
-Route::get(['tournament-organizer' => TournamentorganizerController::class, 'index']);
-Route::get('/tournaments', [TournamenthomeController::class, 'index']);

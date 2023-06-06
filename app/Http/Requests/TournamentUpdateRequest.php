@@ -30,7 +30,7 @@ class TournamentUpdateRequest extends FormRequest
             'slot' => 'required',
             'price_pool' => 'required',
             'game_id' => 'required',
-            'is_open_signup' => 'nullable',
+            'is_open_signup' => 'required',
             'location' => 'required',
             'registration_fee' => 'required',
         ];

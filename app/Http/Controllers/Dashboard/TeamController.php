@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Contracts\Interfaces\GameInterface;
 use App\Contracts\Interfaces\TeamInterface;
+use App\Enums\UserRoleEnum;
+use App\Helpers\UserHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TeamRequest;
 use App\Http\Requests\TeamUpdateRequest;
@@ -27,19 +29,24 @@ class TeamController extends Controller
         $this->game = $game;
         $this->service = $service;
     }
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @param Request $request
      * @return View|JsonResponse
      */
 
-     public function index(Request $request):View|JsonResponse
-     {
-         if ($request->ajax()) return $this->team->get();
-         return view('pages.dashboard.team.index');
-     }
- 
+    public function index(Request $request): View|JsonResponse
+    {
+        if (UserHelper::getUserRole() === UserRoleEnum::ADMIN->value) {
+            if ($request->ajax()) return $this->team->get();
+            return view('pages.dashboard.team.index');
+        } else {
+            $teams = $this->team->showMore();
+            return view('pages.user.team.index', compact('teams'));
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -47,7 +54,6 @@ class TeamController extends Controller
     {
         $games = $this->game->get();
         return view('pages.dashboard.team.create', compact('games'));
-        
     }
 
     /**

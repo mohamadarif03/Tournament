@@ -72,10 +72,6 @@ class LoginController extends Controller
     {
         $this->loginService->handleLoginUser($request);
 
-        if (UserHelper::getUserRole() === UserRoleEnum::PLAYER->value) {
-            return to_route('home');
-        }
-
         return to_route('dashboard');
     }
 }

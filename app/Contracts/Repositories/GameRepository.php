@@ -22,6 +22,12 @@ class GameRepository extends BaseRepository implements GameInterface
      */
     public function delete(mixed $id): mixed
     {
+        // $data = $this->show($id);
+        // if($data->user_id == auth()->id()){
+        //     $data->delete();
+        //     return true;
+        // }
+        
         try {
             $this->show($id)->delete($id);
         } catch (QueryException $e) {
