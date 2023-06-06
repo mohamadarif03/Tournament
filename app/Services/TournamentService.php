@@ -60,6 +60,8 @@ class TournamentService implements ShouldHandleFileUpload, CustomUploadValidatio
             'price_pool' => $data['price_pool'],
             'game_id' => $data['game_id'],
             'starter_at' => $data['starter_at'],
+            'location' => $data['location'],
+            'registration_fee' => $data['registration_fee'],
             'live_image_url' => $request->file('live_image_url')->store(UploadDiskEnum::TOURNAMENT->value, 'public'),
         ];
     }
@@ -82,7 +84,6 @@ class TournamentService implements ShouldHandleFileUpload, CustomUploadValidatio
             $this->remove($old_image);
             $old_image = $request->file('live_image_url')->store(UploadDiskEnum::TOURNAMENT->value, 'public');
         }
-
         return [
             'name' => $data['name'],
             'description' => $data['description'],
@@ -92,6 +93,8 @@ class TournamentService implements ShouldHandleFileUpload, CustomUploadValidatio
             'game_id' => $data['game_id'],
             'starter_at' => $data['starter_at'],
             'is_open_signup' => $data['is_open_signup'],
+            'location' => $data['location'],
+            'registration_fee' => $data['registration_fee'],
             'live_image_url' => $old_image,
         ];
     }

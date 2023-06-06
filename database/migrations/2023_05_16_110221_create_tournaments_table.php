@@ -25,6 +25,8 @@ return new class extends Migration
             $table->integer('slot')->default(8);
             $table->integer('price_pool')->nullable();
             $table->foreignUuid('game_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->text('location');
+            $table->integer('registration_fee');
             $table->timestamps();
         });
     }

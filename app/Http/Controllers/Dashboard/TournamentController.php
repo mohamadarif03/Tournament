@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Contracts\Interfaces\GameInterface;
 use App\Contracts\Interfaces\TournamentInterface;
+use App\Enums\UserRoleEnum;
+use App\Helpers\UserHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TournamentRequest;
 use App\Http\Requests\TournamentUpdateRequest;
@@ -58,7 +60,11 @@ class TournamentController extends Controller
     {
         $store = $this->service->store($request);
         $this->tournament->store($store);
-        return to_route('tournament.index')->with('success', trans('alert.add_success'));
+        if (UserHelper::getUserRole() === UserRoleEnum::ADMIN->value) {
+            return to_route('tournament.index')->with('success', trans('alert.add_success'));
+        }else{
+            return to_route('tournament-organizer.index')->with('success', trans('alert.add_success'));
+        }
     }
 
     /**
@@ -87,7 +93,11 @@ class TournamentController extends Controller
         $store = $this->service->update($request, $tournament);
 
         $this->tournament->update($tournament->id, $store);
-        return to_route('tournament.index')->with('success', trans('alert.update_success'));
+        if (UserHelper::getUserRole() === UserRoleEnum::ADMIN->value) {
+            return to_route('tournament.index')->with('success', trans('alert.update_success'));
+        }else{
+            return to_route('tournament-organizer.index')->with('success', trans('alert.add_success'));
+        }
     }
 
     /**

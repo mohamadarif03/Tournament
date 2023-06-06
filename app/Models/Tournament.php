@@ -12,7 +12,7 @@ class Tournament extends Model implements HasGame, HasUser
 {
     use HasFactory;
     public $incrementing = false;
-    protected $fillable = ['name', 'description', 'user_id', 'live_image_url', 'completed_at', 'is_open_signup', 'slot', 'price_pool', 'game_id', 'starter_at'];
+    protected $fillable = ['name', 'description', 'user_id', 'live_image_url', 'completed_at', 'is_open_signup', 'slot', 'price_pool', 'game_id', 'starter_at', 'location', 'registration_fee'];
     protected $primaryKey = 'id';
     public $keyType = 'char';
     protected $table = 'tournaments';

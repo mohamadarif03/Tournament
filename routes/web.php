@@ -4,6 +4,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\GameController;
 use App\Http\Controllers\Dashboard\TeamController;
 use App\Http\Controllers\Dashboard\TournamentController;
+use App\Http\Controllers\Dashboard\TournamentorganizerController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Home\JointournamentController;
 use App\Http\Controllers\Home\TeamhomeController;
@@ -42,7 +43,7 @@ Route::get('/teams', [TeamhomeController::class, 'index'])->name('teams');
 Route::get('/teams-detail/{team}', [TeamhomeController::class, 'detail'])->name('team-detail');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::middleware('role:organizer')->group(function () {
+    Route::middleware('role:organizer|admin')->group(function () {
         Route::prefix('dashboard')->group(function () {
             Route::get('/', function () {
                 return view('pages.dashboard.index');
@@ -55,3 +56,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         });
     });
 });
+
+Route::get(['tournament-organizer' => TournamentorganizerController::class, 'index']);
+Route::get('/tournaments', [TournamenthomeController::class, 'index']);

@@ -3,9 +3,12 @@
 namespace App\Contracts\Repositories;
 
 use App\Contracts\Interfaces\TournamentInterface;
+use App\Enums\UserRoleEnum;
+use App\Helpers\UserHelper;
 use App\Models\Tournament;
 use App\Traits\Datatables\TournamentDatatable;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Auth;
 
 class TournamentRepository extends BaseRepository implements TournamentInterface
 {
@@ -57,6 +60,19 @@ class TournamentRepository extends BaseRepository implements TournamentInterface
     {
         return $this->TournamentMockup($this->model->query()
             ->with('game'));
+    }
+    /**
+     * Handle the Get all data event from models.
+     *
+     * @return mixed
+     * @throws Exception
+     */
+    public function showMore(): mixed
+    {
+        return $this->model->query()
+            ->orderBy('created_at', 'desc')
+            ->where('user_id', Auth()->id())
+            ->get();
     }
 
     /**

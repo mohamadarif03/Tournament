@@ -1,3 +1,7 @@
+@php
+    use App\Enums\UserRoleEnum;
+    use App\Helpers\UserHelper;
+@endphp
 @extends('pages.dashboard.layouts.main')
 
 @section('content')
@@ -56,14 +60,16 @@
                     </label>
                     <input
                         class="form-input w-full rounded-lg border border-black/10 dark:border-white/10 bg-transparent px-3 py-2.5 placeholder:text-black/60 dark:placeholder:text-white/60 hover:z-10 hover:border-black dark:hover:border-white focus:z-10 focus:border-black dark:focus:border-white"
-                        placeholder="" type="datetime-local" id="" name="starter_at" value="{{$tournament->starter_at}}" />
+                        placeholder="" type="datetime-local" id="" name="starter_at"
+                        value="{{ $tournament->starter_at }}" />
                 </div>
                 <div class="mb-4">
                     <label class="mt-1.5 flex -space-x-px">
                     </label>
                     <input
                         class="form-input w-full rounded-lg border border-black/10 dark:border-white/10 bg-transparent px-3 py-2.5 placeholder:text-black/60 dark:placeholder:text-white/60 hover:z-10 hover:border-black dark:hover:border-white focus:z-10 focus:border-black dark:focus:border-white"
-                        placeholder="" type="datetime-local" id="" name="completed_at" value="{{$tournament->completed_at}}" />
+                        placeholder="" type="datetime-local" id="" name="completed_at"
+                        value="{{ $tournament->completed_at }}" />
                 </div>
                 <div class="mb-4">
                     <label class="mt-1.5 flex -space-x-px">
@@ -109,37 +115,104 @@
                         @endforeach
                     </select>
                 </div>
-                @if ($tournament->is_open_signup == 1)
                 <div class="mb-4">
-                    <label class="relative inline-flex items-center cursor-pointer">
-                        <input type="checkbox" value="0" class="sr-only peer" name="is_open_signup">
-                        <div
-                            class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
-                        </div>
-                        <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Tutup Pendaftaran</span>
-                    </label>
+                    <label class="mt-1.5 font-bold">Lokasi</label>
+                    <select id="locationdrop" onchange="handleLocationChange" name="location"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        <option selected>Pilih Lokasi</option>
+                        <option value="Online" <?php if ($tournament->location == 'Online') {
+                            echo 'selected';
+                        } ?>>Online</option>
+                        <option value="Offline" <?php if ($tournament->location != 'Online') {
+                            echo 'selected';
+                        } ?>>Offline</option>
+                    </select>
+                </div>
+                @if ($tournament->location != 'Online')
+                <div class="mb-4" id="address" style="display: block">
+                    <label class="mt-1.5 flex -space-x-px font-semibold">Pilih Alamat</label>
+                    <input
+                        class="form-input w-full rounded-lg border border-black/10 bg-transparent px-3 py-2.5 placeholder:text-black/60"
+                        placeholder="Alamat" type="text" id="inputaddress" value="{{$tournament->location}}" name="address" />
                 </div>
                 @else
-                <div class="mb-4">
-                    <label class="relative inline-flex items-center cursor-pointer">
-                        <input type="checkbox" value="1" class="sr-only peer" name="is_open_signup">
-                        <div
-                            class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
-                        </div>
-                        <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Buka Pendaftaran</span>
-                    </label>
+                <div class="mb-4" id="address" style="display: none">
+                    <label class="mt-1.5 flex -space-x-px font-semibold">Pilih Alamat</label>
+                    <input
+                        class="form-input w-full rounded-lg border border-black/10 bg-transparent px-3 py-2.5 placeholder:text-black/60"
+                        placeholder="Alamat" type="text" id="inputaddress" value="{{$tournament->location}}" name="address" />
                 </div>
+                    
+                @endif
+                <div class="mb-4">
+                    <label class="mt-1.5 flex -space-x-px font-semibold">Biaya Pendaftaran
+                    </label>
+                    <input
+                        class="form-input w-full rounded-lg border border-black/10 bg-transparent px-3 py-2.5 placeholder:text-black/60"
+                        placeholder="Biaya" type="number" id="registration_fee" name="registration_fee" value="{{$tournament->registration_fee}}" />
+                </div>
+                @if ($tournament->is_open_signup == 1)
+                    <div class="mb-4">
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" value="0" class="sr-only peer" name="is_open_signup">
+                            <div
+                                class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
+                            </div>
+                            <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Tutup Pendaftaran</span>
+                        </label>
+                    </div>
+                @else
+                    <div class="mb-4">
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" value="1" class="sr-only peer" name="is_open_signup">
+                            <div
+                                class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
+                            </div>
+                            <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Buka Pendaftaran</span>
+                        </label>
+                    </div>
                 @endif
 
-                <a href="{{ route('tournament.index') }}" type="button"
-                    class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mb-5">
-                    <span>Back</span>
-                </a>
-                <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mb-5">
+                @if (UserHelper::getUserRole() === UserRoleEnum::ADMIN->value)
+                    <a href="{{ route('tournament.index') }}" type="button"
+                        class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mb-5">
+                        <span>Back</span>
+                    </a>
+                @else
+                    <a href="{{ route('tournament-organizer.index') }}" type="button"
+                        class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mb-5">
+                        <span>Back</span>
+                    </a>
+                @endif
+                <button type="submit"
+                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mb-5">
                     <span>Kirim</span>
                 </button>
             </div>
         </form>
 
     </div>
+@endsection
+@section('js')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("#locationdrop").change(function() {
+                var selectedValue = $(this).val();
+                var addressDiv = $("#address");
+                var inputAddress = $("#inputaddress");
+
+                if (selectedValue === "Offline") {
+                    addressDiv.show();
+                    inputAddress.attr("name", "location");
+                    $("#locationdrop option[value='Offline']").text("Offline");
+                } else {
+                    addressDiv.hide();
+                    inputAddress.attr("name", "address");
+                    $("#locationdrop option[value='Offline']").text("Offline");
+                }
+            });
+        });
+    </script>
 @endsection
