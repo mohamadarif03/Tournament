@@ -41,13 +41,12 @@ class HomeTeamRepository extends BaseRepository implements HomeTeamInterface
     {
         return $this->model->query()
             ->when($request->search, function ($query) use ($request) {
-                return $query->where('name', 'LIKE', '%'.$request->search.'%');
+                return $query->where('name', 'LIKE', '%' . $request->search . '%');
             })
             ->when($request->games, function ($query) use ($request) {
                 return $query->whereIn('game_id', $request->games);
-            })      
+            })
             ->with(['user', 'game'])
             ->cursorPaginate($perPage, $columns, $cursorName, $cursor);
     }
-
 }

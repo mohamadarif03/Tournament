@@ -48,10 +48,10 @@
             <ul x-cloak x-show="activeMenu === 'dashboard'" x-collapse
                 class="sub-menu flex flex-col gap-1 text-black dark:text-white/80">
                 <li>
-                    <a href="{{ route('tournament.index')}}"  class="{{ request()->routeIs('tournament.index', 'tournament.create', 'tournament.edit') ? 'active' : '' }}">Tournament</a>
+                    <a href="{{ route('game.index') }}" class="{{ request()->routeIs('game.index', 'game.create', 'game.edit') ? 'active' : '' }}">Game</a>
                 </li>
                 <li>
-                    <a href="{{ route('game.index') }}" class="{{ request()->routeIs('game.index', 'game.create', 'game.edit') ? 'active' : '' }}">Game</a>
+                    <a href="{{ route('tournament.index')}}"  class="{{ request()->routeIs('tournament.index', 'tournament.create', 'tournament.edit') ? 'active' : '' }}">Tournament</a>
                 </li>
                 <li>
                     <a href="{{ route('team.index') }}" class="{{ request()->routeIs('team.index', 'team.create', 'team.edit') ? 'active' : '' }}">Team</a>

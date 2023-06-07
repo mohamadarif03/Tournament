@@ -151,27 +151,15 @@
                         class="form-input w-full rounded-lg border border-black/10 bg-transparent px-3 py-2.5 placeholder:text-black/60"
                         placeholder="Biaya" type="number" id="registration_fee" name="registration_fee" value="{{$tournament->registration_fee}}" />
                 </div>
-                @if ($tournament->is_open_signup == 1)
-                    <div class="mb-4">
-                        <label class="relative inline-flex items-center cursor-pointer">
-                            <input type="checkbox" value="0" class="sr-only peer" name="is_open_signup">
-                            <div
-                                class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
-                            </div>
-                            <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Tutup Pendaftaran</span>
-                        </label>
-                    </div>
-                @else
-                    <div class="mb-4">
-                        <label class="relative inline-flex items-center cursor-pointer">
-                            <input type="checkbox" value="1" class="sr-only peer" name="is_open_signup">
-                            <div
-                                class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
-                            </div>
-                            <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Buka Pendaftaran</span>
-                        </label>
-                    </div>
-                @endif
+                
+                <div class="mb-4">
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" class="sr-only peer" name="is_open_signup" onclick="toggleCheckbox(this)">
+                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
+                        </div>
+                        <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Buka Pendaftaran</span>
+                    </label>
+                </div>
 
                 @if (UserHelper::getUserRole() === UserRoleEnum::ADMIN->value)
                     <a href="{{ route('tournament.index') }}" type="button"
@@ -214,5 +202,14 @@
                 }
             });
         });
+    </script>
+    <script>
+        function toggleCheckbox(checkbox) {
+            if (checkbox.checked) {
+                checkbox.value = "1";
+            } else {
+                checkbox.value = "0";
+            }
+        }
     </script>
 @endsection

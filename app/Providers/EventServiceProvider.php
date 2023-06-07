@@ -6,12 +6,14 @@ use App\Models\Competitor;
 use App\Models\CompetitorRegistrant;
 use App\Models\Game;
 use App\Models\Team;
+use App\Models\TeamOpenTrial;
 use App\Models\Tournament;
 use App\Models\User;
 use App\Observers\CompetitorObserver;
 use App\Observers\CompetitorRegistrantObserver;
 use App\Observers\GameObserver;
 use App\Observers\TeamObserver;
+use App\Observers\TeamOpenTrialObserver;
 use App\Observers\TournamentObserver;
 use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Registered;
@@ -43,6 +45,7 @@ class EventServiceProvider extends ServiceProvider
         Competitor::observe(CompetitorObserver::class);
         CompetitorRegistrant::observe(CompetitorRegistrantObserver::class);
         Tournament::observe(TournamentObserver::class);
+        TeamOpenTrial::observe(TeamOpenTrialObserver::class);
     }
 
     /**

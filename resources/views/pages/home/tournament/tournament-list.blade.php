@@ -103,7 +103,7 @@
                             </div>
 
                         </div>
-                        <div class="col-span-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 m-2 gap-12 md:ml-2 lg:ml-2">
+                        <div class="col-span-4 grid grid-cols-1 min-[768px]:grid-cols-2 max-[1095px]:grid-cols-2 min-[1096px]:grid-cols-3 m-2 gap-12 md:ml-2 lg:ml-2">
                             @foreach ($tournamentlist as $tournament)
                                 <a href="{{ route('tournament-detail', $tournament->id) }}" class="loopTournament row justify-content-center">
                                     <div class="tournament__box-wrap" style="padding-bottom: 30px">

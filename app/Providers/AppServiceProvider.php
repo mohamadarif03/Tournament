@@ -11,6 +11,7 @@ use App\Contracts\Interfaces\HomeTournamentDetailInterface;
 use App\Contracts\Interfaces\HomeTournamentListInterface;
 use App\Contracts\Interfaces\RegisterInterface;
 use App\Contracts\Interfaces\TeamInterface;
+use App\Contracts\Interfaces\TeamOpenTrialInterface;
 use App\Contracts\Interfaces\TournamentInterface;
 use App\Contracts\Interfaces\UserInterface;
 use App\Contracts\Repositories\CompetitorRegistrantRepository;
@@ -21,6 +22,7 @@ use App\Contracts\Repositories\HomeTeamRepository;
 use App\Contracts\Repositories\HomeTournamentDetailRepository;
 use App\Contracts\Repositories\HomeTournamentListRepository;
 use App\Contracts\Repositories\RegisterRepository;
+use App\Contracts\Repositories\TeamOpenTrialRepository;
 use App\Contracts\Repositories\TeamRepository;
 use App\Contracts\Repositories\TournamentRepository;
 use App\Contracts\Repositories\UserRepository;
@@ -41,6 +43,7 @@ class AppServiceProvider extends ServiceProvider
         CompetitorInterface::class => CompetitorRepository::class,
         CompetitorRegistrantInterface::class => CompetitorRegistrantRepository::class,
         UserInterface::class => UserRepository::class,
+        TeamOpenTrialInterface::class => TeamOpenTrialRepository::class,
     ];
 
     /**

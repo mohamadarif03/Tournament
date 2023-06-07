@@ -85,7 +85,7 @@
 
                             </div>
                             <div class="tournament__details-form">
-                                <a href="" class="tournament__details-form-btn">Gabung Tim</a>
+                                <a href="{{ route('join-team', $team->id) }}" class="tournament__details-form-btn">Gabung Tim</a>
                             </div>
                             <div class="blog-details-bottom">
                                 <div class="row">

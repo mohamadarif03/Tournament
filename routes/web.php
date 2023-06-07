@@ -41,6 +41,10 @@ Route::post('/register-tournament', [JointournamentController::class, 'join'])->
 
 Route::get('/teams', [TeamhomeController::class, 'index'])->name('teams');
 Route::get('/teams-detail/{team}', [TeamhomeController::class, 'detail'])->name('team-detail');
+Route::get('/join-team/{team}', [TeamhomeController::class, 'view'])->name('join-team');
+Route::post('/register-team', [TeamhomeController::class, 'join'])->name('register-team');
+
+
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('dashboard')->group(function () {

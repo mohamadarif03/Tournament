@@ -130,6 +130,7 @@
                 var addressDiv = $("#address");
                 var inputAddress = $("#inputaddress");
 
+                
                 if (selectedValue === "Offline") {
                     addressDiv.show();
                     inputAddress.attr("name", "location");
