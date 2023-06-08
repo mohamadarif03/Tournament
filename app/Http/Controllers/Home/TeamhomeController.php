@@ -91,12 +91,11 @@ class TeamhomeController extends Controller
      * @param TeamOpenTrialRequest $request
      * @return RedirectResponse
      */
-    public function join(TeamOpenTrialRequest $teamOpenTrialRequest, OpenTrialAnswerRequest $openTrialAnswerRequest): RedirectResponse
+    public function join(TeamOpenTrialRequest $request): RedirectResponse
     {
 
-        $this->team->store($this->openTrialService->store($teamOpenTrialRequest));
-
-        $this->openTrialAnswerService->store($openTrialAnswerRequest->validated(), $openTrialAnswerRequest);
+        $this->team->store($this->openTrialService->store($request));
+        $this->openTrialAnswerService->store($request->validated(), $request);
 
         return redirect()->route('teams')->with('success', trans('alert.add_success'));
     }

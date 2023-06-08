@@ -25,7 +25,20 @@ class TeamOpenTrialRequest extends FormRequest
            'name' => 'required',
            'email' => 'required',
            'phone_number' => 'required',
-        //    'cv' => 'required',
+           'cv' => 'nullable',
         ];
+    }
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
+     */
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'Nama Wajib Diisi',
+            'email.required' => 'Email Wajib Diisi',
+            'phone_number.required' => 'Nomor HP Wajib Diisi',
+         ];
     }
 }

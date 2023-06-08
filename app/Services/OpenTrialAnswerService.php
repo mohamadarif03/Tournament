@@ -2,10 +2,9 @@
 
 namespace App\Services;
 
-use App\Contracts\Interfaces\CompetitorRegistrantInterface;
-use App\Contracts\Interfaces\HomeTeamInterface;
 use App\Contracts\Interfaces\OpenTrialAnswerInterface;
 use App\Http\Requests\OpenTrialAnswerRequest;
+use App\Http\Requests\TeamOpenTrialRequest;
 use App\Traits\UploadTrait;
 
 class OpenTrialAnswerService
@@ -29,7 +28,7 @@ class OpenTrialAnswerService
      * @return array|bool
      */
 
-    public function store(array $data, OpenTrialAnswerRequest $request): void
+    public function store(array $data, TeamOpenTrialRequest $request): void
     {
 
         foreach ($request->answer as $value) {
