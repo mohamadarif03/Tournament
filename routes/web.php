@@ -9,6 +9,7 @@ use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Home\JointournamentController;
 use App\Http\Controllers\Home\TeamhomeController;
 use App\Http\Controllers\Home\TournamenthomeController;
+use App\Http\Controllers\OpenTrialController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -63,3 +64,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resources(['game' => GameController::class]);
     });
 });
+
+Route::get('/open-trial/{team}', [OpenTrialController::class, 'create'])->name('open-trial');
+Route::post('/create-open-trial', [OpenTrialController::class, 'store'])->name('create-open-trial');

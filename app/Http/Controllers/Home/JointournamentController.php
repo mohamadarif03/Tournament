@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Home;
 
 use App\Contracts\Interfaces\CompetitorInterface;
-use App\Contracts\Interfaces\CompetitorRegistrantInterface;
 use App\Contracts\Interfaces\TeamInterface;
 use App\Contracts\Interfaces\UserInterface;
 use App\Http\Controllers\Controller;

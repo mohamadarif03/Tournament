@@ -4,6 +4,8 @@ namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -19,8 +21,21 @@ class AuthServiceProvider extends ServiceProvider
     /**
      * Register any authentication / authorization services.
      */
-    public function boot(): void
+    public function boot()
     {
-        //
+        $this->registerPolicies();
+
+        $permission = Permission::where('name', 'view-admin')->first();
+        $permission = Permission::where('name', 'view-organizer')->first();
+        if (!$permission) {
+            Permission::create(['name' => 'view-admin']);
+            Permission::create(['name' => 'view-organizer']);
+
+            $organizerRole = Role::where('name', 'organizer')->first();
+            $adminRole = Role::where('name', 'admin')->first();
+
+            $adminRole->givePermissionTo('view-admin');
+            $organizerRole->givePermissionTo('view-organizer');
+        }
     }
 }

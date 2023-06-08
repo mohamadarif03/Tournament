@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('open_trial_questions', function (Blueprint $table) {
+        Schema::create('open_trials', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('question');
-            $table->foreignUuid('open_trial_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignUuid('team_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->text('desc');
+            $table->timestamp('close_registration');
+            $table->string('location');
+            $table->integer('salary');
             $table->timestamps();
         });
     }
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('open_trial_questions');
+        Schema::dropIfExists('open_trials');
     }
 };

@@ -8,7 +8,7 @@ use App\Enums\UploadDiskEnum;
 use App\Http\Requests\TeamOpenTrialRequest;
 use App\Traits\UploadTrait;
 
-class TeamOpenTrialService implements ShouldHandleFileUpload, CustomUploadValidation
+class OpenTrialService implements ShouldHandleFileUpload, CustomUploadValidation
 {
     use UploadTrait;
 
@@ -39,8 +39,8 @@ class TeamOpenTrialService implements ShouldHandleFileUpload, CustomUploadValida
         $data = $request->validated();
 
         return [
-            'name' => $data['name'],
-            'email' => $data['email'],
+            'team_id' => $data['team_id'],
+            'description' => $data['description'],
             'phone_number' => $data['phone_number'],
             'cv' => $request->file('cv')->store(UploadDiskEnum::CV->value, 'public')
         ];

@@ -47,15 +47,30 @@
             </a>
             <ul x-cloak x-show="activeMenu === 'dashboard'" x-collapse
                 class="sub-menu flex flex-col gap-1 text-black dark:text-white/80">
+                @can('view-admin')
+                    <li>
+                        <a href="{{ route('game.index') }}"
+                            class="{{ request()->routeIs('game.index', 'game.create', 'game.edit') ? 'active' : '' }}">Game</a>
+                    </li>
+                @endcan
+                @can('view-organizer')
+                    <li>
+                        <a href="{{ route('tournament.index') }}"
+                            class="{{ request()->routeIs('tournament.index', 'tournament.create', 'tournament.edit') ? 'active' : '' }}">Tournament</a>
+                    </li>
+                @endcan
+                @can('view-admin')
+                    <li>
+                        <a href="{{ route('tournament.index') }}"
+                            class="{{ request()->routeIs('tournament.index', 'tournament.create', 'tournament.edit') ? 'active' : '' }}">Tournament</a>
+                    </li>
+                @endcan
                 <li>
-                    <a href="{{ route('game.index') }}" class="{{ request()->routeIs('game.index', 'game.create', 'game.edit') ? 'active' : '' }}">Game</a>
+                    <a href="{{ route('team.index') }}"
+                        class="{{ request()->routeIs('team.index', 'team.create', 'team.edit') ? 'active' : '' }}">Team</a>
                 </li>
-                <li>
-                    <a href="{{ route('tournament.index')}}"  class="{{ request()->routeIs('tournament.index', 'tournament.create', 'tournament.edit') ? 'active' : '' }}">Tournament</a>
-                </li>
-                <li>
-                    <a href="{{ route('team.index') }}" class="{{ request()->routeIs('team.index', 'team.create', 'team.edit') ? 'active' : '' }}">Team</a>
-                </li>                
+
+
             </ul>
         </li>
         <li class="menu nav-item">
@@ -113,8 +128,8 @@
                     </svg>
                 </div>
                 <div class="flex items-center">
-                    <svg class="w-5 h-5" width="32" height="32" viewbox="0 0 32 32"
-                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-5 h-5" width="32" height="32" viewbox="0 0 32 32" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M4.13751 9.32501C4.04694 9.48053 3.99945 9.65753 4 9.83746V22.1625C4.00098 22.3405 4.04883 22.5152 4.13879 22.6688C4.22882 22.8224 4.35767 22.9496 4.51251 23.0375L15.5125 29.225C15.6608 29.3098 15.8292 29.353 16 29.35V29.35L16.1125 16.0001L4.13751 9.32501Z"
                             fill="black" fill-opacity="0.1" />
@@ -170,10 +185,9 @@
                     </svg>
                 </div>
                 <div class="flex items-center">
-                    <svg class="w-5 h-5" width="32" height="32" viewbox="0 0 32 32"
-                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 30L14 20L6 17L20 2L18 12L26 15L12 30Z" fill="black"
-                            fill-opacity="0.1" />
+                    <svg class="w-5 h-5" width="32" height="32" viewbox="0 0 32 32" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 30L14 20L6 17L20 2L18 12L26 15L12 30Z" fill="black" fill-opacity="0.1" />
                         <path fill-rule="evenodd" clip-rule="evenodd"
                             d="M26.7311 15.6823L12.7311 30.6823C12.5501 30.8762 12.2995 30.9903 12.0345 30.9994C11.7694 31.0086 11.5116 30.912 11.3177 30.7311C11.0643 30.4946 10.9514 30.1437 11.0194 29.8039L12.8526 20.6377L5.64888 17.9363C5.40055 17.8432 5.19938 17.6553 5.08963 17.4138C4.97989 17.1724 4.97055 16.8972 5.06367 16.6489C5.10972 16.5261 5.17947 16.4136 5.26894 16.3177L19.2689 1.31769C19.6458 0.913935 20.2786 0.892115 20.6823 1.26895C20.9357 1.50543 21.0486 1.85626 20.9806 2.19612L19.1474 11.3623L26.3511 14.0637C26.5995 14.1568 26.8006 14.3448 26.9104 14.5862C27.0201 14.8276 27.0295 15.1028 26.9363 15.3511C26.8903 15.4739 26.8205 15.5865 26.7311 15.6823ZM13.671 26.7441L24.2484 15.4111L17.6489 12.9363C17.1898 12.7642 16.9233 12.2846 17.0194 11.8039L18.329 5.25594L7.75162 16.5889L14.3511 19.0637C14.8102 19.2358 15.0767 19.7154 14.9806 20.1961L13.671 26.7441Z"
                             fill="currentcolor" />
@@ -215,8 +229,8 @@
         <li class="menu nav-item">
             <a href="charts.html" class="nav-link group" :class="{ 'active': activeMenu === 'charts' }">
                 <div class="flex pl-5 items-center">
-                    <svg class="w-5 h-5" width="32" height="32" viewbox="0 0 32 32"
-                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-5 h-5" width="32" height="32" viewbox="0 0 32 32" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
                         <path d="M19.5 5H26.5V26H19.5V5Z" fill="black" fill-opacity="0.1" />
                         <path
                             d="M28.5 25H3.5C2.94772 25 2.5 25.4477 2.5 26C2.5 26.5523 2.94772 27 3.5 27H28.5C29.0523 27 29.5 26.5523 29.5 26C29.5 25.4477 29.0523 25 28.5 25Z"
@@ -236,11 +250,10 @@
             </a>
         </li>
         <li class="menu nav-item">
-            <a href="widgets.html" class="nav-link group"
-                :class="{ 'active': activeMenu === 'widgets' }">
+            <a href="widgets.html" class="nav-link group" :class="{ 'active': activeMenu === 'widgets' }">
                 <div class="flex pl-5 items-center">
-                    <svg class="w-5 h-5" width="32" height="32" viewbox="0 0 32 32"
-                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-5 h-5" width="32" height="32" viewbox="0 0 32 32" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M26 6H6C5.46948 6 4.96094 6.21072 4.58569 6.58578C4.21069 6.96085 4 7.46957 4 8V22C4 22.5304 4.21069 23.0392 4.58569 23.4142C4.96094 23.7893 5.46948 24 6 24H12.575L16 20L19.425 24H26C26.5305 24 27.0391 23.7893 27.4143 23.4142C27.7893 23.0392 28 22.5304 28 22V8C28 7.46957 27.7893 6.96085 27.4143 6.58578C27.0391 6.21072 26.5305 6 26 6Z"
                             fill="black" fill-opacity="0.1" />
@@ -256,11 +269,10 @@
             </a>
         </li>
         <li class="menu nav-item">
-            <a href="font-icons.html" class="nav-link group"
-                :class="{ 'active': activeMenu === 'fonticons' }">
+            <a href="font-icons.html" class="nav-link group" :class="{ 'active': activeMenu === 'fonticons' }">
                 <div class="flex pl-5 items-center">
-                    <svg class="w-5 h-5" width="32" height="32" viewbox="0 0 32 32"
-                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-5 h-5" width="32" height="32" viewbox="0 0 32 32" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M28 16C28 22.6274 22.6274 28 16 28C9.37256 28 4 22.6274 4 16C4 9.37259 9.37256 4 16 4C22.6274 4 28 9.37259 28 16Z"
                             fill="black" fill-opacity="0.1" />
@@ -276,11 +288,10 @@
             </a>
         </li>
         <li class="menu nav-item">
-            <a href="drag-and-drop.html" class="nav-link group"
-                :class="{ 'active': activeMenu === 'drag' }">
+            <a href="drag-and-drop.html" class="nav-link group" :class="{ 'active': activeMenu === 'drag' }">
                 <div class="flex pl-5 items-center">
-                    <svg class="w-5 h-5" width="32" height="32" viewbox="0 0 32 32"
-                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-5 h-5" width="32" height="32" viewbox="0 0 32 32" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M13.1695 24.7554C12.982 24.5679 12.7276 24.4625 12.4624 24.4625C12.1972 24.4625 11.9428 24.5679 11.7553 24.7554C11.5678 24.9429 11.4624 25.1973 11.4624 25.4625C11.4624 25.7277 11.5678 25.9821 11.7553 26.1696L15.2928 29.7071C15.4803 29.8946 15.7347 30 15.9999 30C16.2651 30 16.5195 29.8946 16.707 29.7071L20.2441 26.17L20.2445 26.1696C20.432 25.9821 20.5374 25.7277 20.5374 25.4625C20.5374 25.1973 20.432 24.9429 20.2445 24.7554C20.057 24.5679 19.8026 24.4625 19.5374 24.4625C19.2722 24.4625 19.0178 24.5679 18.8303 24.7554L18.8299 24.7558L15.9999 27.5858L13.1695 24.7554Z"
                             fill="currentcolor" />
@@ -316,8 +327,8 @@
         <li class="menu nav-item">
             <a href="tables.html" class="nav-link group" :class="{ 'active': activeMenu === 'table' }">
                 <div class="flex pl-5 items-center">
-                    <svg class="w-5 h-5" width="32" height="32" viewbox="0 0 32 32"
-                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-5 h-5" width="32" height="32" viewbox="0 0 32 32" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M5 26C4.73474 26 4.48047 25.8947 4.29285 25.7072C4.10535 25.5195 4 25.2653 4 25V7C4 6.73474 4.10535 6.48047 4.29285 6.29285C4.48047 6.10535 4.73474 6 5 6H11V26H5Z"
                             fill="black" fill-opacity="0.1" />
@@ -333,11 +344,10 @@
             </a>
         </li>
         <li class="menu nav-item">
-            <a href="datatables.html" class="nav-link group"
-                :class="{ 'active': activeMenu === 'datatable' }">
+            <a href="datatables.html" class="nav-link group" :class="{ 'active': activeMenu === 'datatable' }">
                 <div class="flex pl-5 items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                        fill="currentColor" viewbox="0 0 256 256">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        viewbox="0 0 256 256">
                         <path d="M88,104v96H32V104Z" opacity="0.2"></path>
                         <path
                             d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM40,112H80v32H40Zm56,0H216v32H96ZM216,64V96H40V64ZM40,160H80v32H40Zm176,32H96V160H216v32Z">
@@ -360,8 +370,8 @@
                     </svg>
                 </div>
                 <div class="flex items-center">
-                    <svg class="w-5 h-5" width="32" height="32" viewbox="0 0 32 32"
-                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-5 h-5" width="32" height="32" viewbox="0 0 32 32" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M20 5C20.6492 5.86548 21 6.91809 21 8V9H11V8C11 6.91809 11.3508 5.86548 12 5H7C6.73486 5 6.48047 5.10535 6.29297 5.29285C6.10547 5.48047 6 5.73474 6 6V27C6 27.2653 6.10547 27.5195 6.29297 27.7072C6.48047 27.8947 6.73486 28 7 28H25C25.2651 28 25.5195 27.8947 25.707 27.7072C25.8945 27.5195 26 27.2653 26 27V6C26 5.73474 25.8945 5.48047 25.707 5.29285C25.5195 5.10535 25.2651 5 25 5H20Z"
                             fill="black" fill-opacity="0.1" />
@@ -419,8 +429,8 @@
                     </svg>
                 </div>
                 <div class="flex items-center">
-                    <svg class="w-5 h-5" width="32" height="32" viewbox="0 0 32 32"
-                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-5 h-5" width="32" height="32" viewbox="0 0 32 32" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M17.5 13.5C17.5 17.0898 14.5898 20 11 20C7.41016 20 4.5 17.0898 4.5 13.5C4.5 9.91016 7.41016 7 11 7C14.5898 7 17.5 9.91016 17.5 13.5Z"
                             fill="black" fill-opacity="0.1" />
@@ -461,8 +471,8 @@
                     </svg>
                 </div>
                 <div class="flex items-center">
-                    <svg class="w-5 h-5" width="32" height="32" viewbox="0 0 32 32"
-                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-5 h-5" width="32" height="32" viewbox="0 0 32 32" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
                         <path d="M19 4V11H26L19 4Z" fill="black" fill-opacity="0.1" />
                         <path fill-rule="evenodd" clip-rule="evenodd"
                             d="M26.4142 28.4142C26.4142 28.4142 25.8284 29 25 29H7C7 29 6.17157 29 5.58579 28.4142C5.58579 28.4142 5 27.8284 5 27V5C5 5 5 4.17157 5.58579 3.58579C5.58579 3.58579 6.17157 3 7 3H19C19.2652 3 19.5196 3.10536 19.7071 3.29289L26.7071 10.2929C26.8946 10.4804 27 10.7348 27 11V27C27 27 27 27.8284 26.4142 28.4142ZM25 27V11.4142L18.5858 5H7V27H25Z"
@@ -484,8 +494,7 @@
             </ul>
         </li>
         <li class="menu nav-item">
-            <a href="javaScript:;" class="nav-link group"
-                :class="{ 'active': activeMenu === 'authentication' }"
+            <a href="javaScript:;" class="nav-link group" :class="{ 'active': activeMenu === 'authentication' }"
                 @click="activeMenu === 'authentication' ? activeMenu = null : activeMenu = 'authentication'">
                 <div class="text-black/50 dark:text-white/20 w-4 h-4 flex items-center justify-center"
                     :class="{ '!rotate-90': activeMenu === 'authentication' }">
@@ -497,8 +506,8 @@
                     </svg>
                 </div>
                 <div class="flex items-center">
-                    <svg class="w-5 h-5" width="32" height="32" viewbox="0 0 32 32"
-                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-5 h-5" width="32" height="32" viewbox="0 0 32 32" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
                             d="M16 14C16 14 17.4497 14 18.4749 15.0251C18.4749 15.0251 19.5 16.0503 19.5 17.5C19.5 17.5 19.5 18.9497 18.4749 19.9749C18.4749 19.9749 17.4497 21 16 21C16 21 14.5503 21 13.5251 19.9749C13.5251 19.9749 12.5 18.9497 12.5 17.5C12.5 17.5 12.5 16.0503 13.5251 15.0251C13.5251 15.0251 14.5503 14 16 14ZM16 16C16 16 15.3787 16 14.9393 16.4393C14.9393 16.4393 14.5 16.8787 14.5 17.5C14.5 17.5 14.5 18.1213 14.9393 18.5607C14.9393 18.5607 15.3787 19 16 19C16 19 16.6213 19 17.0607 18.5607C17.0607 18.5607 17.5 18.1213 17.5 17.5C17.5 17.5 17.5 16.8787 17.0607 16.4393C17.0607 16.4393 16.6213 16 16 16Z"
                             fill="currentcolor" />
@@ -536,8 +545,8 @@
             <a href="https://webonzer.com/documentation/documentation.html" class="nav-link group"
                 :class="{ 'active': activeMenu === 'docs' }">
                 <div class="flex pl-5 items-center">
-                    <svg class="w-5 h-5" width="32" height="32" viewbox="0 0 32 32"
-                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-5 h-5" width="32" height="32" viewbox="0 0 32 32" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
                             d="M4 6C4 6 4 5.17157 4.58579 4.58579C4.58579 4.58579 5.17157 4 6 4H26C26 4 26.8284 4 27.4142 4.58579C27.4142 4.58579 28 5.17157 28 6V26C28 26 28 26.8284 27.4142 27.4142C27.4142 27.4142 26.8284 28 26 28H6C6 28 5.17157 28 4.58579 27.4142C4.58579 27.4142 4 26.8284 4 26V6ZM6 6V26H26V6H6Z"
                             fill="currentcolor" />
