@@ -54,20 +54,28 @@
                                 <img src="{{ asset('storage/' . $team->logo) }}" width="150" alt="">
                             </div>
                             <div class="" style="margin-left: 30px">
-                                <p>{{$team->description}}</p>
+                                <p>{{ $team->description }}</p>
                             </div>
                         </div>
                     </div>
                     <div x-show="activeunderTab === 'pendaftaran'" class>
-                        <div class="flex justify-between">
+                        <div class="flex justify-between mx-3 my-3">
                             <div class=""></div>
                             <div class="">
-                                <a href="{{ route('open-trial', $team->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded ml-3">
+                                <a href="{{ route('open-trial', $team->id) }}"
+                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded ml-3">
                                     Buka Pendaftaran
                                 </a>
                             </div>
-
                         </div>
+                        @foreach ($openTrials as $openTrial)
+                            <div class="my-5">
+                                <p class="my-3"><b>Team:</b> {{$openTrial->team->name}}</p>
+                                <p class="my-3"><b>Deskripsi:</b> {!!$openTrial->desc!!}</p>
+                                <p class="my-3"><b>Pendaftaran Ditutup: </b>{{ date('d F Y H:i', strtotime($openTrial->close_registration)) }}</p>
+                                <p class="my-3"><b>Lokasi: </b>{{$openTrial->location}}</p>
+                            </div>
+                        @endforeach
                     </div>
                     <div x-show="activeunderTab === 'settings'" class>
                         <p>

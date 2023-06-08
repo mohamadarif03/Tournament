@@ -25,7 +25,7 @@ class TeamOpenTrialRequest extends FormRequest
            'name' => 'required',
            'email' => 'required',
            'phone_number' => 'required',
-           'cv' => 'required',
+        //    'cv' => 'required',
         ];
     }
 }

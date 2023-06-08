@@ -21,6 +21,7 @@ class OpenTrialRepository extends BaseRepository implements OpenTrialInterface
     {
         return $this->model->query()
         ->orderBy('created_at', 'desc')
+        ->with('team')
         ->get();
     }
 

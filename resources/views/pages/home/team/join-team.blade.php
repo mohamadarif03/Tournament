@@ -51,9 +51,7 @@
         .contact__form-wrap form input[type="number"],
         .contact__form-wrap form input[type="file"] {
             width: 100%;
-            /* padding: 10px; */
             border-radius: 5px;
-            border: 1px solid #ccc;
             outline: none;
         }
 
@@ -120,7 +118,7 @@
                                         </h1>
                                         <div class="input-grp">
                                             <input name="name" type="text" value="{{ old('name') }}"
-                                                placeholder="Masukkan Nama Anda">
+                                                placeholder="Masukkan Nama Anda" style="border: 1px solid #ccc;">
                                         </div>
                                     </div>
                                     <div class="">
@@ -129,7 +127,7 @@
                                         </h1>
                                         <div class="input-grp">
                                             <input name="email" type="email" value="{{ old('email') }}"
-                                                placeholder="Masukkan Email Anda">
+                                                placeholder="Masukkan Email Anda" style="border: 1px solid #ccc;">
                                         </div>
                                     </div>
                                     <div class="">
@@ -137,14 +135,15 @@
                                         </h1>
                                         <div class="input-grp">
                                             <input name="phone_number" type="number" value="{{ old('phone_number') }}"
-                                                placeholder="Masukkan Nomor HP">
+                                                placeholder="Masukkan Nomor HP" style="border: 1px solid #ccc;">
                                         </div>
                                     </div>
                                     <div class="">
                                         <h1 for="title" style="font-weight: bold; margin-bottom: 5px">CV
                                         </h1>
                                         <div class="input-grp">
-                                            <input name="cv" type="file" placeholder="CV">
+                                            <input name="cv" type="file" placeholder="CV"
+                                                style="border: 1px solid #ccc;">
                                         </div>
                                     </div>
                                 </div>
@@ -162,30 +161,21 @@
                             <div class="center" style="">
                                 <h2 class="title font-bold text-2xl" style="margin-bottom:30px; text-align:center">
                                     Gabung Tim</h2>
-                                {{-- <div class="card p-6 my-[50px]" style="background-color: #1b1e21;">
-                                    <h2 class="title font-bold text-2xl" style="margin-bottom:30px; text-align:center">
-                                        Pengalaman</h2>
+                                @foreach ($openTrialQuestions as $openTrialQuestion)
                                     <div class="">
-                                        <h1 for="title" style="font-weight: bold; margin-bottom: 5px">Alamat
-                                            Email
+                                        <h1 for="title" style="font-weight: bold; margin-bottom: 5px">
+                                            {{ $openTrialQuestion->question }}
                                         </h1>
                                         <div class="input-grp">
-                                            <input name="email" type="email" value="{{ old('email') }}"
-                                                placeholder="Masukkan Email Anda">
+                                            <input name="question[]" type="text" value=""
+                                                placeholder="{{ $openTrialQuestion->question }}"
+                                                style="border: 1px solid #ccc;">
+                                            <input type="hidden" name="open_trial_id[]" value="{{ $openTrialQuestion->id }}">
                                         </div>
                                     </div>
-                                    <div class="">
-                                        <h1 for="title" style="font-weight: bold; margin-bottom: 5px">Nomor HP
-                                        </h1>
-                                        <div class="input-grp">
-                                            <input name="phone_number" type="number" value="{{ old('phone_number') }}"
-                                                placeholder="Masukkan Nomor HP">
-                                        </div>
-                                    </div>
-                                </div> --}}
+                                @endforeach
                                 <div class="flex justify-between">
-                                    <div class="">
-                                    </div>
+                                    <div class=""></div>
                                     <div class="">
                                         <button type="button" id="back_interview"
                                             class="tournament__details-form-btn bg-[#ffbe18] text-white hover:bg-[#FF8400] mr-4">Kembali</button>

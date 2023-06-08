@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Contracts\Interfaces\GameInterface;
+use App\Contracts\Interfaces\OpenTrialInterface;
 use App\Contracts\Interfaces\TeamInterface;
 use App\Enums\UserRoleEnum;
 use App\Helpers\UserHelper;
@@ -21,13 +22,15 @@ class TeamController extends Controller
 
     private TeamInterface $team;
     private GameInterface $game;
+    private OpenTrialInterface $openTrial;
     private TeamService $service;
 
-    public function __construct(TeamInterface $team, GameInterface $game, TeamService $service)
+    public function __construct(TeamInterface $team, GameInterface $game, TeamService $service, OpenTrialInterface $openTrial)
     {
         $this->team = $team;
         $this->game = $game;
         $this->service = $service;
+        $this->openTrial = $openTrial;
     }
     /**
      * Display a listing of the resource.
@@ -74,7 +77,8 @@ class TeamController extends Controller
      */
     public function show(Team $team)
     {
-        return view('pages.user.team.detail', compact('team'));
+        $openTrials = $this->openTrial->get();
+        return view('pages.dashboard.team.detail', compact('team', 'openTrials'));
     }
 
     /**

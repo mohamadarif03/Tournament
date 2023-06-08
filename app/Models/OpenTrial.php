@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Base\Interfaces\HasTeam;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class OpenTrial extends Model
+class OpenTrial extends Model implements HasTeam
 {
     use HasFactory;
     public $incrementing = false;
@@ -13,4 +15,9 @@ class OpenTrial extends Model
     protected $primaryKey = 'id';
     public $keyType = 'char';
     protected $table = 'open_trials';
+
+    public function team(): BelongsTo
+    {
+        return $this->belongsTo(Team::class);
+    }
 }

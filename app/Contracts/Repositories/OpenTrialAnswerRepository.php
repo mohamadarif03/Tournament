@@ -2,14 +2,14 @@
 
 namespace App\Contracts\Repositories;
 
-use App\Contracts\Interfaces\OpenTrialQuestionInterface;
-use App\Models\OpenTrialQuestion;
+use App\Contracts\Interfaces\OpenTrialAnswerInterface;
+use App\Models\OpenTrialAnswer;
 
-class OpenTrialQuestionRepository extends BaseRepository implements OpenTrialQuestionInterface
+class OpenTrialAnswerRepository extends BaseRepository implements OpenTrialAnswerInterface
 {
-    public function __construct(OpenTrialQuestion $openTrialQuestion)
+    public function __construct(OpenTrialAnswer $openTrialAnswer)
     {
-        $this->model = $openTrialQuestion;
+        $this->model = $openTrialAnswer;
     }
 
     public function get(): mixed

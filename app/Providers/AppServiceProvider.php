@@ -9,6 +9,7 @@ use App\Contracts\Interfaces\HomeGameInterface;
 use App\Contracts\Interfaces\HomeTeamInterface;
 use App\Contracts\Interfaces\HomeTournamentDetailInterface;
 use App\Contracts\Interfaces\HomeTournamentListInterface;
+use App\Contracts\Interfaces\OpenTrialAnswerInterface;
 use App\Contracts\Interfaces\OpenTrialInterface;
 use App\Contracts\Interfaces\OpenTrialQuestionInterface;
 use App\Contracts\Interfaces\RegisterInterface;
@@ -23,6 +24,7 @@ use App\Contracts\Repositories\HomeGameRepository;
 use App\Contracts\Repositories\HomeTeamRepository;
 use App\Contracts\Repositories\HomeTournamentDetailRepository;
 use App\Contracts\Repositories\HomeTournamentListRepository;
+use App\Contracts\Repositories\OpenTrialAnswerRepository;
 use App\Contracts\Repositories\OpenTrialQuestionRepository;
 use App\Contracts\Repositories\OpenTrialRepository;
 use App\Contracts\Repositories\RegisterRepository;
@@ -50,6 +52,7 @@ class AppServiceProvider extends ServiceProvider
         TeamOpenTrialInterface::class => TeamOpenTrialRepository::class,
         OpenTrialInterface::class => OpenTrialRepository::class,
         OpenTrialQuestionInterface::class => OpenTrialQuestionRepository::class,
+        OpenTrialAnswerInterface::class => OpenTrialAnswerRepository::class,
     ];
 
     /**

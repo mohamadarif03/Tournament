@@ -15,8 +15,8 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('name');
             $table->string('email');
-            $table->string('phone_number', 20);
             $table->string('cv');
+            $table->string('phone_number', 20);
             $table->timestamps();
         });
     }
