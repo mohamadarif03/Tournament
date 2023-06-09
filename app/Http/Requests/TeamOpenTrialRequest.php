@@ -6,14 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class TeamOpenTrialRequest extends FormRequest
 {
-
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
-    {
-        return true;
-    }
     /**
      * Get the validation rules that apply to the request.
      *
@@ -22,23 +14,23 @@ class TeamOpenTrialRequest extends FormRequest
     public function rules(): array
     {
         return [
-           'name' => 'required',
-           'email' => 'required',
-           'phone_number' => 'required',
-           'cv' => 'nullable',
+            'name' => 'required',
+            'email' => 'required',
+            'cv' => 'nullable',
+            'phone_number' => 'required',
+            'answer' => 'required',
+            'open_trial_question_id' => 'required',
         ];
     }
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
-     */
     public function messages(): array
     {
         return [
             'name.required' => 'Nama Wajib Diisi',
             'email.required' => 'Email Wajib Diisi',
+            'cv.required' => 'CV Wajib Diisi',
             'phone_number.required' => 'Nomor HP Wajib Diisi',
-         ];
+            'answer.required' => 'Jawaban Wajib Diisi',
+            'open_trial_question_id.required' => 'Pertanyaan Wajib Dijawab',
+        ];
     }
 }

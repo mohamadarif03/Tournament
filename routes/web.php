@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\TeamController;
 use App\Http\Controllers\Dashboard\TournamentController;
 use App\Http\Controllers\Dashboard\TournamentorganizerController;
 use App\Http\Controllers\Home\HomeController;
+use App\Http\Controllers\Home\JointeamController;
 use App\Http\Controllers\Home\JointournamentController;
 use App\Http\Controllers\Home\TeamhomeController;
 use App\Http\Controllers\Home\TournamenthomeController;
@@ -42,8 +43,7 @@ Route::post('/register-tournament', [JointournamentController::class, 'join'])->
 
 Route::get('/teams', [TeamhomeController::class, 'index'])->name('teams');
 Route::get('/teams-detail/{team}', [TeamhomeController::class, 'detail'])->name('team-detail');
-Route::get('/join-team/{team}', [TeamhomeController::class, 'view'])->name('join-team');
-Route::post('/register-team', [TeamhomeController::class, 'join'])->name('register-team');
+
 
 
 
@@ -67,3 +67,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::get('/open-trial/{team}', [OpenTrialController::class, 'create'])->name('open-trial');
 Route::post('/create-open-trial', [OpenTrialController::class, 'store'])->name('create-open-trial');
+
+Route::get('/join-team/{team}', [JointeamController::class, 'index'])->name('join-team');
+Route::post('/register-join-team', [JointeamController::class, 'join'])->name('register-join-team');

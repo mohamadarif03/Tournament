@@ -104,83 +104,125 @@
                     </div>
                 @endif
                 <div class="row justify-content-center">
-                    <form action="{{ route('register-team') }}" method="POST">
+                    <ul data-te-stepper-init
+                        class="relative m-0 flex list-none justify-between overflow-hidden p-0 transition-[height] duration-200 ease-in-out">
+                        <!--First item-->
+                        
+                        <li data-te-stepper-step-ref class="w-[4.5rem] flex-auto">
+                            <div data-te-stepper-head-ref
+                                class="flex cursor-pointer items-center leading-[1.3rem] no-underline before:mr-2 before:h-px before:w-full before:flex-1 before:bg-[#e0e0e0] before:content-[''] after:ml-2 after:h-px after:w-full after:flex-1 after:bg-[#e0e0e0] after:content-['']">
+                                <span data-te-stepper-head-icon-ref
+                                    class="my-6 mr-2 flex h-[1.938rem] w-[1.938rem] items-center justify-center rounded-full bg-[#ebedef] text-sm font-medium text-[#40464f]">
+                                    1
+                                </span>
+                            </div>
+                            <div data-te-stepper-content-ref
+                                class="absolute left-0 w-full translate-x-[150%] p-4 transition-all duration-500 ease-in-out">
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                                nisi ut aliquip ex ea commodo consequat.
+                            </div>
+                        </li>
+                        <li data-te-stepper-step-ref class="w-[4.5rem] flex-auto">
+                            <div data-te-stepper-head-ref
+                                class="flex cursor-pointer items-center leading-[1.3rem] no-underline before:mr-2 before:h-px before:w-full before:flex-1 before:bg-[#e0e0e0] before:content-[''] after:ml-2 after:h-px after:w-full after:flex-1 after:bg-[#e0e0e0] after:content-['']">
+                                <span data-te-stepper-head-icon-ref
+                                    class="my-6 mr-2 flex h-[1.938rem] w-[1.938rem] items-center justify-center rounded-full bg-[#ebedef] text-sm font-medium text-[#40464f]">
+                                    2
+                                </span>
+                            </div>
+                            <div data-te-stepper-content-ref
+                                class="absolute left-0 w-full translate-x-[150%] p-4 transition-all duration-500 ease-in-out">
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                                nisi ut aliquip ex ea commodo consequat.
+                            </div>
+                        </li>
+
+                        
+                    </ul>
+                    <form action="{{ route('register-join-team') }}" enctype="multipart/form-data" method="post">
                         @csrf
-                        <div class="contact__form-wrap col-span-8" id="biodata">
-                            <div class="center" style="">
-                                <h2 class="title font-bold text-2xl" style="margin-bottom:30px; text-align:center">
-                                    Gabung Team</h2>
-                                <div class="card p-6 my-[50px]" style="background-color: #1b1e21;">
+                        <div class="">
+                            <div class="contact__form-wrap col-span-8" id="biodata">
+                                <div class="center" style="">
                                     <h2 class="title font-bold text-2xl" style="margin-bottom:30px; text-align:center">
-                                        Biodata</h2>
-                                    <div class="">
-                                        <h1 for="title" style="font-weight: bold; margin-bottom: 5px">Nama
-                                        </h1>
-                                        <div class="input-grp">
-                                            <input name="name" type="text" value="{{ old('name') }}"
-                                                placeholder="Masukkan Nama Anda" style="border: 1px solid #ccc;">
+                                        Gabung Team</h2>
+                                    <div class="card p-6 my-[50px]" style="background-color: #1b1e21;">
+                                        <h2 class="title font-bold text-2xl"
+                                            style="margin-bottom:30px; text-align:center">
+                                            Biodata</h2>
+                                        <div class="">
+                                            <h1 for="title" style="font-weight: bold; margin-bottom: 5px">Nama
+                                            </h1>
+                                            <div class="input-grp">
+                                                <input name="name" type="text" value="{{ old('name') }}"
+                                                    placeholder="Masukkan Nama Anda" style="border: 1px solid #ccc;">
+                                            </div>
+                                        </div>
+                                        <div class="">
+                                            <h1 for="title" style="font-weight: bold; margin-bottom: 5px">Alamat
+                                                Email
+                                            </h1>
+                                            <div class="input-grp">
+                                                <input name="email" type="email" value="{{ old('email') }}"
+                                                    placeholder="Masukkan Email Anda" style="border: 1px solid #ccc;">
+                                            </div>
+                                        </div>
+                                        <div class="">
+                                            <h1 for="title" style="font-weight: bold; margin-bottom: 5px">Nomor HP
+                                            </h1>
+                                            <div class="input-grp">
+                                                <input name="phone_number" type="number"
+                                                    value="{{ old('phone_number') }}" placeholder="Masukkan Nomor HP"
+                                                    style="border: 1px solid #ccc;">
+                                            </div>
+                                        </div>
+                                        <div class="">
+                                            <h1 for="title" style="font-weight: bold; margin-bottom: 5px">CV
+                                            </h1>
+                                            <div class="input-grp">
+                                                <input
+                                                    class="form-input w-full rounded-lg border border-black/10 dark:border-white/10 bg-transparent px-3 py-2.5 placeholder:text-black/60 dark:placeholder:text-white/60 hover:z-10 hover:border-black dark:hover:border-white focus:z-10 focus:border-black dark:focus:border-white"
+                                                    placeholder="CV" type="file" id="cv" name="cv" />
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="">
-                                        <h1 for="title" style="font-weight: bold; margin-bottom: 5px">Alamat
-                                            Email
-                                        </h1>
-                                        <div class="input-grp">
-                                            <input name="email" type="email" value="{{ old('email') }}"
-                                                placeholder="Masukkan Email Anda" style="border: 1px solid #ccc;">
+                                    <div class="flex justify-between">
+                                        <div class="">
                                         </div>
-                                    </div>
-                                    <div class="">
-                                        <h1 for="title" style="font-weight: bold; margin-bottom: 5px">Nomor HP
-                                        </h1>
-                                        <div class="input-grp">
-                                            <input name="phone_number" type="number" value="{{ old('phone_number') }}"
-                                                placeholder="Masukkan Nomor HP" style="border: 1px solid #ccc;">
+                                        <div class="">
+                                            <button type="button" id="next_biodata"
+                                                class="tournament__details-form-btn bg-[#45f882] text-white">Selanjutnya</button>
                                         </div>
-                                    </div>
-                                    <div class="">
-                                        <h1 for="title" style="font-weight: bold; margin-bottom: 5px">CV
-                                        </h1>
-                                        <div class="input-grp">
-                                            <input name="cv" type="file" placeholder="CV"
-                                                style="border: 1px solid #ccc;">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex justify-between">
-                                    <div class="">
-                                    </div>
-                                    <div class="">
-                                        <button type="button" id="next_biodata"
-                                            class="tournament__details-form-btn bg-[#45f882] text-white">Selanjutnya</button>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="contact__form-wrap col-span-8 hidden" id="interview">
-                            <div class="center" style="">
-                                <h2 class="title font-bold text-2xl" style="margin-bottom:30px; text-align:center">
-                                    Gabung Tim</h2>
-                                @foreach ($openTrialQuestions as $openTrialQuestion)
-                                    <div class="">
-                                        <h1 for="title" style="font-weight: bold; margin-bottom: 5px">
-                                            {{ $openTrialQuestion->question }}
-                                        </h1>
-                                        <div class="input-grp">
-                                            <input name="question[]" type="text" value=""
-                                                placeholder="{{ $openTrialQuestion->question }}"
-                                                style="border: 1px solid #ccc;">
-                                            <input type="hidden" name="open_trial_id[]" value="{{ $openTrialQuestion->id }}">
+                            <div class="contact__form-wrap col-span-8 hidden" id="interview">
+                                <div class="center" style="">
+                                    <h2 class="title font-bold text-2xl"
+                                        style="margin-bottom:30px; text-align:center">
+                                        Gabung Tim</h2>
+                                    @foreach ($openTrials->openTrialQuestions as $openTrial)
+                                        <div class="">
+                                            <h1 for="title" style="font-weight: bold; margin-bottom: 5px">
+                                                {{ $openTrial->question }}
+                                            </h1>
+                                            <div class="input-grp">
+                                                <input name="answer[]" type="text" value=""
+                                                    placeholder="{{ $openTrial->question }}"
+                                                    style="border: 1px solid #ccc;">
+                                                <input type="hidden" name="open_trial_question_id[]"
+                                                    value="{{ $openTrial->id }}">
+                                            </div>
                                         </div>
-                                    </div>
-                                @endforeach
-                                <div class="flex justify-between">
-                                    <div class=""></div>
-                                    <div class="">
-                                        <button type="button" id="back_interview"
-                                            class="tournament__details-form-btn bg-[#ffbe18] text-white hover:bg-[#FF8400] mr-4">Kembali</button>
-                                        <button type="submit"
-                                            class="tournament__details-form-btn bg-[#45f882] text-white">Kirim</button>
+                                    @endforeach
+                                    <div class="flex justify-between">
+                                        <div class=""></div>
+                                        <div class="">
+                                            <button type="button" id="back_interview"
+                                                class="tournament__details-form-btn bg-[#ffbe18] text-white hover:bg-[#FF8400] mr-4">Kembali</button>
+                                            <button type="submit"
+                                                class="tournament__details-form-btn bg-[#45f882] text-white">Kirim</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

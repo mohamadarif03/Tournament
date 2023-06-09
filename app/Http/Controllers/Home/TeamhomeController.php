@@ -21,22 +21,14 @@ use Illuminate\Http\Request;
 
 class TeamhomeController extends Controller
 {
-    private TeamOpenTrialInterface $team;
-    private OpenTrialQuestionInterface $openTrialQuestion;
     private GameInterface $game;
     private TeamService $service;
-    private TeamOpenTrialService $openTrialService;
-    private OpenTrialAnswerService $openTrialAnswerService;
 
 
-    public function __construct(TeamOpenTrialInterface $team, GameInterface $game, TeamService $service, TeamOpenTrialService $openTrialService, OpenTrialQuestionInterface $openTrialQuestion, OpenTrialAnswerService $openTrialAnswerService)
+    public function __construct(GameInterface $game, TeamService $service)
     {
-        $this->team = $team;
         $this->game = $game;
         $this->service = $service;
-        $this->openTrialQuestion = $openTrialQuestion;
-        $this->openTrialService = $openTrialService;
-        $this->openTrialAnswerService = $openTrialAnswerService;
     }
 
     /**
@@ -74,29 +66,5 @@ class TeamhomeController extends Controller
     {
         return view('pages.home.team.team-detail', compact('team'));
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return View
-     */
-    public function view(Team $team): View
-    {
-        $openTrialQuestions = $this->openTrialQuestion->get();
-        return view('pages.home.team.join-team', compact('team', 'openTrialQuestions'));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param TeamOpenTrialRequest $request
-     * @return RedirectResponse
-     */
-    public function join(TeamOpenTrialRequest $request): RedirectResponse
-    {
-
-        $this->team->store($this->openTrialService->store($request));
-        $this->openTrialAnswerService->store($request->validated(), $request);
-
-        return redirect()->route('teams')->with('success', trans('alert.add_success'));
-    }
+    
 }

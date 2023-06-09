@@ -4,6 +4,7 @@ namespace App\Contracts\Repositories;
 
 use App\Contracts\Interfaces\HomeTeamInterface;
 use App\Models\Team;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\CursorPaginator;
 
@@ -46,7 +47,10 @@ class HomeTeamRepository extends BaseRepository implements HomeTeamInterface
             ->when($request->games, function ($query) use ($request) {
                 return $query->whereIn('game_id', $request->games);
             })
-            ->with(['user', 'game'])
+            ->when($request->openTrial, function (Builder $query) {
+                return $query->whereRelation('openTrials', 'close_registration', '>', now());
+            })
+            ->with(['user', 'game', 'openTrials'])
             ->cursorPaginate($perPage, $columns, $cursorName, $cursor);
     }
 }

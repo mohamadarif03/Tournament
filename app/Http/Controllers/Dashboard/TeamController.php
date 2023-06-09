@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Contracts\Interfaces\GameInterface;
 use App\Contracts\Interfaces\OpenTrialInterface;
+use App\Contracts\Interfaces\OpenTrialQuestionInterface;
 use App\Contracts\Interfaces\TeamInterface;
 use App\Enums\UserRoleEnum;
 use App\Helpers\UserHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TeamRequest;
 use App\Http\Requests\TeamUpdateRequest;
+use App\Models\OpenTrial;
 use App\Models\Team;
 use App\Services\TeamService;
 use Illuminate\Contracts\View\View;
@@ -23,14 +25,16 @@ class TeamController extends Controller
     private TeamInterface $team;
     private GameInterface $game;
     private OpenTrialInterface $openTrial;
+    private OpenTrialQuestionInterface $openTrialQuestion;
     private TeamService $service;
 
-    public function __construct(TeamInterface $team, GameInterface $game, TeamService $service, OpenTrialInterface $openTrial)
+    public function __construct(TeamInterface $team, GameInterface $game, TeamService $service, OpenTrialInterface $openTrial, OpenTrialQuestionInterface $openTrialQuestion)
     {
         $this->team = $team;
         $this->game = $game;
         $this->service = $service;
         $this->openTrial = $openTrial;
+        $this->openTrialQuestion = $openTrialQuestion;
     }
     /**
      * Display a listing of the resource.
@@ -75,10 +79,12 @@ class TeamController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Team $team)
+    public function show(Team $team, OpenTrial $openTrial)
     {
-        $openTrials = $this->openTrial->get();
-        return view('pages.dashboard.team.detail', compact('team', 'openTrials'));
+        $openTrials = $this->openTrial->show($team->id);
+        $idOpenTrial = $openTrials->pluck('id');
+        $openTrialQuestions = $this->openTrialQuestion->show($idOpenTrial);
+        return view('pages.dashboard.team.detail', compact('team', 'openTrials', 'openTrialQuestions'));
     }
 
     /**

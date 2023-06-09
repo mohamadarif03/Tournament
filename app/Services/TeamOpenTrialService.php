@@ -5,7 +5,10 @@ namespace App\Services;
 use App\Base\Interfaces\uploads\CustomUploadValidation;
 use App\Base\Interfaces\uploads\ShouldHandleFileUpload;
 use App\Enums\UploadDiskEnum;
+use App\Http\Requests\GameRequest;
+use App\Http\Requests\GameUpdateRequest;
 use App\Http\Requests\TeamOpenTrialRequest;
+use App\Models\Game;
 use App\Traits\UploadTrait;
 
 class TeamOpenTrialService implements ShouldHandleFileUpload, CustomUploadValidation
@@ -42,7 +45,32 @@ class TeamOpenTrialService implements ShouldHandleFileUpload, CustomUploadValida
             'name' => $data['name'],
             'email' => $data['email'],
             'phone_number' => $data['phone_number'],
-            'cv' => $request->file('cv')->store(UploadDiskEnum::CV->value, 'public'),
+            'cv' => $request->file('cv')->store(UploadDiskEnum::CV->value, 'public')
+        ];
+    }
+
+    /**
+     * Handle update data event to models.
+     *
+     * @param GameUpdateRequest $request
+     * @param Game $game
+     * @return array|bool
+     */
+
+    public function update(GameUpdateRequest $request, Game $game): array|bool
+    {
+        $data = $request->validated();
+
+        $old_logo = $game->logo;
+
+        if ($request->hasFile('logo')) {
+            $this->remove($old_logo);
+            $old_logo = $request->file('logo')->store(UploadDiskEnum::GAME->value, 'public');
+        }
+
+        return [
+            'name' => $data['name'],
+            'logo' => $old_logo,
         ];
     }
 }

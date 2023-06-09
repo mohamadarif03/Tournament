@@ -68,14 +68,22 @@
                                 </a>
                             </div>
                         </div>
-                        @foreach ($openTrials as $openTrial)
+                        <div class="grid grid-cols-2 gap-2">
                             <div class="my-5">
-                                <p class="my-3"><b>Team:</b> {{$openTrial->team->name}}</p>
-                                <p class="my-3"><b>Deskripsi:</b> {!!$openTrial->desc!!}</p>
-                                <p class="my-3"><b>Pendaftaran Ditutup: </b>{{ date('d F Y H:i', strtotime($openTrial->close_registration)) }}</p>
-                                <p class="my-3"><b>Lokasi: </b>{{$openTrial->location}}</p>
+                                <p class="my-3"><b>Deskripsi:</b> {!! $openTrials->desc !!}</p>
+                                <p class="my-3"><b>Pendaftaran Ditutup:
+                                    </b>{{ date('d F Y H:i', strtotime($openTrials->close_registration)) }}</p>
+                                <p class="my-3"><b>Lokasi: </b>{{ $openTrials->location }}</p>
+                                <p class="my-3"><b>Gaji:
+                                    </b>{{ 'Rp ' . number_format($openTrials->salary, 0, ',', '.') }}
+                                </p>
                             </div>
-                        @endforeach
+                            <div class="my-5">
+                                @foreach ($openTrialQuestions as $openTrialQuestion)
+                                    <p>{{ $openTrialQuestion->question }}</p>
+                                @endforeach
+                            </div>
+                        </div>
                     </div>
                     <div x-show="activeunderTab === 'settings'" class>
                         <p>
@@ -83,7 +91,6 @@
                             roots in a piece of classical Latin literature from 45 BC, making it over
                             2000 years old. Richard McClintock, a Latin
                             professor at Hampden-Sydney College in Virginia, looked up one of the more
-                            obscure Latin words, consectetur,
                         </p>
                     </div>
                     <div x-show="activeunderTab === 'contacts'" class>

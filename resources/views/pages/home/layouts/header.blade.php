@@ -19,11 +19,8 @@
                                     <a href="/">Home</a>
                                 </li>
                                 <li><a href="about-us.html">ABOUT US</a></li>
-                                <li><a href="">Team</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="/teams">List Team</a></li>
-                                        <li><a href="blog-details.html">Open Trials</a></li>
-                                    </ul>
+                                <li><a href="/teams">Team</a>
+                                    
                                 </li>
                                 <li class="{{ request()->routeIs('tournaments') ? 'active' : '' }}"><a
                                         href="/tournaments">TOURNAMENT</a>

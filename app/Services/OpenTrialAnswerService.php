@@ -10,7 +10,7 @@ use App\Traits\UploadTrait;
 class OpenTrialAnswerService
 {
     use UploadTrait;
-    
+
     private OpenTrialAnswerInterface $openTrialAnswer;
 
 
@@ -30,14 +30,19 @@ class OpenTrialAnswerService
 
     public function store(array $data, TeamOpenTrialRequest $request): void
     {
+        $answers = $request->answer;
+        $questionIds = $request->open_trial_question_id;
 
-        foreach ($request->answer as $value) {
-            $data['answer'] = $value;
-        }
-        foreach ($request->open_trial_question_id as $value) {
-            $data['open_trial_question_id'] = $value;
-        }
+        $count = min(count($answers), count($questionIds));
 
-        $this->openTrialAnswer->store($data);
+        for ($i = 0; $i < $count; $i++) {
+            $answer = $answers[$i];
+            $open_trial_question_id = $questionIds[$i];
+
+            $data['answer'] = $answer;
+            $data['open_trial_question_id'] = $open_trial_question_id;
+
+            $this->openTrialAnswer->store($data);
+        }
     }
 }

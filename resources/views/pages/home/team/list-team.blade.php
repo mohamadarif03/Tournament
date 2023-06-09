@@ -76,7 +76,7 @@
                                 <p class="font-bold text-md my-2 text-white">Buka Pendaftaran</p>
                                 <div class="flex my-2">
                                     <input id="default-checkbox" type="checkbox" value="1"
-                                        name="gameFilter"
+                                        name="openTrial"
                                         class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600">
                                     <label for="default-checkbox"
                                         class="font-bold ml-2 text-sm font-medium text-white">Buka Pendaftaran</label>
@@ -168,7 +168,7 @@
 
             let url = window.location.href
             let games = []
-            let orderBy = []
+            let openTrial = []
             let search = $('#inputSearch').val() || null
 
             const displaySearchLabel = (search) => {
@@ -228,7 +228,7 @@
                 e.preventDefault()
 
                 games = []
-                orderBy = []
+                openTrial = []
                 search = $('#inputSearch').val() || null
 
                 if (search) {
@@ -245,14 +245,12 @@
                         console.log(gameCheck);
                     }
                 }
+                let openTrialCheck = document.querySelectorAll('input[name=openTrial]:checked')
 
-                let orderCheck = document.querySelectorAll('input[name=orderBy]:checked')
-
-                for (let i = 0; i < orderCheck.length; i++) {
-                    if (orderCheck[i].value == "date") {
-                        orderBy.push(orderCheck[i].value)
-                    } else if (orderCheck[i].value == "price") {
-                        orderBy.push(orderCheck[i].value)
+                for (let i = 0; i < openTrialCheck.length; i++) {
+                    if (openTrialCheck[i].value !== "on") {
+                        openTrial.push(openTrialCheck[i].value)
+                        console.log(openTrialCheck);
                     }
                 }
 
@@ -262,8 +260,8 @@
                     method: 'get',
                     data: {
                         games: games,
-                        orderBy: orderBy[0],
-                        search: search,
+                        openTrial: openTrial,
+                        search: search
                     },
                     success: (response) => {
                         $('.loopTeam').remove()

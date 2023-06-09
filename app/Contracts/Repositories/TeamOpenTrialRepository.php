@@ -7,9 +7,9 @@ use App\Models\TeamOpenTrial;
 
 class TeamOpenTrialRepository extends BaseRepository implements TeamOpenTrialInterface
 {
-    public function __construct(TeamOpenTrial $teamopentrial)
+    public function __construct(TeamOpenTrial $teamOpenTrial)
     {
-        $this->model = $teamopentrial;
+        $this->model = $teamOpenTrial;
     }
 
     public function store(array $data): mixed

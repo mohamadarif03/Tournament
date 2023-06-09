@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use App\Base\Interfaces\HasGame;
+use App\Base\Interfaces\HasOpenTrials;
 use App\Base\Interfaces\HasUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Team extends Model implements HasGame, HasUser
+class Team extends Model implements HasGame, HasUser, HasOpenTrials
 {
     use HasFactory;
     public $incrementing = false;
@@ -37,4 +39,16 @@ class Team extends Model implements HasGame, HasUser
     {
         return $this->BelongsTo(User::class);
     }
+
+    /**
+     * One-to-Many relationship with User Model
+     *
+     * @return HasMany
+     */
+
+     public function openTrials(): HasMany
+     {
+        return $this->hasMany(OpenTrial::class);
+        
+     }
 }

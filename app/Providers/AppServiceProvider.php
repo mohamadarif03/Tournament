@@ -49,10 +49,10 @@ class AppServiceProvider extends ServiceProvider
         CompetitorInterface::class => CompetitorRepository::class,
         CompetitorRegistrantInterface::class => CompetitorRegistrantRepository::class,
         UserInterface::class => UserRepository::class,
-        TeamOpenTrialInterface::class => TeamOpenTrialRepository::class,
         OpenTrialInterface::class => OpenTrialRepository::class,
         OpenTrialQuestionInterface::class => OpenTrialQuestionRepository::class,
         OpenTrialAnswerInterface::class => OpenTrialAnswerRepository::class,
+        TeamOpenTrialInterface::class => TeamOpenTrialRepository::class,
     ];
 
     /**

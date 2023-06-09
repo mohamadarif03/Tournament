@@ -12,11 +12,13 @@ class OpenTrialQuestionRepository extends BaseRepository implements OpenTrialQue
         $this->model = $openTrialQuestion;
     }
 
-    public function get(): mixed
+    public function show(mixed $id): mixed
     {
         return $this->model->query()
+        ->with(['openTrial'])
+        ->where('open_trial_id', $id)
         ->orderBy('created_at', 'desc')
-        ->get();
+        ->get(); 
     }
 
     public function store(array $data): mixed

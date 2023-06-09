@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Arr;
 
 class CompetitorRegistrantRequest extends FormRequest
 {
@@ -18,6 +19,14 @@ class CompetitorRegistrantRequest extends FormRequest
             'competitor_id' => 'nullable',
             'user_id' => 'required',
             'position' => 'nullable',
+        ];
+    }
+    public function messages(): array
+    {
+        return [    
+            'tournament_id.required' => 'Tournament Id Wajib Diisi',
+            'competitor_id.required' => 'Kompetitor Wajib Diisi',
+            'user_id.required' => 'User Id Wajib Diisi',
         ];
     }
 }
