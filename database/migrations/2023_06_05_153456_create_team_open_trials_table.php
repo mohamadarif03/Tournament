@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('email');
             $table->string('cv');
             $table->string('phone_number', 20);
+            $table->foreignUuid('team_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignUuid('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

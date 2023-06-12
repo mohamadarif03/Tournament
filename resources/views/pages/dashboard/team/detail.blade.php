@@ -29,12 +29,12 @@
                         </a>
                     </li>
                     <li class="mr-2">
-                        <a href="javaScript:;" @click="activeunderTab = 'settings'"
-                            :class="activeunderTab === 'settings' ?
+                        <a href="javaScript:;" @click="activeunderTab = 'acc_user'"
+                            :class="activeunderTab === 'acc_user' ?
                                 'text-black border-b-2 border-black dark:text-white dark:border-white' :
                                 'text-black/40 dark:text-white/40 border-b-2 border-transparent rounded-t-lg hover:text-black dark:hover:text-white hover:border-black dark:hover:border-white'"
                             class="inline-block p-4">
-                            Settings
+                            Terima User
                         </a>
                     </li>
                     <li class="mr-2">
@@ -69,28 +69,65 @@
                             </div>
                         </div>
                         <div class="grid grid-cols-2 gap-2">
-                            <div class="my-5">
-                                <p class="my-3"><b>Deskripsi:</b> {!! $openTrials->desc !!}</p>
-                                <p class="my-3"><b>Pendaftaran Ditutup:
-                                    </b>{{ date('d F Y H:i', strtotime($openTrials->close_registration)) }}</p>
-                                <p class="my-3"><b>Lokasi: </b>{{ $openTrials->location }}</p>
-                                <p class="my-3"><b>Gaji:
-                                    </b>{{ 'Rp ' . number_format($openTrials->salary, 0, ',', '.') }}
-                                </p>
-                            </div>
-                            <div class="my-5">
-                                @foreach ($openTrialQuestions as $openTrialQuestion)
-                                    <p>{{ $openTrialQuestion->question }}</p>
+                            @if ($openTrials == null)
+                            @else
+                                <div class="my-5 col-span-1">
+                                    <p class="my-3"><b>Deskripsi:</b> {!! $openTrials->desc !!}</p>
+                                    <p class="my-3"><b>Pendaftaran Ditutup:
+                                        </b>{{ date('d F Y H:i', strtotime($openTrials->close_registration)) }}</p>
+                                    <p class="my-3"><b>Lokasi: </b>{{ $openTrials->location }}</p>
+                                    <p class="my-3"><b>Gaji:
+                                        </b>{{ 'Rp ' . number_format($openTrials->salary, 0, ',', '.') }}
+                                    </p>
+                                </div>
+                            @endif
+                            <div class="my-5 col-span-1">
+                                @foreach ($openTrialQuestions as $index => $openTrialQuestion)
+                                    <div class="">
+                                        <h1 class="font-bold my-3">Pertanyaan ke-{{ $index + 1 }}</h1>
+                                        <p>{{ $openTrialQuestion->question }}</p>
+                                    </div>
                                 @endforeach
+
                             </div>
                         </div>
                     </div>
-                    <div x-show="activeunderTab === 'settings'" class>
+                    <div x-show="activeunderTab === 'acc_user'" class>
                         <p>
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has
-                            roots in a piece of classical Latin literature from 45 BC, making it over
-                            2000 years old. Richard McClintock, a Latin
-                            professor at Hampden-Sydney College in Virginia, looked up one of the more
+                        <table class="table-auto">
+                            <thead>
+                                <tr>
+                                    <th>Nama</th>
+                                    <th>Email</th>
+                                    <th>Nomor HP</th>
+                                    <th>CV</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($teamOpenTrials as $teamOpenTrial)
+                                    <tr>
+                                        <td>{{ $teamOpenTrial->name }}</td>
+                                        <td>{{ $teamOpenTrial->email }}</td>
+                                        <td>{{ $teamOpenTrial->phone_number }}</td>
+                                        <td>1961</td>
+                                        <td>
+                                            <form onsubmit="return confirm('Yakin Ingin Menerima Player Ini?')"
+                                                method="POST" action="{{ route('acc-player-join-team') }}">
+                                                @csrf
+                                                
+                                                <input type="hidden" name="team_id" value="{{ $teamOpenTrial->team_id }}">
+                                                <input type="hidden" name="user_id" value="{{ $teamOpenTrial->user_id }}">
+                                                <button type="submit"
+                                                    class="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded mb-5 cursor-pointer">
+                                                    Terima
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                         </p>
                     </div>
                     <div x-show="activeunderTab === 'contacts'" class>

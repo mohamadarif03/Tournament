@@ -19,6 +19,7 @@ class TeamOpenTrialRequest extends FormRequest
             'cv' => 'nullable',
             'phone_number' => 'required',
             'answer' => 'required',
+            'team_id' => 'required',
             'open_trial_question_id' => 'required',
         ];
     }
@@ -30,6 +31,7 @@ class TeamOpenTrialRequest extends FormRequest
             'cv.required' => 'CV Wajib Diisi',
             'phone_number.required' => 'Nomor HP Wajib Diisi',
             'answer.required' => 'Jawaban Wajib Diisi',
+            'team_id.required' => 'Team Wajib Diisi',
             'open_trial_question_id.required' => 'Pertanyaan Wajib Dijawab',
         ];
     }

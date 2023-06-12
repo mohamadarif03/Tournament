@@ -17,5 +17,13 @@ class TeamOpenTrialRepository extends BaseRepository implements TeamOpenTrialInt
         return $this->model->query()
         ->create($data);
     }
+    function show(mixed $id): mixed
+    {
+        return $this->model->query()
+        ->with('team')
+        ->where('team_id', $id)
+        ->orderBy('created_at', 'desc')
+        ->get();
+    }
 
 }

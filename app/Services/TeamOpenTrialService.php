@@ -45,6 +45,7 @@ class TeamOpenTrialService implements ShouldHandleFileUpload, CustomUploadValida
             'name' => $data['name'],
             'email' => $data['email'],
             'phone_number' => $data['phone_number'],
+            'team_id' => $data['team_id'],
             'cv' => $request->file('cv')->store(UploadDiskEnum::CV->value, 'public')
         ];
     }

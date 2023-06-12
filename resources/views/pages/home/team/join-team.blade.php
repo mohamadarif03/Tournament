@@ -107,37 +107,27 @@
                     <ul data-te-stepper-init
                         class="relative m-0 flex list-none justify-between overflow-hidden p-0 transition-[height] duration-200 ease-in-out">
                         <!--First item-->
-                        
+
                         <li data-te-stepper-step-ref class="w-[4.5rem] flex-auto">
-                            <div data-te-stepper-head-ref
+                            <div data-te-stepper-head-ref id="div-stepper-1"
                                 class="flex cursor-pointer items-center leading-[1.3rem] no-underline before:mr-2 before:h-px before:w-full before:flex-1 before:bg-[#e0e0e0] before:content-[''] after:ml-2 after:h-px after:w-full after:flex-1 after:bg-[#e0e0e0] after:content-['']">
-                                <span data-te-stepper-head-icon-ref
-                                    class="my-6 mr-2 flex h-[1.938rem] w-[1.938rem] items-center justify-center rounded-full bg-[#ebedef] text-sm font-medium text-[#40464f]">
+                                <span data-te-stepper-head-icon-ref id="stepper-1"
+                                    class="my-6 mr-2 flex h-[55px] w-[55px] items-center justify-center rounded-md bg-[#ffbe18] text-sm font-bold text-white">
                                     1
                                 </span>
                             </div>
-                            <div data-te-stepper-content-ref
-                                class="absolute left-0 w-full translate-x-[150%] p-4 transition-all duration-500 ease-in-out">
-                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                nisi ut aliquip ex ea commodo consequat.
-                            </div>
                         </li>
                         <li data-te-stepper-step-ref class="w-[4.5rem] flex-auto">
-                            <div data-te-stepper-head-ref
+                            <div data-te-stepper-head-ref id="div-stepper-2"
                                 class="flex cursor-pointer items-center leading-[1.3rem] no-underline before:mr-2 before:h-px before:w-full before:flex-1 before:bg-[#e0e0e0] before:content-[''] after:ml-2 after:h-px after:w-full after:flex-1 after:bg-[#e0e0e0] after:content-['']">
-                                <span data-te-stepper-head-icon-ref
-                                    class="my-6 mr-2 flex h-[1.938rem] w-[1.938rem] items-center justify-center rounded-full bg-[#ebedef] text-sm font-medium text-[#40464f]">
+                                <span data-te-stepper-head-icon-ref id="stepper-2"
+                                    class="my-6 mr-2 flex h-[55px] w-[55px] items-center justify-center rounded-md bg-[#ffbe18] text-sm font-bold text-white">
                                     2
                                 </span>
                             </div>
-                            <div data-te-stepper-content-ref
-                                class="absolute left-0 w-full translate-x-[150%] p-4 transition-all duration-500 ease-in-out">
-                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                nisi ut aliquip ex ea commodo consequat.
-                            </div>
                         </li>
 
-                        
+
                     </ul>
                     <form action="{{ route('register-join-team') }}" enctype="multipart/form-data" method="post">
                         @csrf
@@ -151,6 +141,7 @@
                                             style="margin-bottom:30px; text-align:center">
                                             Biodata</h2>
                                         <div class="">
+                                            <input type="hidden" name="team_id" value="{{$team->id}}">
                                             <h1 for="title" style="font-weight: bold; margin-bottom: 5px">Nama
                                             </h1>
                                             <div class="input-grp">
@@ -198,8 +189,7 @@
                             </div>
                             <div class="contact__form-wrap col-span-8 hidden" id="interview">
                                 <div class="center" style="">
-                                    <h2 class="title font-bold text-2xl"
-                                        style="margin-bottom:30px; text-align:center">
+                                    <h2 class="title font-bold text-2xl" style="margin-bottom:30px; text-align:center">
                                         Gabung Tim</h2>
                                     @foreach ($openTrials->openTrialQuestions as $openTrial)
                                         <div class="">
@@ -252,10 +242,26 @@
         $('#next_biodata').click(function() {
             $('#biodata').addClass('hidden');
             $('#interview').removeClass('hidden');
+            $('#stepper-1').addClass('bg-[#45f882]');
+            $('#stepper-1').removeClass('bg-[#ffbe18]');
+        })
+        $('#div-stepper-1').click(function() {
+            $('#interview').addClass('hidden');
+            $('#biodata').removeClass('hidden');
+            $('#stepper-1').addClass('bg-[#ffbe18]');
+            $('#stepper-1').removeClass('bg-[#45f882]');
+        })
+        $('#div-stepper-2').click(function() {
+            $('#biodata').addClass('hidden');
+            $('#interview').removeClass('hidden');
+            $('#stepper-1').addClass('bg-[#45f882]');
+            $('#stepper-1').removeClass('bg-[#ffbe18]');
         })
         $('#back_interview').click(function() {
             $('#interview').addClass('hidden');
             $('#biodata').removeClass('hidden');
+            $('#stepper-1').addClass('bg-[#ffbe18]');
+            $('#stepper-1').removeClass('bg-[#45f882]');
         })
     </script>
 </body>

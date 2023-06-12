@@ -10,6 +10,7 @@ use App\Models\OpenTrialAnswer;
 use App\Models\OpenTrialQuestion;
 use App\Models\Team;
 use App\Models\TeamOpenTrial;
+use App\Models\TeamPlayer;
 use App\Models\Tournament;
 use App\Models\User;
 use App\Observers\CompetitorObserver;
@@ -20,6 +21,7 @@ use App\Observers\OpenTrialObserver;
 use App\Observers\OpenTrialQuestionObserver;
 use App\Observers\TeamObserver;
 use App\Observers\TeamOpenTrialObserver;
+use App\Observers\TeamPlayerObserver;
 use App\Observers\TournamentObserver;
 use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Registered;
@@ -55,6 +57,7 @@ class EventServiceProvider extends ServiceProvider
         OpenTrial::observe(OpenTrialObserver::class);
         OpenTrialQuestion::observe(OpenTrialQuestionObserver::class);
         OpenTrialAnswer::observe(OpenTrialAnswerObserver::class);
+        TeamPlayer::observe(TeamPlayerObserver::class);
     }
 
     /**

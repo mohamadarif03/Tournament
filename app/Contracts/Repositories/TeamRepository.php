@@ -45,7 +45,7 @@ class TeamRepository extends BaseRepository implements TeamInterface
                     if ($e->errorInfo[1] == 1451) return false;
                 }
             } else {
-                throw new \Exception('Anda tidak memiliki izin untuk menghapus data ini.');
+                throw new \Exception('Anda tidak memiliki izin untu k menghapus data ini.');
             }
         }
 

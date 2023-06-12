@@ -5,6 +5,7 @@ namespace App\Observers;
 use App\Models\Game;
 use App\Models\TeamOpenTrial;
 use Faker\Provider\Uuid;
+use Illuminate\Support\Facades\Auth;
 
 class TeamOpenTrialObserver
 {
@@ -14,6 +15,7 @@ class TeamOpenTrialObserver
     public function creating(TeamOpenTrial $teamOpenTrial): void
     {
         $teamOpenTrial->id = Uuid::uuid();
+        $teamOpenTrial->user_id = Auth()->id();
     }
 
     /**

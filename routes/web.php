@@ -70,3 +70,4 @@ Route::post('/create-open-trial', [OpenTrialController::class, 'store'])->name('
 
 Route::get('/join-team/{team}', [JointeamController::class, 'index'])->name('join-team');
 Route::post('/register-join-team', [JointeamController::class, 'join'])->name('register-join-team');
+Route::post('/acc-player-join-team', [JointeamController::class, 'acc'])->name('acc-player-join-team');

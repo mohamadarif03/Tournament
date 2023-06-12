@@ -6,6 +6,7 @@ use App\Contracts\Interfaces\GameInterface;
 use App\Contracts\Interfaces\OpenTrialInterface;
 use App\Contracts\Interfaces\OpenTrialQuestionInterface;
 use App\Contracts\Interfaces\TeamInterface;
+use App\Contracts\Interfaces\TeamOpenTrialInterface;
 use App\Enums\UserRoleEnum;
 use App\Helpers\UserHelper;
 use App\Http\Controllers\Controller;
@@ -26,14 +27,16 @@ class TeamController extends Controller
     private GameInterface $game;
     private OpenTrialInterface $openTrial;
     private OpenTrialQuestionInterface $openTrialQuestion;
+    private TeamOpenTrialInterface $teamOpenTrial;
     private TeamService $service;
 
-    public function __construct(TeamInterface $team, GameInterface $game, TeamService $service, OpenTrialInterface $openTrial, OpenTrialQuestionInterface $openTrialQuestion)
+    public function __construct(TeamInterface $team, GameInterface $game, TeamService $service, OpenTrialInterface $openTrial, OpenTrialQuestionInterface $openTrialQuestion, TeamOpenTrialInterface $teamOpenTrial)
     {
         $this->team = $team;
         $this->game = $game;
         $this->service = $service;
         $this->openTrial = $openTrial;
+        $this->teamOpenTrial = $teamOpenTrial;
         $this->openTrialQuestion = $openTrialQuestion;
     }
     /**
@@ -82,10 +85,18 @@ class TeamController extends Controller
     public function show(Team $team, OpenTrial $openTrial)
     {
         $openTrials = $this->openTrial->show($team->id);
-        $idOpenTrial = $openTrials->pluck('id');
-        $openTrialQuestions = $this->openTrialQuestion->show($idOpenTrial);
-        return view('pages.dashboard.team.detail', compact('team', 'openTrials', 'openTrialQuestions'));
+        $idOpenTrial = $openTrials ? $openTrials->pluck('id')->toArray() : [];
+
+        $openTrialQuestions = [];
+        if (!empty($idOpenTrial)) {
+            $openTrialQuestions = $this->openTrialQuestion->show($idOpenTrial);
+        }
+        $teamOpenTrials = $this->teamOpenTrial->show($team->id);
+
+        return view('pages.dashboard.team.detail', compact('team', 'openTrials', 'openTrialQuestions', 'teamOpenTrials'));
     }
+
+
 
     /**
      * Show the form for editing the specified resource.

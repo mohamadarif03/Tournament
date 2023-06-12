@@ -2,23 +2,25 @@
 
 namespace App\Observers;
 
-use App\Models\TeamPlayer;
+use App\Models\Game;
 use Faker\Provider\Uuid;
+use Illuminate\Support\Str;
 
-class TeamPlayerObserver
+class GameObserver
 {
     /**
      * Handle the game "creating" event.
      */
-    public function creating(TeamPlayer $teamPlayer): void
+    public function creating(Game $game): void
     {
-        $teamPlayer->id = Uuid::uuid();
+        $game->id = Uuid::uuid();
+        $game->slug = Str::slug($game->name);
     }
 
     /**
      * Handle the game "updated" event.
      */
-    public function updated(TeamPlayer $teamPlayer): void
+    public function updated(Game $game): void
     {
         //
     }
@@ -26,7 +28,7 @@ class TeamPlayerObserver
     /**
      * Handle the game "force deleted" event.
      */
-    public function forceDeleted(TeamPlayer $teamPlayer): void
+    public function forceDeleted(Game $game): void
     {
         //
     }

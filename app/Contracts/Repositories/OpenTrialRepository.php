@@ -23,7 +23,7 @@ class OpenTrialRepository extends BaseRepository implements OpenTrialInterface
         ->with(['team', 'openTrialQuestions'])
         ->where('team_id', $id)
         ->orderBy('created_at', 'desc')
-        ->firstorFail();   
+        ->first();   
     }
 
 }
