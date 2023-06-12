@@ -14,7 +14,7 @@ class OpenTrialRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'team_id' => 'required',
+            'team_id' => 'nullable',
             'desc' => 'required',
             'close_registration' => 'required',
             'location' => 'required',
@@ -24,7 +24,6 @@ class OpenTrialRequest extends FormRequest
     public function messages(): array
     {
         return[
-            'team_id.required' => 'Team Wajib Wajib Diisi',
             'desc.required' => 'Deskripsi Wajib Diisi',
             'close_registration.required' => 'Tanggal Berakhir Pendaftaran Wajib Diisi',
             'location.required' => 'Lokasi Wajib Diisi',

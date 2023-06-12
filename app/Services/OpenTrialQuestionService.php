@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Contracts\Interfaces\OpenTrialQuestionInterface;
 use App\Http\Requests\OpenTrialQuestionRequest;
+use App\Models\OpenTrialQuestion;
 use App\Traits\UploadTrait;
 
 class OpenTrialQuestionService
@@ -34,4 +35,20 @@ class OpenTrialQuestionService
             $this->openTrialQuestion->store($data);
         }
     }
+
+    /**
+     * Handle update data event to models.
+     *
+     * @param OpenTrialQuestionRequest $request
+     * @param OpenTrialQuestion $game
+     * @return void
+     */
+
+     public function update(array $data, OpenTrialQuestionRequest $request, OpenTrialQuestion $openTrialQuestion):void
+     {
+        foreach ($request->question as $index) {
+            $data['question'] = $index;
+            $this->openTrialQuestion->update($openTrialQuestion->id, $request->validated());
+        }
+     }
 }

@@ -27,4 +27,19 @@ class OpenTrialQuestionRepository extends BaseRepository implements OpenTrialQue
         ->create($data);
     }
 
+    /**
+     * Handle show method and update data instantly from models.
+     *
+     * @param mixed $id
+     * @param array $data
+     *
+     * @return mixed
+     */
+    public function update(mixed $id, array $data): mixed
+    {
+        return $this->model->query()
+            ->findOrFail($id)
+            ->update($data);
+    }
+
 }

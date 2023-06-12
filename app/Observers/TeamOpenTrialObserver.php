@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class TeamOpenTrialObserver
 {
     /**
-     * Handle the game "creating" event.
+     * Handle the teamOpenTrial "creating" event.
      */
     public function creating(TeamOpenTrial $teamOpenTrial): void
     {
@@ -19,17 +19,17 @@ class TeamOpenTrialObserver
     }
 
     /**
-     * Handle the game "updated" event.
+     * Handle the teamOpenTrial "updated" event.
      */
-    public function updated(Game $game): void
+    public function updated(TeamOpenTrial $teamOpenTrial): void
     {
-        //
+        
     }
 
     /**
-     * Handle the game "force deleted" event.
+     * Handle the teamOpenTrial "force deleted" event.
      */
-    public function forceDeleted(Game $game): void
+    public function forceDeleted(TeamOpenTrial $teamOpenTrial): void
     {
         //
     }

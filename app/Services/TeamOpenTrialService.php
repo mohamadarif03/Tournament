@@ -50,28 +50,5 @@ class TeamOpenTrialService implements ShouldHandleFileUpload, CustomUploadValida
         ];
     }
 
-    /**
-     * Handle update data event to models.
-     *
-     * @param GameUpdateRequest $request
-     * @param Game $game
-     * @return array|bool
-     */
-
-    public function update(GameUpdateRequest $request, Game $game): array|bool
-    {
-        $data = $request->validated();
-
-        $old_logo = $game->logo;
-
-        if ($request->hasFile('logo')) {
-            $this->remove($old_logo);
-            $old_logo = $request->file('logo')->store(UploadDiskEnum::GAME->value, 'public');
-        }
-
-        return [
-            'name' => $data['name'],
-            'logo' => $old_logo,
-        ];
-    }
+    
 }

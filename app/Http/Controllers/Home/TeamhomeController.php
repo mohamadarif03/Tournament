@@ -3,20 +3,12 @@
 namespace App\Http\Controllers\Home;
 
 use App\Contracts\Interfaces\GameInterface;
-use App\Contracts\Interfaces\HomeTeamInterface;
-use App\Contracts\Interfaces\OpenTrialQuestionInterface;
-use App\Contracts\Interfaces\TeamOpenTrialInterface;
 use App\Helpers\ResponseHelper;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\OpenTrialAnswerRequest;
-use App\Http\Requests\TeamOpenTrialRequest;
 use App\Models\Team;
-use App\Services\OpenTrialAnswerService;
-use App\Services\TeamOpenTrialService;
 use App\Services\TeamService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class TeamhomeController extends Controller

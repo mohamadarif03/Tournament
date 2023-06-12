@@ -3,16 +3,14 @@
 namespace App\Http\Controllers\Home;
 
 use App\Contracts\Interfaces\OpenTrialInterface;
-use App\Contracts\Interfaces\OpenTrialQuestionInterface;
-use App\Contracts\Interfaces\TeamInterface;
 use App\Contracts\Interfaces\TeamOpenTrialInterface;
 use App\Contracts\Interfaces\TeamPlayerInterface;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\OpenTrialAnswerRequest;
 use App\Http\Requests\TeamOpenTrialRequest;
+use App\Http\Requests\TeamPlayerRejectRequest;
 use App\Http\Requests\TeamPlayerRequest;
 use App\Models\Team;
-use App\Models\TeamPlayer;
+use App\Models\TeamOpenTrial;
 use App\Services\OpenTrialAnswerService;
 use App\Services\TeamOpenTrialService;
 use Illuminate\Contracts\View\View;
@@ -40,6 +38,7 @@ class JointeamController extends Controller
         return view('pages.home.team.join-team', compact('team', 'openTrials'));
     }
 
+
     public function join(TeamOpenTrialRequest $request): RedirectResponse
     {
         $this->teamOpenTrial->store($this->service->store($request));
@@ -50,7 +49,13 @@ class JointeamController extends Controller
     public function acc(TeamPlayerRequest $request): RedirectResponse
     {
         $this->teamPlayer->store($request->validated());
-        return to_route('team');   
+        return redirect()->back();   
+    }
+
+    public function reject(TeamPlayerRejectRequest $request, TeamOpenTrial $teamOpenTrial): RedirectResponse
+    {
+        $this->teamOpenTrial->update($teamOpenTrial->id, $request->validated());
+        return redirect()->back();
     }
     
 }

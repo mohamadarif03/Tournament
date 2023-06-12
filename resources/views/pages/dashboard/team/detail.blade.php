@@ -62,10 +62,17 @@
                         <div class="flex justify-between mx-3 my-3">
                             <div class=""></div>
                             <div class="">
-                                <a href="{{ route('open-trial', $team->id) }}"
-                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded ml-3">
-                                    Buka Pendaftaran
-                                </a>
+                                @if ($openTrials != null)
+                                    <a href="{{ route('edit-open-trial', $openTrials->id) }}"
+                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded ml-3">
+                                        Edit Pendaftaran
+                                    </a>
+                                @else
+                                    <a href="{{ route('open-trial', $team->id) }}"
+                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded ml-3">
+                                        Buka Pendaftaran
+                                    </a>
+                                @endif
                             </div>
                         </div>
                         <div class="grid grid-cols-2 gap-2">
@@ -110,19 +117,37 @@
                                         <td>{{ $teamOpenTrial->name }}</td>
                                         <td>{{ $teamOpenTrial->email }}</td>
                                         <td>{{ $teamOpenTrial->phone_number }}</td>
-                                        <td>1961</td>
-                                        <td>
+                                        <td><a href="{{ asset('storage/' . $teamOpenTrial->cv) }}" target="_blank"><button type="button"
+                                            class="bg-yellow-400 hover:bg-yellow-600 text-white font-bold py-2 px-4 mr-3 rounded mb-5 cursor-pointer">
+                                            Lihat CV
+                                        </button></a></td>
+                                        <td class="flex">
                                             <form onsubmit="return confirm('Yakin Ingin Menerima Player Ini?')"
                                                 method="POST" action="{{ route('acc-player-join-team') }}">
                                                 @csrf
-                                                
                                                 <input type="hidden" name="team_id" value="{{ $teamOpenTrial->team_id }}">
                                                 <input type="hidden" name="user_id" value="{{ $teamOpenTrial->user_id }}">
                                                 <button type="submit"
-                                                    class="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded mb-5 cursor-pointer">
+                                                    class="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 mr-3 rounded mb-5 cursor-pointer">
                                                     Terima
                                                 </button>
                                             </form>
+                                            <form onsubmit="return confirm('Yakin Ingin Menolak Player Ini?')"
+                                                method="POST"
+                                                action="{{ route('reject-player-join-team', $teamOpenTrial->id) }}">
+                                                @method('PUT')
+                                                @csrf
+                                                <input type="hidden" name="status" value="0">
+                                                <button type="submit"
+                                                    class="bg-red-600 hover:bg-red-800 text-white mr-3 font-bold py-2 px-4 rounded mb-5 cursor-pointer">
+                                                    Tolak
+                                                </button>
+                                            </form>
+                                            <button type="button"
+                                                class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded mb-5 cursor-pointer ">
+                                                Detail
+                                            </button>
+
                                         </td>
                                     </tr>
                                 @endforeach
@@ -142,4 +167,8 @@
             </div>
         </div>
     </div>
+    
+@endsection
+@section('js')
+    
 @endsection

@@ -82,7 +82,7 @@ class TeamController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Team $team, OpenTrial $openTrial)
+    public function show(Team $team)
     {
         $openTrials = $this->openTrial->show($team->id);
         $idOpenTrial = $openTrials ? $openTrials->pluck('id')->toArray() : [];

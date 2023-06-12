@@ -40,7 +40,7 @@ class Team extends Model implements HasGame, HasUser, HasOpenTrials
         return $this->BelongsTo(User::class);
     }
 
-    /**
+    /** 
      * One-to-Many relationship with User Model
      *
      * @return HasMany

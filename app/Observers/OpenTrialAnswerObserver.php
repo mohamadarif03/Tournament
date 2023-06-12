@@ -5,6 +5,7 @@ namespace App\Observers;
 use App\Models\OpenTrial;
 use App\Models\OpenTrialAnswer;
 use Faker\Provider\Uuid;
+use Illuminate\Support\Facades\Auth;
 
 class OpenTrialAnswerObserver
 {
@@ -14,6 +15,7 @@ class OpenTrialAnswerObserver
     public function creating(OpenTrialAnswer $openTrialAnswer): void
     {
         $openTrialAnswer->id = Uuid::uuid();
+        $openTrialAnswer->user_id = Auth()->id();
     }
 
     /**

@@ -70,28 +70,34 @@
                     <div class="blog-post-wrapper">
 
                         <div class="tournament__details-content">
-                            <h2 class="title font-bold">{{$team->name}}</h2>
+                            <h2 class="title font-bold">{{ $team->name }}</h2>
                             <div class="blog-post-meta">
                                 <ul class="list-wrap">
-                                    <li>Kapten Tim : {{$team->user->name}}</li>
+                                    <li>Kapten Tim : {{ $team->user->name }}</li>
                                 </ul>
                             </div>
                             <div class="tournament__details-video position-relative">
-                                <img src="{{ asset('storage/' . $team->logo) }}" alt="live_image_url"
-                                    srcset="" width="550">
+                                <img src="{{ asset('storage/' . $team->logo) }}" alt="live_image_url" srcset=""
+                                    width="550">
                             </div>
                             <div class="tournament__details-form">
-                                <p>{{$team->description}}</p>
+                                <p>{{ $team->description }}</p>
 
                             </div>
                             <div class="tournament__details-form">
-                                <a href="{{ route('join-team', $team->id) }}" class="tournament__details-form-btn">Gabung Tim</a>
+                                @if ($team->openTrials->isEmpty())
+                                @else
+                                    @if ($team->openTrials && $team->openTrials->first()->close_registration && $team->openTrials->first()->close_registration > now())
+                                        <a href="{{ route('join-team', $team->id) }}" class="tournament__details-form-btn">Gabung Tim</a>
+                                    @endif
+                                @endif
                             </div>
+
                             <div class="blog-details-bottom">
                                 <div class="row">
                                     <div class="col-xl-6 col-md-7">
                                         <div class="tg-post-tags">
-                                            <h5 class="tags-title">kategori : {{$team->game->name}}</h5>
+                                            <h5 class="tags-title">kategori : {{ $team->game->name }}</h5>
                                             <ul class="list-wrap d-flex flex-wrap align-items-center m-0">
                                                 <li><a href=""></a></li>
                                             </ul>
@@ -142,7 +148,7 @@
                                 </div>
                             </div> --}}
                     </div>
-                        </aside>
+                    </aside>
                 </div>
             </div>
             </div>
