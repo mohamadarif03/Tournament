@@ -36,7 +36,7 @@ class TeamOpenTrialRepository extends BaseRepository implements TeamOpenTrialInt
         return $this->model->query()
         ->with('team')
         ->where('team_id', $id)
-        ->where('status', 1)
+        ->where('status', 'pending')
         ->orderBy('created_at', 'desc')
         ->get();
     }

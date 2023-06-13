@@ -31,6 +31,7 @@ class TournamenthomeController extends Controller
      * Display a listing of the resource.
      *
      * @return View
+     * @param Tournament $tournament
      */
     public function detail(Tournament $tournament): View
     {

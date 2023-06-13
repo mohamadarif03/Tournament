@@ -48,6 +48,18 @@ Route::get('/teams-detail/{team}', [TeamhomeController::class, 'detail'])->name(
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
+
+    Route::get('/join-team/{team}', [JointeamController::class, 'index'])->name('join-team');
+    Route::post('/register-join-team', [JointeamController::class, 'join'])->name('register-join-team');
+    Route::post('/acc-player-join-team', [JointeamController::class, 'acc'])->name('acc-player-join-team');
+    Route::put('/reject-player-join-team/{teamOpenTrial}', [JointeamController::class, 'reject'])->name('reject-player-join-team');
+    Route::get('/detail-join-open-trial/{openTrial}', [JointeamController::class, 'questionOpenTrial'])->name('detail-join-open-trial');
+
+    Route::get('/open-trial/{team}', [OpenTrialController::class, 'create'])->name('open-trial');
+    Route::get('/edit-open-trial/{openTrial}', [OpenTrialController::class, 'edit'])->name('edit-open-trial');
+    Route::post('/create-open-trial', [OpenTrialController::class, 'store'])->name('create-open-trial');
+    Route::put('/update-open-trial/{openTrial}', [OpenTrialController::class, 'update'])->name('update-open-trial');
+ 
     Route::prefix('dashboard')->group(function () {
         Route::get('/', function () {
             return view('pages.dashboard.index');
@@ -56,21 +68,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::middleware('role:organizer|admin')->group(function () {
             Route::resources(['tournament' => TournamentController::class]);
         });
-        
+
         Route::middleware('role:player|admin')->group(function () {
             Route::resources(['team' => TeamController::class]);
         });
-        
+
         Route::resources(['game' => GameController::class]);
     });
 });
-
-Route::get('/open-trial/{team}', [OpenTrialController::class, 'create'])->name('open-trial');
-Route::get('/edit-open-trial/{openTrial}', [OpenTrialController::class, 'edit'])->name('edit-open-trial');
-Route::post('/create-open-trial', [OpenTrialController::class, 'store'])->name('create-open-trial');
-Route::put('/update-open-trial/{openTrial}', [OpenTrialController::class, 'update'])->name('update-open-trial');
-
-Route::get('/join-team/{team}', [JointeamController::class, 'index'])->name('join-team');
-Route::post('/register-join-team', [JointeamController::class, 'join'])->name('register-join-team');
-Route::post('/acc-player-join-team', [JointeamController::class, 'acc'])->name('acc-player-join-team');
-Route::put('/reject-player-join-team/{teamOpenTrial}', [JointeamController::class, 'reject'])->name('reject-player-join-team');

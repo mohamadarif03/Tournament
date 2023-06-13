@@ -65,10 +65,18 @@
                             class="{{ request()->routeIs('tournament.index', 'tournament.create', 'tournament.edit') ? 'active' : '' }}">Tournament</a>
                     </li>
                 @endcan
+                @can('view-admin')
                 <li>
                     <a href="{{ route('team.index') }}"
                         class="{{ request()->routeIs('team.index', 'team.create', 'team.edit') ? 'active' : '' }}">Team</a>
                 </li>
+                @endcan
+                @can('view-player')
+                <li>
+                    <a href="{{ route('team.index') }}"
+                        class="{{ request()->routeIs('team.index', 'team.create', 'team.edit') ? 'active' : '' }}">Team</a>
+                </li>
+                @endcan
 
 
             </ul>

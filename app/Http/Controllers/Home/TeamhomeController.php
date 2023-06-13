@@ -53,6 +53,7 @@ class TeamhomeController extends Controller
      * Display a listing of the resource.
      *
      * @return View
+     * @param Team $team
      */
     public function detail(Team $team)
     {

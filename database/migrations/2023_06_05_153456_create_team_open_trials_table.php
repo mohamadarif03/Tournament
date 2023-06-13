@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('cv');
             $table->string('phone_number', 20);
-            $table->boolean('status')->default(1);
+            $table->string('status')->default('pending');
             $table->foreignUuid('team_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignUuid('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();

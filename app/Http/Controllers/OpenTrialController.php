@@ -26,6 +26,13 @@ class OpenTrialController extends Controller
         $this->service = $service;
         $this->openTrialQuestion = $openTrialQuestion;
     }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @param Team $team
+     * @return View
+     */
     public function create(Team $team): View
     {
         return view('pages.dashboard.team.createOpenTrial', compact('team'));
@@ -33,7 +40,8 @@ class OpenTrialController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param OpenTrialRequest $request
+     * @param OpenTrialRequest $openTrialRequest
+     * @param OpenTrialQuestionRequest $openTrialQuestionRequest
      * @return RedirectResponse
      */
     public function store(OpenTrialRequest $openTrialRequest, OpenTrialQuestionRequest $openTrialQuestionRequest): RedirectResponse
@@ -46,6 +54,12 @@ class OpenTrialController extends Controller
         return to_route('team.index')->with('success', trans('alert.add_success'));
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param OpenTrial $openTrial
+     * @return View
+     */
     public function edit(OpenTrial $openTrial): View
     {
         $openTrialQuestions = $this->openTrialQuestion->show($openTrial->id);
