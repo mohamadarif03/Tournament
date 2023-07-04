@@ -133,11 +133,12 @@
                                                     Tolak
                                                 </button>
                                             </form>
-                                            {{-- <button type="button" data-modal-target="staticModal" onclick="show{{$teamOpenTrial->id}}" id="btn-show-{{$teamOpenTrial->id}}"
-                                                data-modal-toggle="staticModal"
+                                            <button type="button" data-modal-target="staticModal"
+                                                onclick="show('{{ $openTrials->id }}')"
+                                                id="btn-show-{{ $openTrials->id }}" data-modal-toggle="staticModal"
                                                 class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded mb-5 cursor-pointer ">
                                                 Detail
-                                            </button> --}}
+                                            </button>
                                             {{-- <a href="{{ route('detail-join-open-trial', $openTrials->id) }}"
                                                 onclick="show{{ $openTrials->id }}" id="btn-show-{{ $openTrials->id }}"
                                                 class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded mb-5 cursor-pointer ">
@@ -160,7 +161,7 @@
                                 <!-- Modal header -->
                                 <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                                        Static modal
+                                        Detail
                                     </h3>
                                     <button type="button"
                                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -174,24 +175,16 @@
                                     </button>
                                 </div>
                                 <!-- Modal body -->
-                                <div class="p-6 space-y-6">
-                                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                        With less than a month to go before the European Union enacts new consumer privacy
-                                        laws for its citizens, companies around the world are updating their terms of
-                                        service agreements to comply.
-                                    </p>
-                                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                <div class="p-6" id="table">
+                                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400" id="showQuestion">
 
-                                    </p>
+                                    </table>
                                 </div>
                                 <!-- Modal footer -->
                                 <div
                                     class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
                                     <button data-modal-hide="staticModal" type="button"
-                                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">I
-                                        accept</button>
-                                    <button data-modal-hide="staticModal" type="button"
-                                        class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Decline</button>
+                                        class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Tutup</button>
                                 </div>
                             </div>
                         </div>
@@ -212,21 +205,42 @@
             var question = $('#btn-show-' + id).data('question');
             $('#show-question').text(question);
             $('#show-id').val(id);
-            showQuestion(id); // Panggil fungsi untuk menampilkan deskripsi
+            GetData(id);
         }
 
-        function showQuestion(id) {
+
+        function GetData(id) {
+            console.log(id);
             $.ajax({
-                url: '/detail-join-open-trial/' + id,
                 type: 'GET',
+                url: '/detail-join-open-trial/' + id,
                 success: function(response) {
-                    $('#staticModal .text-xl').text(response.title);
-                    $('#staticModal .text-gray-500:eq(0)').text(response.description1);
-                    $('#staticModal .text-gray-500:eq(1)').text(response.description2);
-                    $('#staticModal').show();
-                },
-                error: function(xhr) {
-                    console.log(xhr.responseText);
+                    console.log(response);
+                    if (response) {
+                        $('#showQuestion').html('')
+                        $.each(response, function(index, data) {
+                            var html =
+                                '<tbody>' +
+                                    '<tr class="bg-white border-b">' +
+                                        '<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">' +
+                                            'Pertanyaan ke-'+(index+1)+
+                                        '</th>' +
+                                        '<td class="px-6 py-4">' +
+                                            data.question +
+                                        '</td>' +
+                                    '</tr>' +
+                                    '<tr class="bg-white border-b">' +
+                                        '<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">' +
+                                            'Jawaban: '+
+                                        '</th>' +
+                                        '<td class="px-6 py-4">' +
+                                            data.open_trial_answer[0].answer +
+                                        '</td>' +
+                                    '</tr>' +
+                                '</tbody>';
+                            $('#showQuestion').append(html);
+                        });
+                    }
                 }
             });
         }

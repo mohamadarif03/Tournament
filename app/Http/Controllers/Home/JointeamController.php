@@ -59,9 +59,8 @@ class JointeamController extends Controller
      */
     public function questionOpenTrial(OpenTrial $openTrial)
     {
-        $openTrialQuestions = $this->openTrialQuestion->show($openTrial->id);
-        // dd($openTrialQuestions);
-        return response()->json($openTrialQuestions);
+        $data = $this->openTrialQuestion->show($openTrial->id);
+        return response()->json($data);
     }
 
 

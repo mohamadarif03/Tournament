@@ -9,12 +9,11 @@ use App\Contracts\Interfaces\Eloquent\ShowMoreInterface;
 use App\Contracts\Interfaces\Eloquent\StoreInterface;
 use App\Contracts\Interfaces\Eloquent\UpdateInterface;
 
-interface TeamInterface extends  GetInterface,
-StoreInterface,
-ShowInterface,
-UpdateInterface,
-DeleteInterface,
-ShowMoreInterface
+interface TeamInterface extends GetInterface,
+    StoreInterface,
+    ShowInterface,
+    UpdateInterface,
+    DeleteInterface,
+    ShowMoreInterface
 {
-
 }

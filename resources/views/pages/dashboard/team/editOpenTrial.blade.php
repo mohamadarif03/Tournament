@@ -17,13 +17,13 @@
                 {{ session('success') }}
             </div>
         @endif
-        <form enctype="multipart/form-data" action="{{ route('update-open-trial', $openTrial->id) }}" class="theme-form theme-form-2 mega-form"
-            method="POST">
+        <form enctype="multipart/form-data" action="{{ route('update-open-trial', $openTrial->id) }}"
+            class="theme-form theme-form-2 mega-form" method="POST">
             @csrf
             @method('PUT')
             <div class="border border-black/10 dark:border-white/10 p-5 rounded-md" id="detail">
                 <div class="mb-5">
-                    <p class="text-xl font-bold">Tambahkan Detail</p>
+                    <p class="text-xl font-bold">Edit Detail</p>
                 </div>
 
                 <div class="mb-4" id="address">
@@ -68,14 +68,14 @@
                 </div>
                 <div id="question-container">
                     @foreach ($openTrialQuestions as $index => $openTrialQuestion)
-                    <div class="mb-4" id="address_{{ $index + 1 }}">
-                        <label class="mt-1.5 flex -space-x-px font-semibold">Pertanyaan ke-{{ $index + 1 }}</label>
-                        <input
-                            class="form-input w-full rounded-lg border border-black/10 bg-transparent px-3 py-2.5 placeholder:text-black/60"
-                            placeholder="Pertanyaan" type="text" id="question_1" name="question[]"
-                            value="{{ $openTrialQuestion->question }}" />
-                        
-                    </div>
+                        <div class="mb-4" id="address_{{ $index + 1 }}">
+                            <label class="mt-1.5 flex -space-x-px font-semibold">Pertanyaan ke-{{ $index + 1 }}</label>
+                            <input
+                                class="form-input w-full rounded-lg border border-black/10 bg-transparent px-3 py-2.5 placeholder:text-black/60"
+                                placeholder="Pertanyaan" type="text" id="question_1" name="question[]"
+                                value="{{ $openTrialQuestion->question }}" />
+
+                        </div>
                     @endforeach
 
                 </div>
@@ -98,18 +98,20 @@
                     </div>
                 </div>
             </div>
+            
+        
         </form>
     </div>
 @endsection
 
 @section('js')
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $('#desc').summernote();
-        });
+        ClassicEditor
+            .create( document.querySelector( '#desc' ) )
+            .catch( error => {
+                console.error( error );
+            } );
     </script>
     <script>
         $('#btn-next').click(function() {
@@ -145,9 +147,9 @@
             });
         });
     </script>
+    
 @endsection
 
 @section('css')
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
 @endsection

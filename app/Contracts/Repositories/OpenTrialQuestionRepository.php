@@ -15,7 +15,7 @@ class OpenTrialQuestionRepository extends BaseRepository implements OpenTrialQue
     public function show(mixed $id): mixed
     {
         return $this->model->query()
-        ->with(['openTrial'])
+        ->with(['openTrial', 'openTrialAnswer'])
         ->where('open_trial_id', $id)
         ->orderBy('created_at', 'desc')
         ->get(); 
