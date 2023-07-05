@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Home;
 
 use App\Contracts\Interfaces\GameInterface;
+use App\Contracts\Interfaces\TeamPlayerInterface;
+use App\Contracts\Interfaces\UserInterface;
 use App\Helpers\ResponseHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Team;
+use App\Models\User;
 use App\Services\TeamService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
@@ -15,12 +18,16 @@ class TeamhomeController extends Controller
 {
     private GameInterface $game;
     private TeamService $service;
+    private TeamPlayerInterface $teamPlayer;
+    private UserInterface $user;
 
 
-    public function __construct(GameInterface $game, TeamService $service)
+    public function __construct(GameInterface $game, TeamService $service, TeamPlayerInterface $teamPlayer, UserInterface $user)
     {
         $this->game = $game;
         $this->service = $service;
+        $this->user = $user;
+        $this->teamPlayer = $teamPlayer;
     }
 
     /**
@@ -57,7 +64,15 @@ class TeamhomeController extends Controller
      */
     public function detail(Team $team)
     {
-        return view('pages.home.team.team-detail', compact('team'));
+        $teamPlayers = $this->teamPlayer->get();
+        return view('pages.home.team.team-detail', compact('team', 'teamPlayers'));
+    }
+
+    public function player(User $user)
+    {
+        $teams = $this->user->show($user->id);
+        // dd($teams);
+        return view('pages.home.player.profil', compact('user', 'teams'));
     }
     
 }

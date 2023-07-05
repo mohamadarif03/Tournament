@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Base\Interfaces\HasGame;
 use App\Base\Interfaces\HasOpenTrials;
+use App\Base\Interfaces\HasTeamPlayers;
 use App\Base\Interfaces\HasUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -51,4 +52,5 @@ class Team extends Model implements HasGame, HasUser, HasOpenTrials
         return $this->hasMany(OpenTrial::class);
         
      }
+     
 }

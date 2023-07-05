@@ -43,6 +43,7 @@ Route::post('/register-tournament', [JointournamentController::class, 'join'])->
 
 Route::get('/teams', [TeamhomeController::class, 'index'])->name('teams');
 Route::get('/teams-detail/{team}', [TeamhomeController::class, 'detail'])->name('team-detail');
+Route::get('/profile-player/{user}', [TeamhomeController::class, 'player'])->name('profile-player');
 
 
 

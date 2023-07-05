@@ -28,7 +28,8 @@ class TeamPlayerRepository extends BaseRepository implements TeamPlayerInterface
     public function show(mixed $id): mixed
     {
          return $this->model->query()
-            ->findOrFail($id);
+         ->with('team')
+        ->findOrFail($id);
     }
 
     /**
@@ -42,5 +43,16 @@ class TeamPlayerRepository extends BaseRepository implements TeamPlayerInterface
     public function update(mixed $id, array $data): mixed
     {
         return $this->show($id)->update($data);
+    }
+    
+    /**
+     * Handle the Get all data event from models.
+     *
+     * @return mixed
+     */
+    public function get(): mixed
+    {
+        return $this->model->query()
+            ->with('team', 'user')->get();
     }
 }

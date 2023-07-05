@@ -10,7 +10,7 @@ interface HasTeams
     /**
      * One-to-Many relationship with Team Model
      *
-     * @return BelongsTo
+     * @return HasMany
      */
 
     public function team(): HasMany;
