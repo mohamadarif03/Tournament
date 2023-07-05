@@ -4,11 +4,12 @@ namespace App\Services;
 
 use App\Base\Interfaces\uploads\CustomUploadValidation;
 use App\Base\Interfaces\uploads\ShouldHandleFileUpload;
-use App\Enums\UploadDiskEnum;
-use App\Http\Requests\TeamOpenTrialRequest;
+use App\Http\Requests\CompetitorRequest;
+use Exception;
+use App\Models\Tournament;
 use App\Traits\UploadTrait;
 
-class TeamOpenTrialService implements ShouldHandleFileUpload, CustomUploadValidation
+class CompetitorService implements ShouldHandleFileUpload, CustomUploadValidation
 {
     use UploadTrait;
 
@@ -30,21 +31,23 @@ class TeamOpenTrialService implements ShouldHandleFileUpload, CustomUploadValida
     /**
      * Handle store data event to models.
      *
-     * @param TeamOpenTrialRequest $request
+     * @param CompetitorRequest $request
      *
      * @return array|bool
      */
-    public function store(TeamOpenTrialRequest $request): array|bool
+    public function store(CompetitorRequest $request): array|bool
     {
         $data = $request->validated();
 
-        return [
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'phone_number' => $data['phone_number'],
-            'team_id' => $data['team_id'],
-            'cv' => $request->file('cv')->store(UploadDiskEnum::CV->value, 'public')
-        ];
+        $tournamentId = $data['tournament_id'];
+        $tournament = Tournament::withCount('competitor')->findOrFail($tournamentId);
+        if ($tournament->competitor_count >= $tournament->slot) {
+            return false;
+        } else {
+            return [
+                'tournament_id' => $data['tournament_id'],
+                'team_id' => $data['team_id'],
+            ];
+        }
     }
-    
 }

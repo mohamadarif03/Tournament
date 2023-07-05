@@ -15,7 +15,6 @@ class CompetitorRegistrantRepository extends BaseRepository implements Competito
     public function store(array $data): mixed
     {
         return $this->model->query()
-        ->create($data);
+            ->create($data);
     }
-
 }

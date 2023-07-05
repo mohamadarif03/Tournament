@@ -115,12 +115,12 @@
                                     </ul>
                                 </div>
                                 <div class="tournament__details-video position-relative">
-                                    <img src="{{ asset('storage/' . $tournament->live_image_url) }}" alt="live_image_url"
-                                        srcset="" width="750">
+                                    <img src="{{ asset('storage/' . $tournament->live_image_url) }}"
+                                        alt="live_image_url" srcset="" width="750">
                                 </div>
                                 <div class="tournament__details-form">
                                     <p>{{ $tournament->description }}</p>
-    
+
                                 </div>
                             </div>
                         </div>
@@ -307,7 +307,8 @@
                                                     style="border: 1px solid #23292f; padding: 15px 30px;">
                                                     <option selected>Pilih Pemain</option>
                                                     @foreach ($users as $user)
-                                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                                        <option value="{{ $user->id }}">{{ $user->name }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -325,7 +326,7 @@
                                                     <input name="id_game" type="text" placeholder="Game Id">
                                                 </div>
                                             </div>
-                                        </div> 
+                                        </div>
                                     </div>
                                     <div class="card p-6 my-[50px]" style="background-color: #1b1e21; ">
                                         <h2 class="title font-bold text-2xl"
@@ -341,7 +342,8 @@
                                                     style="border: 1px solid #23292f; padding: 15px 30px;">
                                                     <option selected>Pilih Pemain</option>
                                                     @foreach ($users as $user)
-                                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                                        <option value="{{ $user->id }}">{{ $user->name }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -375,7 +377,8 @@
                                                     style="border: 1px solid #23292f; padding: 15px 30px;">
                                                     <option selected>Pilih Pemain</option>
                                                     @foreach ($users as $user)
-                                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                                        <option value="{{ $user->id }}">{{ $user->name }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -409,7 +412,8 @@
                                                     style="border: 1px solid #23292f; padding: 15px 30px;">
                                                     <option selected>Pilih Pemain</option>
                                                     @foreach ($users as $user)
-                                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                                        <option value="{{ $user->id }}">{{ $user->name }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -443,7 +447,8 @@
                                                     style="border: 1px solid #23292f; padding: 15px 30px;">
                                                     <option selected>Pilih Pemain</option>
                                                     @foreach ($users as $user)
-                                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                                        <option value="{{ $user->id }}">{{ $user->name }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -477,7 +482,8 @@
                                                     style="border: 1px solid #23292f; padding: 15px 30px;">
                                                     <option selected>Pilih Pemain</option>
                                                     @foreach ($users as $user)
-                                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                                        <option value="{{ $user->id }}">{{ $user->name }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -497,7 +503,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit"class="tournament__details-form-btn bg-[#45f882]">Kirim</button>
+                                    <button
+                                        type="submit"class="tournament__details-form-btn bg-[#45f882]">Kirim</button>
                                 </div>
                             </form>
                         </div>
@@ -511,6 +518,12 @@
     </main>
     <!-- main-area-end -->
 
+
+    @if (session('slotpenuh'))
+        <script>
+            alert('{{ session('slotpenuh') }}');
+        </script>
+    @endif
 
 
     <!-- JS here -->

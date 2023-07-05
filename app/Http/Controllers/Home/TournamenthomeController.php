@@ -36,7 +36,10 @@ class TournamenthomeController extends Controller
     public function detail(Tournament $tournament): View
     {
         $tournamentmore = $this->tournamentdetail->showmore();
-        return view('pages.home.tournament.tournament-detail', compact('tournament', 'tournamentmore'));
+        $tournamentId = $tournament->id;
+        $countTournament = Tournament::withCount('competitor')->findOrFail($tournamentId);
+        // dd($countTournament);
+        return view('pages.home.tournament.tournament-detail', compact('tournament', 'tournamentmore', 'countTournament'));
     }
     /**
      * Display a listing of the resource.

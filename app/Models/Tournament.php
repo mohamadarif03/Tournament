@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
+use App\Base\Interfaces\hasCompetitors;
 use App\Base\Interfaces\HasGame;
 use App\Base\Interfaces\HasUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Tournament extends Model implements HasGame, HasUser
+class Tournament extends Model implements HasGame, HasUser, hasCompetitors
 {
     use HasFactory;
     public $incrementing = false;
@@ -24,5 +26,9 @@ class Tournament extends Model implements HasGame, HasUser
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+    function competitor(): HasMany
+    {
+        return $this->hasMany(Competitor::class);
     }
 }

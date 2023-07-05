@@ -67,8 +67,7 @@
         <section class="tournament__details-area">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="blog-post-wrapper">
-
+                    <div class="blog-post-wrapper" style="width: 100%">
                         <div class="tournament__details-content">
                             <h2 class="title font-bold">{{ $team->name }}</h2>
                             <div class="blog-post-meta">
@@ -76,19 +75,35 @@
                                     <li>Kapten Tim : {{ $team->user->name }}</li>
                                 </ul>
                             </div>
-                            <div class="tournament__details-video position-relative">
-                                <img src="{{ asset('storage/' . $team->logo) }}" alt="live_image_url" srcset=""
-                                    width="550">
+                            <div class="md:flex">
+                                <div class="tournament__details-video position-relative">
+                                    <img src="{{ asset('storage/' . $team->logo) }}" alt="live_image_url" srcset=""
+                                        width="200">
+                                </div>
+                                <div class="tournament__details-form" style="width: 70%; margin-left:3rem">
+                                    <p>{{ $team->description }}</p>
+                                </div>
                             </div>
-                            <div class="tournament__details-form">
-                                <p>{{ $team->description }}</p>
-
+                            <div class="">
+                                <h1 class="title" style="margin-top: 20px">Anggota</h1>
+                                <hr style="width: 12%">
+                                <div class="grid gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+                                    <div class="card mt-[2rem]" style="width: 220px; height:350px;"></div>
+                                    <div class="card mt-[2rem]" style="width: 220px; height:350px;"></div>
+                                    <div class="card mt-[2rem]" style="width: 220px; height:350px;"></div>
+                                    <div class="card mt-[2rem]" style="width: 220px; height:350px;"></div>
+                                    <div class="card mt-[2rem]" style="width: 220px; height:350px;"></div>
+                                </div>
                             </div>
                             <div class="tournament__details-form">
                                 @if ($team->openTrials->isEmpty())
                                 @else
-                                    @if ($team->openTrials && $team->openTrials->first()->close_registration && $team->openTrials->first()->close_registration > now())
-                                        <a href="{{ route('join-team', $team->id) }}" class="tournament__details-form-btn">Gabung Tim</a>
+                                    @if (
+                                        $team->openTrials &&
+                                            $team->openTrials->first()->close_registration &&
+                                            $team->openTrials->first()->close_registration > now())
+                                        <a href="{{ route('join-team', $team->id) }}"
+                                            class="tournament__details-form-btn">Gabung Tim</a>
                                     @endif
                                 @endif
                             </div>
@@ -117,38 +132,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="blog-post-sidebar">
-                        <aside class="blog-sidebar tournament__sidebar">
-                            {{-- <div class="shop__widget">
-                                <h4 class="shop__widget-title font-bold">Tournament Lainnya</h4>
-                                <div class="shop__widget-inner">
-                                    @foreach ($tournamentmore as $tournament)
-                                        <div class="trending__matches-list">
-                                            <div class="trending__matches-item">
-                                                <div class="trending__matches-thumb">
-                                                    <a href="#"><img
-                                                            src="{{ asset('storage/' . $tournament->live_image_url) }}"
-                                                            style="min-width: 30px min-height:20px; max-width:60px; max-height:70"
-                                                            alt="img"></a>
-                                                </div>
-                                                <div class="trending__matches-content">
-                                                    <div class="info">
-                                                        <h5 class="title font-bold"><a
-                                                                href="#">{{ $tournament->name }}</a></h5>
-                                                        <span class="price">Rp.
-                                                            {{ number_format($tournament->price_pool, 0, ',', '.') }}</span>
-                                                    </div>
-                                                    <div class="play">
-                                                        <a href="https://www.youtube.com/watch?v=a3_o4SpV1vI"
-                                                            class="popup-video"><i class="far fa-play-circle"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                    @endforeach
-                                </div>
-                            </div> --}}
-                    </div>
-                    </aside>
                 </div>
             </div>
             </div>
