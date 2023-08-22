@@ -371,7 +371,7 @@
                     </div>
                 </div>
                 <div class="row justify-content-center">
-                    <div class="col-xl-10">
+                    <div class="col-sm-10">
                         <div class="upcoming-match__lists">
                             <div class="upcoming-match__item tg-svg wow fadeInUp" data-wow-delay=".6s">
                                 <div class="svg-icon" id="svg-9" data-svg-icon="assets/img/icons/match.svg">
@@ -405,8 +405,9 @@
                                         <path id="bottom-svg3" d="M1104,3760l-20,24H837l-20-24"
                                             transform="translate(-817 -3760)" />
                                     </svg>
-                                    <span>October 10, 2023, 9:30 pm</span>
+                                    <span class="tanggal">October 10, 2023, 9:30 pm</span>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -417,72 +418,76 @@
 
         <!-- project-area -->
         <section class="project-area project-bg section-pt-120 section-pb-140">
-            <div class="container custom-container">
-                <div class="project__wrapper">
-                    <div class="section__title text-start">
-                        <h3 class="title">PROJECTS MYKD</h3>
-                        <span class="sub-title tg__animate-text">our LATEST gallery</span>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-6 col-lg-7 col-md-10">
+                        <div class="section__title text-center mb-60">
+                            <span class="sub-title tg__animate-text">our LATEST gallery</span>
+                            <h3 class="title">PROJECTS MYKD</h3>
+                        </div>
                     </div>
-                    <div class="swiper-container project-active">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="project__item">
-                                    <a href="assets/img/gallery/project_01.jpg" class="popup-image"><img
-                                            src="assets/img/gallery/project_01.jpg" alt="img"></a>
-                                </div>
+                </div>
+                <div class="swiper-container streamers-active" style="margin-left: 4px;">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="project__item">
+                                <a href="assets/img/gallery/project_01.jpg" class="popup-image"><img
+                                        src="assets/img/gallery/project_01.jpg" alt="img"></a>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="project__item">
-                                    <a href="assets/img/gallery/project_02.jpg" class="popup-image"><img
-                                            src="assets/img/gallery/project_02.jpg" alt="img"></a>
-                                </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="project__item">
+                                <a href="assets/img/gallery/project_02.jpg" class="popup-image"><img
+                                        src="assets/img/gallery/project_02.jpg" alt="img"></a>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="project__item">
-                                    <a href="assets/img/gallery/project_03.jpg" class="popup-image"><img
-                                            src="assets/img/gallery/project_03.jpg" alt="img"></a>
-                                </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="project__item">
+                                <a href="assets/img/gallery/project_03.jpg" class="popup-image"><img
+                                        src="assets/img/gallery/project_03.jpg" alt="img"></a>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="project__item">
-                                    <a href="assets/img/gallery/project_04.jpg" class="popup-image"><img
-                                            src="assets/img/gallery/project_04.jpg" alt="img"></a>
-                                </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="project__item">
+                                <a href="assets/img/gallery/project_04.jpg" class="popup-image"><img
+                                        src="assets/img/gallery/project_04.jpg" alt="img"></a>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="project__item">
-                                    <a href="assets/img/gallery/project_05.jpg" class="popup-image"><img
-                                            src="assets/img/gallery/project_05.jpg" alt="img"></a>
-                                </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="project__item">
+                                <a href="assets/img/gallery/project_05.jpg" class="popup-image"><img
+                                        src="assets/img/gallery/project_05.jpg" alt="img"></a>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="project__item">
-                                    <a href="assets/img/gallery/project_06.jpg" class="popup-image"><img
-                                            src="assets/img/gallery/project_06.jpg" alt="img"></a>
-                                </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="project__item">
+                                <a href="assets/img/gallery/project_06.jpg" class="popup-image"><img
+                                        src="assets/img/gallery/project_06.jpg" alt="img"></a>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="project__item">
-                                    <a href="assets/img/gallery/project_07.jpg" class="popup-image"><img
-                                            src="assets/img/gallery/project_07.jpg" alt="img"></a>
-                                </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="project__item">
+                                <a href="assets/img/gallery/project_07.jpg" class="popup-image"><img
+                                        src="assets/img/gallery/project_07.jpg" alt="img"></a>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="project__item">
-                                    <a href="assets/img/gallery/project_08.jpg" class="popup-image"><img
-                                            src="assets/img/gallery/project_08.jpg" alt="img"></a>
-                                </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="project__item">
+                                <a href="assets/img/gallery/project_08.jpg" class="popup-image"><img
+                                        src="assets/img/gallery/project_08.jpg" alt="img"></a>
                             </div>
                         </div>
                     </div>
-                    <div class="slider-button-prev">
-                        <i class="flaticon-right-arrow"></i>
-                        <i class="flaticon-right-arrow"></i>
-                    </div>
+                </div>
+            </div>
+            <div class="streamers__pagination">
+                <div class="slider-button-prev streamers__pagination-arrow"><i class="fas fa-angle-left"></i>
+                </div>
+                <div class="swiper-pagination streamers__pagination-dots"></div>
+                <div class="slider-button-next streamers__pagination-arrow"><i class="fas fa-angle-right"></i>
                 </div>
             </div>
             <!-- scrollbar -->
-            <div class="swiper-scrollbar"></div>
         </section>
         <!-- project-area-end -->
 
