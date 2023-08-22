@@ -177,22 +177,26 @@
                                 </div>
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                                     @php
-                                    $counter = 0;
+                                        $counter = 0;
                                     @endphp
                                     @foreach ($games as $game)
                                         @if ($counter < 8)
                                             <li class="nav-item" role="presentation">
                                                 <div class="text-center">
-                                                    <button class="nav-link{{ $counter === 0 ? ' active' : '' }}" id="{{ $game->id }}-tab"
-                                                        data-bs-toggle="tab" data-bs-target="#{{ $game->id }}" type="button" role="tab"
-                                                        aria-controls="{{ $game->id }}" aria-selected="{{ $counter === 0 ? 'true' : 'false' }}">
-                                                        <img src="{{ asset('storage/' . $game->logo) }}" width="85" height="85" alt="img">
+                                                    <button class="nav-link{{ $counter === 0 ? ' active' : '' }}"
+                                                        id="{{ $game->id }}-tab" data-bs-toggle="tab"
+                                                        data-bs-target="#{{ $game->id }}" type="button"
+                                                        role="tab" aria-controls="{{ $game->id }}"
+                                                        aria-selected="{{ $counter === 0 ? 'true' : 'false' }}">
+                                                        <img src="{{ asset('storage/' . $game->logo) }}"
+                                                            width="85" height="85" alt="img">
                                                     </button>
-                                                    <h6 class="title" style="width: 85px; margin-top: 10px">{{ $game->name }}</h6>
+                                                    <h6 class="title" style="width: 85px; margin-top: 10px">
+                                                        {{ $game->name }}</h6>
                                                 </div>
                                             </li>
                                             @php
-                                            $counter++;
+                                                $counter++;
                                             @endphp
                                         @endif
                                     @endforeach
@@ -209,10 +213,10 @@
                     </div>
                 </div>
             </section>
-            
-          
-            
-            
+
+
+
+
 
             <!-- about-area-end -->
 
@@ -366,8 +370,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12">
+                <div class="row justify-content-center">
+                    <div class="col-xl-10">
                         <div class="upcoming-match__lists">
                             <div class="upcoming-match__item tg-svg wow fadeInUp" data-wow-delay=".6s">
                                 <div class="svg-icon" id="svg-9" data-svg-icon="assets/img/icons/match.svg">
@@ -395,7 +399,7 @@
                                                 alt="img"></a>
                                     </div>
                                 </div>
-                                <div class="upcoming-match__date">
+                                <div class="upcoming-match__date" style="margin-bottom: 100px;">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="287" height="24"
                                         viewBox="0 0 287 24">
                                         <path id="bottom-svg3" d="M1104,3760l-20,24H837l-20-24"
@@ -648,20 +652,20 @@
     <script src="{{ asset('assets/js/plugins.js') }}"></script>
     <script src="{{ asset('assets/js/ajax-form.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
-      <!-- Add the following JavaScript code -->
-      <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-      <script>
-          var swiper = new Swiper('.streamers__pagination', {
-              navigation: {
-                  nextEl: '.slider-button-next',
-                  prevEl: '.slider-button-prev',
-              },
-              pagination: {
-                  el: '.streamers__pagination-dots',
-                  clickable: true,
-              },
-          });   
-      </script>
+    <!-- Add the following JavaScript code -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper('.streamers__pagination', {
+            navigation: {
+                nextEl: '.slider-button-next',
+                prevEl: '.slider-button-prev',
+            },
+            pagination: {
+                el: '.streamers__pagination-dots',
+                clickable: true,
+            },
+        });
+    </script>
     <script>
         $(document).ready(function() {
             $('button[data-bs-toggle="tab"]').on('click', function() {

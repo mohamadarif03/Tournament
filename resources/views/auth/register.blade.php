@@ -115,7 +115,8 @@
                     <div class="col-lg-6 col-md-10">
                         <div class="contact__form-wrap">
                             <div class="center" style="margin-top: 70px">
-                                <h2 class="font-bold text-xl text-white" style="margin-bottom:30px; text-align:center">Daftar</h2>
+                                <h2 class="font-bold text-xl text-white" style="margin-bottom:30px; text-align:center">
+                                    Daftar</h2>
                                 <form action="{{ route('register') }}" method="POST" style="height: 670px;">
                                     @csrf
                                     <div class="row">
@@ -149,7 +150,8 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-12">
-                                            <h2 class="font-bold text-2xl" style="margin-bottom:30px; text-align:center">Daftar Sebagai</h2>
+                                            <h2 class="font-bold text-2xl"
+                                                style="margin-bottom:30px; text-align:center">Daftar Sebagai</h2>
                                             <div class="col-md-4 mb-3">
                                                 <input name="role" value="organizer"
                                                     class="checkbox_animated check-box @error('role') is-invalid @enderror"
