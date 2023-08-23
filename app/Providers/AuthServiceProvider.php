@@ -23,23 +23,23 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // $this->registerPolicies();
+        $this->registerPolicies();
 
-        // $permission = Permission::where('name', 'view-admin')->first();
-        // $permission = Permission::where('name', 'view-organizer')->first();
-        // $permission = Permission::where('name', 'view-player')->first();
-        // if (!$permission) {
-        //     Permission::create(['name' => 'view-admin']);
-        //     Permission::create(['name' => 'view-organizer']);
-        //     Permission::create(['name' => 'view-player']);
+        $permission = Permission::where('name', 'view-admin')->first();
+        $permission = Permission::where('name', 'view-organizer')->first();
+        $permission = Permission::where('name', 'view-player')->first();
+        if (!$permission) {
+            Permission::create(['name' => 'view-admin']);
+            Permission::create(['name' => 'view-organizer']);
+            Permission::create(['name' => 'view-player']);
 
-        //     $organizerRole = Role::where('name', 'organizer')->first();
-        //     $adminRole = Role::where('name', 'admin')->first();
-        //     $playeRole = Role::where('name', 'player')->first();
+            $organizerRole = Role::where('name', 'organizer')->first();
+            $adminRole = Role::where('name', 'admin')->first();
+            $playeRole = Role::where('name', 'player')->first();
 
-        //     $adminRole->givePermissionTo('view-admin');
-        //     $organizerRole->givePermissionTo('view-organizer');
-        //     $playeRole->givePermissionTo('view-player');
-        // }
+            $adminRole->givePermissionTo('view-admin');
+            $organizerRole->givePermissionTo('view-organizer');
+            $playeRole->givePermissionTo('view-player');
+        }
     }
 }
