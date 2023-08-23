@@ -5,6 +5,7 @@ namespace App\Contracts\Repositories;
 use App\Contracts\Interfaces\TournamentInterface;
 use App\Enums\UserRoleEnum;
 use App\Helpers\UserHelper;
+use App\Models\Competitor;
 use App\Models\Tournament;
 use App\Traits\Datatables\TournamentDatatable;
 use Illuminate\Database\QueryException;
@@ -63,6 +64,14 @@ class TournamentRepository extends BaseRepository implements TournamentInterface
     {
         return $this->model->query()
             ->findOrFail($id);
+    }
+
+    public function showTeam(mixed $id) : mixed 
+    {
+        return $this->model->query()
+        ->with('competitors.team')
+        ->findOrFail($id);    
+
     }
 
     /**

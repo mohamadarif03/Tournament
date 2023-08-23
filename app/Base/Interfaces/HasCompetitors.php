@@ -13,5 +13,5 @@ interface hasCompetitors
      * @return HasMany
      */
 
-    public function competitor(): HasMany;
+    public function competitors(): HasMany;
 }

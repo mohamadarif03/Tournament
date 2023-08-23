@@ -16,5 +16,13 @@ UpdateInterface,
 DeleteInterface,
 ShowMoreInterface
 {
+    /**
+     * Handle get the specified data by id from models.
+     *
+     * @param mixed $id
+     *
+     * @return mixed
+     */
 
+    public function showTeam(mixed $id): mixed;
 }

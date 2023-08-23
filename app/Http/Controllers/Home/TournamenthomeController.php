@@ -37,7 +37,7 @@ class TournamenthomeController extends Controller
     {
         $tournamentmore = $this->tournamentdetail->showmore();
         $tournamentId = $tournament->id;
-        $countTournament = Tournament::withCount('competitor')->findOrFail($tournamentId);
+        $countTournament = Tournament::withCount('competitors')->findOrFail($tournamentId);
         // dd($countTournament);
         return view('pages.home.tournament.tournament-detail', compact('tournament', 'tournamentmore', 'countTournament'));
     }

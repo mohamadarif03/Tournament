@@ -72,6 +72,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         Route::middleware('role:player|admin')->group(function () {
             Route::resources(['team' => TeamController::class]);
+
         });
 
         Route::resources(['game' => GameController::class]);

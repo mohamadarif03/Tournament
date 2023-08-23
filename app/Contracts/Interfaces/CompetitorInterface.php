@@ -2,9 +2,11 @@
 
 namespace App\Contracts\Interfaces;
 
+use App\Contracts\Interfaces\Eloquent\GetInterface;
+use App\Contracts\Interfaces\Eloquent\ShowInterface;
 use App\Contracts\Interfaces\Eloquent\StoreInterface;
 
-interface CompetitorInterface extends StoreInterface
+interface CompetitorInterface extends StoreInterface,ShowInterface,GetInterface
 {
     
 }

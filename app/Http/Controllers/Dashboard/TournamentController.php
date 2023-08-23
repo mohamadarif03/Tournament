@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Contracts\Interfaces\CompetitorInterface;
 use App\Contracts\Interfaces\GameInterface;
 use App\Contracts\Interfaces\TournamentInterface;
 use App\Enums\UserRoleEnum;
@@ -9,6 +10,7 @@ use App\Helpers\UserHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TournamentRequest;
 use App\Http\Requests\TournamentUpdateRequest;
+use App\Models\Competitor;
 use App\Models\Tournament;
 use App\Services\TournamentService;
 use Illuminate\Http\JsonResponse;
@@ -21,13 +23,15 @@ class TournamentController extends Controller
     private TournamentInterface $tournament;
     private GameInterface $game;
     private TournamentService $service;
+    private CompetitorInterface $competitor; 
 
 
-    public function __construct(TournamentInterface $tournament, TournamentService $service, GameInterface $game)
+    public function __construct(TournamentInterface $tournament, TournamentService $service, GameInterface $game,CompetitorInterface $competitor)
     {
         $this->tournament = $tournament;
         $this->game = $game;
         $this->service = $service;
+        $this->competitor =$competitor;
     }
     /**
      * Display a listing of the resource.
@@ -71,9 +75,12 @@ class TournamentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Tournament $tournament)
     {
-        //
+        $tourteam= $this->tournament->showTeam($tournament->id);
+        dd($tourteam);
+
+        return view('pages.dashboard.team.detail', compact('competitor'));
     }
 
     /**

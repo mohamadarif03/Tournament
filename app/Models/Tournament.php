@@ -27,7 +27,7 @@ class Tournament extends Model implements HasGame, HasUser, hasCompetitors
     {
         return $this->belongsTo(User::class);
     }
-    function competitor(): HasMany
+    function competitors(): HasMany
     {
         return $this->hasMany(Competitor::class);
     }

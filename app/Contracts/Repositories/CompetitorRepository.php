@@ -19,4 +19,16 @@ class CompetitorRepository extends BaseRepository implements CompetitorInterface
             ->create($data);
     }
 
+    public function show(mixed $id): mixed
+    {
+        return $this->model->query()
+            ->findOrFail($id);
+    }
+
+    public function get(): mixed
+    {
+        return $this->model->query()
+            ->with('tournament')
+            ->get();
+    }
 }
