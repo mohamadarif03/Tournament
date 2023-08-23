@@ -186,21 +186,30 @@
                                         </ul>
                                         <div class="tab-content mt-3 text-[13px]">
                                             <div x-show="activeunderTab === 'team'" class>
-                                                <div class="team my-4">
+                                                <div class="team grid grid-col-1 lg:grid-cols-4">
                                                     <!-- Konten tim -->
-                                                    @foreach ($teams->teamPlayers as $team)
-                                                        <div class="">
-                                                            <div class="bg-gray-50 text-gray-800 rounded-md p-2 hidden"
-                                                                id="card">
-                                                                {{ $team->team->name }}</div>
-                                                            <div class="h-[5rem] w-[5rem] rounded-md my-2">
-                                                                <img src="{{ asset('storage/' . $team->team->logo) }}"
-                                                                    alt="" class="w-full cursor-pointer"
-                                                                    onmouseover="showCard()" onmouseout="hideCard()">
-                                                            </div>
 
+                                                    <a href="" class="loopTeam">
+                                                        <div class="team__item">
+                                                            <div class="team__thumb">
+                                                                <div class="flex justify-center"><img src="{{asset('assets/img/blog/rc_post02.jpg')}}" height="190"
+                                                                        width="190" style="min-width: 190px; min-height:190px; max-width: 190px; max-height: 190px"
+                                                                        alt="img"></div>
+                                                            </div>
+                                                            <div class="team__content">
+                                                                <h4 class="name">
+                                                                    <div>
+                                                                        okoko
+                                                                    </div>
+                                                                </h4>
+                                                                <span class="designation"> epep</span>
+                                                            </div>
+                                                            <div class=" flex justify-around text-center gap-3 mt-2" >
+                                                                <span class=" w-full text-base"> Penampilan <br> 30</span>
+                                                                <span class=" w-full text-base"> 3 Besar <br> 29</span>
+                                                            </div>
                                                         </div>
-                                                    @endforeach
+                                                    </a>
                                                 </div>
                                             </div>
                                             <div x-show="activeunderTab === 'perjalanan'" class>

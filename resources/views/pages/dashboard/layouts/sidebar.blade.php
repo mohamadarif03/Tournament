@@ -78,7 +78,6 @@
                 </li>
                 @endcan
 
-
             </ul>
         </li>
         <li class="menu nav-item">

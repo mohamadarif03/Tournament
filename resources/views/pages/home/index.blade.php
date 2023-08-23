@@ -177,22 +177,26 @@
                                 </div>
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                                     @php
-                                    $counter = 0;
+                                        $counter = 0;
                                     @endphp
                                     @foreach ($games as $game)
                                         @if ($counter < 8)
                                             <li class="nav-item" role="presentation">
                                                 <div class="text-center">
-                                                    <button class="nav-link{{ $counter === 0 ? ' active' : '' }}" id="{{ $game->id }}-tab"
-                                                        data-bs-toggle="tab" data-bs-target="#{{ $game->id }}" type="button" role="tab"
-                                                        aria-controls="{{ $game->id }}" aria-selected="{{ $counter === 0 ? 'true' : 'false' }}">
-                                                        <img src="{{ asset('storage/' . $game->logo) }}" width="85" height="85" alt="img">
+                                                    <button class="nav-link{{ $counter === 0 ? ' active' : '' }}"
+                                                        id="{{ $game->id }}-tab" data-bs-toggle="tab"
+                                                        data-bs-target="#{{ $game->id }}" type="button"
+                                                        role="tab" aria-controls="{{ $game->id }}"
+                                                        aria-selected="{{ $counter === 0 ? 'true' : 'false' }}">
+                                                        <img src="{{ asset('storage/' . $game->logo) }}"
+                                                            width="85" height="85" alt="img">
                                                     </button>
-                                                    <h6 class="title" style="width: 85px; margin-top: 10px">{{ $game->name }}</h6>
+                                                    <h6 class="title" style="width: 85px; margin-top: 10px">
+                                                        {{ $game->name }}</h6>
                                                 </div>
                                             </li>
                                             @php
-                                            $counter++;
+                                                $counter++;
                                             @endphp
                                         @endif
                                     @endforeach
@@ -209,10 +213,10 @@
                     </div>
                 </div>
             </section>
-            
-          
-            
-            
+
+
+
+
 
             <!-- about-area-end -->
 
@@ -366,8 +370,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12">
+                <div class="row justify-content-center">
+                    <div class="col-sm-10">
                         <div class="upcoming-match__lists">
                             <div class="upcoming-match__item tg-svg wow fadeInUp" data-wow-delay=".6s">
                                 <div class="svg-icon" id="svg-9" data-svg-icon="assets/img/icons/match.svg">
@@ -395,14 +399,15 @@
                                                 alt="img"></a>
                                     </div>
                                 </div>
-                                <div class="upcoming-match__date">
+                                <div class="upcoming-match__date" style="margin-bottom: 100px;">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="287" height="24"
                                         viewBox="0 0 287 24">
                                         <path id="bottom-svg3" d="M1104,3760l-20,24H837l-20-24"
                                             transform="translate(-817 -3760)" />
                                     </svg>
-                                    <span>October 10, 2023, 9:30 pm</span>
+                                    <span class="tanggal">October 10, 2023, 9:30 pm</span>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -413,72 +418,76 @@
 
         <!-- project-area -->
         <section class="project-area project-bg section-pt-120 section-pb-140">
-            <div class="container custom-container">
-                <div class="project__wrapper">
-                    <div class="section__title text-start">
-                        <h3 class="title">PROJECTS MYKD</h3>
-                        <span class="sub-title tg__animate-text">our LATEST gallery</span>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-6 col-lg-7 col-md-10">
+                        <div class="section__title text-center mb-60">
+                            <span class="sub-title tg__animate-text">our LATEST gallery</span>
+                            <h3 class="title">PROJECTS MYKD</h3>
+                        </div>
                     </div>
-                    <div class="swiper-container project-active">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="project__item">
-                                    <a href="assets/img/gallery/project_01.jpg" class="popup-image"><img
-                                            src="assets/img/gallery/project_01.jpg" alt="img"></a>
-                                </div>
+                </div>
+                <div class="swiper-container streamers-active" style="margin-left: 4px;">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="project__item">
+                                <a href="assets/img/gallery/project_01.jpg" class="popup-image"><img
+                                        src="assets/img/gallery/project_01.jpg" alt="img"></a>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="project__item">
-                                    <a href="assets/img/gallery/project_02.jpg" class="popup-image"><img
-                                            src="assets/img/gallery/project_02.jpg" alt="img"></a>
-                                </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="project__item">
+                                <a href="assets/img/gallery/project_02.jpg" class="popup-image"><img
+                                        src="assets/img/gallery/project_02.jpg" alt="img"></a>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="project__item">
-                                    <a href="assets/img/gallery/project_03.jpg" class="popup-image"><img
-                                            src="assets/img/gallery/project_03.jpg" alt="img"></a>
-                                </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="project__item">
+                                <a href="assets/img/gallery/project_03.jpg" class="popup-image"><img
+                                        src="assets/img/gallery/project_03.jpg" alt="img"></a>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="project__item">
-                                    <a href="assets/img/gallery/project_04.jpg" class="popup-image"><img
-                                            src="assets/img/gallery/project_04.jpg" alt="img"></a>
-                                </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="project__item">
+                                <a href="assets/img/gallery/project_04.jpg" class="popup-image"><img
+                                        src="assets/img/gallery/project_04.jpg" alt="img"></a>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="project__item">
-                                    <a href="assets/img/gallery/project_05.jpg" class="popup-image"><img
-                                            src="assets/img/gallery/project_05.jpg" alt="img"></a>
-                                </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="project__item">
+                                <a href="assets/img/gallery/project_05.jpg" class="popup-image"><img
+                                        src="assets/img/gallery/project_05.jpg" alt="img"></a>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="project__item">
-                                    <a href="assets/img/gallery/project_06.jpg" class="popup-image"><img
-                                            src="assets/img/gallery/project_06.jpg" alt="img"></a>
-                                </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="project__item">
+                                <a href="assets/img/gallery/project_06.jpg" class="popup-image"><img
+                                        src="assets/img/gallery/project_06.jpg" alt="img"></a>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="project__item">
-                                    <a href="assets/img/gallery/project_07.jpg" class="popup-image"><img
-                                            src="assets/img/gallery/project_07.jpg" alt="img"></a>
-                                </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="project__item">
+                                <a href="assets/img/gallery/project_07.jpg" class="popup-image"><img
+                                        src="assets/img/gallery/project_07.jpg" alt="img"></a>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="project__item">
-                                    <a href="assets/img/gallery/project_08.jpg" class="popup-image"><img
-                                            src="assets/img/gallery/project_08.jpg" alt="img"></a>
-                                </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="project__item">
+                                <a href="assets/img/gallery/project_08.jpg" class="popup-image"><img
+                                        src="assets/img/gallery/project_08.jpg" alt="img"></a>
                             </div>
                         </div>
                     </div>
-                    <div class="slider-button-prev">
-                        <i class="flaticon-right-arrow"></i>
-                        <i class="flaticon-right-arrow"></i>
-                    </div>
+                </div>
+            </div>
+            <div class="streamers__pagination">
+                <div class="slider-button-prev streamers__pagination-arrow"><i class="fas fa-angle-left"></i>
+                </div>
+                <div class="swiper-pagination streamers__pagination-dots"></div>
+                <div class="slider-button-next streamers__pagination-arrow"><i class="fas fa-angle-right"></i>
                 </div>
             </div>
             <!-- scrollbar -->
-            <div class="swiper-scrollbar"></div>
         </section>
         <!-- project-area-end -->
 
@@ -648,20 +657,20 @@
     <script src="{{ asset('assets/js/plugins.js') }}"></script>
     <script src="{{ asset('assets/js/ajax-form.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
-      <!-- Add the following JavaScript code -->
-      <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-      <script>
-          var swiper = new Swiper('.streamers__pagination', {
-              navigation: {
-                  nextEl: '.slider-button-next',
-                  prevEl: '.slider-button-prev',
-              },
-              pagination: {
-                  el: '.streamers__pagination-dots',
-                  clickable: true,
-              },
-          });   
-      </script>
+    <!-- Add the following JavaScript code -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper('.streamers__pagination', {
+            navigation: {
+                nextEl: '.slider-button-next',
+                prevEl: '.slider-button-prev',
+            },
+            pagination: {
+                el: '.streamers__pagination-dots',
+                clickable: true,
+            },
+        });
+    </script>
     <script>
         $(document).ready(function() {
             $('button[data-bs-toggle="tab"]').on('click', function() {
