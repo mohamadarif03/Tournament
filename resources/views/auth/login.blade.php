@@ -109,9 +109,9 @@
                                                     <div class="swiper-slide">
                                                         <div class="gallery__item ">
                                                             <div class="about__funFact-images">
-                                                                {{-- <img src="assets/img/others/fun_fact_shape.png" alt="background" class="bg-shape"> --}}
+
                                                                 <a  href="assets/img/gallery/gallery02.jpg" data-cursor="-theme" data-cursor-text="View <br> Image" class="popup-image flex items-center" style="background-image: url('assets/img/gallery/gallery02.jpg'); background-size: cover; background-position: center; height: 500px;" title="Assassin's Creed">
-                                                                    {{-- <img src="assets/img/gallery/gallery02.jpg" class="main-img w-[100%]" alt="image"> --}}
+                                                                   
                                                                 </a>
                                                             </div>
                                                             <div class="gallery__content mt-5">
@@ -123,9 +123,9 @@
                                                     <div class="swiper-slide">
                                                         <div class="gallery__item ">
                                                             <div class="about__funFact-images">
-                                                                {{-- <img src="assets/img/others/fun_fact_shape.png" alt="background" class="bg-shape"> --}}
+
                                                                 <a  href="assets/img/gallery/gallery02.jpg" data-cursor="-theme" data-cursor-text="View <br> Image" class="popup-image flex items-center" style="background-image: url('assets/img/gallery/gallery02.jpg'); background-size: cover; background-position: center; height: 500px;" title="Assassin's Creed">
-                                                                    {{-- <img src="assets/img/gallery/gallery02.jpg" class="main-img w-[100%]" alt="image"> --}}
+                                                                   
                                                                 </a>
                                                             </div>
                                                             <div class="gallery__content mt-5">
@@ -137,9 +137,9 @@
                                                     <div class="swiper-slide">
                                                         <div class="gallery__item ">
                                                             <div class="about__funFact-images">
-                                                                {{-- <img src="assets/img/others/fun_fact_shape.png" alt="background" class="bg-shape"> --}}
+
                                                                 <a  href="assets/img/gallery/gallery02.jpg" data-cursor="-theme" data-cursor-text="View <br> Image" class="popup-image flex items-center" style="background-image: url('assets/img/gallery/gallery02.jpg'); background-size: cover; background-position: center; height: 500px;" title="Assassin's Creed">
-                                                                    {{-- <img src="assets/img/gallery/gallery02.jpg" class="main-img w-[100%]" alt="image"> --}}
+                                                                   
                                                                 </a>
                                                             </div>
                                                             <div class="gallery__content mt-5">
@@ -151,9 +151,9 @@
                                                     <div class="swiper-slide">
                                                         <div class="gallery__item ">
                                                             <div class="about__funFact-images">
-                                                                {{-- <img src="assets/img/others/fun_fact_shape.png" alt="background" class="bg-shape"> --}}
+
                                                                 <a  href="assets/img/gallery/gallery02.jpg" data-cursor="-theme" data-cursor-text="View <br> Image" class="popup-image flex items-center" style="background-image: url('assets/img/gallery/gallery02.jpg'); background-size: cover; background-position: center; height: 500px;" title="Assassin's Creed">
-                                                                    {{-- <img src="assets/img/gallery/gallery02.jpg" class="main-img w-[100%]" alt="image"> --}}
+                                                                   
                                                                 </a>
                                                             </div>
                                                             <div class="gallery__content mt-5">
@@ -165,9 +165,9 @@
                                                     <div class="swiper-slide">
                                                         <div class="gallery__item ">
                                                             <div class="about__funFact-images">
-                                                                {{-- <img src="assets/img/others/fun_fact_shape.png" alt="background" class="bg-shape"> --}}
+
                                                                 <a  href="assets/img/gallery/gallery02.jpg" data-cursor="-theme" data-cursor-text="View <br> Image" class="popup-image flex items-center" style="background-image: url('assets/img/gallery/gallery02.jpg'); background-size: cover; background-position: center; height: 500px;" title="Assassin's Creed">
-                                                                    {{-- <img src="assets/img/gallery/gallery02.jpg" class="main-img w-[100%]" alt="image"> --}}
+                                                                   
                                                                 </a>
                                                             </div>
                                                             <div class="gallery__content mt-5">
@@ -179,9 +179,9 @@
                                                     <div class="swiper-slide">
                                                         <div class="gallery__item ">
                                                             <div class="about__funFact-images">
-                                                                {{-- <img src="assets/img/others/fun_fact_shape.png" alt="background" class="bg-shape"> --}}
+
                                                                 <a  href="assets/img/gallery/gallery02.jpg" data-cursor="-theme" data-cursor-text="View <br> Image" class="popup-image flex items-center" style="background-image: url('assets/img/gallery/gallery02.jpg'); background-size: cover; background-position: center; height: 500px;" title="Assassin's Creed">
-                                                                    {{-- <img src="assets/img/gallery/gallery02.jpg" class="main-img w-[100%]" alt="image"> --}}
+                                                                   
                                                                 </a>
                                                             </div>
                                                             <div class="gallery__content mt-5">

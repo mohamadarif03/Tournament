@@ -69,7 +69,7 @@ class TournamentRepository extends BaseRepository implements TournamentInterface
     public function showTeam(mixed $id) : mixed 
     {
         return $this->model->query()
-        ->with('competitors.team')
+        ->with('competitors.team.user')
         ->findOrFail($id);    
 
     }

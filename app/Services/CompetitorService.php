@@ -40,7 +40,7 @@ class CompetitorService implements ShouldHandleFileUpload, CustomUploadValidatio
         $data = $request->validated();
 
         $tournamentId = $data['tournament_id'];
-        $tournament = Tournament::withCount('competitor')->findOrFail($tournamentId);
+        $tournament = Tournament::withCount('competitors')->findOrFail($tournamentId);
         if ($tournament->competitor_count >= $tournament->slot) {
             return false;
         } else {

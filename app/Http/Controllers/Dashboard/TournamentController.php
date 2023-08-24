@@ -75,13 +75,13 @@ class TournamentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Tournament $tournament)
-    {
-        $tourteam= $this->tournament->showTeam($tournament->id);
-        dd($tourteam);
+    // public function show(Tournament $tournament)
+    // {
+    //     $tourteam= $this->tournament->showTeam($tournament->id);
+    //     // dd($tourteam);  
 
-        return view('pages.dashboard.team.detail', compact('competitor'));
-    }
+    //     return view('pages.home.tournament.tournament-detail-team', compact('tourteam'));
+    // }
 
     /**
      * Show the form for editing the specified resource.

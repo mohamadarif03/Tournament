@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Team extends Model implements HasGame, HasUser, HasOpenTrials
+class Team extends Model implements HasGame, HasUser, HasOpenTrials, HasTeamPlayers
 {
     use HasFactory;
     public $incrementing = false;
@@ -50,7 +50,16 @@ class Team extends Model implements HasGame, HasUser, HasOpenTrials
      public function openTrials(): HasMany
      {
         return $this->hasMany(OpenTrial::class);
-        
      }
      
+     /** 
+     * One-to-Many relationship with User Model
+     *
+     * @return HasMany
+     */
+     public function teamPlayers(): HasMany
+     {
+        return $this->hasMany(TeamPlayer::class);
+        
+     }
 }

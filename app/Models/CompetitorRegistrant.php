@@ -19,4 +19,10 @@ class CompetitorRegistrant extends Model implements HasUser
     {
         return $this->belongsTo(User::class);
     }
+
+    public function competitor_registers(): BelongsTo
+    {
+        return $this->belongsTo(Competitor::class);
+    }
+
 }

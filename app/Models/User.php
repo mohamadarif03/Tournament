@@ -66,6 +66,16 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword,
     }
 
     /**
+     * One-to-Many relationship with Team Model
+     *
+     * @return HasMany
+     */
+    public function competitor_registers(): HasMany
+    {
+        return $this->hasMany(CompetitorRegistrant::class);
+    }
+
+    /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>

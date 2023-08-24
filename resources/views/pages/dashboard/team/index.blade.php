@@ -59,7 +59,6 @@
                         data: 'logo',
                         name: 'logo',
                         searchable: false
-
                     },
                     {
                         data: 'name',

@@ -39,6 +39,7 @@ class JointournamentController extends Controller
     {
         $teams = $this->team->showMore();
         $users = $this->user->get();
+        // dd("ads");
         return view('pages.home.tournament.join-tournament', compact('tournament', 'teams', 'users'));
     }
     /**
