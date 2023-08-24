@@ -74,13 +74,28 @@
                             </div>
                             <div class="">
                                 <p class="font-bold text-md my-2 text-white">Buka Pendaftaran</p>
-                                <div class="flex my-2">
-                                    <input id="default-checkbox" type="checkbox" value="1"
-                                        name="openTrial"
-                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600">
-                                    <label for="default-checkbox"
-                                        class="font-bold ml-2 text-sm font-medium text-white">Buka Pendaftaran</label>
+                                <div
+                                    class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                                    <input type="checkbox" name="openTrial" value="1" id="toggle"
+                                        class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" />
+                                    <label for="toggle"
+                                        class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
                                 </div>
+                                <label for="toggle" class="text-xs">Buka Pendaftaran.</label>
+                                <style>
+                                    /* CHECKBOX TOGGLE SWITCH */
+                                    /* @apply rules for documentation, these do not work as inline style */
+                                    .toggle-checkbox:checked {
+                                        @apply: right-0 border-green-400;
+                                        right: 0;
+                                        border-color: #68D391;
+                                    }
+
+                                    .toggle-checkbox:checked+.toggle-label {
+                                        @apply: bg-green-400;
+                                        background-color: #68D391;
+                                    }
+                                </style>
                             </div>
                             <div class="">
                                 <p class="font-bold text-md my-2 text-white">Game</p>
@@ -102,7 +117,9 @@
                                     <div class="team__item">
                                         <div class="team__thumb">
                                             <div class="flex justify-center"><img
-                                                    src="{{ asset('storage/' . $team->logo) }}" height="190" width="190" style="min-width: 190px; min-height:190px; max-width: 190px; max-height: 190px"
+                                                    src="{{ asset('storage/' . $team->logo) }}" height="190"
+                                                    width="190"
+                                                    style="min-width: 190px; min-height:190px; max-width: 190px; max-height: 190px"
                                                     alt="img"></div>
                                         </div>
                                         <div class="team__content">

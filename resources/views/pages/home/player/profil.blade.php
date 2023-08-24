@@ -47,11 +47,11 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="breadcrumb__content">
-                                <h2 class="title">Tournament Details</h2>
+                                <h2 class="title">profil player</h2>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Tournament Details</li>
+                                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">profil player</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -165,24 +165,7 @@
                                                     Perjalanan Karir
                                                 </a>
                                             </li>
-                                            <li class="mr-2">
-                                                <a href="javaScript:;" @click="activeunderTab = 'pencapaian'"
-                                                    :class="activeunderTab === 'pencapaian' ?
-                                                        'text-white border-b-2 border-white' :
-                                                        'text-white/40 border-b-2 border-transparent rounded-t-lg hover:text-[#ffbe18]'"
-                                                    class="inline-block p-4">
-                                                    Pencapaian
-                                                </a>
-                                            </li>
-                                            <li class="mr-2">
-                                                <a href="javaScript:;" @click="activeunderTab = 'galery'"
-                                                    :class="activeunderTab === 'galery' ?
-                                                        'text-white border-b-2 border-white' :
-                                                        'text-white/40 border-b-2 border-transparent rounded-t-lg hover:text-[#ffbe18]'"
-                                                    class="inline-block p-4">
-                                                    Galeri
-                                                </a>
-                                            </li>
+
                                         </ul>
                                         <div class="tab-content mt-3 text-[13px]">
                                             <div x-show="activeunderTab === 'team'" class>
@@ -192,8 +175,10 @@
                                                     <a href="" class="loopTeam">
                                                         <div class="team__item">
                                                             <div class="team__thumb">
-                                                                <div class="flex justify-center"><img src="{{asset('assets/img/blog/rc_post02.jpg')}}" height="190"
-                                                                        width="190" style="min-width: 190px; min-height:190px; max-width: 190px; max-height: 190px"
+                                                                <div class="flex justify-center"><img
+                                                                        src="{{ asset('assets/img/blog/rc_post02.jpg') }}"
+                                                                        height="190" width="190"
+                                                                        style="min-width: 190px; min-height:190px; max-width: 190px; max-height: 190px"
                                                                         alt="img"></div>
                                                             </div>
                                                             <div class="team__content">
@@ -204,8 +189,9 @@
                                                                 </h4>
                                                                 <span class="designation"> epep</span>
                                                             </div>
-                                                            <div class=" flex justify-around text-center gap-3 mt-2" >
-                                                                <span class=" w-full text-base"> Penampilan <br> 30</span>
+                                                            <div class=" flex justify-around text-center gap-3 mt-2">
+                                                                <span class=" w-full text-base"> Penampilan <br>
+                                                                    30</span>
                                                                 <span class=" w-full text-base"> 3 Besar <br> 29</span>
                                                             </div>
                                                         </div>

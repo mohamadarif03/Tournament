@@ -48,11 +48,11 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="breadcrumb__content">
-                                <h2 class="title">Tournament Details</h2>
+                                <h2 class="title">Team Details</h2>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Tournament Details</li>
+                                        <li class="breadcrumb-item active" aria-current="page">Team Details</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -72,50 +72,72 @@
                             <h2 class="title font-bold">{{ $team->name }}</h2>
                             <div class="blog-post-meta">
                                 <ul class="list-wrap">
-                                    <li>Kapten Tim : {{ $team->user->name }}</li>
+                                    <li class="sub-title">Kapten Tim : {{ $team->user->name }}</li>
                                 </ul>
                             </div>
                             <div class="md:flex">
                                 <div class="tournament__details-video position-relative">
-                                    <img src="{{ asset('storage/' . $team->logo) }}" alt="live_image_url" srcset=""
-                                        width="200">
+                                    <img src="{{ asset('assets/img/others/win02.png') }}" alt="live_image_url"
+                                        srcset="" width="200">
                                 </div>
-                                <div class="tournament__details-form" style="width: 70%; margin-left:3rem">
-                                    <p>{{ $team->description }}</p>
+                                <div class="fw-bold" style="width: 70%; margin-left:3rem">
+                                    <h3 class="title mb-3">Description Team</h3>
+                                    <p class="leading-normal">{{ $team->description }}</p>
                                 </div>
                             </div>
                             <div class="">
-                                <h1 class="title" style="margin-top: 20px">Anggota</h1>
+                                <div class="section__title text-center mt-32 mb-10">
+                                    <h3 class="title">anggota tim</h3>
+                                </div>
                                 <hr style="width: 12%">
-                                <div class="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                                <div class="flex">
                                     @foreach ($teamPlayers as $teamPlayer)
                                         <a href="{{ route('profile-player', $teamPlayer->user_id) }}">
-                                            <div
-                                                class="card mt-[2rem] h-[17rem] bg-[#1c242f] flex justify-center items-center">
-                                                <div class="flex flex-col">
-                                                    <img src="{{ asset('assets/img/others/about_tab01.png') }}"
-                                                        class="rounded-full my-1" width="100" alt=""
-                                                        srcset="">
-                                                    <h1 class="text-center text-lg text-white my-1"
-                                                        style="font-weight: bold">{{ $teamPlayer->user->name }}</h1>
-                                                    {{-- <h6 class="text-center text-base text-white my-1">Captain</h6> --}}
+                                            <div class="col-xl-2 col-lg-3 col-sm-6 wow fadeInUp mr-12"
+                                                data-wow-delay=".2s">
+                                                <div class="team__item">
+                                                    <div class="team__thumb">
+                                                        <a href=""><img style="width: 150px; height: 150px;"
+                                                                src="{{ asset('assets/img/team/team01.png') }}"
+                                                                alt="img"></a>
+                                                    </div>
+                                                    <div class="team__content">
+                                                        <h4 class="name"><a
+                                                                href="#">{{ $teamPlayer->user->name }}</a>
+                                                        </h4>
+
+                                                    </div>
                                                 </div>
                                             </div>
                                         </a>
                                     @endforeach
                                 </div>
                             </div>
-                            <div class="tournament__details-form">
-                                @if ($team->openTrials->isEmpty())
-                                @else
-                                    @if (
-                                        $team->openTrials &&
-                                            $team->openTrials->first()->close_registration &&
-                                            $team->openTrials->first()->close_registration > now())
-                                        <a href="{{ route('join-team', $team->id) }}"
-                                            class="tournament__details-form-btn">Gabung Tim</a>
+                            <div class="flex justify-between">
+                                <div class="tournament__details-form">
+                                    @if ($team->openTrials->isEmpty())
+                                    @else
+                                        @if (
+                                            $team->openTrials &&
+                                                $team->openTrials->first()->close_registration &&
+                                                $team->openTrials->first()->close_registration > now())
+                                            <a href="{{ route('join-team', $team->id) }}"
+                                                class="tournament__details-form-btn sm:mr-10">Gabung Tim</a>
+                                        @endif
                                     @endif
-                                @endif
+                                </div>
+                                <div class="tournament__details-form">
+                                    @if ($team->openTrials->isEmpty())
+                                    @else
+                                        @if (
+                                            $team->openTrials &&
+                                                $team->openTrials->first()->close_registration &&
+                                                $team->openTrials->first()->close_registration > now())
+                                            <a href="{{ route('join-team', $team->id) }}"
+                                                class="tournament__details-form-btn">Detail Tim</a>
+                                        @endif
+                                    @endif
+                                </div>
                             </div>
 
                             <div class="blog-details-bottom">

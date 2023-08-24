@@ -1,76 +1,81 @@
-<div class="footer__country">
-    <div class="container custom-container">
-        <div class="row">
-            <div class="col-6">
-                <div class="footer__country-name">
-                    <h2 class="text">Dubai</h2>
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="footer__country-name text-center text-sm-end">
-                    <h2 class="text">France</h2>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="footer__two-widgets">
-    <div class="container custom-container">
-        <div class="row">
-            <div class="col-md-4 col-sm-7 order-1 order-md-0">
-                <div class="footer-el-widget">
-                    <h4 class="title">information</h4>
-                    <ul class="list-wrap">
-                        <li><a href="tel:123">+971 333 222 557</a></li>
-                        <li><a href="mailto:info@exemple.com">info@exemple.com</a></li>
-                        <li>Firestone building, Sharjah Ain <br> Box 265, Dubai</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-5 order-0 order-md-2">
-                <div class="footer-el-widget text-start text-md-center widget_nav_menu">
-                    <div class="footer-el-logo mb-35">
-                        <a href="index.html"><img src="assets/img/logo/logo.png" alt="Mykd"></a>
+<footer class="footer-style-one">
+    <div class="footer__top-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4 col-lg-5 col-md-7">
+                    <div class="footer-widget">
+                        <div class="footer-logo logo">
+                            <a href="index.html"><img src="assets/img/logo/logo.png" alt="Logo"></a>
+                        </div>
+                        <div class="footer-text">
+                            <p class="desc">Lorem ipsum dolor sitamet consectur adipiscing Duis esollici tudin augue
+                                euismod. Nulla ullam dolor sitamet consectetur</p>
+                            <p class="social-title">Active <span>With Us <i
+                                        class="fas fa-angle-double-right"></i></span></p>
+                            <div class="footer-social">
+                                <a href="#"><img src="assets/img/icons/social_icon01.png" alt="iocn"></a>
+                                <a href="#"><img src="assets/img/icons/social_icon02.png" alt="iocn"></a>
+                                <a href="#"><img src="assets/img/icons/social_icon03.png" alt="iocn"></a>
+                                <a href="#"><img src="assets/img/icons/social_icon04.png" alt="iocn"></a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="footer-el-menu">
-                        <ul class="list-wrap">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about-us.html">About Us</a></li>
-                            <li><a href="tournament.html">Tournament</a></li>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-md-5 col-sm-6">
+                    <div class="footer-widget widget_nav_menu">
+                        <h4 class="fw-title">quick link</h4>
+                        <ul class="list-wrap menu">
+                            <li><a href="#">Gaming</a></li>
+                            <li><a href="#">Product</a></li>
+                            <li><a href="#">All NFTs</a></li>
+                            <li><a href="#">Social Network</a></li>
+                            <li><a href="#">Domain Names</a></li>
+                            <li><a href="#">Collectibles</a></li>
                         </ul>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 col-sm-7 order-3">
-                <div class="footer-el-widget text-start text-md-end">
-                    <h4 class="title">head office</h4>
-                    <ul class="list-wrap">
-                        <li><a href="tel:123">+33 423 222 555</a></li>
-                        <li><a href="mailto:info@exemple.com">info@exemple.com</a></li>
-                        <li>New Central Park W7 Street Lan <br> France</li>
-                    </ul>
+                <div class="col-xl-2 col-lg-3 col-md-5 col-sm-6">
+                    <div class="footer-widget widget_nav_menu">
+                        <h4 class="fw-title">Supports</h4>
+                        <ul class="list-wrap menu">
+                            <li><a href="#">Setting & Privacy</a></li>
+                            <li><a href="#">Help & Support</a></li>
+                            <li><a href="#">Live Auctions</a></li>
+                            <li><a href="#">Item Details</a></li>
+                            <li><a href="#">24/7 Supports</a></li>
+                            <li><a href="#">Our News</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-5 col-md-7">
+                    <div class="footer-widget">
+                        <h4 class="fw-title">Newsletter</h4>
+                        <div class="footer-newsletter">
+                            <p>Subscribe our newsletter to get our latest update & newsconsectetur</p>
+                            <form action="#" class="footer-newsletter-form">
+                                <input type="email" placeholder="Your email address">
+                                <button type="submit"><i class="flaticon-paper-plane"></i></button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="copyright__wrap -style-two">
-    <div class="container custom-container">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <div class="copyright__text text-center text-lg-start">
-                    <p>Copyright © 2023 - All Rights Reserved By <span>Mykd</span></p>
+    <div class="copyright__wrap">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-7">
+                    <div class="copyright__text">
+                        <p>Copyright © 2023 - All Rights Reserved By <span>Mykd</span></p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="copyright__menu">
-                    <ul class="list-wrap d-flex flex-wrap justify-content-center justify-content-lg-end">
-                        <li><a href="contact.html">Contact Us</a></li>
-                        <li><a href="contact.html">Join our team</a></li>
-                        <li><a href="contact.html">Privacy Policy</a></li>
-                    </ul>
+                <div class="col-md-5">
+                    <div class="copyright__card text-center text-md-end">
+                        <img src="assets/img/others/payment_card.png" alt="img">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</footer>

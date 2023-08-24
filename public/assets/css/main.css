@@ -4648,9 +4648,9 @@ html.show-preloader body {
     content: "";
     position: absolute;
     left: 0;
-    top: -60px;
-    width: 70px;
-    height: 320px;
+    top: -80px;
+    width: 50px;
+    height: 250px;
     background: var(--tg-theme-primary);
     -webkit-transform: rotate(-55deg);
     -moz-transform: rotate(-55deg);
@@ -4720,9 +4720,9 @@ html.show-preloader body {
     content: "";
     position: absolute;
     left: 75px;
-    top: -50px;
+    top: -65px;
     width: 1px;
-    height: 260px;
+    height: 220px;
     background: var(--tg-theme-primary);
     -webkit-transform: rotate(-55deg);
     -moz-transform: rotate(-55deg);
