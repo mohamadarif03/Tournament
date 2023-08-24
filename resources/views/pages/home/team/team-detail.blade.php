@@ -91,7 +91,7 @@
                                 </div>
                                 <hr style="width: 12%">
                                 <div class="flex">
-                                    @foreach ($teamPlayers as $teamPlayer)
+                                    @foreach ($players->teamPlayers as $teamPlayer)
                                         <a href="{{ route('profile-player', $teamPlayer->user_id) }}">
                                             <div class="col-xl-2 col-lg-3 col-sm-6 wow fadeInUp mr-12"
                                                 data-wow-delay=".2s">
