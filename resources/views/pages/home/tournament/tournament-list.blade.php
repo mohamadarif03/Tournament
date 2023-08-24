@@ -48,11 +48,11 @@
         <section class="tournament-area section-pt-120 section-pb-90">
             <div class="container">
                 <div class="tournament__wrapper">
-                    <div class="row justify-content-center">
+                    <div class="row justify-content-center mb-4">
                         <div class="col-xl-6 col-lg-7 col-md-10">
                             <div class="section__title text-center mb-6">
-                                <span class="sub-title tg__animate-text">our tournament</span>
-                                <h3 class="title">play to earn games</h3>
+                                <span class="sub-title tg__animate-text">tournament</span>
+                                <h3 class="title">List Tournament</h3>
                             </div>
                         </div>
                     </div>
@@ -103,9 +103,9 @@
                             </div>
 
                         </div>
-                        <div class="col-span-4 grid grid-cols-1 min-[768px]:grid-cols-2 max-[1095px]:grid-cols-2 min-[1096px]:grid-cols-3 m-2 gap-12 md:ml-2 lg:ml-2">
+                        <div class="col-span-4 grid grid-cols-1 min-[768px]:grid-cols-2 max-[1095px]:grid-cols-2 min-[1096px]:grid-cols-3 gap-12 md:ml-2 lg:ml-2">
                             @foreach ($tournamentlist as $tournament)
-                                <a href="{{ route('tournament-detail', $tournament->id) }}" class="loopTournament row justify-content-center">
+                                <a href="{{ route('tournament-detail', $tournament->id) }}" class="loopTournament row justify-content-center ms-5">
                                     <div class="tournament__box-wrap" style="padding-bottom: 30px">
                                         <svg class="main-bg" x="0px" y="0px" viewBox="0 0 357 533"
                                             fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -124,15 +124,17 @@
                                             <span>{{ $tournament->slot }}</span>
                                         </div>
                                         <div class="tournament__box-countdown">
-                                            <div class="coming-time font-bold text-xs">
-                                                {{ \Carbon\Carbon::parse($tournament->starter_at)->format('d F Y H:i') }}
+                                            <div class="coming-time" style="color: #ffbe18;">
+                                                <strong>Gratis</strong>
                                             </div>
 
 
                                         </div>
                                         <div class="tournament__box-caption">
+                                        <span class="sub">By: {{ $tournament->user->name }}</span>
                                             <h4 class="title" style="font-size: 20px">{{ $tournament->name }}
                                             </h4>
+                                            <span class="sub mt-1">{{ \Carbon\Carbon::parse($tournament->starter_at)->format('d F Y H:i') }}</span>
                                         </div>
                                         <ul class="tournament__box-list list-wrap mb-3">
                                             <li class="flex justify-center">
@@ -146,11 +148,11 @@
                                             <span class="text-sm">Rp.
                                                 {{ number_format($tournament->price_pool, 0, ',', '.') }}</span>
                                         </div>
-                                        <div class="font-bold text-sm flex justify-center mb-2">
+                                        <!-- <div class="font-bold text-sm flex justify-center mb-2">
                                             <span
                                                 class="cursor-pointer bg-[#ffbe18] text-sm font-medium px-2.5 py-0.5 rounded"
                                                 style="color: white">By: {{ $tournament->user->name }}</span>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </a>
                             @endforeach

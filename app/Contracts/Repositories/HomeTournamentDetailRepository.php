@@ -22,13 +22,13 @@ class HomeTournamentDetailRepository extends BaseRepository implements HomeTourn
     public function show(mixed $id): mixed
     {
         return $this->model->query()
+        ->withCount('competitors')
             ->findOrFail($id);
     }
     
     public function showMore(): mixed
     {
         return $this->model->query()
-        ->where('game_id', )
         ->get();
     }
 }
