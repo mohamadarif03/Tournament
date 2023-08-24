@@ -37,6 +37,7 @@ Auth::routes([
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/tournament-detail/{tournament}', [TournamenthomeController::class, 'detail'])->name('tournament-detail');
 Route::get('/tournaments', [TournamenthomeController::class, 'list'])->name('tournaments');
+Route::get('/tournaments/{tournament}', [TournamenthomeController::class, 'showTeam'])->name('tytyd');
 
 Route::get('/join-tournament/{tournament}', [JointournamentController::class, 'index'])->name('join-tournament');
 Route::post('/register-tournament', [JointournamentController::class, 'join'])->name('register-tournament');
@@ -45,6 +46,7 @@ Route::get('/teams', [TeamhomeController::class, 'index'])->name('teams');
 Route::get('/teams-detail/{team}', [TeamhomeController::class, 'detail'])->name('team-detail');
 Route::get('/profile-player/{user}', [TeamhomeController::class, 'player'])->name('profile-player');
 
+Route::get('tast/{team}', [TournamentController::class, 'showTest'])->name('show');
 
 
 
@@ -56,7 +58,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::put('/reject-player-join-team/{teamOpenTrial}', [JointeamController::class, 'reject'])->name('reject-player-join-team');
     Route::get('/detail-join-open-trial/{openTrial}', [JointeamController::class, 'questionOpenTrial'])->name('detail-join-open-trial');
 
-    Route::get('/open-trial/{team}', [OpenTrialController::class, 'create'])->name('open-trial');
+    Route::get('/open-trial/{team}', [OpenTrialController::class, 'create'])->name('open-trial');   
     Route::get('/edit-open-trial/{openTrial}', [OpenTrialController::class, 'edit'])->name('edit-open-trial');
     Route::post('/create-open-trial', [OpenTrialController::class, 'store'])->name('create-open-trial');
     Route::put('/update-open-trial/{openTrial}', [OpenTrialController::class, 'update'])->name('update-open-trial');

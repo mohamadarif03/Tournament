@@ -62,6 +62,7 @@ class TeamRepository extends BaseRepository implements TeamInterface
     public function show(mixed $id): mixed
     {
         return $this->model->query()
+        ->with('teamPlayers')
             ->findOrFail($id);
     }
 

@@ -80,8 +80,8 @@ class TournamentController extends Controller
         $tourteam= $this->tournament->showTeam($tournament->id);
         // dd($tourteam);
 
-        return view('pages.home.tournament.tournament-detail-team', compact('tourteam'));
-    }
+    //     return view('pages.home.tournament.tournament-detail-team', compact('tourteam'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
