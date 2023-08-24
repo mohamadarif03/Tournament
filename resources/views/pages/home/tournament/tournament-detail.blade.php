@@ -113,17 +113,25 @@
                                 <p>{{ $tournament->description }}</p>
                             </div>
                             @if ($tournament->competitor_count <= $tournament->slot)
-                            <div class="tournamentdetails-form">
-                                <a href="{{ route('join-tournament', $tournament->id) }}"
-                                    class="tournamentdetails-form-btn">Gabung Tournament</a>
+                            <div class="flex justify-between">
+                                <div class="tournament__details-form">
+                                    <a href="{{ route('join-tournament', $tournament->id) }}"
+                                        class="tournament__details-form-btn">Gabung Tournament</a>
+                                </div>
+                                <div class="tournament__details-form">
+                                    <a href="{{ route('join-tournament', $tournament->id) }}"
+                                        class="tournament__details-form-btn">Gabung Tournament</a>
+                                </div>
                             </div>
-                        @else
-                        <a href="{{ route('join-tournament', $tournament->id) }}"
-                            class="tournamentdetails-form-btn">Gabung Tournament</a>
-                        <div class="tournamentdetails-form">
-                            <button class="tournament__details-form-btn" disabled style="cursor: not-allowed; background-color:red; color:white;">Slot Sudah Penuh</button>
-                        </div>
-                        @endif
+                            @else
+                            <div class="tournament__details-form">
+                                <a href="{{ route('join-tournament', $tournament->id) }}"
+                                    class="tournament__details-form-btn">Gabung Tournament</a>
+                            </div>
+                            <div class="tournamentdetails-form">
+                                <button class="tournament__details-form-btn" disabled style="cursor: not-allowed; background-color:red; color:white;">Slot Sudah Penuh</button>
+                            </div>
+                            @endif
                             <div class="blog-details-bottom">
                                 <div class="row">
                                     <div class="col-xl-6 col-md-7">
@@ -158,7 +166,7 @@
                                             <div class="trending__matches-thumb">
                                                 <a href="#"><img
                                                         src="{{ asset('assets/img/juara_1.png') }}"
-                                                        style="min-width: 26px min-height:18px; max-width:54px; max-height:66px"
+                                                        style="min-width: 26px min-height:18px; max-width:60px; max-height:70px"
                                                         alt="img"></a>
                                             </div>
                                             <div class="trending__matches-content">
@@ -176,7 +184,7 @@
                                             <div class="trending__matches-thumb">
                                                 <a href="#"><img
                                                         src="{{ asset('assets/img/juara_2.png') }}"
-                                                        style="min-width: 26px min-height:18px; max-width:54px; max-height:66px"
+                                                        style="min-width: 26px min-height:18px; max-width:60px; max-height:70px"
                                                         alt="img"></a>
                                             </div>
                                             <div class="trending__matches-content">
@@ -194,7 +202,7 @@
                                             <div class="trending__matches-thumb">
                                                 <a href="#"><img
                                                         src="{{ asset('assets/img/juara_3.png') }}"
-                                                        style="min-width: 26px min-height:18px; max-width:54px; max-height:66px"
+                                                        style="min-width: 26px min-height:18px; max-width:60    px; max-height:70px"
                                                         alt="img"></a>
                                             </div>
                                             <div class="trending__matches-content">

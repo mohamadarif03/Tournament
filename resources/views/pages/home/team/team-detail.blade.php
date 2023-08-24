@@ -105,7 +105,6 @@
                                                         <h4 class="name"><a
                                                                 href="#">{{ $teamPlayer->user->name }}</a>
                                                         </h4>
-
                                                     </div>
                                                 </div>
                                             </div>
