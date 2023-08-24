@@ -10,11 +10,18 @@
     <meta name="description" content="eSports and Gaming NFT Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.png') }}">
-
+    @vite('resources/css/app.css')
     <!-- CSS here -->
     <link rel="stylesheet" href="{{ asset('assets/css/plugins.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
-
+    <style>
+        .ellipsis{
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 150px; /* Atur lebar sesuai kebutuhan */
+        }
+    </style>
     <!-- Page-Revealer -->
     <script src="{{ asset('assets/js/tg-page-head.js') }}"></script>
 </head>
@@ -40,45 +47,32 @@
     <main class="main--area">
 
         <!-- slider-area -->
-        <section class="slider__area slider__bg" data-background="assets/img/slider/slider_bg.jpg">
+        <section class="slider__area slider__bg p-5" data-background="assets/img/slider/slider_bg.jpg">
             <div class="slider-activee">
                 <div class="single-slider">
                     <div class="container custom-container">
                         <div class="row justify-content-between">
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 mb-5">
                                 <div class="slider__content">
-                                    <h6 class="sub-title wow fadeInUp" data-wow-delay=".2s">live gaming</h6>
-                                    <h2 class="title wow fadeInUp" data-wow-delay=".5s">steaming</h2>
-                                    <p class="wow fadeInUp" data-wow-delay=".8s">video games online</p>
+                                    <h6 class="sub-title wow fadeInUp sm:hidden" data-wow-delay=".2s">Detail Team</h6>
+                                    <p class="wow fadeInUp" data-wow-delay=".8s">Tournament 17 Agustus </p>
                                     <div class="slider__btn wow fadeInUp" data-wow-delay="1.2s">
-                                        <a href="contact.html" class="tg-btn-1"><span>contact us</span></a>
+                                        <a href="contact.html" class="tg-btn-1"><span>Daftar</span></a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xxl-6 col-xl-5 col-lg-6">
-                                <div class="slider__img text-center">
-                                    <img src="assets/img/slider/slider_img01.png" data-magnetic alt="img">
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
             <div class="slider__shapes">
-                <img src="assets/img/slider/slider_shape01.png" alt="shape">
-                <img src="assets/img/slider/slider_shape02.png" alt="shape">
-                <img src="assets/img/slider/slider_shape03.png" alt="shape">
-                <img src="assets/img/slider/slider_shape04.png" alt="shape">
+                <img src="{{asset('assets/img/slider/slider_shape01.png')}}" alt="shape">
+                <img src="{{asset('assets/img/slider/slider_shape02.png')}}" alt="shape">
+                <img src="{{asset('assets/img/slider/slider_shape03.png')}}" alt="shape">
+                <img src="{{asset('assets/img/slider/slider_shape04.png')}}" alt="shape">
             </div>
-            <div class="slider__brand-wrap">
-                <div class="container custom-container">
-                    <ul class="slider__brand-list list-wrap">
-                        <li><a href="#"><img src="assets/img/brand/brand_logo01.png" alt="brand"></a></li>
-                        <li><a href="#"><img src="assets/img/brand/brand_logo02.png" alt="brand"></a></li>
-                        <li><a href="#"><img src="assets/img/brand/brand_logo03.png" alt="brand"></a></li>
-                    </ul>
-                </div>
-            </div>
+
         </section>
         <!-- slider-area-end -->
         <!-- match-result-area -->
@@ -88,52 +82,99 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-6 col-lg-7 col-md-10">
                         <div class="section__title text-center mb-55">
-                            <span class="sub-title tg__animate-text">LATEST RESULTS FOR</span>
-                            <h3 class="title">EXPERIENCE JUST FOR</h3>
+                            <span class="sub-title tg__animate-text">slot 16/24</span>
+                            <h3 class="title">tim yang terdaftar</h3>
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-12">
                         <h4 class="match__winner-title">Premier league</h4>
                     </div>
-                </div>
-                <div class="row match__result-wrapper justify-content-center">
-                    <div class="col-xl-5 col-sm-6">
-                        <div class="match__winner-wrap">
-                            <div class="match__winner-info">
-                                <h4 class="name">black hunt</h4>
-                                <span class="price-amount">$500 000</span>
+                </div> --}}
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    {{-- <div class="col-xl-5 col-sm-6">
+                    </div> --}}
+                    <div class="match__winner-wrap " style="display: flex;flex-direction: row;flex-wrap: nowrap;align-content: center;justify-content: space-between;align-items: center;">
+
+
+                        <div class="match__winner-info " >
+                            <h4 class="name  ellipsis" >evos gayang</h4>
+                            <span class="price-amount  ellipsis">nama kapten</span>
+                        </div>
+                        <div class="match__winner-img tg-svg">
+                            <div class="team-logo-img">
+                                <a href="team-details.html"><img src="{{asset('assets/img/others/win01.png')}}"
+                                        alt="img"></a>
                             </div>
-                            <div class="match__winner-img tg-svg">
-                                <div class="team-logo-img">
-                                    <a href="team-details.html"><img src="assets/img/others/win01.png"
-                                            alt="img"></a>
-                                </div>
-                                <div class="svg-icon" id="svg-3" data-svg-icon="assets/img/icons/win_shape.svg">
-                                </div>
-                                <h3 class="match__winner-place">win</h3>
+                            <div class="svg-icon" id="svg-3" data-svg-icon="assets/img/icons/win_shape.svg">
                             </div>
+                            {{-- <h3 class="match__winner-place">win</h3> --}}
                         </div>
                     </div>
-                    <div class="col-xl-5 col-sm-6">
-                        <div class="match__winner-wrap">
-                            <div class="match__winner-info">
-                                <h4 class="name">sky Hunter</h4>
-                                <span class="price-amount">$300 000</span>
+                    <div class="match__winner-wrap " style="display: flex;flex-direction: row;flex-wrap: nowrap;align-content: center;justify-content: space-between;align-items: center;">
+                        <div class="match__winner-info">
+                            <h4 class="name  ellipsis">nama tim</h4>
+                            <span class="price-amount ellipsis">nama kapten</span>
+                        </div>
+                        <div class="match__winner-img tg-svg">
+                            <div class="team-logo-img">
+                                <a href="team-details.html"><img src="{{asset('assets/img/others/win01.png')}}"
+                                        alt="img"></a>
                             </div>
-                            <div class="match__winner-img tg-svg">
-                                <div class="team-logo-img">
-                                    <a href="team-details.html"><img src="assets/img/others/win02.png"
-                                            alt="img"></a>
-                                </div>
-                                <div class="svg-icon" id="svg-4" data-svg-icon="assets/img/icons/win_shape.svg">
-                                </div>
-                                <h3 class="match__winner-place">2nd</h3>
+                            <div class="svg-icon" id="svg-3" data-svg-icon="assets/img/icons/win_shape.svg">
                             </div>
+                            {{-- <h3 class="match__winner-place">win</h3> --}}
                         </div>
                     </div>
+                    <div class="match__winner-wrap " style="display: flex;flex-direction: row;flex-wrap: nowrap;align-content: center;justify-content: space-between;align-items: center;">
+                        <div class="match__winner-info">
+                            <h4 class="name ellipsis">nama tim</h4>
+                            <span class="price-amount ellipsis">nama kapten</span>
+                        </div>
+                        <div class="match__winner-img tg-svg">
+                            <div class="team-logo-img">
+                                <a href="team-details.html"><img src="{{asset('assets/img/others/win01.png')}}"
+                                        alt="img"></a>
+                            </div>
+                            <div class="svg-icon" id="svg-3" data-svg-icon="assets/img/icons/win_shape.svg">
+                            </div>
+                            {{-- <h3 class="match__winner-place">win</h3> --}}
+                        </div>
+                    </div>
+                    <div class="match__winner-wrap " style="display: flex;flex-direction: row;flex-wrap: nowrap;align-content: center;justify-content: space-between;align-items: center;">
+                        <div class="match__winner-info">
+                            <h4 class="name ellipsis">nama tim</h4>
+                            <span class="price-amount ellipsis">nama kapten</span>
+                        </div>
+                        <div class="match__winner-img tg-svg">
+                            <div class="team-logo-img">
+                                <a href="team-details.html"><img src="{{asset('assets/img/others/win01.png')}}"
+                                        alt="img"></a>
+                            </div>
+                            <div class="svg-icon" id="svg-3" data-svg-icon="assets/img/icons/win_shape.svg">
+                            </div>
+                            {{-- <h3 class="match__winner-place">win</h3> --}}
+                        </div>
+                    </div>
+                    <div class="match__winner-wrap " style="display: flex;flex-direction: row;flex-wrap: nowrap;align-content: center;justify-content: space-between;align-items: center;">
+                        <div class="match__winner-info">
+                            <h4 class="name ellipsis">nama tim</h4>
+                            <span class="price-amount ellipsis">nama kapten</span>
+                        </div>
+                        <div class="match__winner-img tg-svg">
+                            <div class="team-logo-img">
+                                <a href="team-details.html"><img src="{{asset('assets/img/others/win01.png')}}"
+                                        alt="img"></a>
+                            </div>
+                            <div class="svg-icon" id="svg-3" data-svg-icon="assets/img/icons/win_shape.svg">
+                            </div>
+                            {{-- <h3 class="match__winner-place">win</h3> --}}
+                        </div>
+                    </div>
+
                 </div>
+
                 <div class="row">
                     <div class="col-12">
                         <div class="grand__final">
@@ -190,6 +231,7 @@
             });
         });
     </script>
+
 
 
     <!-- Mirrored from themedox.com/demo/mykd/index-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 17 May 2023 04:18:20 GMT -->

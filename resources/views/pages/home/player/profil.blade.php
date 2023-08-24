@@ -142,7 +142,7 @@
                                         </a>
                                     </div>
                                 </div>
-
+                                
                                 <div class="tournament__details-form bg-[#1c242f] rounded-md p-12">
                                     <div x-data="{ activeunderTab: 'team' }">
                                         <ul
@@ -230,10 +230,9 @@
 
 
 
-                            </div>
-                            <div class="tournament__details-form">
 
                             </div>
+
                         </div>
                     </div>
                 </div>

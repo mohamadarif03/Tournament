@@ -74,7 +74,7 @@
                                 <ul class="list-wrap">
                                     <li>By<a href="#">{{ $tournament->user->name }}</a></li>
                                     <li>
-                                        <i class="far fa-calendar-alt"></i>
+                                        <i class="far fa-calendar-alt"> tenggat pendaftaran :</i>
                                         {{ \Carbon\Carbon::parse($tournament->completed_at)->format('d F Y H:i') }}
                                     </li>
                                     <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -126,7 +126,7 @@
                                 <div class="row">
                                     <div class="col-xl-6 col-md-7">
                                         <div class="tg-post-tags">
-                                            <h5 class="tags-title">kategori :</h5>
+                                            <h5 class="tags-title">Game :</h5>
                                             <ul class="list-wrap d-flex flex-wrap align-items-center m-0">
                                                 <li><a href="">{{ $tournament->game->name }}</a></li>
                                             </ul>
@@ -165,6 +165,37 @@
                                                         <h5 class="title font-bold"><a
                                                                 href="#">{{ $tournament->name }}</a></h5>
                                                         <span class="price">Rp.
+                                                            {{ number_format($tournament->price_pool, 0, ',', '.') }}</span>
+                                                    </div>
+                                                    <div class="play">
+                                                        <a href="https://www.youtube.com/watch?v=a3_o4SpV1vI"
+                                                            class="popup-video"><i class="far fa-play-circle"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </aside>
+                        <aside class="blog-sidebar tournament__sidebar " style="margin-top: 10px">
+                            <div class="shop__widget">
+                                <h4 class="shop__widget-title font-bold">Tim yang terdaftar</h4>
+                                <div class="shop__widget-inner">
+                                    <div class="trending__matches-list">
+                                        @foreach ($tournamentmore as $tournament)
+                                            <div class="trending__matches-item">
+                                                <div class="trending__matches-thumb">
+                                                    <a href="#"><img
+                                                            src="{{ asset('storage/' . $tournament->live_image_url) }}"
+                                                            style="min-width: 30px min-height:20px; max-width:60px; max-height:70"
+                                                            alt="img"></a>
+                                                </div>
+                                                <div class="trending__matches-content">
+                                                    <div class="info">
+                                                        <h5 class="title font-bold"><a
+                                                                href="#">{{ $tournament->name }}</a></h5>
+                                                        <span class="naem">Rp.
                                                             {{ number_format($tournament->price_pool, 0, ',', '.') }}</span>
                                                     </div>
                                                     <div class="play">
