@@ -27,9 +27,6 @@ class TournamenthomeController extends Controller
         $this->team = $team;
         $this->service = $service;
     }
-
-    
-
     /**
      * Display a listing of the resource.
      *
@@ -38,25 +35,12 @@ class TournamenthomeController extends Controller
      */
     public function detail(Tournament $tournament): View
     {
-        $tournament = $this->tournamentdetail->show($tournament->id);
-        $tournamentmore = $this->tournamentdetail->showMore();
-        return view('pages.home.tournament.tournament-detail', compact('tournament', 'tournamentmore'));
+        $tournamentmore = $this->tournamentdetail->showmore();
+        $tournamentId = $tournament->id;
+        $countTournament = Tournament::withCount('competitors')->findOrFail($tournamentId);
+        // dd($countTournament);
+        return view('pages.home.tournament.tournament-detail', compact('tournament', 'tournamentmore', 'countTournament'));
     }
-
-    // /**
-    //  * Display a listing of the resource.
-    //  *
-    //  * @return View
-    //  * @param Tournament $tournament
-    //  */
-    // public function detail(Tournament $tournament): View
-    // {
-    //     $tournamentmore = $this->tournamentdetail->showmore();
-    //     $tournamentId = $tournament->id;
-    //     $countTournament = Tournament::withCount('competitor')->findOrFail($tournamentId);
-    //     // dd($countTournament);
-    //     return view('pages.home.tournament.tournament-detail', compact('tournament', 'tournamentmore', 'countTournament'));
-    // }
     /**
      * Display a listing of the resource.
      *

@@ -78,7 +78,7 @@ class TournamentController extends Controller
     public function show(Tournament $tournament)
     {
         $tourteam= $this->tournament->showTeam($tournament->id);
-        // dd($tourteam);
+        dd($tourteam);
 
         return view('pages.home.tournament.tournament-detail-team', compact('tourteam'));
     }
