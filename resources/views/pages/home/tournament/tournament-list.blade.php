@@ -103,7 +103,7 @@
                             </div>
 
                         </div>
-                        <div class="col-span-4 grid grid-cols-1 min-[768px]:grid-cols-2 max-[1095px]:grid-cols-2 min-[1096px]:grid-cols-3 gap-12 md:ml-2 lg:ml-2">
+                        <div class="col-span-4 grid grid-cols-1 min-[768px]:grid-cols-2 max-[1095px]:grid-cols-1 min-[1096px]:grid-cols-3 gap-12 md:ml-2 lg:ml-2">
                             @foreach ($tournamentlist as $tournament)
                                 <a href="{{ route('tournament-detail', $tournament->id) }}" class="loopTournament row justify-content-center ms-5">
                                     <div class="tournament__box-wrap" style="padding-bottom: 30px">
@@ -121,7 +121,7 @@
                                         </svg>
                                         <div class="tournament__box-price">
                                             <span class="sub">Slot</span>
-                                            <span>{{ $tournament->slot }}</span>
+                                            <span>16\{{ $tournament->slot }}</span>
                                         </div>
                                         <div class="tournament__box-countdown">
                                             <div class="coming-time" style="color: #ffbe18;">
@@ -130,17 +130,20 @@
 
 
                                         </div>
-                                        <div class="tournament__box-caption">
-                                        <span class="sub">By: {{ $tournament->user->name }}</span>
-                                            <h4 class="title" style="font-size: 20px">{{ $tournament->name }}
-                                            </h4>
-                                            <span class="sub mt-1">{{ \Carbon\Carbon::parse($tournament->starter_at)->format('d F Y H:i') }}</span>
-                                        </div>
+
                                         <ul class="tournament__box-list list-wrap mb-3">
+                                            <span class="flex justify-center mb-2">
+                                                <h4 class="title text-[#45f881] font-semibold" style="font-size: 20px">{{ $tournament->name }}
+                                                </h4>
+                                            </span>
+
                                             <li class="flex justify-center">
-                                                <img src="{{ asset('storage/' . $tournament->live_image_url) }}"
+                                                <img src="{{asset('assets/img/blog/blog_post01.jpg') }}"
                                                     style="min-height: 50px; min-width:100px; max-height:100px; max-width: 200px"
                                                     alt="img">
+                                                {{-- <img src="{{ asset('storage/' . $tournament->live_image_url) }}"
+                                                    style="min-height: 50px; min-width:100px; max-height:100px; max-width: 200px"
+                                                    alt="img"> --}}
                                             </li>
                                         </ul>
                                         <div class="tournament__box-prize" style="height: 20px">
@@ -148,11 +151,20 @@
                                             <span class="text-sm">Rp.
                                                 {{ number_format($tournament->price_pool, 0, ',', '.') }}</span>
                                         </div>
-                                        <!-- <div class="font-bold text-sm flex justify-center mb-2">
+                                        <div class="tournament__box-caption">
+                                            <h4 class="title" style="font-size: 20px">Start Game
+                                            </h4>
+                                            <span class="sub mt-1">{{ \Carbon\Carbon::parse($tournament->starter_at)->format('d F Y H:i') }}</span>
+                                        </div>
+                                        <div class="flex justify-center">
+                                            <span class="sub">By: {{ $tournament->user->name }}</span>
+                                        </div>
+
+                                        {{-- <!-- <div class="font-bold text-sm flex justify-center mb-2">
                                             <span
                                                 class="cursor-pointer bg-[#ffbe18] text-sm font-medium px-2.5 py-0.5 rounded"
                                                 style="color: white">By: {{ $tournament->user->name }}</span>
-                                        </div> -->
+                                        </div> --> --}}
                                     </div>
                                 </a>
                             @endforeach

@@ -16,7 +16,12 @@
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
     <!-- Page-Revealer -->
     <script src="{{ asset('assets/js/tg-page-head.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('dashboard_assets/css/datatables.css') }}" />
+
+
     @vite('resources/css/app.css')
+
+    @yield('css')
 
 </head>
 
@@ -142,7 +147,7 @@
                                         </a>
                                     </div>
                                 </div>
-                                
+
                                 <div class="tournament__details-form bg-[#1c242f] rounded-md p-12">
                                     <div x-data="{ activeunderTab: 'team' }">
                                         <ul
@@ -200,7 +205,49 @@
                                             </div>
                                             <div x-show="activeunderTab === 'perjalanan'" class>
                                                 <div class="perjalanan">
+                                                    <div x-data="basic" class="w-full">
 
+                                                        {{-- <table id="myTable" class="whitespace-nowrap table-hover table-bordered w-full">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>#</th>
+                                                                    <th>Nama</th>
+                                                                    <th>Logo</th>
+                                                                    <th>Aksi</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+
+                                                                    <tr>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        <td><img src="{{ asset('storage/') }}" alt="logo" srcset=""
+                                                                                width="200"></td>
+                                                                        <td>
+                                                                            <div class="flex">
+                                                                                <a href="#" type="button"
+                                                                                    class="bg-yellow-400 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded mb-5 mr-6">
+                                                                                    <span>Edit</span>
+                                                                                </a>
+                                                                                <form onsubmit="return confirm('Yakin Ingin Menghapus Data Ini?')" method="POST"
+                                                                                    action="#">
+                                                                                    @method('DELETE')
+                                                                                    @csrf
+                                                                                    <button type="submit"
+                                                                                        class="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded mb-5 cursor-pointer">
+                                                                                        Hapus
+                                                                                    </button>
+                                                                                </form>
+                                                                            </div>
+
+
+
+                                                                        </td>
+                                                                    </tr>
+
+                                                            </tbody>
+                                                        </table> --}}
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div x-show="activeunderTab === 'pencapaian'" class>
@@ -283,6 +330,8 @@
             });
         });
     </script>
+        @include('pages.dashboard.layouts.plugin')
+
 </body>
 
 

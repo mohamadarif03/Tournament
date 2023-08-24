@@ -74,15 +74,17 @@
                                 <ul class="list-wrap">
                                     <li>By<a href="#">{{ $tournament->user->name }}</a></li>
                                     <li>
-                                        <i class="far fa-calendar-alt"> tenggat pendaftaran :</i>
+                                        <i class="far fa-calendar-alt"> Akhir Turnamen : </i>
                                         {{ \Carbon\Carbon::parse($tournament->completed_at)->format('d F Y H:i') }}
                                     </li>
                                     <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" style="color: #45f882" class="bi bi-gift"
                                             viewBox="0 0 16 16">
                                             <path
+
                                                 d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 14.5V7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A2.968 2.968 0 0 1 3 2.506V2.5zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43a.522.522 0 0 0 .023.07zM9 3h2.932a.56.56 0 0 0 .023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0V3zM1 4v2h6V4H1zm8 0v2h6V4H9zm5 3H9v8h4.5a.5.5 0 0 0 .5-.5V7zm-7 8V7H2v7.5a.5.5 0 0 0 .5.5H7z" />
-                                        </svg><a
+                                        </svg>
+                                        <i class="far">Total hadiah : </i><a
                                             href="#">{{ number_format($tournament->price_pool, 0, ',', '.') }}</a>
                                     </li>
                                 </ul>
@@ -152,35 +154,70 @@
                                 <h4 class="shop__widget-title font-bold">Tournament Lainnya</h4>
                                 <div class="shop__widget-inner">
                                     <div class="trending__matches-list">
-                                        @foreach ($tournamentmore as $tournament)
-                                            <div class="trending__matches-item">
-                                                <div class="trending__matches-thumb">
-                                                    <a href="#"><img
-                                                            src="{{ asset('storage/' . $tournament->live_image_url) }}"
-                                                            style="min-width: 30px min-height:20px; max-width:60px; max-height:70"
-                                                            alt="img"></a>
-                                                </div>
-                                                <div class="trending__matches-content">
-                                                    <div class="info">
-                                                        <h5 class="title font-bold"><a
-                                                                href="#">{{ $tournament->name }}</a></h5>
-                                                        <span class="price">Rp.
-                                                            {{ number_format($tournament->price_pool, 0, ',', '.') }}</span>
-                                                    </div>
-                                                    <div class="play">
-                                                        <a href="https://www.youtube.com/watch?v=a3_o4SpV1vI"
-                                                            class="popup-video"><i class="far fa-play-circle"></i></a>
-                                                    </div>
-                                                </div>
+                                        <div class="trending__matches-item">
+                                            <div class="trending__matches-thumb">
+                                                <a href="#"><img
+                                                        src="{{ asset('assets/img/juara_1.png') }}"
+                                                        style="min-width: 26px min-height:18px; max-width:54px; max-height:66px"
+                                                        alt="img"></a>
                                             </div>
-                                        @endforeach
+                                            <div class="trending__matches-content">
+                                                <div class="info">
+                                                    <h5 class="title font-bold"><a
+                                                            href="#">Juara 1</a></h5>
+                                                    <span class="price">Rp.
+                                                        {{-- {{ number_format($tournament->price_pool, 0, ',', '.') }} --}}
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="trending__matches-item">
+                                            <div class="trending__matches-thumb">
+                                                <a href="#"><img
+                                                        src="{{ asset('assets/img/juara_2.png') }}"
+                                                        style="min-width: 26px min-height:18px; max-width:54px; max-height:66px"
+                                                        alt="img"></a>
+                                            </div>
+                                            <div class="trending__matches-content">
+                                                <div class="info">
+                                                    <h5 class="title font-bold"><a
+                                                            href="#">Juara 2</a></h5>
+                                                    <span class="price">Rp.
+                                                        {{-- {{ number_format($tournament->price_pool, 0, ',', '.') }} --}}
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="trending__matches-item">
+                                            <div class="trending__matches-thumb">
+                                                <a href="#"><img
+                                                        src="{{ asset('assets/img/juara_3.png') }}"
+                                                        style="min-width: 26px min-height:18px; max-width:54px; max-height:66px"
+                                                        alt="img"></a>
+                                            </div>
+                                            <div class="trending__matches-content">
+                                                <div class="info">
+                                                    <h5 class="title font-bold"><a
+                                                            href="#">Juara 3</a></h5>
+                                                    <span class="price">Rp.
+                                                        {{-- {{ number_format($tournament->price_pool, 0, ',', '.') }} --}}
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
                         </aside>
                         <aside class="blog-sidebar tournament__sidebar " style="margin-top: 10px">
                             <div class="shop__widget">
-                                <h4 class="shop__widget-title font-bold">Tim yang terdaftar</h4>
+                                <a href="">
+                                    <h4 class="shop__widget-title font-bold">Tim yang terdaftar</h4>
+                                </a>
                                 <div class="shop__widget-inner">
                                     <div class="trending__matches-list">
                                         @foreach ($tournamentmore as $tournament)

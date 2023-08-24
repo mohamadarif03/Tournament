@@ -54,8 +54,8 @@
                         <div class="row justify-content-between">
                             <div class="col-lg-6 mb-5">
                                 <div class="slider__content">
-                                    <h6 class="sub-title wow fadeInUp sm:hidden" data-wow-delay=".2s">Detail Team</h6>
-                                    <p class="wow fadeInUp" data-wow-delay=".8s">Tournament 17 Agustus </p>
+                                    <h6 class="sub-title wow fadeInUp sm:hidden" data-wow-delay=".1s">Detail Team</h6>
+                                    <p class="wow fadeInUp" data-wow-delay=".1s">Tournament 17 Agustus </p>
                                     <div class="slider__btn wow fadeInUp" data-wow-delay="1.2s">
                                         <a href="{{ route('join-tournament', $tourteam->id) }}" class="tg-btn-1"><span>Daftar</span></a>
                                     </div>
@@ -98,7 +98,7 @@
                     @foreach ($tourteam->competitors as $competitor)
                     <div class="match__winner-wrap " style="display: flex;flex-direction: row;flex-wrap: nowrap;align-content: center;justify-content: space-between;align-items: center;">
 
-                        
+
     {{-- <p>Team Name: </p> --}}
     {{-- @dd($tourteam)
         --}}
@@ -111,14 +111,20 @@
                                 <a href="team-details.html"><img src="{{asset('assets/img/others/win01.png')}}"
                                         alt="img"></a>
                             </div>
-                            <div class="svg-icon" id="svg-3" data-svg-icon="assets/img/icons/win_shape.svg">
+                            <div class="match__winner-img tg-svg">
+                                <div class="team-logo-img">
+                                    <a href="team-details.html"><img src="{{asset('assets/img/others/win01.png')}}"
+                                            alt="img"></a>
+                                </div>
+                                <div class="svg-icon" id="svg-3" data-svg-icon="assets/img/icons/win_shape.svg">
+                                </div>
+                                {{-- <h3 class="match__winner-place">win</h3> --}}
                             </div>
-                            {{-- <h3 class="match__winner-place">win</h3> --}}
                         </div>
                     </div>
-              
+
                     @endforeach
-                    
+
                 </div>
 
                 <div class="row">
