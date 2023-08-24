@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Contracts\Interfaces\GameInterface;
+use App\Contracts\Interfaces\TeamInterface;
 use App\Contracts\Interfaces\TeamPlayerInterface;
 use App\Contracts\Interfaces\UserInterface;
 use App\Helpers\ResponseHelper;
@@ -18,16 +19,16 @@ class TeamhomeController extends Controller
 {
     private GameInterface $game;
     private TeamService $service;
-    private TeamPlayerInterface $teamPlayer;
+    private TeamInterface $team;
     private UserInterface $user;
 
 
-    public function __construct(GameInterface $game, TeamService $service, TeamPlayerInterface $teamPlayer, UserInterface $user)
+    public function __construct(GameInterface $game, TeamService $service, TeamInterface $team, UserInterface $user)
     {
         $this->game = $game;
         $this->service = $service;
         $this->user = $user;
-        $this->teamPlayer = $teamPlayer;
+        $this->team = $team;
     }
 
     /**
@@ -64,14 +65,13 @@ class TeamhomeController extends Controller
      */
     public function detail(Team $team)
     {
-        $teamPlayers = $this->teamPlayer->get();
-        return view('pages.home.team.team-detail', compact('team', 'teamPlayers'));
+        $players = $this->team->show($team->id);
+        return view('pages.home.team.team-detail', compact('team', 'players'));
     }
 
     public function player(User $user)
     {
         $teams = $this->user->show($user->id);
-        // dd($teams);
         return view('pages.home.player.profil', compact('user', 'teams'));
     }
     

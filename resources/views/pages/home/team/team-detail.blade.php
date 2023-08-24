@@ -88,8 +88,8 @@
                                 <h1 class="title" style="margin-top: 20px">Anggota</h1>
                                 <hr style="width: 12%">
                                 <div class="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                                    @foreach ($teamPlayers as $teamPlayer)
-                                        <a href="{{ route('profile-player', $teamPlayer->user_id) }}">
+                                    @foreach ($players->teamPlayers as $player)
+                                        <a href="{{ route('profile-player', $player->user_id) }}">
                                             <div
                                                 class="card mt-[2rem] h-[17rem] bg-[#1c242f] flex justify-center items-center">
                                                 <div class="flex flex-col">
@@ -97,8 +97,8 @@
                                                         class="rounded-full my-1" width="100" alt=""
                                                         srcset="">
                                                     <h1 class="text-center text-lg text-white my-1"
-                                                        style="font-weight: bold">{{ $teamPlayer->user->name }}</h1>
-                                                    {{-- <h6 class="text-center text-base text-white my-1">Captain</h6> --}}
+                                                        style="font-weight: bold">{{ $player->user->name }}</h1>
+                                                    <h6 class="text-center text-base text-white my-1">Captain</h6>
                                                 </div>
                                             </div>
                                         </a>

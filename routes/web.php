@@ -58,7 +58,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::put('/reject-player-join-team/{teamOpenTrial}', [JointeamController::class, 'reject'])->name('reject-player-join-team');
     Route::get('/detail-join-open-trial/{openTrial}', [JointeamController::class, 'questionOpenTrial'])->name('detail-join-open-trial');
 
-    Route::get('/open-trial/{team}', [OpenTrialController::class, 'create'])->name('open-trial');
+    Route::get('/open-trial/{team}', [OpenTrialController::class, 'create'])->name('open-trial');   
     Route::get('/edit-open-trial/{openTrial}', [OpenTrialController::class, 'edit'])->name('edit-open-trial');
     Route::post('/create-open-trial', [OpenTrialController::class, 'store'])->name('create-open-trial');
     Route::put('/update-open-trial/{openTrial}', [OpenTrialController::class, 'update'])->name('update-open-trial');
