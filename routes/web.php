@@ -37,6 +37,7 @@ Auth::routes([
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/tournament-detail/{tournament}', [TournamenthomeController::class, 'detail'])->name('tournament-detail');
 Route::get('/tournaments', [TournamenthomeController::class, 'list'])->name('tournaments');
+Route::get('/tournaments/{tournament}', [TournamenthomeController::class, 'showTeam'])->name('tytyd');
 
 Route::get('/join-tournament/{tournament}', [JointournamentController::class, 'index'])->name('join-tournament');
 Route::post('/register-tournament', [JointournamentController::class, 'join'])->name('register-tournament');
@@ -45,6 +46,7 @@ Route::get('/teams', [TeamhomeController::class, 'index'])->name('teams');
 Route::get('/teams-detail/{team}', [TeamhomeController::class, 'detail'])->name('team-detail');
 Route::get('/profile-player/{user}', [TeamhomeController::class, 'player'])->name('profile-player');
 
+Route::get('tast/{team}', [TournamentController::class, 'showTest'])->name('show');
 
 
 

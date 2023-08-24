@@ -38,7 +38,7 @@ class TournamentRepository extends BaseRepository implements TournamentInterface
             } catch (QueryException $e) {
                 if ($e->errorInfo[1] == 1451) return false;
             }
-        } else {
+        }else {
             if ($user->user_id === Auth::user()->id) {
                 try {
                     $user->delete($id);
@@ -66,13 +66,12 @@ class TournamentRepository extends BaseRepository implements TournamentInterface
             ->findOrFail($id);
     }
 
-    public function showTeam(mixed $id): mixed
+    public function showTeam(mixed $id) : mixed 
     {
         return $this->model->query()
-            ->with(['competitors.team', 'competitor_registers' => function ($query) {
-                $query->where('position', 'captain')->with('user');
-            }])
-            ->findOrFail($id);
+        ->with('competitors.team.user')
+        ->findOrFail($id);    
+
     }
 
     /**

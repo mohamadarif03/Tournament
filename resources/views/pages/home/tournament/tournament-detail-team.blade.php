@@ -57,7 +57,7 @@
                                     <h6 class="sub-title wow fadeInUp sm:hidden" data-wow-delay=".2s">Detail Team</h6>
                                     <p class="wow fadeInUp" data-wow-delay=".8s">Tournament 17 Agustus </p>
                                     <div class="slider__btn wow fadeInUp" data-wow-delay="1.2s">
-                                        <a href="contact.html" class="tg-btn-1"><span>Daftar</span></a>
+                                        <a href="{{ route('join-tournament', $tourteam->id) }}" class="tg-btn-1"><span>Daftar</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -95,12 +95,16 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     {{-- <div class="col-xl-5 col-sm-6">
                     </div> --}}
+                    @foreach ($tourteam->competitors as $competitor)
                     <div class="match__winner-wrap " style="display: flex;flex-direction: row;flex-wrap: nowrap;align-content: center;justify-content: space-between;align-items: center;">
 
-
-                        <div class="match__winner-info " >
-                            <h4 class="name  ellipsis" >evos gayang</h4>
-                            <span class="price-amount  ellipsis">nama kapten</span>
+                        
+    {{-- <p>Team Name: </p> --}}
+    {{-- @dd($tourteam)
+        --}}
+        <div class="match__winner-info " >
+                            <h4 class="name  ellipsis" >{{ $competitor->team->name }}</h4>
+                            <span class="price-amount  ellipsis"> {{ $competitor->team->user->name }}</span>
                         </div>
                         <div class="match__winner-img tg-svg">
                             <div class="team-logo-img">
@@ -112,67 +116,9 @@
                             {{-- <h3 class="match__winner-place">win</h3> --}}
                         </div>
                     </div>
-                    <div class="match__winner-wrap " style="display: flex;flex-direction: row;flex-wrap: nowrap;align-content: center;justify-content: space-between;align-items: center;">
-                        <div class="match__winner-info">
-                            <h4 class="name  ellipsis">nama tim</h4>
-                            <span class="price-amount ellipsis">nama kapten</span>
-                        </div>
-                        <div class="match__winner-img tg-svg">
-                            <div class="team-logo-img">
-                                <a href="team-details.html"><img src="{{asset('assets/img/others/win01.png')}}"
-                                        alt="img"></a>
-                            </div>
-                            <div class="svg-icon" id="svg-3" data-svg-icon="assets/img/icons/win_shape.svg">
-                            </div>
-                            {{-- <h3 class="match__winner-place">win</h3> --}}
-                        </div>
-                    </div>
-                    <div class="match__winner-wrap " style="display: flex;flex-direction: row;flex-wrap: nowrap;align-content: center;justify-content: space-between;align-items: center;">
-                        <div class="match__winner-info">
-                            <h4 class="name ellipsis">nama tim</h4>
-                            <span class="price-amount ellipsis">nama kapten</span>
-                        </div>
-                        <div class="match__winner-img tg-svg">
-                            <div class="team-logo-img">
-                                <a href="team-details.html"><img src="{{asset('assets/img/others/win01.png')}}"
-                                        alt="img"></a>
-                            </div>
-                            <div class="svg-icon" id="svg-3" data-svg-icon="assets/img/icons/win_shape.svg">
-                            </div>
-                            {{-- <h3 class="match__winner-place">win</h3> --}}
-                        </div>
-                    </div>
-                    <div class="match__winner-wrap " style="display: flex;flex-direction: row;flex-wrap: nowrap;align-content: center;justify-content: space-between;align-items: center;">
-                        <div class="match__winner-info">
-                            <h4 class="name ellipsis">nama tim</h4>
-                            <span class="price-amount ellipsis">nama kapten</span>
-                        </div>
-                        <div class="match__winner-img tg-svg">
-                            <div class="team-logo-img">
-                                <a href="team-details.html"><img src="{{asset('assets/img/others/win01.png')}}"
-                                        alt="img"></a>
-                            </div>
-                            <div class="svg-icon" id="svg-3" data-svg-icon="assets/img/icons/win_shape.svg">
-                            </div>
-                            {{-- <h3 class="match__winner-place">win</h3> --}}
-                        </div>
-                    </div>
-                    <div class="match__winner-wrap " style="display: flex;flex-direction: row;flex-wrap: nowrap;align-content: center;justify-content: space-between;align-items: center;">
-                        <div class="match__winner-info">
-                            <h4 class="name ellipsis">nama tim</h4>
-                            <span class="price-amount ellipsis">nama kapten</span>
-                        </div>
-                        <div class="match__winner-img tg-svg">
-                            <div class="team-logo-img">
-                                <a href="team-details.html"><img src="{{asset('assets/img/others/win01.png')}}"
-                                        alt="img"></a>
-                            </div>
-                            <div class="svg-icon" id="svg-3" data-svg-icon="assets/img/icons/win_shape.svg">
-                            </div>
-                            {{-- <h3 class="match__winner-place">win</h3> --}}
-                        </div>
-                    </div>
-
+              
+                    @endforeach
+                    
                 </div>
 
                 <div class="row">
