@@ -110,18 +110,18 @@
                             <div class="tournament__details-form">
                                 <p>{{ $tournament->description }}</p>
                             </div>
-                            @if ($countTournament->competitor_count <= $countTournament->slot)
-                                <div class="tournament__details-form">
-                                    <a href="{{ route('join-tournament', $tournament->id) }}"
-                                        class="tournament__details-form-btn">Gabung Tournament</a>
-                                </div>
-                            @else
-                            <a href="{{ route('join-tournament', $tournament->id) }}"
-                                class="tournament__details-form-btn">Gabung Tournament</a>
-                            <div class="tournament__details-form">
-                                <button class="tournament__details-form-btn" disabled style="cursor: not-allowed; background-color:red; color:white;">Slot Sudah Penuh</button>
+                            @if ($tournament->competitor_count <= $tournament->slot)
+                            <div class="tournamentdetails-form">
+                                <a href="{{ route('join-tournament', $tournament->id) }}"
+                                    class="tournamentdetails-form-btn">Gabung Tournament</a>
                             </div>
-                            @endif
+                        @else
+                        <a href="{{ route('join-tournament', $tournament->id) }}"
+                            class="tournamentdetails-form-btn">Gabung Tournament</a>
+                        <div class="tournamentdetails-form">
+                            <button class="tournament__details-form-btn" disabled style="cursor: not-allowed; background-color:red; color:white;">Slot Sudah Penuh</button>
+                        </div>
+                        @endif
                             <div class="blog-details-bottom">
                                 <div class="row">
                                     <div class="col-xl-6 col-md-7">
