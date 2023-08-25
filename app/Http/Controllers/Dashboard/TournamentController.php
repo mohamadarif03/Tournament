@@ -23,15 +23,13 @@ class TournamentController extends Controller
     private TournamentInterface $tournament;
     private GameInterface $game;
     private TournamentService $service;
-    private CompetitorInterface $competitor;
 
 
-    public function __construct(TournamentInterface $tournament, TournamentService $service, GameInterface $game,CompetitorInterface $competitor)
+    public function __construct(TournamentInterface $tournament, TournamentService $service, GameInterface $game, CompetitorInterface $competitor)
     {
         $this->tournament = $tournament;
         $this->game = $game;
         $this->service = $service;
-        $this->competitor =$competitor;
     }
     /**
      * Display a listing of the resource.
@@ -77,8 +75,11 @@ class TournamentController extends Controller
      */
     public function show(Tournament $tournament)
     {
-        $tourteam= $this->tournament->showTeam($tournament->id);
-        // dd($tourteam);
+        $tourteam = $this->tournament->showTeam($tournament->id);
+
+        return response()->json([
+            'tourteam' => $tourteam,
+        ]);
     }
     //     return view('pages.home.tournament.tournament-detail-team', compact('tourteam'));
     // }
