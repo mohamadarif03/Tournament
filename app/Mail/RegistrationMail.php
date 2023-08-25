@@ -15,17 +15,15 @@ class RegistrationMail extends Mailable
     use Queueable, SerializesModels;
 
     public User $user;
-    public string $url;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(User $user, string $url)
+    public function __construct(User $user)
     {
         $this->user = $user;
-        $this->url = $url;
     }
 
     /**

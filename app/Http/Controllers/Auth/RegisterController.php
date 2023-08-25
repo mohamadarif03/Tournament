@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Auth;
 use App\Contracts\Interfaces\RegisterInterface;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
+use App\Mail\RegistrationMail;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use App\Services\Auth\RegisterService;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
@@ -68,9 +71,11 @@ class RegisterController extends Controller
      * @return RedirectResponse
      */
 
-    public function register(RegisterRequest $request): RedirectResponse
+    public function register(RegisterRequest $request, User $user): RedirectResponse
     {
-        $this->registerService->handleRegistration($request, $this->register);
+        $user = $this->registerService->handleRegistration($request, $this->register);
+
+        Mail::to($user)->send(new RegistrationMail($user));
 
         return back()->with('success', trans('auth.register_success'));
 
