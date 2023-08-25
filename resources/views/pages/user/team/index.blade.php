@@ -32,6 +32,7 @@
                             </p>
                         </div>
                     </div>
+                    
                     <div class="border-t-2">
                         <div class="m-5 flex justify-center">
                             <a href="{{ route('team.show', $team->id) }}"

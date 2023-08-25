@@ -102,7 +102,7 @@
     {{-- <p>Team Name: </p> --}}
     {{-- @dd($tourteam)
         --}}
-        <div class="match__winner-info " >
+                         <div class="match__winner-info " >
                             <h4 class="name  ellipsis" >{{ $competitor->team->name }}</h4>
                             <span class="price-amount  ellipsis"> {{ $competitor->team->user->name }}</span>
                         </div>
@@ -111,15 +111,15 @@
                                 <a href="team-details.html"><img src="{{asset('assets/img/others/win01.png')}}"
                                         alt="img"></a>
                             </div>
-                            <div class="match__winner-img tg-svg">
+                            {{-- <div class="match__winner-img tg-svg">
                                 <div class="team-logo-img">
                                     <a href="team-details.html"><img src="{{asset('assets/img/others/win01.png')}}"
                                             alt="img"></a>
                                 </div>
                                 <div class="svg-icon" id="svg-3" data-svg-icon="assets/img/icons/win_shape.svg">
                                 </div>
-                                {{-- <h3 class="match__winner-place">win</h3> --}}
-                            </div>
+                                <h3 class="match__winner-place">win</h3>
+                            </div> --}}
                         </div>
                     </div>
 

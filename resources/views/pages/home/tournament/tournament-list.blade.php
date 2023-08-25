@@ -138,12 +138,12 @@
                                             </span>
 
                                             <li class="flex justify-center">
-                                                <img src="{{asset('assets/img/blog/blog_post01.jpg') }}"
-                                                    style="min-height: 50px; min-width:100px; max-height:100px; max-width: 200px"
-                                                    alt="img">
-                                                {{-- <img src="{{ asset('storage/' . $tournament->live_image_url) }}"
+                                                {{-- <img src="{{asset('assets/img/blog/blog_post01.jpg') }}"
                                                     style="min-height: 50px; min-width:100px; max-height:100px; max-width: 200px"
                                                     alt="img"> --}}
+                                                <img src="{{ asset('storage/' . $tournament->live_image_url) }}"
+                                                    style="min-height: 50px; min-width:100px; max-height:100px; max-width: 200px"
+                                                    alt="img">
                                             </li>
                                         </ul>
                                         <div class="tournament__box-prize" style="height: 20px">
