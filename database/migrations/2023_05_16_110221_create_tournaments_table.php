@@ -24,6 +24,12 @@ return new class extends Migration
             $table->boolean('is_open_signup')->default(1);
             $table->integer('slot')->default(8);
             $table->integer('price_pool')->nullable();
+            $table->integer('winner1')->nullable();
+            $table->integer('winner2')->nullable();
+            $table->integer('winner3')->nullable();
+            $table->integer('runner_up1')->nullable();
+            $table->integer('runner_up2')->nullable();
+            $table->integer('runner_up3')->nullable();
             $table->foreignUuid('game_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->text('location');
             $table->integer('registration_fee');

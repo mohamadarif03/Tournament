@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Tournament;
+use App\Models\winner;
 use Faker\Provider\Uuid;
 use Illuminate\Support\Str;
 
@@ -15,12 +16,15 @@ class TournamentObserver
     {
         $tournament->id = Uuid::uuid();
         $tournament->user_id = auth()->id();
-
     }
 
-    /**
-     * Handle the game "updated" event.
-     */
+    public function created(Tournament $tournament)
+    {
+        winner::create([
+            'tournament_id' => $tournament->id
+        ]);
+    }
+    
     public function updated(Tournament $tournament): void
     {
         //
