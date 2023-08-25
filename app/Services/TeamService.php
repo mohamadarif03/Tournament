@@ -21,7 +21,7 @@ class TeamService implements ShouldHandleFileUpload, CustomUploadValidation
 
     public function __construct(HomeTeamInterface $team)
     {
-        $this->team = $team;
+        $this->team = $team;    
     }
 
     /**
@@ -50,19 +50,16 @@ class TeamService implements ShouldHandleFileUpload, CustomUploadValidation
     {
         $data = $request->validated();
 
-        $folderName = Auth()->id();
-        $folderPath = public_path('storage/' . UploadDiskEnum::TEAM->value . '/' . $folderName);
-        if (!file_exists($folderPath)) {
-            mkdir($folderPath, 0777, true);
-        }
+        // $folderName = Auth()->id();
+        // $folderPath = public_path('storage/' . UploadDiskEnum::TEAM->value . '/' . $folderName);
+        // if (!file_exists($folderPath)) {
+        //     mkdir($folderPath, 0777, true);
+        // }
+        $logo = $this->upload(UploadDiskEnum::TEAM->value, $request->file('logo'));
 
         return [
             'name' => $data['name'],
-            'logo' => $request->file('logo')->storeAs(
-                UploadDiskEnum::TEAM->value . '/' . $folderName,
-                $request->file('logo')->getClientOriginalName(),
-                'public'
-            ),
+            'logo' => $logo,
             'description' => $data['description'],
             'game_id' => $data['game_id'],
         ];
@@ -82,20 +79,19 @@ class TeamService implements ShouldHandleFileUpload, CustomUploadValidation
 
         $old_logo = $team->logo;
 
-        $folderName = Auth()->id();
-        $folderPath = public_path('storage/' . UploadDiskEnum::TEAM->value . '/' . $folderName);
-        if (!file_exists($folderPath)) {
-            mkdir($folderPath, 0777, true);
-        }
-
         if ($request->hasFile('logo')) {
             $this->remove($old_logo);
-            $old_logo = $request->file('logo')->storeAs(
-                UploadDiskEnum::TEAM->value . '/' . $folderName,
-                $request->file('logo')->getClientOriginalName(),
-                'public'
-            );
+            $old_logo = $this->upload(UploadDiskEnum::TEAM->value, $request->file('logo'));
         }
+
+        // if ($request->hasFile('logo')) {
+        //     $this->remove($old_logo);
+        //     $old_logo = $request->file('logo')->storeAs(
+        //         UploadDiskEnum::TEAM->value . '/' . $folderName,
+        //         $request->file('logo')->getClientOriginalName(),
+        //         'public'
+        //     );
+        // }
 
         return [
             'name' => $data['name'],

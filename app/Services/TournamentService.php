@@ -13,6 +13,7 @@ use App\Models\Tournament;
 use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Cursor;
+use Illuminate\Support\Facades\Storage;
 
 class TournamentService implements ShouldHandleFileUpload, CustomUploadValidation
 {
@@ -52,6 +53,8 @@ class TournamentService implements ShouldHandleFileUpload, CustomUploadValidatio
     {
         $data = $request->validated();
 
+        $live_image_url = $this->upload(UploadDiskEnum::TOURNAMENT->value, $request->file('live_image_url'));
+
         return [
             'name' => $data['name'],
             'description' => $data['description'],
@@ -62,7 +65,7 @@ class TournamentService implements ShouldHandleFileUpload, CustomUploadValidatio
             'starter_at' => $data['starter_at'],
             'location' => $data['location'],
             'registration_fee' => $data['registration_fee'],
-            'live_image_url' => $request->file('live_image_url')->store(UploadDiskEnum::TOURNAMENT->value, 'public'),
+            'live_image_url' => $live_image_url
         ];
     }
 
