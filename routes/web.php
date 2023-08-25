@@ -37,7 +37,7 @@ Auth::routes([
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/tournament-detail/{tournament}', [TournamenthomeController::class, 'detail'])->name('tournament-detail');
 Route::get('/tournaments', [TournamenthomeController::class, 'list'])->name('tournaments');
-Route::get('/tournaments/{tournament}', [TournamenthomeController::class, 'showTeam'])->name('tytyd');
+Route::get('/tournaments/{tournament}', [TournamenthomeController::class, 'showTeam'])->name('detail_tournament_team');
 
 Route::get('/join-tournament/{tournament}', [JointournamentController::class, 'index'])->name('join-tournament');
 Route::post('/register-tournament', [JointournamentController::class, 'join'])->name('register-tournament');
