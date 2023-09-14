@@ -106,6 +106,15 @@
                         placeholder="Alamat" type="text" id="inputaddress" name="address" />
                 </div>
                 <div class="mb-4">
+                    <label class="mt-1.5 font-bold">Pembayaran</label>
+                    <select id="pricedrop" onchange="handlepriceChange" name="registration_fee"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 handlepriceChange">
+                        <option selected>Pilih Pembayaran</option>
+                        <option value="Gratis">Gratis</option>
+                        <option value="Bayar">Bayar</option>
+                    </select>
+                </div>
+                <div class="mb-4" id="price" style="display: none">
                     <label class="mt-1.5 flex -space-x-px font-semibold">Biaya Pendaftaran
                     </label>
                     <input
@@ -130,7 +139,7 @@
                 var addressDiv = $("#address");
                 var inputAddress = $("#inputaddress");
 
-                
+
                 if (selectedValue === "Offline") {
                     addressDiv.show();
                     inputAddress.attr("name", "location");
@@ -144,3 +153,25 @@
         });
     </script>
 @endsection
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#pricedrop").change(function() {
+                var selectValue = $(this).val();
+                console.log(selectValue);
+                var priceDiv = $("#price");
+                var inputPrice = $("#registration_fee");
+
+
+                if (selectValue === "bayar") {
+                    priceDiv.show();
+                    inputPrice.attr("name", "location");
+                    $("#locationdrop option[value='Offline']").text("Offline");
+                } else {
+                    priceDiv.hide();
+                    inputPrice.attr("name", "address");
+                    $("#locationdrop option[value='Offline']").text("Offline");
+                }
+            });
+        });
+    </script>
