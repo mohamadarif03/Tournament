@@ -40,9 +40,9 @@ class GameService implements ShouldHandleFileUpload, CustomUploadValidation
     {
         $data = $request->validated();
         $logo = $this->upload(UploadDiskEnum::GAME->value, $request->file('logo'));
-
         return [
             'name' => $data['name'],
+            'jumlahTeam' => $data['jumlahTeam'],
             'logo' => $logo
         ];
     }
@@ -68,6 +68,7 @@ class GameService implements ShouldHandleFileUpload, CustomUploadValidation
 
         return [
             'name' => $data['name'],
+            'jumlahTeam' => $data['jumlahTeam'],
             'logo' => $old_logo,
         ];
     }

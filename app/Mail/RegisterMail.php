@@ -2,59 +2,52 @@
 
 namespace App\Mail;
 
-use App\Models\User;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class Verify extends Mailable
+class RegisterMail extends Mailable
 {
     use Queueable, SerializesModels;
-
-    public User $user;
-    public string $url;
-
+    public $datas;
     /**
      * Create a new message instance.
-     *
-     * @return void
      */
-    public function __construct(User $user, string $url)
+    public function __construct($datas)
     {
-        $this->user = $user;
-        $this->url = $url;
+        $this->datas = $datas;
     }
-    
+
     /**
      * Get the message envelope.
-     *
-     * @return Envelope
      */
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address(config('mail.from.address'), config('app.name')),
-            to: $this->user->email,
-            cc: $this->user->email,
-            bcc: $this->user->email,
-            replyTo: config('mail.from.address'),
-            subject: trans('mail.registration.subject'),
+            subject: 'RegisterMail',
         );
     }
 
     /**
      * Get the message content definition.
-     *
-     * @return Content
      */
-
     public function content(): Content
     {
         return new Content(
             view: 'emails.RegistrationMail',
         );
+    }
+
+    /**
+     * Get the attachments for the message.
+     *
+     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
+     */
+    public function attachments(): array
+    {
+        return [];
     }
 }

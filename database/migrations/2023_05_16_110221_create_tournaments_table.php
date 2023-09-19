@@ -32,7 +32,7 @@ return new class extends Migration
             $table->integer('runner_up3')->nullable();
             $table->foreignUuid('game_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->text('location');
-            $table->integer('registration_fee');
+            $table->string('registration_fee');
             $table->timestamps();
         });
     }

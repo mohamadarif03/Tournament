@@ -23,6 +23,7 @@ class GameRequest extends FormRequest
     {
         return [
             'name' => 'required',
+            'jumlahTeam' => 'required',
             'logo' => 'required|mimes:jpg,jpeg,png',
         ];
     }
@@ -31,6 +32,7 @@ class GameRequest extends FormRequest
     {
         return [
             'name.required' => 'Nama tidak boleh kosong',
+            'jumlahTeam.required' => 'jumlah tidak boleh kosong',
             'logo.required' => 'Logo tidak boleh kosong',
             'logo.mimes' => 'Logo harus berformat JPG, JPEG, Ataupun PNG'
         ];

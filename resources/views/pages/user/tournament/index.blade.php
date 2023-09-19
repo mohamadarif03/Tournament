@@ -109,7 +109,7 @@
                     </div>
                     <div class=" flex justify-between px-1">
                       <div class=" font-semibold">Slot : 16/{{ $tournament->slot }}</div>
-                      <div class="font-semibold">Harga : {{ number_format($tournament->registration_fee, 0, ',', '.') }}</div>
+                      <div class="font-semibold">Harga : {{ $tournament->registration_fee }}</div>
                     </div>
                     <div class=" absolute top-1 right-1 justify-center my-1">
                       <div class="bg-[#0e75e3] px-2 py-2 rounded-md">

@@ -73,9 +73,9 @@ class RegisterController extends Controller
 
     public function register(RegisterRequest $request, User $user): RedirectResponse
     {
-        $user = $this->registerService->handleRegistration($request, $this->register);
+         $this->registerService->handleRegistration($request, $this->register);
 
-        Mail::to($user)->send(new RegistrationMail($user));
+        // Mail::to($user)->send(new RegistrationMail($user));
 
         return back()->with('success', trans('auth.register_success'));
 

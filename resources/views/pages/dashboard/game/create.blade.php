@@ -16,19 +16,26 @@
             @csrf
             <div class="border border-black/10 dark:border-white/10 p-5 rounded-md">
                 <div class="mb-5">
-                    <p class="text-sm font-semibold">Input Group</p>
+                    <p class="text-sm font-semibold">Input Game</p>
                 </div>
                 <div class="mb-4">
                     <label class="mt-1.5 flex -space-x-px">
                         <input
                             class="form-input w-full rounded-lg border border-black/10 dark:border-white/10 bg-transparent px-3 py-2.5 placeholder:text-black/60 dark:placeholder:text-white/60 hover:z-10 hover:border-black dark:hover:border-white focus:z-10 focus:border-black dark:focus:border-white"
-                            placeholder="Nama" type="text" id="name" name="name" value="{{ old('name') }}" />
+                            placeholder="Nama Game" type="text" id="name" name="name" value="{{ old('name') }}" />
                     </label>
                 </div>
                 <div class="mb-4">
                     <label class="mt-1.5 flex -space-x-px">
                         <input
                             class="form-input w-full rounded-lg border border-black/10 dark:border-white/10 bg-transparent px-3 py-2.5 placeholder:text-black/60 dark:placeholder:text-white/60 hover:z-10 hover:border-black dark:hover:border-white focus:z-10 focus:border-black dark:focus:border-white"
+                            placeholder="Jumlah Anggota Team Inti" type="text" id="name" name="jumlahTeam" value="{{ old('jumlahTeam') }}" />
+                    </label>
+                </div>
+                <div class="mb-4">
+                    <label class="mt-1.5 flex -space-x-px">
+                        <input
+                            class="form-input w-full  rounded-lg border border-black/10 dark:border-white/10 bg-transparent px-3 py-2.5 placeholder:text-black/60 dark:placeholder:text-white/60 hover:z-10 hover:border-black dark:hover:border-white focus:z-10 focus:border-black dark:focus:border-white"
                             placeholder="Username" type="file" id="logo" name="logo" />
                     </label>
                 </div>

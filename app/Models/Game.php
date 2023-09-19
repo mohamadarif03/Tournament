@@ -12,7 +12,7 @@ class Game extends Model implements HasTeams, HasTournaments
 {
     use HasFactory;
     public $incrementing = false;
-    protected $fillable = ['name', 'logo', 'slug'];
+    protected $fillable = ['name', 'logo', 'jumlahTeam', 'slug'];
     protected $primaryKey = 'id';
     public $keyType = 'char';
     protected $table = 'games';

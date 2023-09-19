@@ -25,6 +25,7 @@
                             <th>#</th>
                             <th>Nama</th>
                             <th>Logo</th>
+                            <th>Jumlah Anggota Inti</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -33,6 +34,7 @@
                             <tr>
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ $game->name }}</td>
+                                <td>{{ $game->jumlahTeam }}</td>
                                 <td><img src="{{ asset('storage/' . $game->logo) }}" alt="logo" srcset=""
                                         width="200"></td>
                                 <td>

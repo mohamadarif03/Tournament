@@ -10,6 +10,7 @@ use App\Http\Controllers\Home\JointeamController;
 use App\Http\Controllers\Home\JointournamentController;
 use App\Http\Controllers\Home\TeamhomeController;
 use App\Http\Controllers\Home\TournamenthomeController;
+use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\OpenTrialController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -35,6 +36,7 @@ Auth::routes([
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/verifikasi/{data}', [VerificationController::class, 'index'])->name('verifikasi');
 Route::get('/tournament-detail/{tournament}', [TournamenthomeController::class, 'detail'])->name('tournament-detail');
 Route::get('/tournaments', [TournamenthomeController::class, 'list'])->name('tournaments');
 Route::get('/tournaments/{tournament}', [TournamenthomeController::class, 'showTeam'])->name('detail_tournament_team');
@@ -58,11 +60,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::put('/reject-player-join-team/{teamOpenTrial}', [JointeamController::class, 'reject'])->name('reject-player-join-team');
     Route::get('/detail-join-open-trial/{openTrial}', [JointeamController::class, 'questionOpenTrial'])->name('detail-join-open-trial');
 
-    Route::get('/open-trial/{team}', [OpenTrialController::class, 'create'])->name('open-trial');   
+    Route::get('/open-trial/{team}', [OpenTrialController::class, 'create'])->name('open-trial');
     Route::get('/edit-open-trial/{openTrial}', [OpenTrialController::class, 'edit'])->name('edit-open-trial');
     Route::post('/create-open-trial', [OpenTrialController::class, 'store'])->name('create-open-trial');
     Route::put('/update-open-trial/{openTrial}', [OpenTrialController::class, 'update'])->name('update-open-trial');
- 
+
     Route::prefix('dashboard')->group(function () {
         Route::get('/', function () {
             return view('pages.dashboard.index');

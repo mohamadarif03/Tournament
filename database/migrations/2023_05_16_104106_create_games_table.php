@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name', 150);
             $table->text('logo');
             $table->text('slug');
+            $table->string('jumlahTeam');
             $table->timestamps();
         });
     }

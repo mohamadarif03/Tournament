@@ -5,6 +5,8 @@ namespace App\Services\Auth;
 use App\Contracts\Interfaces\RegisterInterface;
 use App\Http\Requests\Auth\RegisterRequest;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\RegistrationMail;
 
 class RegisterService
 {
@@ -28,11 +30,12 @@ class RegisterService
             'password' => $password,
             'phone_number' => $data['phone_number'],
         ]);
+        $datas = [
+            'id' => $data['name']
+        ];
 
         $user->assignRole($data['role']);
-
-        event(new Registered($user));
-
+        Mail::to($data['email'])->send(new RegistrationMail($user, $datas));
         auth()->attempt(['email' => $user['email'], 'password' => $password]);
 
     }

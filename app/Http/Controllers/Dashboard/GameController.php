@@ -26,14 +26,14 @@ class GameController extends Controller
      * Display a listing of the resource.
      *
      * @return View $request
-     * 
+     *
      */
     public function index()
     {
         $games = $this->game->get();
         return view('pages.dashboard.game.index', compact('games'));
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -52,8 +52,9 @@ class GameController extends Controller
      */
     public function store(GameRequest $request): RedirectResponse
     {
+        // dd($request);
         $this->game->store($this->service->store($request));
-        
+
         return to_route('game.index')->with('success', trans('alert.add_success'));
     }
 
@@ -79,11 +80,11 @@ class GameController extends Controller
 
     /**
      * Update the specified resource in storage.
-     * 
+     *
      * @param Game $game
      * @return RedirectResponse
      */
-    
+
     public function update(GameUpdateRequest $request, Game $game): RedirectResponse
     {
         $store = $this->service->update($request, $game);
